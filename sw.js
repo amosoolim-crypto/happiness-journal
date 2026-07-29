@@ -4,7 +4,7 @@
 // fetch 이벤트를 처리하는 것입니다 (설치 기준 충족).
 // 앱의 실제 데이터는 전부 localStorage에 저장되므로 SW 캐시와 무관하게 항상 보존됩니다.
 
-const CACHE_NAME = 'happiness-journal-v1';
+const CACHE_NAME = 'happiness-journal-v3';
 const APP_SHELL = ['./', './index.html'];
 
 self.addEventListener('install', (event) => {
