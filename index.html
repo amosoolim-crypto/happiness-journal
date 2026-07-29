@@ -943,6 +943,12 @@ canvas{max-width:100%}
 <!-- ══════ 소그룹 ══════ -->
 <div class="page" id="page-group">
   <div class="top-sub-bar"><button class="btn-back" onclick="showPage('more')">← 더보기</button><span>소그룹</span></div>
+  <div class="cat-tabs" id="group-tabs">
+    <button class="ctab ab" data-tier="1" onclick="switchGroupTier(1,this)">1소그룹 (1:1)</button>
+    <button class="ctab" data-tier="2" onclick="switchGroupTier(2,this)">2소그룹 (1:3)</button>
+    <button class="ctab" data-tier="3" onclick="switchGroupTier(3,this)">3소그룹 (1:9)</button>
+  </div>
+  <div style="margin:12px 0"><button class="btn btn-p" onclick="openGroupModal()">+ 모임 기록 추가</button></div>
   <div id="group-list"></div>
 </div>
 
@@ -1001,6 +1007,15 @@ canvas{max-width:100%}
     <span>›</span>
   </div>
 
+  <div class="settings-group-title">후원</div>
+  <div class="info-box teal" style="margin:0 0 10px">
+    AI 시대에 휴대기기를 사용한 개인 경건 운동에 동참하기를 원하시는 분은, 하나님께 감사·성도들과 나눔·이웃에게 복음 전하는 '행복일지'가 신앙생활에 유익하다면 아래 계좌로 후원해 주시면 계속 업그레이드를 제공해 드립니다.
+  </div>
+  <div class="settings-row" id="donate-row" onclick="openDonateModal()" style="cursor:pointer">
+    <div><div class="settings-label">💛 행복일지 후원하기</div><div class="settings-sub">카카오뱅크 3333-15-7956895 (임홍수)</div></div>
+    <span>›</span>
+  </div>
+
   <div class="settings-group-title">앱 정보</div>
   <div class="settings-row" onclick="showPage('app-guide')" style="cursor:pointer">
     <div><div class="settings-label">📘 앱 사용 가이드</div><div class="settings-sub">목적·취지와 모든 기능 상세 안내</div></div>
@@ -1054,7 +1069,48 @@ canvas{max-width:100%}
   <div class="guide-section"><h3>나눔 7가지 규칙</h3><ul class="checklist"><li>나눔은 자랑이 아닌 감사의 고백입니다</li><li>나눔의 크기보다 마음을 봅니다</li><li>받은 나눔은 반드시 이름과 함께 기록하고 직접 감사를 전합니다</li><li>주 1회 이상 기록을 목표로 합니다</li><li>나눔 내역은 소그룹 내 신뢰의 울타리 안에서만 나눕니다</li><li>7영역을 고루 실천하도록 매달 통계를 확인합니다</li><li>셀 안의 나눔이 성숙해지면 불신자 이웃에게도 흘러가도록 연결합니다</li></ul></div>
 
   <hr>
-  <div class="slabel">4장. 1&amp;1 전도 — 7단계 로드맵</div>
+  <div class="slabel">4장. 소그룹 — 1:1 · 1:3 · 1:9 모임 기록</div>
+  <div class="info-box teal"><strong>소그룹의 세 단계</strong><br>행복일지의 소그룹은 관계의 크기에 따라 세 단계로 나뉩니다. 한 사람을 깊이 품는 <strong>1소그룹(1:1)</strong>에서 시작해, <strong>2소그룹(1:3)</strong>으로 조금씩 넓히고, <strong>3소그룹(1:9)</strong>으로 확장하며 제자를 세우는 삼삼칠(3-3-7)식 배가 구조입니다.</div>
+  <div class="guide-section"><h3>세 단계 소그룹 구조</h3><ul class="checklist">
+    <li><strong>1소그룹 (1:1)</strong> — 한 사람과 깊이 만나는 개별 양육·전도 관계. 1&amp;1 전도 대상자나 새신자를 처음 품을 때 가장 적합합니다.</li>
+    <li><strong>2소그룹 (1:3)</strong> — 한 리더가 세 사람을 품는 소그룹. 1소그룹에서 관계가 형성된 이들이 함께 모이며 서로를 알아가는 단계입니다.</li>
+    <li><strong>3소그룹 (1:9)</strong> — 아홉 명이 함께하는 확장 소그룹(셀·구역 단위). 정착된 지체들이 함께 예배하고 사역하는 공동체 단위입니다.</li>
+  </ul></div>
+  <div class="guide-section"><h3>모임마다 기록하는 4가지 기본 정보</h3><ul class="checklist">
+    <li><strong>대상</strong> — 누구와 함께한 모임인지 (이름)</li>
+    <li><strong>시간</strong> — 정기적으로 모이는 요일과 시간</li>
+    <li><strong>장소</strong> — 모임이 이루어지는 공간</li>
+    <li><strong>나눔(5W)</strong> — 아래 다섯 가지 순서로 모임 내용을 기록</li>
+  </ul></div>
+  <div class="guide-section"><h3>5W 모임 진행 순서</h3><ul class="checklist">
+    <li><strong>🤗 Welcome — 마음열기</strong> — 근황을 나누고 서로의 마음 문을 여는 시간입니다. 편안한 분위기에서 시작해야 이어지는 나눔이 깊어집니다.</li>
+    <li><strong>🙌 Worship — 경배찬양</strong> — 함께 찬양하며 하나님께 예배하는 시간입니다. 모임의 중심을 사람이 아닌 하나님께 두게 합니다.</li>
+    <li><strong>📖 Word — 말씀묵상</strong> — 본문 말씀을 함께 읽고 묵상을 나눕니다. 각자의 삶에 말씀이 어떻게 적용되는지 나누는 것이 핵심입니다.</li>
+    <li><strong>🛠️ Work of Prayer — 사역하기</strong> — 서로를 위해 중보기도하고, 실제적인 섬김과 사역을 계획하는 시간입니다.</li>
+    <li><strong>✝️ Witness — 복음전파</strong> — 전도 대상자를 나누고, 복음을 전한 이야기를 함께 나누며 서로 격려합니다.</li>
+  </ul></div>
+  <div class="guide-section"><h3>사용 방법</h3><ol class="guide-steps"><li>더보기 → 소그룹 메뉴에서 1/2/3소그룹 탭 중 기록할 단계를 선택합니다</li><li>"+ 모임 기록 추가" 버튼을 눌러 대상·시간·장소를 입력합니다</li><li>모임이 끝난 뒤 5W 각 항목에 나눈 내용을 기록합니다 (모든 항목을 다 채우지 않아도 됩니다)</li><li>저장된 기록은 탭별로 최신 순서로 모아볼 수 있어, 지난 모임을 되짚어보는 데 유용합니다</li></ol></div>
+
+  <hr>
+  <div class="slabel">5장. 성도 격려 메시지 — 작성과 전송</div>
+  <div class="info-box teal"><strong>격려는 관계를 살리는 작은 실천</strong><br>말 한마디가 지친 성도에게 큰 힘이 됩니다. 행복일지의 성도 격려 기능은 메시지를 앱 안에 기록해두는 것을 넘어, 실제로 그 사람의 휴대폰으로 문자를 보낼 수 있도록 도와줍니다.</div>
+  <div class="guide-section"><h3>입력 항목</h3><ul class="checklist">
+    <li><strong>보내는 사람</strong> — 내 이름</li>
+    <li><strong>받는 사람 이름</strong> — 격려를 전할 대상</li>
+    <li><strong>받는 사람 전화번호</strong> — 문자 전송에 사용됩니다</li>
+    <li><strong>메시지</strong> — 아래 5요소를 담아 작성</li>
+  </ul></div>
+  <div class="guide-section"><h3>메시지에 담을 5가지 요소</h3><ul class="checklist">
+    <li><strong>① 호칭</strong> — 이름을 불러주세요. "○○ 집사님", "○○ 성도님"처럼 구체적으로 부르면 진심이 더 잘 전달됩니다.</li>
+    <li><strong>② 감사</strong> — 그 사람으로 인해 고마웠던 점을 구체적으로 적습니다.</li>
+    <li><strong>③ 칭찬</strong> — 잘하고 있는 점, 은사나 섬김을 인정하는 말을 담습니다.</li>
+    <li><strong>④ 격려</strong> — 지금 상황에서 힘이 되는 응원의 말을 전합니다.</li>
+    <li><strong>⑤ 축복</strong> — 기도와 축복의 말로 메시지를 마무리합니다.</li>
+  </ul></div>
+  <div class="guide-section"><h3>사용 방법</h3><ol class="guide-steps"><li>더보기 → 성도 격려 메시지 → "+ 격려 메시지 남기기"를 누릅니다</li><li>받는 사람의 이름과 전화번호를 입력합니다</li><li>메시지 작성 가이드(호칭·감사·칭찬·격려·축복)를 참고하여 내용을 적습니다</li><li>"저장"을 누르면 기록으로 남고, "📤 문자로 전송하기"를 누르면 휴대폰의 문자 앱이 열려 바로 전송할 수 있습니다</li></ol></div>
+
+  <hr>
+  <div class="slabel">6장. 1&amp;1 전도 — 7단계 로드맵</div>
   <div class="guide-section"><h3>7단계 전도 여정</h3><ul class="checklist">
     <li><strong>1단계 기도 대상자 선정</strong> — 이름을 올리고 매일 중보기도로 시작. "이 사람을 하나님께 맡긴다"는 신앙의 고백입니다. (마 9:37-38)</li>
     <li><strong>2단계 관계 형성</strong> — 복음을 전하기 전, 먼저 진심으로 친구가 되는 단계. 신뢰가 쌓이면 복음은 자연스럽게 흘러갑니다. (요 15:13)</li>
@@ -1073,7 +1129,7 @@ canvas{max-width:100%}
   </div>
   <div class="guide-section"><h3>전도가 막혔을 때 처방</h3><ul class="acc-steps"><li data-n="1">연락이 끊겼을 때 — 강요 말고 생일·기념일 챙겨 자연스럽게 재연결. SNS 댓글로 지속적 관심</li><li data-n="2">초청을 거절당했을 때 — "괜찮아요"라고 넘기고, 2~3개월 후 다음 총동원 주일 준비</li><li data-n="3">내가 지치고 낙심될 때 — 셀원에게 솔직하게 중보기도 요청. 과거 감사 기록 읽으며 하나님의 역사 재확인</li><li data-n="4">복음을 어떻게 꺼낼지 모를 때 — "기도해줄게요" 한 마디로 시작. 교리 설명보다 내 경험 나눔이 강력</li><li data-n="5">첫 예배 후 재방문이 없을 때 — 예배 다음 날 소감 먼저 묻기. 다음 주 예배 약속을 그 자리에서 잡기</li><li data-n="6">등록 후 정착하지 못할 때 — 3개월간 매 주일 함께 앉기. 새신자반에 함께 등록하고 동행하기</li></ul></div>
   <hr>
-  <div class="slabel">5장. 총동원 주일 전도 계획</div>
+  <div class="slabel">7장. 총동원 주일 전도 계획</div>
   <div class="info-box blue"><strong>씨앗 → 추수의 흐름</strong><br>1차 총동원 주일(8.30): 관계 중심 · 첫 방문 · 씨앗 심기 — 핵심 대상: 2~4단계 대상자<br>2차 총동원 주일(11.29): 결신 중심 · 등록 · 열매 거두기 — 핵심 대상: 5~6단계 대상자</div>
   <div class="guide-section"><h3>D-4주 준비 계획 (1차 8.30)</h3>
     <div class="month-row"><span class="month-badge" style="background:var(--blue-l);color:var(--blue-d)">D-4주</span><div><strong>초청 대상 확정</strong> — 앱에서 초청할 사람 최종 1명 결정. 셀에 이름 공개하고 합심기도 시작. 기도 일지 메모 작성 시작</div></div>
@@ -1089,7 +1145,7 @@ canvas{max-width:100%}
     <div class="month-row"><span class="month-badge" style="background:var(--purple-l);color:var(--purple-d)">D-1주</span><div><strong>최종 리마인더</strong> — "이번 주 일요일!" 설레는 문자. 교통편 재확인. 당일 동선 머릿속으로 시뮬레이션</div></div>
   </div>
   <hr>
-  <div class="slabel">6장. 하반기 연간 점검 로드맵 (7~12월)</div>
+  <div class="slabel">8장. 하반기 연간 점검 로드맵 (7~12월)</div>
   <div class="guide-section"><h3>월별 점검 계획</h3>
     <div class="month-row"><span class="month-badge">7월</span><div><strong>하반기 시동</strong> — 상반기 기도 대상자 단계 점검. 전도 탭 전체 필터 → 단계별 현황 & 메모 업데이트</div></div>
     <div class="month-row"><span class="month-badge">8월</span><div><strong>여름 관계</strong> — 여름 특새 동행 제안, 만남의 질 깊이 확인. 찬양의 감사 기록, 관계 나눔 기록(밥·커피·나들이)</div></div>
@@ -1101,7 +1157,7 @@ canvas{max-width:100%}
   </div>
   <div class="guide-section"><h3>전도 단계 정체 진단 & 처방</h3><ul class="acc-steps"><li data-n="1">1→2단계 안 될 때 — 기도 없이는 관계가 열리지 않습니다. 기도 일지를 다시 시작하세요</li><li data-n="2">2→3단계 안 될 때 — 만남의 양보다 질을 높이세요. 식사 한 끼가 문자 열 통보 낫습니다</li><li data-n="3">3→4단계 안 될 때 — 말씀보다 섬김이 먼저입니다. 아직 신뢰가 쌓이지 않은 것입니다</li><li data-n="4">4→5단계 안 될 때 — 간증이 너무 길거나 종교적이진 않나요? 1~2분 안에 자연스럽게 끝내는 연습을 하세요</li><li data-n="5">5→6단계 안 될 때 — 총동원 주일이라는 구체적인 날짜를 제시하세요. 막연한 초청은 거절당합니다</li><li data-n="6">6→7단계 안 될 때 — 첫 예배 다음 날 바로 연락하세요. 3개월간 함께 앉아주면 정착됩니다</li></ul></div>
   <hr>
-  <div class="slabel">7장. 개인 신앙생활 활용 가이드</div>
+  <div class="slabel">9장. 개인 신앙생활 활용 가이드</div>
   <div class="guide-section"><h3>하루 10분 4단계 루틴</h3><ol class="guide-steps"><li><strong>아침 2분 — 감사</strong>: 오늘 하나님이 주신 것 한 가지를 감사 일기에 기록. 7가지 영역 중 하나를 골라 구체적으로 적기</li><li><strong>점심 3분 — 나눔</strong>: 오늘 누구와 나눌 수 있을지 생각하고 실천 계획. 나눔 후 앱에 바로 기록</li><li><strong>저녁 3분 — 기도</strong>: 전도 대상자 이름 부르며 중보기도 & 앱 메모 업데이트. 오늘 변화된 점이 있으면 단계 이동</li><li><strong>밤 2분 — 기록</strong>: 오늘의 나눔 내역 기록 & 내일 감사 주제 묵상. 한 줄로 충분합니다</li></ol></div>
   <div class="guide-section"><h3>특별 상황별 6가지 활용법</h3><ul class="acc-steps"><li data-n="1">낙심될 때 — 홈 탭 → 이번 주 실천 링 확인. 작은 것도 하나님의 역사임을 기억</li><li data-n="2">감사 기록이 막힐 때 — 2장의 "영역별 깊이 있는 질문" 하나를 골라 답하는 형식으로 작성</li><li data-n="3">전도 대상자와 갈등이 생겼을 때 — 관계 나눔 탭에 솔직하게 기록 후 중보기도로 전환</li><li data-n="4">셀 모임 준비할 때 — 나눔 장부 → 이번 달 가장 인상 깊은 나눔 1건 선택해 발표</li><li data-n="5">전도 대상자가 거절했을 때 — 응답의 감사 탭에 "씨앗을 심었음에 감사" 기록. 기도는 계속</li><li data-n="6">새해 목표 세울 때 — 전년도 전체 기록 리뷰 후 새해 1&1 대상자 이름 정하고 1단계 등록</li></ul></div>
 
@@ -1255,6 +1311,24 @@ canvas{max-width:100%}
   <div class="modal-footer"><button class="btn btn-p" onclick="closeM('modal-install')">알겠어요</button></div>
 </div></div>
 
+<div class="modal-bg" id="modal-donate"><div class="modal">
+  <div class="modal-title">💛 행복일지 후원하기</div>
+  <p style="margin:0 0 16px;color:var(--text2);font-size:14px;line-height:1.7">
+    AI 시대에 휴대기기를 사용한 개인 경건 운동에 동참하기를 원하시는 분은, 하나님께 감사·성도들과 나눔·이웃에게 복음 전하는 '행복일지'가 신앙생활에 유익하다면 후원해 주시면 계속 업그레이드를 제공해 드립니다.
+  </p>
+  <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:14px;text-align:center">
+    <div style="font-size:12px;color:var(--text2);margin-bottom:4px">카카오뱅크</div>
+    <div id="donate-account-num" style="font-size:20px;font-weight:700;color:var(--text);letter-spacing:0.5px;margin-bottom:2px">3333-15-7956895</div>
+    <div style="font-size:13px;color:var(--text2)">예금주 임홍수</div>
+  </div>
+  <button class="btn btn-p" style="width:100%;margin-bottom:8px;background:#FEE500;color:#3C1E1E" onclick="openKakaoPay()">💛 카카오페이로 1,000원 후원하기</button>
+  <button class="btn btn-p" style="width:100%;margin-bottom:8px" onclick="copyDonateAccount()">📋 계좌번호 복사하기</button>
+  <button class="btn btn-p" style="width:100%;background:var(--amber);margin-bottom:4px" onclick="openBankApp()">🏦 카카오뱅크 앱으로 이체하기</button>
+  <p style="margin:8px 0 0;font-size:11.5px;color:var(--text2);line-height:1.6">
+    ※ 카카오뱅크 앱이 설치되어 있으면 앱이 바로 열립니다. 앱이 없거나 다른 은행을 이용하신다면, 위 계좌번호를 복사해 이체해주세요.
+  </p>
+  <div class="modal-footer"><button class="btn btn-g" onclick="closeM('modal-donate')">닫기</button></div>
+</div></div>
 
 <!-- ══════ QT 작성 모달 ══════ -->
 <div class="modal-bg" id="modal-qt"><div class="modal">
@@ -1355,13 +1429,58 @@ canvas{max-width:100%}
 <!-- ══════ 격려 메시지 모달 ══════ -->
 <div class="modal-bg" id="modal-encourage"><div class="modal">
   <div class="modal-title" id="modal-encourage-title">💌 격려 메시지</div>
-  <label class="fl">내 이름</label><div class="field-with-voice"><input type="text" id="enc-name"><button class="voice-btn" onclick="toggleVoiceInput('enc-name', this)">🎤</button></div>
+  <label class="fl">보내는 사람 (내 이름)</label><div class="field-with-voice"><input type="text" id="enc-name"><button class="voice-btn" onclick="toggleVoiceInput('enc-name', this)">🎤</button></div>
+  <label class="fl">받는 사람 이름</label><div class="field-with-voice"><input type="text" id="enc-to-name" placeholder="예: 김은혜 집사님"><button class="voice-btn" onclick="toggleVoiceInput('enc-to-name', this)">🎤</button></div>
+  <label class="fl">받는 사람 전화번호</label><input type="tel" id="enc-to-phone" placeholder="010-0000-0000">
+  <div class="info-box teal" style="margin-top:10px;font-size:12px">
+    <strong>메시지 작성 가이드</strong><br>
+    아래 다섯 가지를 담아 써보세요 — <strong>①호칭</strong>(누구에게) · <strong>②감사</strong>(고마운 점) · <strong>③칭찬</strong>(잘하고 있는 점) · <strong>④격려</strong>(힘이 되는 말) · <strong>⑤축복</strong>(기도와 축복의 말)
+  </div>
   <label class="fl">메시지</label>
   <div class="field-with-voice">
-    <textarea id="enc-msg" rows="3" placeholder="성도들에게 힘이 되는 한마디를 남겨보세요"></textarea>
+    <textarea id="enc-msg" rows="5" placeholder="예: 은혜 집사님, 늘 예배 자리를 지켜주셔서 감사해요. 섬기는 모습이 참 아름다워요. 요즘 힘드신 일 있어도 잘 견디고 계시니 힘내세요. 주님이 늘 함께하시길 축복합니다!"></textarea>
     <button class="voice-btn" onclick="toggleVoiceInput('enc-msg', this)">🎤</button>
   </div>
-  <div class="modal-footer"><button class="btn btn-g" onclick="closeM('modal-encourage')">취소</button><button class="btn btn-p" onclick="saveEncourage()" id="modal-encourage-savebtn">저장</button></div>
+  <div class="modal-footer">
+    <button class="btn btn-g" onclick="closeM('modal-encourage')">취소</button>
+    <button class="btn btn-p" onclick="saveEncourage()" id="modal-encourage-savebtn">저장</button>
+  </div>
+  <button class="btn btn-p" style="width:100%;margin-top:8px;background:var(--teal-d)" onclick="sendEncourage()">📤 문자로 전송하기</button>
+</div></div>
+
+<div class="modal-bg" id="modal-group"><div class="modal">
+  <div class="modal-title" id="modal-group-title">👥 소그룹 모임 기록</div>
+  <label class="fl">소그룹 구분</label>
+  <select id="grp-tier">
+    <option value="1">1소그룹 — 1:1</option>
+    <option value="2">2소그룹 — 1:3</option>
+    <option value="3">3소그룹 — 1:9</option>
+  </select>
+  <label class="fl">대상 (누구와 함께)</label>
+  <div class="field-with-voice"><input type="text" id="grp-target" placeholder="예: 김성도, 박믿음 외 2명"><button class="voice-btn" onclick="toggleVoiceInput('grp-target', this)">🎤</button></div>
+  <label class="fl">시간</label>
+  <input type="text" id="grp-time" placeholder="예: 매주 금요일 오후 8시">
+  <label class="fl">장소</label>
+  <div class="field-with-voice"><input type="text" id="grp-place" placeholder="예: 교회 2층 소그룹실, ○○ 카페"><button class="voice-btn" onclick="toggleVoiceInput('grp-place', this)">🎤</button></div>
+
+  <div class="slabel" style="margin-top:14px">나눔 기록 (5W)</div>
+
+  <label class="fl">🤗 Welcome — 마음열기</label>
+  <div class="field-with-voice"><textarea id="grp-w1" rows="2" placeholder="근황 나눔, 아이스브레이킹 등"></textarea><button class="voice-btn" onclick="toggleVoiceInput('grp-w1', this)">🎤</button></div>
+
+  <label class="fl">🙌 Worship — 경배찬양</label>
+  <div class="field-with-voice"><textarea id="grp-w2" rows="2" placeholder="함께 부른 찬양, 찬양 중 은혜 받은 부분"></textarea><button class="voice-btn" onclick="toggleVoiceInput('grp-w2', this)">🎤</button></div>
+
+  <label class="fl">📖 Word — 말씀묵상</label>
+  <div class="field-with-voice"><textarea id="grp-w3" rows="2" placeholder="본문 말씀, 나눈 묵상 내용"></textarea><button class="voice-btn" onclick="toggleVoiceInput('grp-w3', this)">🎤</button></div>
+
+  <label class="fl">🛠️ Work of Prayer — 사역하기</label>
+  <div class="field-with-voice"><textarea id="grp-w4" rows="2" placeholder="중보기도 제목, 섬김/사역 나눔"></textarea><button class="voice-btn" onclick="toggleVoiceInput('grp-w4', this)">🎤</button></div>
+
+  <label class="fl">✝️ Witness — 복음전파</label>
+  <div class="field-with-voice"><textarea id="grp-w5" rows="2" placeholder="전도 대상자 나눔, 복음 전한 이야기"></textarea><button class="voice-btn" onclick="toggleVoiceInput('grp-w5', this)">🎤</button></div>
+
+  <div class="modal-footer"><button class="btn btn-g" onclick="closeM('modal-group')">취소</button><button class="btn btn-p" onclick="saveGroup()" id="modal-group-savebtn">저장</button></div>
 </div></div>
 
 <!-- ══════ 사진 뷰어 ══════ -->
@@ -2031,14 +2150,40 @@ function loadExtraData(){
   if(!noticeE.length){
     noticeE = [
       {id:1, pinned:true, title:'8월 30일 총동원 주일 안내', date:new Date().toISOString().split('T')[0], body:'온 성도가 한 영혼을 품고 초청하는 총동원 주일입니다. 많은 참여 부탁드립니다.'},
-      {id:2, pinned:false, title:'수요 저녁 기도회 시간 변경', date:new Date().toISOString().split('T')[0], body:'이번 주부터 수요 기도회가 오후 7시 30분으로 변경됩니다.'},
+      {id:3, pinned:true, title:'초청대상자 작정합시다!', date:new Date().toISOString().split('T')[0], body:'1&1 초청 프로젝트에 가족 중 한 사람, 낙심자 한 사람, 불신자 한 사람씩 초청대상자를 꼭 작정하시고, 기도하고 만나고 초청해 주시기 바랍니다.'},
+      {id:4, pinned:false, title:'행복일지 작성 안내', date:new Date().toISOString().split('T')[0], body:'하나님께 감사, 성도들과 나눔, 이웃에게 복음을 전하는 행복일지를 작성해 보세요. 행복일지를 쓰면 행복합니다!'},
     ];
     saveExtra('notice');
+  } else {
+    // 이미 공지 데이터가 있는 기존 사용자를 위한 마이그레이션:
+    // "수요 저녁 기도회 시간 변경" 공지 제거, 새 안내 2건이 없으면 추가.
+    // 사용자가 직접 작성한 다른 공지는 건드리지 않는다.
+    let noticeChanged = false;
+    const beforeLen = noticeE.length;
+    noticeE = noticeE.filter(n => n.title !== '수요 저녁 기도회 시간 변경');
+    if(noticeE.length !== beforeLen) noticeChanged = true;
+    if(!noticeE.some(n => n.title === '초청대상자 작정합시다!')){
+      noticeE.push({id:3, pinned:true, title:'초청대상자 작정합시다!', date:new Date().toISOString().split('T')[0], body:'1&1 초청 프로젝트에 가족 중 한 사람, 낙심자 한 사람, 불신자 한 사람씩 초청대상자를 꼭 작정하시고, 기도하고 만나고 초청해 주시기 바랍니다.'});
+      noticeChanged = true;
+    }
+    if(!noticeE.some(n => n.title === '행복일지 작성 안내')){
+      noticeE.push({id:4, pinned:false, title:'행복일지 작성 안내', date:new Date().toISOString().split('T')[0], body:'하나님께 감사, 성도들과 나눔, 이웃에게 복음을 전하는 행복일지를 작성해 보세요. 행복일지를 쓰면 행복합니다!'});
+      noticeChanged = true;
+    }
+    if(noticeChanged) saveExtra('notice');
   }
   if(!groupE.length){
     groupE = [
-      {id:1, name:'1소그룹 (청년부)', leader:'김은혜 리더', members:8, meetTime:'매주 금요일 저녁 8시'},
-      {id:2, name:'2소그룹 (장년부)', leader:'박사랑 리더', members:12, meetTime:'매주 화요일 오전 10시'},
+      {id:1, tier:1, target:'김성도', time:'매주 금요일 저녁 8시', place:'교회 2층 소그룹실',
+       w1:'한 주간 지낸 이야기를 나누며 근황을 물었다.', w2:'찬양 \'주 은혜임을\'을 함께 불렀다.',
+       w3:'요한복음 15장 — 포도나무 비유를 나누며 주님 안에 거하는 삶을 묵상했다.',
+       w4:'가정의 회복을 위해 함께 기도했다.', w5:'다음 주 직장 동료를 초청하기로 함께 결단했다.',
+       date:new Date().toISOString().split('T')[0]},
+      {id:2, tier:2, target:'박믿음, 이소망, 최사랑', time:'매주 화요일 오전 10시', place:'○○ 카페',
+       w1:'각자의 이번 주 감사 제목을 나눴다.', w2:'\'오직 주만이\'를 함께 찬양했다.',
+       w3:'시편 23편을 읽고 목자되신 하나님을 묵상했다.',
+       w4:'서로의 건강과 가정을 위해 중보기도했다.', w5:'전도 대상자 명단을 함께 점검했다.',
+       date:new Date().toISOString().split('T')[0]},
     ];
     saveExtra('group');
   }
@@ -2356,16 +2501,19 @@ function openEncourageModal(editId){
   editingId = editId || null;
   const titleEl = document.getElementById('modal-encourage-title');
   const btnEl = document.getElementById('modal-encourage-savebtn');
+  const fields = ['enc-name','enc-to-name','enc-to-phone','enc-msg'];
   if(editingId){
     const e = encourageE.find(x=>x.id===editingId);
     if(e){
       document.getElementById('enc-name').value = e.name || '';
+      document.getElementById('enc-to-name').value = e.toName || '';
+      document.getElementById('enc-to-phone').value = e.toPhone || '';
       document.getElementById('enc-msg').value = e.msg || '';
     }
     if(titleEl) titleEl.textContent = '💌 격려 메시지 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
-    ['enc-name','enc-msg'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+    fields.forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
     if(titleEl) titleEl.textContent = '💌 격려 메시지';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -2373,26 +2521,39 @@ function openEncourageModal(editId){
 }
 function saveEncourage(){
   const name=(document.getElementById('enc-name')||{}).value||'';
+  const toName=(document.getElementById('enc-to-name')||{}).value||'';
+  const toPhone=(document.getElementById('enc-to-phone')||{}).value||'';
   const msg=(document.getElementById('enc-msg')||{}).value||'';
   if(!name.trim()||!msg.trim()){ toast('이름과 메시지를 모두 입력해주세요'); return; }
   if(editingId){
     const idx = encourageE.findIndex(x=>x.id===editingId);
-    if(idx>=0) encourageE[idx] = { ...encourageE[idx], name:name.trim(), msg:msg.trim() };
+    if(idx>=0) encourageE[idx] = { ...encourageE[idx], name:name.trim(), toName:toName.trim(), toPhone:toPhone.trim(), msg:msg.trim() };
     saveExtra('encourage'); renderEncourage(); closeM('modal-encourage'); toast('격려 메시지를 수정했습니다 ✏️');
   } else {
-    encourageE.unshift({ id:Date.now(), name:name.trim(), msg:msg.trim(), date:new Date().toISOString().split('T')[0] });
+    encourageE.unshift({ id:Date.now(), name:name.trim(), toName:toName.trim(), toPhone:toPhone.trim(), msg:msg.trim(), date:new Date().toISOString().split('T')[0] });
     saveExtra('encourage'); renderEncourage(); closeM('modal-encourage'); toast('격려 메시지를 남겼습니다 💌');
   }
   editingId = null;
+}
+function sendEncourage(){
+  const toPhone=(document.getElementById('enc-to-phone')||{}).value||'';
+  const msg=(document.getElementById('enc-msg')||{}).value||'';
+  if(!msg.trim()){ toast('메시지를 입력해주세요'); return; }
+  if(!toPhone.trim()){ toast('받는 사람 전화번호를 입력해주세요'); return; }
+  const cleanPhone = toPhone.replace(/[^0-9+]/g,'');
+  const smsUrl = `sms:${cleanPhone}?body=${encodeURIComponent(msg.trim())}`;
+  window.location.href = smsUrl;
 }
 function delEncourage(id){ if(!confirm('삭제할까요?'))return; encourageE=encourageE.filter(e=>e.id!==id); saveExtra('encourage'); renderEncourage(); }
 function renderEncourage(){
   const list=document.getElementById('encourage-list'); if(!list) return;
   if(!encourageE.length){ list.innerHTML='<div class="empty"><span class="empty-icon">💌</span>성도들에게 격려의 메시지를 남겨보세요.</div>'; return; }
   list.innerHTML = encourageE.map(e=>`<div class="encourage-msg">
-    <div class="encourage-avatar">${esc(e.name.slice(0,1))}</div>
+    <div class="encourage-avatar">${esc((e.toName||e.name||'?').slice(0,1))}</div>
     <div class="encourage-body">
-      <div class="encourage-name">${esc(e.name)}</div>${esc(e.msg)}
+      <div class="encourage-name">${e.toName ? esc(e.toName)+' 님께' : '(받는 사람 미입력)'} <span style="font-weight:400;color:var(--text2);font-size:12px">— ${esc(e.name)} 드림</span></div>
+      ${e.toPhone ? `<div style="font-size:11px;color:var(--text2);margin-bottom:4px">📞 ${esc(e.toPhone)}</div>` : ''}
+      ${esc(e.msg)}
       <div style="margin-top:5px"><button class="btn btn-g btn-sm" onclick="openEncourageModal(${e.id})">수정</button> <button class="btn btn-d btn-sm" onclick="delEncourage(${e.id})">삭제</button></div>
     </div>
   </div>`).join('');
@@ -2412,17 +2573,92 @@ function renderNotices(){
 }
 
 /* ── 소그룹 ──────────────────────────────────────────────── */
+let currentGroupTier = 1;
+function switchGroupTier(tier, btn){
+  currentGroupTier = tier;
+  if(btn){
+    document.querySelectorAll('#group-tabs .ctab').forEach(b=>b.classList.remove('ab'));
+    btn.classList.add('ab');
+  }
+  renderGroups();
+}
+const GROUP_TIER_LABEL = {1:'1소그룹 (1:1)', 2:'2소그룹 (1:3)', 3:'3소그룹 (1:9)'};
+const GROUP_W_LABELS = [
+  {k:'w1', icon:'🤗', label:'Welcome · 마음열기'},
+  {k:'w2', icon:'🙌', label:'Worship · 경배찬양'},
+  {k:'w3', icon:'📖', label:'Word · 말씀묵상'},
+  {k:'w4', icon:'🛠️', label:'Work of Prayer · 사역하기'},
+  {k:'w5', icon:'✝️', label:'Witness · 복음전파'},
+];
 function renderGroups(){
   const list=document.getElementById('group-list'); if(!list) return;
-  if(!groupE.length){ list.innerHTML='<div class="empty"><span class="empty-icon">👥</span>등록된 소그룹이 없습니다.</div>'; return; }
-  list.innerHTML = groupE.map(g=>`<div class="group-card">
+  const filtered = groupE.filter(g => Number(g.tier) === Number(currentGroupTier));
+  if(!filtered.length){ list.innerHTML=`<div class="empty"><span class="empty-icon">👥</span>${esc(GROUP_TIER_LABEL[currentGroupTier])} 모임 기록이 없습니다.</div>`; return; }
+  const sorted = [...filtered].sort((a,b)=> (b.date||'').localeCompare(a.date||'') || b.id-a.id);
+  list.innerHTML = sorted.map(g=>`<div class="group-card">
     <div class="group-header">
       <div class="group-icon">👥</div>
-      <div><div class="group-name">${esc(g.name)}</div><div class="group-meta">${esc(g.leader)} · ${g.members}명</div></div>
+      <div><div class="group-name">${esc(g.target||'대상 미입력')}</div><div class="group-meta">${fd(g.date)} · ${esc(g.time||'-')}</div></div>
     </div>
-    <div style="font-size:12px;color:var(--text2)">🕐 ${esc(g.meetTime)}</div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:6px">📍 ${esc(g.place||'-')}</div>
+    ${GROUP_W_LABELS.filter(w=>g[w.k] && g[w.k].trim()).map(w=>`
+      <div style="margin-top:6px;padding:8px 10px;background:var(--surface2);border-radius:8px">
+        <div style="font-size:11px;font-weight:700;color:var(--teal-d);margin-bottom:2px">${w.icon} ${esc(w.label)}</div>
+        <div style="font-size:13px;color:var(--text)">${esc(g[w.k])}</div>
+      </div>`).join('')}
+    <div style="margin-top:8px"><button class="btn btn-g btn-sm" onclick="openGroupModal(${g.id})">수정</button> <button class="btn btn-d btn-sm" onclick="delGroup(${g.id})">삭제</button></div>
   </div>`).join('');
 }
+function openGroupModal(editId){
+  editingId = editId || null;
+  const titleEl = document.getElementById('modal-group-title');
+  const btnEl = document.getElementById('modal-group-savebtn');
+  const fields = ['grp-target','grp-time','grp-place','grp-w1','grp-w2','grp-w3','grp-w4','grp-w5'];
+  if(editingId){
+    const g = groupE.find(x=>x.id===editingId);
+    if(g){
+      document.getElementById('grp-tier').value = g.tier || currentGroupTier;
+      document.getElementById('grp-target').value = g.target || '';
+      document.getElementById('grp-time').value = g.time || '';
+      document.getElementById('grp-place').value = g.place || '';
+      document.getElementById('grp-w1').value = g.w1 || '';
+      document.getElementById('grp-w2').value = g.w2 || '';
+      document.getElementById('grp-w3').value = g.w3 || '';
+      document.getElementById('grp-w4').value = g.w4 || '';
+      document.getElementById('grp-w5').value = g.w5 || '';
+    }
+    if(titleEl) titleEl.textContent = '👥 소그룹 모임 기록 수정';
+    if(btnEl) btnEl.textContent = '수정 완료';
+  } else {
+    document.getElementById('grp-tier').value = currentGroupTier;
+    fields.forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+    if(titleEl) titleEl.textContent = '👥 소그룹 모임 기록';
+    if(btnEl) btnEl.textContent = '저장';
+  }
+  openM('modal-group');
+}
+function saveGroup(){
+  const tier = Number((document.getElementById('grp-tier')||{}).value||currentGroupTier);
+  const target=(document.getElementById('grp-target')||{}).value||'';
+  const time=(document.getElementById('grp-time')||{}).value||'';
+  const place=(document.getElementById('grp-place')||{}).value||'';
+  const w1=(document.getElementById('grp-w1')||{}).value||'';
+  const w2=(document.getElementById('grp-w2')||{}).value||'';
+  const w3=(document.getElementById('grp-w3')||{}).value||'';
+  const w4=(document.getElementById('grp-w4')||{}).value||'';
+  const w5=(document.getElementById('grp-w5')||{}).value||'';
+  if(!target.trim()){ toast('대상을 입력해주세요'); return; }
+  if(editingId){
+    const idx = groupE.findIndex(x=>x.id===editingId);
+    if(idx>=0) groupE[idx] = { ...groupE[idx], tier, target:target.trim(), time:time.trim(), place:place.trim(), w1:w1.trim(), w2:w2.trim(), w3:w3.trim(), w4:w4.trim(), w5:w5.trim() };
+    saveExtra('group'); currentGroupTier = tier; renderGroups(); closeM('modal-group'); toast('모임 기록을 수정했습니다 ✏️');
+  } else {
+    groupE.unshift({ id:Date.now(), tier, target:target.trim(), time:time.trim(), place:place.trim(), w1:w1.trim(), w2:w2.trim(), w3:w3.trim(), w4:w4.trim(), w5:w5.trim(), date:new Date().toISOString().split('T')[0] });
+    saveExtra('group'); currentGroupTier = tier; renderGroups(); closeM('modal-group'); toast('모임 기록을 저장했습니다 👥');
+  }
+  editingId = null;
+}
+function delGroup(id){ if(!confirm('삭제할까요?'))return; groupE=groupE.filter(g=>g.id!==id); saveExtra('group'); renderGroups(); }
 
 /* ── 성경 읽기표 체크 ────────────────────────────────────── */
 function toggleReadingDone(day){
@@ -3454,25 +3690,6 @@ init();
 </script>
 
 <script>
-/* ── Service Worker 등록 ──────────────────────────────────────
-   HTTPS(또는 localhost) 환경에서만 시도한다. file:// 에서는
-   navigator.serviceWorker.register 자체가 예외를 던지므로
-   프로토콜을 먼저 확인해 애초에 시도하지 않는다.
-   이 SW의 등록 여부가 Chrome이 "설치 가능한 PWA"로 인식하는
-   핵심 조건이므로, 여기서는 sw.js가 index.html과 같은 폴더에
-   있다고 가정한다(GitHub Pages 등 실제 웹 배포 시). */
-(function registerServiceWorker(){
-  if (!('serviceWorker' in navigator)) return;
-  if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {
-      /* SW 등록 실패해도 앱 자체 기능에는 영향 없음 */
-    });
-  });
-})();
-</script>
-
-<script>
 /* ── 홈 화면 설치 (상태 표시 + 명확한 안내) ────────────────────
    Chrome 네이티브 설치 프롬프트를 잡아두었다가, 설정 페이지의
    "홈 화면에 설치" 버튼을 누르면 그 프롬프트를 띄운다.
@@ -3520,6 +3737,76 @@ function triggerInstall(){
     return;
   }
   openM('modal-install');
+}
+
+/* ── 후원 ─────────────────────────────────────────────────── */
+const DONATE_ACCOUNT = '3333157956895'; // 하이픈 없는 순수 숫자 (복사/딥링크용)
+const DONATE_ACCOUNT_DISPLAY = '3333-15-7956895';
+const DONATE_HOLDER = '임홍수';
+
+function openDonateModal(){
+  openM('modal-donate');
+}
+
+function copyDonateAccount(){
+  const text = `카카오뱅크 ${DONATE_ACCOUNT_DISPLAY} (예금주: ${DONATE_HOLDER})`;
+  const doCopyFallback = () => {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      toast('📋 계좌번호가 복사되었습니다');
+    } catch(e) {
+      toast('복사에 실패했습니다. 계좌번호를 직접 입력해주세요');
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      toast('📋 계좌번호가 복사되었습니다');
+    }).catch(doCopyFallback);
+  } else {
+    doCopyFallback();
+  }
+}
+
+function openBankApp(){
+  /* 카카오뱅크는 공식적으로 공개된 송금 딥링크 스킴이 없으므로,
+     앱 실행만 시도하는 커스텀 스킴(kakaobank://)을 사용한다.
+     설치되어 있지 않으면 아무 반응이 없으므로, 그 경우를 대비해
+     짧은 시간 후 계좌번호 복사로 자동 폴백한다. */
+  const scheme = 'kakaobank://';
+  let appOpened = false;
+  const onBlur = () => { appOpened = true; };
+  window.addEventListener('blur', onBlur, { once: true });
+  try { window.location.href = scheme; } catch(e) {}
+  setTimeout(() => {
+    window.removeEventListener('blur', onBlur);
+    if (!appOpened) {
+      copyDonateAccount();
+      toast('📋 카카오뱅크 앱이 없어 계좌번호를 복사했어요. 은행 앱에 붙여넣어 이체해주세요');
+    }
+  }, 1200);
+}
+
+/* 카카오페이 1,000원 송금 링크.
+   카카오페이 앱 > 송금 > "송금 링크 만들기"에서 금액 1,000원으로
+   직접 생성한 개인 링크를 여기에 넣으면 버튼이 바로 활성화된다.
+   예: 'https://link.kakaopay.com/xxxxxxxx' */
+const KAKAOPAY_LINK = 'https://qr.kakaopay.com/FH269llgo';
+
+function openKakaoPay(){
+  if (KAKAOPAY_LINK) {
+    window.location.href = KAKAOPAY_LINK;
+  } else {
+    /* 링크가 아직 등록되지 않은 경우, 계좌이체로 자연스럽게 안내 */
+    toast('카카오페이 링크 준비 중이에요. 계좌번호로 후원해주세요 🙏');
+    copyDonateAccount();
+  }
 }
 
 /* 설정 페이지에 진입할 때마다 최신 상태로 갱신 */
