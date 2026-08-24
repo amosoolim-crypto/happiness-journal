@@ -5247,9 +5247,14 @@ function renderLicensePage(){
   const el=document.getElementById('church-license-content');if(!el)return;
   let days=0;
   if(lic&&lic.type==='trial')days=30-Math.floor((Date.now()-lic.startDate)/86400000);
+  let expStr='';
+  if(lic&&lic.type==='paid'&&lic.expireDate){
+    const exp=new Date(lic.expireDate);
+    expStr=exp.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'});
+  }
   const badge=!lic?'<span class="license-badge lb-free">🔒 무료 버전</span>':
     lic.type==='trial'?`<span class="license-badge lb-trial">⏳ 체험판 — 남은 ${Math.max(0,days)}일</span>`:
-    `<span class="license-badge lb-pro">✦ PRO 활성</span>`;
+    `<span class="license-badge lb-pro">✦ ${lic.churchName||'PRO'} 활성 — ${expStr}까지</span>`;
   el.innerHTML=`<div style="padding:0 .1rem">${badge}
   <div class="church-hero"><div style="font-size:13px;opacity:.8;margin-bottom:4px">행복일지 교회 전용 서비스</div>
     <div style="font-size:20px;font-weight:700;margin-bottom:4px">교회 PRO 라이선스</div>
@@ -5292,7 +5297,55 @@ function renderLicensePage(){
 
 function startTrial(){if(getProLicense()){toast('이미 라이선스가 있습니다');return;}localStorage.setItem(PRO_KEY,JSON.stringify({type:'trial',startDate:Date.now(),createdAt:Date.now()}));toast('✅ 30일 무료 체험이 시작됩니다!');renderLicensePage();}
 function showLicInput(){const el=document.getElementById('lic-input-area');if(el)el.style.display=el.style.display==='none'?'block':'none';}
-function activateLic(){const key=(document.getElementById('lic-key-inp')?.value||'').trim().toUpperCase();if(!key){toast('라이선스 키를 입력하세요');return;}if(key.startsWith('HJ-PRO-')){const parts=key.split('-');let months=12;const lp=parts[parts.length-1];if(lp.endsWith('M'))months=parseInt(lp)||12;const expireDate=Date.now()+months*30*86400000;localStorage.setItem(PRO_KEY,JSON.stringify({type:'paid',key,activatedAt:Date.now(),expireDate,months}));toast('🎉 PRO 라이선스가 활성화되었습니다!');renderLicensePage();}else if(key.startsWith('HJ-TRIAL-')){startTrial();}else{toast('유효하지 않은 라이선스 키입니다');}}
+// ── 등록된 유효 라이선스 키 목록 ──
+const VALID_LICENSES = {
+  'HJ-PRO-ZS01-2024-12M': {
+    churchName: '시온성교회',
+    pastor: '',
+    members: 150,
+    tier: '중형교회',
+    months: 12,
+    issuedAt: '2024-08-24',
+    fee: 300000
+  },
+  // 추가 교회는 아래에 계속 등록
+};
+
+function activateLic(){
+  const key=(document.getElementById('lic-key-inp')?.value||'').trim().toUpperCase();
+  if(!key){ toast('라이선스 키를 입력하세요'); return; }
+
+  if(key.startsWith('HJ-PRO-')){
+    // 등록 키 목록에서 검증
+    const licInfo = VALID_LICENSES[key];
+    if(!licInfo){
+      toast('❌ 등록되지 않은 라이선스 키입니다. 확인 후 다시 입력하세요.');
+      return;
+    }
+    const months = licInfo.months || 12;
+    const expireDate = Date.now() + months * 30 * 86400000;
+    const licData = {
+      type: 'paid', key,
+      churchName: licInfo.churchName,
+      tier: licInfo.tier,
+      members: licInfo.members,
+      activatedAt: Date.now(),
+      expireDate, months
+    };
+    localStorage.setItem(PRO_KEY, JSON.stringify(licData));
+    // 교회 설정에도 자동 반영
+    const cfg = getChurchCfg();
+    if(!cfg.churchName && licInfo.churchName) cfg.churchName = licInfo.churchName;
+    saveChurchCfg(cfg);
+    applyChurchBranding();
+    toast('🎉 ' + licInfo.churchName + ' PRO 라이선스가 활성화되었습니다!');
+    renderLicensePage();
+  } else if(key.startsWith('HJ-TRIAL-')){
+    startTrial();
+  } else {
+    toast('유효하지 않은 라이선스 키입니다');
+  }
+}
 
 
 /* ═══════════════════════════════════════════════════════════
