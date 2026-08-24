@@ -839,6 +839,71 @@ canvas{max-width:100%}
 .hm-summary-n{font-size:16px;font-weight:700;color:var(--teal)}
 .hm-summary-l{font-size:10px;color:var(--text2);margin-top:1px}
 
+
+/* ── 성도 관리 9가지 기능 CSS ── */
+.member-search-bar{display:flex;gap:7px;margin-bottom:.7rem;align-items:center}
+.member-search-bar input{flex:1;margin:0;font-size:13px;padding:8px 12px}
+.member-filter-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:.7rem}
+.mf-tab{padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:11.5px;font-weight:500;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+.mf-tab.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.member-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:8px;box-shadow:var(--sh);cursor:pointer;transition:all .15s}
+.member-card:hover{border-color:var(--teal);box-shadow:0 2px 10px rgba(29,158,117,.12)}
+.member-card-header{display:flex;align-items:center;gap:10px;margin-bottom:.5rem}
+.member-card-body{font-size:12.5px;color:var(--text2);line-height:1.7}
+.member-stat-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:.45rem}
+.msc{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;font-size:11.5px;font-weight:500}
+.msc-g{background:var(--teal-l);color:var(--teal-d)}
+.msc-s{background:var(--purple-l);color:var(--purple-d)}
+.msc-e{background:var(--blue-l);color:var(--blue-d)}
+.msc-streak{background:var(--amber-l);color:var(--amber-d)}
+.msc-warn{background:var(--coral-l);color:var(--coral-d)}
+.member-detail-modal{max-height:85vh;overflow-y:auto}
+.attend-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:.7rem}
+.attend-cell{aspect-ratio:1;border-radius:var(--rs);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;cursor:pointer;color:var(--text3);transition:all .15s;background:var(--surface)}
+.attend-cell.present{background:var(--teal);border-color:var(--teal);color:#fff}
+.attend-cell.absent{background:var(--coral-l);border-color:var(--coral);color:var(--coral-d)}
+.memo-item{background:var(--surface2);border-radius:var(--rs);padding:.6rem .8rem;margin-bottom:5px}
+.memo-date{font-size:10px;color:var(--text3);margin-bottom:2px}
+.memo-text{font-size:13px;color:var(--text)}
+.growth-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.growth-bar{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+.growth-bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
+.encourage-msg-box{background:var(--teal-l);border:1px solid var(--teal);border-radius:var(--rs);padding:.85rem 1rem;font-size:13px;color:var(--teal-d);line-height:1.7;margin-bottom:.7rem}
+.alert-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:var(--coral-l);color:var(--coral-d);border:1px solid var(--coral)}
+
+
+/* ── 감사·나눔·전도 저장 폭죽 & 색종이 ── */
+@keyframes confettiDrop {
+  0%  { transform: translateY(-30px) rotate(0deg) scale(1);   opacity: 1; }
+  80% { opacity: 1; }
+  100%{ transform: translateY(105vh) rotate(900deg) scale(.6); opacity: 0; }
+}
+@keyframes confettiSway {
+  0%,100% { margin-left: 0; }
+  25%      { margin-left: 30px; }
+  75%      { margin-left: -30px; }
+}
+.confetti-piece {
+  position: fixed;
+  top: -10px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: confettiDrop linear forwards, confettiSway ease-in-out infinite;
+  border-radius: 2px;
+}
+@keyframes burstCircle {
+  0%   { transform: translate(-50%,-50%) scale(0); opacity: .9; }
+  60%  { transform: translate(-50%,-50%) scale(1);  opacity: .6; }
+  100% { transform: translate(-50%,-50%) scale(1.4); opacity: 0; }
+}
+.burst-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: burstCircle .6s ease-out forwards;
+}
+
 </style>
 </head>
 <body>
@@ -4700,7 +4765,8 @@ function saveG(){
     save(); renderAll(); closeM('modal-g'); toast('감사 일기를 수정했습니다 ✏️');
   } else {
     gE.unshift({ id:Date.now(), ...data });
-    save(); renderAll(); closeM('modal-g'); toast('감사 일기를 저장했습니다 🙏');
+    save(); renderAll(); closeM('modal-g');
+    fireGratitudeEffect();
     if(challenges.gratitude.active) checkChallengeToday('gratitude');
   }
   editingId = null;
@@ -4723,7 +4789,8 @@ function saveS(){
     save(); renderAll(); closeM('modal-s'); toast('나눔 내역을 수정했습니다 ✏️');
   } else {
     sE.unshift({ id:Date.now(), ...data });
-    save(); renderAll(); closeM('modal-s'); toast('나눔 내역을 기록했습니다 🤝');
+    save(); renderAll(); closeM('modal-s');
+    fireSharingEffect();
   }
   editingId = null;
 }
@@ -4758,7 +4825,8 @@ function saveP(){
       startDate:document.getElementById('p-date').value,
       done:false, notes:[]
     });
-    save(); renderAll(); closeM('modal-p'); toast('전도 대상자를 등록했습니다 ✉️');
+    save(); renderAll(); closeM('modal-p');
+    fireEvangelismEffect();
     if(challenges.evangelism.active) checkChallengeToday('evangelism');
   }
   editingId = null;
@@ -5249,14 +5317,14 @@ function escH(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/
 
 function proGuard(id){
   const pid=id.replace('church-','');
-  if(isPro()){showPage('church-'+pid);setTimeout(()=>renderChurchPage(pid),50);}
+  if(isPro()){showPage('church-'+pid);setTimeout(()=>{ if(pid==='members') renderMembersPage(); else renderChurchPage(pid); },50);}
   else{showPage('church-license');setTimeout(renderLicensePage,50);}
 }
 
 function renderChurchPage(id){
   const m={'customize':renderCustomizePage,'notice':renderChurchNoticePage,'dashboard':renderDashboardPage,
     'report':renderReportPage,'sermon':renderChurchSermonPage,'cloud':renderCloudPage,
-    'alarm':renderAlarmPage,'members':renderDashboardPage,'license':renderLicensePage};
+    'alarm':renderAlarmPage,'members':renderMembersPage,'license':renderLicensePage};
   if(m[id])m[id]();
 }
 
@@ -6678,6 +6746,108 @@ const MOTIVATION_MSGS=[
   '🌺 나눔의 기록이 쌓일수록 사랑의 공동체가 됩니다!',
 ];
 let motivationToastTimer=null;
+
+// ── 감사 저장: 초록 폭죽 + 하늘에서 색종이 ──
+function fireGratitudeEffect(){
+  // 버스트 링
+  const ring = document.createElement('div');
+  ring.className = 'burst-ring';
+  ring.style.cssText = 'left:50%;top:40%;width:120px;height:120px;border:3px solid #1D9E75;';
+  document.body.appendChild(ring);
+  setTimeout(()=>ring.remove(), 700);
+  // 색종이
+  const COLORS = ['#1D9E75','#34D399','#6EE7B7','#FDE68A','#FCA5A5','#93C5FD','#fff'];
+  const SHAPES = ['■','●','▲','★','✦'];
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden';
+  for(let i=0;i<55;i++){
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    const size = 7 + Math.random()*8;
+    const dur  = 1.8 + Math.random()*1.6;
+    const sway = 1.2 + Math.random()*1.4;
+    const delay = Math.random()*0.6;
+    p.style.cssText = `
+      left:${5+Math.random()*90}%;
+      width:${size}px; height:${size}px;
+      background:${COLORS[Math.floor(Math.random()*COLORS.length)]};
+      animation-duration:${dur}s,${sway}s;
+      animation-delay:${delay}s,${delay}s;
+      border-radius:${Math.random()>0.4?'50%':'2px'};
+      opacity:0;
+    `;
+    overlay.appendChild(p);
+  }
+  document.body.appendChild(overlay);
+  setTimeout(()=>overlay.remove(), 3200);
+  showMotivationToast('🙏 감사 일기가 저장되었습니다! 하나님께 영광!', 2500);
+}
+
+// ── 나눔 저장: 보라 색종이 + 반짝 ──
+function fireSharingEffect(){
+  const COLORS = ['#534AB7','#818CF8','#C4B5FD','#FDE68A','#FCA5A5','#6EE7B7','#fff'];
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden';
+  for(let i=0;i<50;i++){
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    const size = 6 + Math.random()*10;
+    const dur  = 1.6 + Math.random()*1.8;
+    const sway = 1.0 + Math.random()*1.6;
+    const delay = Math.random()*0.5;
+    const isRect = Math.random() > 0.4;
+    p.style.cssText = `
+      left:${5+Math.random()*90}%;
+      width:${size}px; height:${isRect ? size*0.5 : size}px;
+      background:${COLORS[Math.floor(Math.random()*COLORS.length)]};
+      animation-duration:${dur}s,${sway}s;
+      animation-delay:${delay}s,${delay}s;
+      border-radius:${isRect?'1px':'50%'};
+      opacity:0;
+    `;
+    overlay.appendChild(p);
+  }
+  document.body.appendChild(overlay);
+  setTimeout(()=>overlay.remove(), 3000);
+  showMotivationToast('🤝 나눔을 기록했습니다! 아름다운 섬김입니다!', 2500);
+}
+
+// ── 전도 등록: 파랑 폭죽 + 대형 색종이 ──
+function fireEvangelismEffect(){
+  const COLORS = ['#185FA5','#38BDF8','#93C5FD','#FDE68A','#FCA5A5','#34D399','#fff','#F9A8D4'];
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden';
+  for(let i=0;i<65;i++){
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    const size = 8 + Math.random()*12;
+    const dur  = 2.0 + Math.random()*2.0;
+    const sway = 1.0 + Math.random()*1.8;
+    const delay = Math.random()*0.8;
+    p.style.cssText = `
+      left:${2+Math.random()*96}%;
+      width:${size}px; height:${size}px;
+      background:${COLORS[Math.floor(Math.random()*COLORS.length)]};
+      animation-duration:${dur}s,${sway}s;
+      animation-delay:${delay}s,${delay}s;
+      border-radius:${Math.random()>0.5?'50%':'3px'};
+      opacity:0;
+    `;
+    overlay.appendChild(p);
+  }
+  // 버스트 링 2개
+  for(let r=0;r<2;r++){
+    const ring = document.createElement('div');
+    ring.className = 'burst-ring';
+    ring.style.cssText = `left:50%;top:45%;width:${80+r*60}px;height:${80+r*60}px;border:${3-r}px solid #185FA5;animation-delay:${r*0.15}s;`;
+    document.body.appendChild(ring);
+    setTimeout(()=>ring.remove(), 900);
+  }
+  document.body.appendChild(overlay);
+  setTimeout(()=>overlay.remove(), 3800);
+  showMotivationToast('✉️ 전도 대상자가 등록되었습니다! 하나님이 함께하십니다!', 3000);
+}
+
 function showMotivationToast(msg, duration=3000){
   const prev=document.querySelector('.motivation-toast');
   if(prev) prev.remove();
@@ -7182,6 +7352,399 @@ function activateLicFromSettings(){
   } else {
     toast('유효하지 않은 라이선스 키입니다');
   }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   성도 관리 9가지 기능 시스템
+   ═══════════════════════════════════════════════════════════ */
+
+// ── 성도 관리 페이지 전용 렌더 함수 ──
+let _memberFilter = 'all';   // 소그룹 필터
+let _memberSearch = '';      // 검색어
+let _memberDetailIdx = -1;   // 상세 카드 대상 인덱스
+
+function renderMembersPage(){
+  const el = document.getElementById('church-members-content');
+  if(!el) return;
+  const members = getChurchMembers();
+
+  // 소그룹 목록 추출
+  const groups = ['all', ...new Set(members.map(m=>m.group||'').filter(Boolean))];
+
+  // 필터 + 검색 적용
+  const filtered = members.filter((m,i)=>{
+    const matchGroup = _memberFilter==='all' || m.group===_memberFilter;
+    const matchSearch = !_memberSearch || m.name.includes(_memberSearch) || (m.group||'').includes(_memberSearch);
+    return matchGroup && matchSearch;
+  });
+
+  // 미실천 성도 감지 (2주 이상)
+  const inactive = members.filter(m=>!m.gratCount && !m.shareCount);
+  const birthday = members.filter(m=>{
+    if(!m.birthday) return false;
+    const today = new Date().toISOString().slice(5,10); // MM-DD
+    return m.birthday.slice(5,10) === today;
+  });
+
+  el.innerHTML = `
+  <div style="padding:0 .05rem">
+
+    <!-- 상단 요약 통계 -->
+    <div class="stat-grid" style="margin-bottom:.8rem">
+      <div class="stat-card"><div class="stat-n">${members.length}</div><div class="stat-l">전체 성도</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--teal)">${members.filter(m=>(m.gratCount||0)>0).length}</div><div class="stat-l">감사 실천</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--coral)">${inactive.length}</div><div class="stat-l">미실천</div></div>
+    </div>
+
+    <!-- 생일 알림 -->
+    ${birthday.length>0 ? `
+    <div class="event-banner" style="margin-bottom:.7rem">
+      <div class="event-banner-title">🎂 오늘 생일인 성도</div>
+      <div class="event-banner-body">${birthday.map(m=>m.name).join(', ')} 성도님 🎉
+        <button onclick="genBirthdayMsg()" style="background:var(--coral);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;margin-left:8px">축하 메시지 생성</button>
+      </div>
+    </div>` : ''}
+
+    <!-- 미실천 알림 -->
+    ${inactive.length>0 ? `
+    <div style="background:var(--amber-l);border:1px solid var(--amber);border-radius:var(--rs);padding:.7rem .9rem;margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem">
+      <span style="font-size:16px">⚠️</span>
+      <div style="flex:1;font-size:12.5px;color:var(--amber-d)">
+        <strong>${inactive.length}명</strong>이 이번 달 기록이 없습니다.
+        <button onclick="genInactiveMsg()" style="background:var(--amber);color:#fff;border:none;border-radius:6px;padding:2px 9px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;margin-left:6px">독려 메시지</button>
+      </div>
+    </div>` : ''}
+
+    <!-- 상단 버튼 -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.8rem">
+      ${_cQuickBtn('+ 성도 추가', "openM('modal-church-member')")}
+      ${_cQuickBtn('📊 현황 복사', "copyDashboardSummary()", 'var(--purple)')}
+      ${_cOutlineBtn('📅 월말 점검', "showMonthlyCheck()")}
+    </div>
+
+    <!-- 🔍 1. 검색 & 필터 -->
+    <div class="member-search-bar">
+      <input type="text" placeholder="🔍 이름·소그룹 검색" value="${_escAttr(_memberSearch)}"
+        oninput="_memberSearch=this.value;renderMembersPage()" style="margin:0">
+      ${_memberSearch ? `<button onclick="_memberSearch='';renderMembersPage()"
+        style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-size:12px;cursor:pointer;color:var(--text2);font-family:inherit;white-space:nowrap">✕ 초기화</button>` : ''}
+    </div>
+    <div class="member-filter-tabs">
+      ${groups.map(g=>`<button class="mf-tab${_memberFilter===g?' on':''}"
+        onclick="_memberFilter='${g}';renderMembersPage()">${g==='all'?'전체':g}</button>`).join('')}
+    </div>
+
+    <!-- 성도 목록 -->
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">${filtered.length}명 표시 중</div>
+
+    ${filtered.length===0
+      ? `<div style="text-align:center;padding:2rem 1rem;color:var(--text3);font-size:13px">
+          <span style="display:block;font-size:28px;margin-bottom:.4rem">👥</span>
+          ${_memberSearch ? '검색 결과가 없습니다' : '등록된 성도가 없습니다'}
+        </div>`
+      : filtered.map(m=>{
+          const realIdx = members.indexOf(m);
+          const warn = !m.gratCount && !m.shareCount;
+          return `
+          <div class="member-card" onclick="openMemberDetail(${realIdx})">
+            <div class="member-card-header">
+              <div class="member-avatar" style="background:${_memberColor(m.group)};color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0">
+                ${escH((m.name||'?').slice(0,1))}
+              </div>
+              <div style="flex:1">
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span style="font-size:14px;font-weight:600">${escH(m.name)}</span>
+                  ${m.birthday && new Date().toISOString().slice(5,10)===m.birthday.slice(5,10) ? '<span style="font-size:14px">🎂</span>' : ''}
+                  ${warn ? '<span class="alert-badge">⚠️ 미실천</span>' : ''}
+                </div>
+                <div style="font-size:11.5px;color:var(--text2)">${escH(m.group||'소그룹 미배정')} · ${escH(m.role||'성도')}</div>
+              </div>
+              <div style="font-size:12px;color:var(--text3)">›</div>
+            </div>
+            <div class="member-stat-chips">
+              <span class="msc msc-g">🙏 감사 ${m.gratCount||0}</span>
+              <span class="msc msc-s">🤝 나눔 ${m.shareCount||0}</span>
+              <span class="msc msc-e">✉️ 전도 ${m.evangelismStage||1}단</span>
+              ${(m.streak||0)>0 ? `<span class="msc msc-streak">🔥 ${m.streak}일</span>` : ''}
+            </div>
+          </div>`;
+        }).join('')}
+
+    <!-- 성도 추가 모달 -->
+    <div class="modal-bg" id="modal-church-member"><div class="modal">
+      <div class="modal-title">👥 성도 추가</div>
+      <label class="fl">이름 *</label><input type="text" id="m-name" placeholder="성도 이름">
+      <label class="fl">역할/직분</label><input type="text" id="m-role" placeholder="예: 장로, 권사, 집사, 성도">
+      <label class="fl">소그룹/구역</label><input type="text" id="m-group" placeholder="예: 1구역, A셀">
+      <label class="fl">연락처</label><input type="text" id="m-tel" placeholder="010-0000-0000">
+      <label class="fl">🎂 생일</label><input type="date" id="m-birthday">
+      <div class="modal-footer">
+        <button class="btn btn-g" onclick="closeM('modal-church-member')">취소</button>
+        <button class="btn btn-p" onclick="saveMember()">추가</button>
+      </div>
+    </div></div>
+
+    <!-- 성도 상세 모달 -->
+    <div class="modal-bg" id="modal-member-detail"><div class="modal member-detail-modal" id="member-detail-inner"></div></div>
+
+    <!-- 격려/독려 메시지 결과 -->
+    <div class="modal-bg" id="modal-msg-result"><div class="modal">
+      <div class="modal-title" id="msg-result-title">메시지</div>
+      <textarea id="msg-result-text" style="min-height:150px;font-size:13px;background:var(--surface2)" readonly></textarea>
+      <div class="modal-footer">
+        <button class="btn btn-g" onclick="closeM('modal-msg-result')">닫기</button>
+        <button class="btn btn-p" onclick="navigator.clipboard?.writeText(document.getElementById('msg-result-text').value).then(()=>toast('📋 복사됨'))">📋 복사</button>
+      </div>
+    </div></div>
+  </div>`;
+}
+
+// ── 성도별 소그룹 색상 ──
+function _memberColor(group){
+  const colors=['#1D9E75','#534AB7','#185FA5','#D85A30','#BA7517','#3B6D11','#993556'];
+  if(!group) return '#999';
+  let hash=0; for(let c of group) hash=c.charCodeAt(0)+hash*31;
+  return colors[Math.abs(hash)%colors.length];
+}
+function _escAttr(s){ return (s||'').replace(/"/g,'&quot;'); }
+
+// ── 2. 성도 상세 카드 ──
+function openMemberDetail(i){
+  _memberDetailIdx = i;
+  const members = getChurchMembers();
+  const m = members[i]; if(!m) return;
+  const cfg = getChurchCfg();
+
+  // 출석 데이터 (최근 5주)
+  const attends = m.attendance || [null,null,null,null,null];
+  const WEEKS = ['5주전','4주전','3주전','2주전','지난주'];
+
+  // 성장 그래프 데이터 (월별 3개월)
+  const months = ['이전달','지난달','이번달'];
+  const gHistory = m.gratHistory || [0,0,m.gratCount||0];
+  const sHistory = m.shareHistory || [0,0,m.shareCount||0];
+  const maxG = Math.max(...gHistory,1), maxS = Math.max(...sHistory,1);
+
+  // 메모 목록
+  const memos = m.memos || [];
+
+  const el = document.getElementById('member-detail-inner');
+  if(!el) return;
+
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1rem">
+      <div style="width:52px;height:52px;border-radius:50%;background:${_memberColor(m.group)};color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex-shrink:0">${escH((m.name||'?').slice(0,1))}</div>
+      <div style="flex:1">
+        <div style="font-size:18px;font-weight:700">${escH(m.name)}</div>
+        <div style="font-size:12px;color:var(--text2)">${escH(m.group||'소그룹 미배정')} · ${escH(m.role||'성도')}</div>
+        ${m.tel ? `<div style="font-size:12px;color:var(--teal)">${escH(m.tel)}</div>` : ''}
+        ${m.birthday ? `<div style="font-size:11px;color:var(--text3)">🎂 ${m.birthday}</div>` : ''}
+      </div>
+    </div>
+
+    <!-- 실천 현황 칩 -->
+    <div class="member-stat-chips" style="margin-bottom:1rem">
+      <span class="msc msc-g">🙏 감사 ${m.gratCount||0}</span>
+      <span class="msc msc-s">🤝 나눔 ${m.shareCount||0}</span>
+      <span class="msc msc-e">✉️ 전도 ${m.evangelismStage||1}단계</span>
+      ${(m.streak||0)>0?`<span class="msc msc-streak">🔥 ${m.streak}일</span>`:''}
+    </div>
+
+    <!-- 3. 출석 체크 -->
+    <div style="font-size:13px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">🙌 최근 5주 예배 출석</div>
+    <div class="attend-grid">
+      ${attends.map((a,wi)=>`
+        <div class="attend-cell ${a===true?'present':a===false?'absent':''}"
+          onclick="toggleAttend(${i},${wi})" title="${WEEKS[wi]}">
+          <div style="text-align:center">
+            <div style="font-size:9px;margin-bottom:2px">${WEEKS[wi].slice(0,3)}</div>
+            <div>${a===true?'✓':a===false?'✗':'?'}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:.8rem">
+      출석 ${attends.filter(a=>a===true).length}/5 · 결석 ${attends.filter(a=>a===false).length}/5
+    </div>
+
+    <!-- 7. 성장 그래프 -->
+    <div style="font-size:13px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">📈 3개월 성장 추이</div>
+    <div style="background:var(--surface2);border-radius:var(--rs);padding:.75rem .9rem;margin-bottom:.8rem">
+      ${months.map((month,mi)=>`
+        <div class="growth-bar-row">
+          <div style="font-size:11px;color:var(--text2);min-width:38px">${month}</div>
+          <div style="flex:1">
+            <div style="font-size:10px;color:var(--text3);margin-bottom:2px">감사 ${gHistory[mi]}</div>
+            <div class="growth-bar"><div class="growth-bar-fill" style="width:${Math.round(gHistory[mi]/maxG*100)}%;background:var(--teal)"></div></div>
+            <div style="font-size:10px;color:var(--text3);margin-top:3px;margin-bottom:2px">나눔 ${sHistory[mi]}</div>
+            <div class="growth-bar"><div class="growth-bar-fill" style="width:${Math.round(sHistory[mi]/maxS*100)}%;background:var(--purple)"></div></div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <!-- 8. 격려 메시지 자동 생성 -->
+    <div style="font-size:13px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">💌 맞춤 격려 메시지</div>
+    <div id="encourage-preview-${i}" class="encourage-msg-box">${_genEncourageText(m)}</div>
+    <div style="display:flex;gap:6px;margin-bottom:.8rem">
+      ${_cQuickBtn('📋 복사', `copyEncourage(${i})`, 'var(--teal)')}
+      ${_cOutlineBtn('🔄 다시 생성', `refreshEncourage(${i})`)}
+    </div>
+
+    <!-- 5. 목양 메모 -->
+    <div style="font-size:13px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">📝 목양 메모 (비공개)</div>
+    <div style="display:flex;gap:6px;margin-bottom:.5rem">
+      <input type="text" id="memo-input-${i}" placeholder="메모를 입력하세요..." style="flex:1;margin:0;font-size:13px;padding:8px 10px">
+      <button onclick="addMemo(${i})" class="btn btn-p btn-sm">추가</button>
+    </div>
+    <div id="memo-list-${i}">
+      ${memos.length===0
+        ? '<div style="font-size:12px;color:var(--text3);padding:.3rem 0">메모가 없습니다</div>'
+        : memos.slice().reverse().map((memo,mi)=>`
+          <div class="memo-item">
+            <div class="memo-date">${memo.date}</div>
+            <div style="display:flex;align-items:flex-start;gap:6px">
+              <div class="memo-text" style="flex:1">${escH(memo.text)}</div>
+              <button onclick="deleteMemo(${i},${memos.length-1-mi})" style="background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;flex-shrink:0">✕</button>
+            </div>
+          </div>`).join('')}
+    </div>
+
+    <!-- 수정 버튼 -->
+    <div style="display:flex;gap:7px;margin-top:1.1rem;padding-top:.8rem;border-top:1px solid var(--border)">
+      ${_cQuickBtn('✏️ 실천 수정', `editMemberStat(${i})`, 'var(--purple)')}
+      ${_cOutlineBtn('소그룹 변경', `changeGroup(${i})`)}
+      <button onclick="deleteMember(${i});closeM('modal-member-detail')" style="margin-left:auto;background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:inherit">삭제</button>
+    </div>`;
+
+  openM('modal-member-detail');
+}
+
+// ── 3. 출석 토글 ──
+function toggleAttend(memberIdx, weekIdx){
+  const members = getChurchMembers();
+  const m = members[memberIdx]; if(!m) return;
+  if(!m.attendance) m.attendance = [null,null,null,null,null];
+  // null → true → false → null 순환
+  const cur = m.attendance[weekIdx];
+  m.attendance[weekIdx] = cur===null ? true : cur===true ? false : null;
+  saveChurchMembers(members);
+  openMemberDetail(memberIdx); // 새로고침
+}
+
+// ── 4. 생일 알림 메시지 생성 ──
+function genBirthdayMsg(){
+  const members = getChurchMembers();
+  const today = new Date().toISOString().slice(5,10);
+  const bdays = members.filter(m=>m.birthday && m.birthday.slice(5,10)===today);
+  const cfg = getChurchCfg();
+  const names = bdays.map(m=>m.name).join(', ');
+  const text = `[${cfg.churchName||'교회'} 생일 축하 메시지]\n\n🎂 ${names} 성도님!\n\n오늘 생신을 진심으로 축하드립니다 🎉\n\n하나님의 크신 은혜와 사랑이 올 한 해도\n함께하시기를 기도합니다.\n\n"주의 인자하심이 생명보다 나으므로\n내 입술이 주를 찬양할 것이라" (시 63:3)\n\n행복일지와 함께 복된 한 해 보내세요 🙏`;
+  document.getElementById('msg-result-title').textContent = '🎂 생일 축하 메시지';
+  document.getElementById('msg-result-text').value = text;
+  openM('modal-msg-result');
+}
+
+// ── 9. 미실천 성도 독려 메시지 생성 ──
+function genInactiveMsg(){
+  const members = getChurchMembers();
+  const inactive = members.filter(m=>!m.gratCount && !m.shareCount);
+  const cfg = getChurchCfg();
+  const names = inactive.map(m=>m.name).join(', ');
+  const text = `[${cfg.churchName||'교회'} 행복일지 격려]\n\n💌 ${names} 성도님께\n\n이번 달 행복일지 기록을 기다리고 있어요!\n\n감사 일기 한 줄, 나눔 기록 한 건이\n하나님 앞에 귀한 예배가 됩니다 🙏\n\n오늘 앱을 열고 하나님이 주신\n감사 한 가지를 기록해보세요!\n\n"범사에 감사하라 이것이 그리스도 예수\n안에서 너희를 향하신 하나님의 뜻이니라"\n(살전 5:18)\n\n행복일지: amosoolim-crypto.github.io/happiness-journal/`;
+  document.getElementById('msg-result-title').textContent = '💌 독려 메시지';
+  document.getElementById('msg-result-text').value = text;
+  openM('modal-msg-result');
+}
+
+// ── 8. 격려 메시지 자동 생성 ──
+function _genEncourageText(m){
+  const cfg = getChurchCfg();
+  const church = cfg.churchName||'교회';
+  const g = m.gratCount||0, s = m.shareCount||0, e = m.evangelismStage||1;
+  const total = g+s;
+  const VERSES = [
+    '"항상 기뻐하라 쉬지 말고 기도하라" (살전 5:16)',
+    '"선을 행하되 낙심하지 말지니" (갈 6:9)',
+    '"내게 능력 주시는 자 안에서 모든 것을 할 수 있느니라" (빌 4:13)',
+    '"하나님이 우리와 함께 하시면 누가 우리를 대적하리요" (롬 8:31)',
+    '"너는 마음을 다하여 여호와를 신뢰하라" (잠 3:5)',
+  ];
+  const verse = VERSES[Math.floor(Math.random()*VERSES.length)];
+  let praise = '';
+  if(g>=10) praise = `이번 달 감사 일기를 ${g}번이나 쓰셨네요! 정말 대단하세요! 🙏`;
+  else if(s>=5) praise = `이번 달 나눔을 ${s}건이나 실천하셨어요! 아름다운 섬김입니다 🤝`;
+  else if(e>=4) praise = `전도 ${e}단계까지 진행하고 계시는군요! 하나님이 쓰시는 전도자입니다 ✉️`;
+  else if(total>0) praise = `이번 달 총 ${total}건 실천하셨어요! 꾸준한 신앙생활이 빛납니다 ✨`;
+  else praise = '오늘 행복일지를 열고 하나님의 은혜를 기록해보세요!';
+  return `[${church}] ${escH(m.name)} 성도님,\n\n${praise}\n\n${verse}\n\n함께 신앙생활 할 수 있어 감사합니다 🙏`;
+}
+function copyEncourage(i){
+  const el = document.getElementById(`encourage-preview-${i}`);
+  const text = el?.innerText||el?.textContent||'';
+  navigator.clipboard?.writeText(text).then(()=>toast('📋 격려 메시지가 복사되었습니다')).catch(()=>toast('복사 실패'));
+}
+function refreshEncourage(i){
+  const members = getChurchMembers();
+  const m = members[i]; if(!m) return;
+  const el = document.getElementById(`encourage-preview-${i}`);
+  if(el) el.innerHTML = _genEncourageText(m);
+}
+
+// ── 5. 목양 메모 추가/삭제 ──
+function addMemo(memberIdx){
+  const inputEl = document.getElementById(`memo-input-${memberIdx}`);
+  const text = inputEl?.value.trim(); if(!text){ toast('메모를 입력하세요'); return; }
+  const members = getChurchMembers();
+  const m = members[memberIdx]; if(!m) return;
+  if(!m.memos) m.memos = [];
+  m.memos.push({ date: new Date().toLocaleDateString('ko-KR',{month:'short',day:'numeric'}), text });
+  saveChurchMembers(members);
+  if(inputEl) inputEl.value = '';
+  toast('✅ 메모가 추가되었습니다');
+  openMemberDetail(memberIdx);
+}
+function deleteMemo(memberIdx, memoIdx){
+  const members = getChurchMembers();
+  const m = members[memberIdx]; if(!m||!m.memos) return;
+  m.memos.splice(memoIdx,1);
+  saveChurchMembers(members);
+  openMemberDetail(memberIdx);
+}
+
+// ── 6. 소그룹 변경 ──
+function changeGroup(i){
+  const members = getChurchMembers();
+  const m = members[i]; if(!m) return;
+  const groups = [...new Set(members.map(x=>x.group||'').filter(Boolean))];
+  const newGroup = prompt(`${m.name} 성도의 소그룹을 변경합니다.\n\n현재: ${m.group||'미배정'}\n등록된 소그룹: ${groups.join(', ')}\n\n새 소그룹 이름을 입력하세요:`);
+  if(newGroup===null) return;
+  m.group = newGroup.trim();
+  saveChurchMembers(members);
+  toast(`✅ ${m.name} 성도의 소그룹이 "${m.group}"로 변경되었습니다`);
+  openMemberDetail(i);
+  renderMembersPage();
+}
+
+// ── saveMember 재정의 (생일 필드 추가) ──
+function saveMember(){
+  const name=document.getElementById('m-name')?.value.trim();
+  if(!name){toast('이름을 입력하세요');return;}
+  const members=getChurchMembers();
+  members.push({
+    id:Date.now(), name,
+    role:document.getElementById('m-role')?.value.trim()||'성도',
+    group:document.getElementById('m-group')?.value.trim()||'',
+    tel:document.getElementById('m-tel')?.value.trim()||'',
+    birthday:document.getElementById('m-birthday')?.value||'',
+    gratCount:0, shareCount:0, evangelismStage:1,
+    streak:0, attendance:[null,null,null,null,null],
+    memos:[], gratHistory:[0,0,0], shareHistory:[0,0,0],
+    joinDate:new Date().toISOString().split('T')[0]
+  });
+  saveChurchMembers(members);
+  closeM('modal-church-member');
+  toast('✅ 성도가 추가되었습니다');
+  renderMembersPage();
 }
 
 </script>
