@@ -29,7 +29,7 @@
 <meta name="application-name" content="행복일지">
 <meta name="theme-color" content="#1D9E75">
 <meta name="description" content="하나님께 감사 · 성도들과 나눔 · 이웃에게 복음">
-<title>행복일지 — 감사와 나눔의 전도 프로젝트</title>
+<title>행복일지 — 감사와 나눔의 전도 축제</title>
 
 <style>
 :root {
@@ -623,6 +623,222 @@ canvas{max-width:100%}
 .info-tab.active{background:var(--surface,#FFF);color:var(--text,#1A1814);border:0.5px solid var(--border)}
 .info-panel{display:none}.info-panel.active{display:block}
 
+
+/* ── 교회 전용 기능 (Church Pro) CSS ── */
+.pro-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;
+  padding:2px 7px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#d97706);
+  color:#fff;letter-spacing:.03em;vertical-align:middle;margin-left:5px}
+.pro-lock{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:500;
+  padding:2px 7px;border-radius:10px;background:var(--surface2);color:var(--text3);border:1px solid var(--border)}
+.more-item.pro-item{position:relative;overflow:hidden}
+.more-item.pro-item::after{content:'PRO';position:absolute;top:5px;right:5px;
+  font-size:8px;font-weight:700;padding:1px 4px;border-radius:4px;
+  background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.more-item.locked{opacity:.65;cursor:not-allowed}
+.church-hero{background:linear-gradient(135deg,var(--teal-d) 0%,var(--teal) 60%,var(--blue) 100%);
+  border-radius:var(--r);padding:1.1rem 1.2rem;color:#fff;margin-bottom:.9rem;position:relative;overflow:hidden}
+.church-hero::after{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;
+  border-radius:50%;background:rgba(255,255,255,.06)}
+.church-logo-box{width:64px;height:64px;border-radius:12px;background:var(--surface);
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+  border:2px solid var(--border);box-shadow:var(--sh);cursor:pointer;overflow:hidden}
+.church-logo-box img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.church-name-display{font-size:18px;font-weight:700;color:var(--text)}
+.church-info-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
+  padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)}
+.stat-n{font-size:22px;font-weight:700;color:var(--teal)}
+.stat-l{font-size:11px;color:var(--text2);margin-top:2px}
+.notice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
+  padding:.8rem .95rem;margin-bottom:7px;box-shadow:var(--sh);animation:fadeIn .2s ease}
+.notice-cat{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-bottom:5px}
+.notice-title{font-size:14px;font-weight:500;margin-bottom:3px}
+.notice-body{font-size:12.5px;color:var(--text2);line-height:1.6}
+.notice-date{font-size:11px;color:var(--text3);margin-top:4px}
+.member-row{display:flex;align-items:center;gap:10px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .95rem;
+  margin-bottom:7px;box-shadow:var(--sh)}
+.member-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.member-name{font-size:14px;font-weight:500}
+.member-role{font-size:11px;color:var(--text2);margin-top:1px}
+.member-stat{margin-left:auto;text-align:right}
+.member-stat-n{font-size:13px;font-weight:500;color:var(--teal)}
+.member-stat-l{font-size:10px;color:var(--text3)}
+.report-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
+  padding:.9rem 1rem;margin-bottom:.9rem;box-shadow:var(--sh)}
+.report-title{font-size:14px;font-weight:500;margin-bottom:.6rem;color:var(--teal-d)}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.bar-label{font-size:12px;color:var(--text2);min-width:55px}
+.bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .6s ease;background:var(--teal)}
+.bar-val{font-size:12px;color:var(--text2);min-width:28px;text-align:right}
+.pro-gate{text-align:center;padding:2.5rem 1rem;background:var(--surface);
+  border-radius:var(--r);border:1.5px dashed var(--border)}
+.pro-gate-icon{font-size:40px;margin-bottom:.5rem}
+.pro-gate-title{font-size:16px;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+.pro-gate-sub{font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6}
+.btn-pro{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;
+  padding:10px 20px;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:opacity .15s}
+.btn-pro:hover{opacity:.9}
+.license-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;
+  border-radius:20px;font-size:12px;font-weight:700;margin-bottom:.7rem}
+.lb-free{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.lb-pro{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.lb-trial{background:var(--blue-l);color:var(--blue-d);border:1px solid var(--blue)}
+.tab-bar-sub{display:flex;gap:4px;background:var(--surface2);border-radius:10px;
+  padding:4px;margin-bottom:.9rem}
+.tbs{flex:1;padding:7px 6px;border-radius:8px;border:none;background:transparent;
+  font-family:inherit;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s}
+.tbs.on{background:var(--surface);color:var(--text);border:.5px solid var(--border)}
+.tp-sub{display:none}.tp-sub.on{display:block}
+.empty-pro{text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:13px}
+.empty-pro span{display:block;font-size:26px;margin-bottom:.3rem}
+
+
+/* ══════════════════════════════════════════
+   동기부여 10가지 시스템 CSS
+   ══════════════════════════════════════════ */
+
+/* ① 연속기록 Streak 강화 */
+.streak-chip{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--amber-l),#FDE68A);color:var(--amber-d);border:1.5px solid var(--amber);border-radius:20px;padding:5px 13px;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(186,117,23,.15)}
+.streak-milestone{text-align:center;padding:1rem;background:linear-gradient(135deg,#FFF8E7,#FDE68A);border-radius:var(--r);border:2px solid var(--amber);margin-bottom:.8rem;animation:popIn .4s ease}
+@keyframes popIn{0%{transform:scale(.8);opacity:0}80%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+.streak-fire{font-size:32px;display:block;margin-bottom:4px}
+
+/* ② 레벨·칭호 */
+.level-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid}
+.lv-seed{background:#F0FDF4;color:#166534;border-color:#86EFAC}
+.lv-sprout{background:#ECFDF5;color:#065F46;border-color:#34D399}
+.lv-tree{background:#D1FAE5;color:#064E3B;border-color:#10B981}
+.lv-fruit{background:#FEF3C7;color:#92400E;border-color:#F59E0B}
+.lv-light{background:linear-gradient(135deg,#FEF3C7,#DBEAFE);color:#1E40AF;border-color:#93C5FD}
+.level-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
+.level-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.level-verse{font-size:12px;color:var(--text2);font-style:italic;line-height:1.6;margin-top:.4rem}
+.level-progress{margin-top:.6rem}
+.lv-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:4px}
+.lv-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .8s ease}
+
+/* ③ 월간 목표 & 진척도 */
+.goal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:7px;box-shadow:var(--sh)}
+.goal-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.goal-label{font-size:13px;font-weight:500;flex:1}
+.goal-count{font-size:12px;color:var(--text2);min-width:40px;text-align:right}
+.goal-bar{height:7px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:3px}
+.goal-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.goal-complete{animation:celebrate .5s ease}
+@keyframes celebrate{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.goal-set-btn{background:none;border:1px dashed var(--border);border-radius:var(--rs);padding:.7rem;width:100%;text-align:center;font-size:13px;color:var(--text2);cursor:pointer;font-family:inherit}
+.goal-set-btn:hover{background:var(--surface2)}
+
+/* ④ 응답 기도 갤러리 강화 */
+.answered-card{background:linear-gradient(135deg,var(--teal-l),#FFF);border:1px solid var(--teal);border-radius:var(--r);padding:.9rem 1rem;margin-bottom:8px;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(29,158,117,.1)}
+.answered-card::before{content:'✅';position:absolute;right:12px;top:10px;font-size:20px;opacity:.3}
+.answered-date{font-size:11px;color:var(--teal-d);font-weight:500;margin-bottom:4px}
+.answered-content{font-size:13.5px;color:var(--text);line-height:1.65}
+.answered-count-badge{display:inline-flex;align-items:center;gap:5px;background:var(--teal);color:#fff;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700}
+
+/* ⑤ 누적 통계 + 히트맵 */
+.heatmap-grid{display:grid;grid-template-columns:repeat(26,1fr);gap:2px;margin-bottom:.5rem}
+.hm-cell{aspect-ratio:1;border-radius:2px;background:var(--border)}
+.hm-0{background:var(--border)}
+.hm-1{background:#BBF7D0}
+.hm-2{background:#4ADE80}
+.hm-3{background:#16A34A}
+.hm-tooltip{font-size:10px;color:var(--text3);text-align:right;margin-top:2px}
+.cum-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.8rem}
+.cum-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)}
+.cum-stat-n{font-size:24px;font-weight:700}
+.cum-stat-l{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* ⑥ 소그룹 팀 현황 카드 */
+.team-stat-card{background:linear-gradient(135deg,var(--teal-l),var(--blue-l));border:1px solid var(--teal);border-radius:var(--r);padding:1rem;margin-bottom:.8rem}
+.team-stat-title{font-size:14px;font-weight:700;color:var(--teal-d);margin-bottom:.6rem}
+.team-member-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.team-crown{font-size:16px;width:24px;text-align:center;flex-shrink:0}
+.team-name{font-size:13px;font-weight:500;flex:1}
+.team-cnt{font-size:12px;color:var(--text2)}
+
+/* ⑦ 설교 연계 과제 */
+.sermon-task-card{background:var(--purple-l);border:1.5px solid var(--purple);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:.8rem}
+.sermon-task-title{font-size:13px;font-weight:700;color:var(--purple-d);margin-bottom:4px}
+.sermon-task-body{font-size:12.5px;color:var(--purple-d);line-height:1.65}
+.sermon-task-done{opacity:.55;text-decoration:line-through}
+
+/* ⑧ 기념일·특별 이벤트 */
+.event-banner{background:linear-gradient(135deg,var(--coral-l),var(--amber-l));border:1.5px solid var(--coral);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:.8rem;animation:fadeIn .4s ease}
+.event-banner-title{font-size:14px;font-weight:700;color:var(--coral-d);margin-bottom:3px}
+.event-banner-body{font-size:12.5px;color:var(--coral-d);line-height:1.65}
+
+/* ⑨ 과거 기록 "오늘의 회고" 카드 */
+.retro-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
+.retro-label{font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px;letter-spacing:.05em}
+.retro-content{font-size:13px;color:var(--text);line-height:1.65}
+.retro-date{font-size:11px;color:var(--text3);margin-top:4px}
+
+/* ⑩ 다양한 격려 알림 & 폭죽 */
+.confetti-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.confetti-piece{position:absolute;width:8px;height:8px;border-radius:2px;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.motivation-toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--teal-d),var(--teal));color:#fff;padding:.75rem 1.2rem;border-radius:20px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(8,80,65,.35);z-index:1000;animation:toastSlide .3s ease;white-space:nowrap;max-width:90vw}
+@keyframes toastSlide{from{transform:translateX(-50%) translateY(20px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
+
+/* 공통 */
+.motivation-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
+.motivation-section-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.6rem;display:flex;align-items:center;gap:6px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+
+/* ── 홈 레벨 진행 카드 ── */
+.home-level-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.85rem;box-shadow:var(--sh)}
+.home-level-steps{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;position:relative}
+.home-level-steps::before{content:'';position:absolute;top:17px;left:18px;right:18px;height:3px;background:var(--border);z-index:0;border-radius:2px}
+.home-level-steps::after{content:'';position:absolute;top:17px;left:18px;height:3px;background:linear-gradient(90deg,var(--teal),var(--blue));z-index:1;border-radius:2px;transition:width .6s ease}
+.hls-item{display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;z-index:2}
+.hls-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;border:2.5px solid var(--border);background:var(--surface);transition:all .3s;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.hls-icon.active{border-color:var(--teal);background:var(--teal-l);transform:scale(1.15);box-shadow:0 2px 10px rgba(29,158,117,.25)}
+.hls-icon.done{border-color:var(--teal);background:var(--teal);filter:brightness(1)}
+.hls-icon.current{border-color:var(--teal);background:var(--teal-l);transform:scale(1.2);box-shadow:0 3px 14px rgba(29,158,117,.35);animation:levelPulse 2s ease-in-out infinite}
+@keyframes levelPulse{0%,100%{box-shadow:0 3px 14px rgba(29,158,117,.35)}50%{box-shadow:0 3px 22px rgba(29,158,117,.55)}}
+.hls-label{font-size:10px;font-weight:600;color:var(--text3);transition:color .3s;white-space:nowrap}
+.hls-label.active{color:var(--teal-d)}
+.home-level-info{display:flex;align-items:center;justify-content:space-between;margin-top:.2rem}
+.home-level-name{font-size:15px;font-weight:700;color:var(--teal-d)}
+.home-level-next{font-size:11.5px;color:var(--text3)}
+.home-level-bar{height:6px;background:var(--border);border-radius:3px;margin-top:.45rem;overflow:hidden}
+.home-level-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .7s ease}
+
+
+/* ── 분기별 히트맵 탭 ── */
+.hm-tab-bar{display:flex;gap:4px;margin-bottom:.55rem}
+.hm-tab{flex:1;display:flex;flex-direction:column;align-items:center;padding:7px 4px;border-radius:var(--rs);border:1px solid var(--border);background:var(--surface);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;line-height:1.2}
+.hm-tab.active,.hm-tab.on{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 2px 8px rgba(29,158,117,.25)}
+.hm-tab.active-now{background:var(--teal-l);color:var(--teal-d);border-color:var(--teal);font-weight:700}
+.hm-tab-sub{font-size:9px;font-weight:400;opacity:.8;margin-top:1px}
+.hm-quarter-wrap{animation:fadeIn .2s ease}
+.hm-quarter-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem}
+.hm-quarter-label{font-size:12px;font-weight:700;color:var(--teal-d)}
+.hm-quarter-cnt{font-size:11px;color:var(--text3)}
+.hm-month-block{margin-bottom:.7rem}
+.hm-month-label{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px}
+.hm-month-grid{display:flex;flex-wrap:wrap;gap:3px}
+.hm-day{width:calc((100% - 90px) / 31);min-width:11px;max-width:16px;aspect-ratio:1;border-radius:2px;background:var(--border);position:relative;cursor:default}
+.hm-day:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:10px;padding:2px 6px;border-radius:4px;white-space:nowrap;z-index:10;pointer-events:none}
+.hm-0{background:var(--border)}
+.hm-1{background:#BBF7D0}
+.hm-2{background:#4ADE80}
+.hm-3{background:#16A34A}
+.hm-legend{display:flex;align-items:center;gap:4px;margin-top:.35rem;justify-content:flex-end}
+.hm-legend-cell{width:10px;height:10px;border-radius:2px}
+.hm-legend-label{font-size:10px;color:var(--text3)}
+.hm-summary-row{display:flex;gap:6px;margin-top:.55rem}
+.hm-summary-chip{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.5rem .4rem;text-align:center}
+.hm-summary-n{font-size:16px;font-weight:700;color:var(--teal)}
+.hm-summary-l{font-size:10px;color:var(--text2);margin-top:1px}
+
 </style>
 </head>
 <body>
@@ -642,7 +858,7 @@ canvas{max-width:100%}
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="hero-date" id="today-date"></div>
-    <h1>행복일지 — 감사와 나눔의 전도 프로젝트</h1>
+    <h1>행복일지 — 감사와 나눔의 전도 축제</h1>
     <p>하나님께 감사 · 성도들과 나눔 · 이웃에게 복음</p>
   </div>
   <div id="streak-wrap"></div>
@@ -653,66 +869,62 @@ canvas{max-width:100%}
   </div>
   <div class="slabel">오늘의 말씀</div>
   <div class="verse" id="daily-verse"></div>
+  <!-- ⑧ 기념일·이벤트 배너 -->
+  <div id="home-event-banner" style="display:none"></div>
+
+  <!-- ⑨ 과거 회고 카드 -->
+  <div id="home-retro" style="display:none"></div>
+
   <div class="slabel">이번 주 실천 현황</div>
-  <div class="pmini"><svg class="pring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" id="pg" cx="18" cy="18" r="15.9" stroke="var(--teal)" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 18 18)"/></svg><div><div class="pm-label">감사 일기</div><div class="pm-sub" id="pgl">이번 주 0회</div></div></div>
-  <div class="pmini"><svg class="pring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" id="ps" cx="18" cy="18" r="15.9" stroke="var(--purple)" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 18 18)"/></svg><div><div class="pm-label">나눔 실천</div><div class="pm-sub" id="psl">이번 주 0건</div></div></div>
-  <div class="pmini"><svg class="pring" viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" id="pe" cx="18" cy="18" r="15.9" stroke="var(--blue)" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 18 18)"/></svg><div><div class="pm-label">전도 접촉</div><div class="pm-sub" id="pel">진행 중 0명</div></div></div>
-  <hr>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer" onclick="showPage('gratitude')">
+      <div style="font-size:22px;font-weight:700;color:var(--teal)" id="hg-stat">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">감사 기록</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer" onclick="showPage('sharing')">
+      <div style="font-size:22px;font-weight:700;color:var(--purple)" id="hs-stat">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">나눔 기록</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer" onclick="showPage('evangelism')">
+      <div style="font-size:22px;font-weight:700;color:var(--blue)" id="he-stat">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">전도 진행</div>
+    </div>
+  </div>
   <div class="slabel">빠른 기록</div>
   <div style="display:flex;gap:7px;flex-wrap:wrap">
-    <button class="btn btn-p" onclick="openGM()">+ 감사 기록</button>
-    <button class="btn btn-g" onclick="openSM()">+ 나눔 기록</button>
-    <button class="btn btn-g" onclick="openPM()">+ 전도 대상자</button>
+    <button class="btn btn-p" onclick="openGM()">🙏 감사 기록</button>
+    <button class="btn btn-p" style="background:var(--purple);color:#fff" onclick="openSM()">🤝 나눔 기록</button>
+    <button class="btn btn-p" style="background:var(--blue);color:#fff" onclick="openPM()">✉️ 전도 진행</button>
   </div>
-  <hr>
-  <div class="slabel">하루 10분 실천 루틴</div>
-  <div class="routine-grid">
-    <div class="routine-card">
-      <div class="routine-num">①</div>
-      <div class="routine-label">아침 2분 — 감사</div>
-      <div class="routine-desc">오늘 하나님이 주신 것 한 가지를 감사 일기에 기록</div>
-      <div class="alarm-row">
-        <span class="alarm-bell">🔔</span>
-        <input type="time" class="alarm-time-inp" id="at0" value="07:00" onchange="saveAlarm(0)">
-        <label class="toggle-sw"><input type="checkbox" id="ao0" onchange="toggleAlarm(0)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(0)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit" title="알람 테스트">▶ 테스트</button>
-      </div>
-    </div>
-    <div class="routine-card">
-      <div class="routine-num">②</div>
-      <div class="routine-label">점심 3분 — 나눔</div>
-      <div class="routine-desc">오늘 누구와 나눌 수 있을지 생각하고 실천 계획</div>
-      <div class="alarm-row">
-        <span class="alarm-bell">🔔</span>
-        <input type="time" class="alarm-time-inp" id="at1" value="12:00" onchange="saveAlarm(1)">
-        <label class="toggle-sw"><input type="checkbox" id="ao1" onchange="toggleAlarm(1)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(1)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit" title="알람 테스트">▶ 테스트</button>
-      </div>
-    </div>
-    <div class="routine-card">
-      <div class="routine-num">③</div>
-      <div class="routine-label">저녁 3분 — 기도</div>
-      <div class="routine-desc">전도 대상자 이름 부르며 중보기도 & 앱 메모 업데이트</div>
-      <div class="alarm-row">
-        <span class="alarm-bell">🔔</span>
-        <input type="time" class="alarm-time-inp" id="at2" value="21:00" onchange="saveAlarm(2)">
-        <label class="toggle-sw"><input type="checkbox" id="ao2" onchange="toggleAlarm(2)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(2)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit" title="알람 테스트">▶ 테스트</button>
-      </div>
-    </div>
-    <div class="routine-card">
-      <div class="routine-num">④</div>
-      <div class="routine-label">밤 2분 — 기록</div>
-      <div class="routine-desc">오늘의 나눔 내역 기록 & 내일 감사 주제 묵상</div>
-      <div class="alarm-row">
-        <span class="alarm-bell">🔔</span>
-        <input type="time" class="alarm-time-inp" id="at3" value="22:30" onchange="saveAlarm(3)">
-        <label class="toggle-sw"><input type="checkbox" id="ao3" onchange="toggleAlarm(3)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(3)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit" title="알람 테스트">▶ 테스트</button>
-      </div>
-    </div>
+
+  <div style="height:.6rem"></div>
+
+  <!-- ② 레벨 배지 + ③ 월간 목표 -->
+  <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
+    <span>이번 달 목표</span>
+    <button onclick="openGoalModal()" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">⚙ 목표 설정</button>
   </div>
-  <div id="alarm-status-txt"></div>
+  <div id="home-goals"></div>
+
+
+
+  <!-- ② 레벨 배지 -->
+  <div class="slabel">나의 신앙 성장 레벨</div>
+  <div id="home-level-badge" style="margin-bottom:.6rem"></div>
+
+  <!-- ⑤ 연간 히트맵 — 분기별 탭 -->
+  <div class="slabel">올해 기록 현황</div>
+  <div class="hm-tab-bar">
+    <button class="hm-tab active" onclick="switchHmTab(1,this)">1분기<span class="hm-tab-sub">1~3월</span></button>
+    <button class="hm-tab" onclick="switchHmTab(2,this)">2분기<span class="hm-tab-sub">4~6월</span></button>
+    <button class="hm-tab active-now" onclick="switchHmTab(3,this)">3분기<span class="hm-tab-sub">7~9월</span></button>
+    <button class="hm-tab" onclick="switchHmTab(4,this)">4분기<span class="hm-tab-sub">10~12월</span></button>
+  </div>
+  <div id="home-heatmap"></div>
+
+  <!-- ⑥ 소그룹 팀 통계 -->
+  <div id="home-team-stat"></div>
+
 </div>
 
 <!-- GRATITUDE -->
@@ -820,17 +1032,25 @@ canvas{max-width:100%}
 
   <div class="slabel">신앙 훈련</div>
   <div class="more-grid">
+    <div class="more-item" onclick="showMorePage('daily-routine')"><div class="more-icon">⏰</div><div class="more-label">하루 루틴</div></div>
     <div class="more-item" onclick="showMorePage('qt')"><div class="more-icon">📖</div><div class="more-label">QT 묵상</div></div>
-    <div class="more-item" onclick="showMorePage('bible-search')"><div class="more-icon">🔍</div><div class="more-label">성경 검색</div></div>
     <div class="more-item" onclick="showMorePage('reading-plan')"><div class="more-icon">📅</div><div class="more-label">성경 읽기표</div></div>
     <div class="more-item" onclick="showMorePage('memory-game')"><div class="more-icon">🎮</div><div class="more-label">암송 게임</div></div>
   </div>
 
+  <div class="slabel">동기부여 · 성장</div>
+  <div class="more-grid">
+    <div class="more-item" onclick="showPage('motivation')"><div class="more-icon">🌱</div><div class="more-label">성장 현황</div></div>
+    <div class="more-item" onclick="openGoalModal()"><div class="more-icon">🎯</div><div class="more-label">이달 목표</div></div>
+    <div class="more-item" onclick="openAnsweredModalV2()"><div class="more-icon">✅</div><div class="more-label">응답 기도</div></div>
+    <div class="more-item" onclick="openSermonTaskModal()"><div class="more-icon">🖊️</div><div class="more-label">설교 과제</div></div>
+  </div>
+
   <div class="slabel">챌린지 · 통계</div>
   <div class="more-grid">
-    <div class="more-item" onclick="showMorePage('challenge')"><div class="more-icon">🏆</div><div class="more-label">365 챌린지</div></div>
+    <div class="more-item" onclick="showMorePage('challenge')"><div class="more-icon">🎖️</div><div class="more-label">365 챌린지</div></div>
     <div class="more-item" onclick="showMorePage('stats')"><div class="more-icon">📊</div><div class="more-label">통계</div></div>
-    <div class="more-item" onclick="showMorePage('answered')"><div class="more-icon">🎉</div><div class="more-label">응답 기도</div></div>
+    <div class="more-item" onclick="showMorePage('answered')"><div class="more-icon">🕊️</div><div class="more-label">응답 기록</div></div>
     <div class="more-item" onclick="showMorePage('sermon')"><div class="more-icon">📝</div><div class="more-label">설교노트</div></div>
   </div>
 
@@ -844,10 +1064,22 @@ canvas{max-width:100%}
 
   <div class="slabel">교회 생활</div>
   <div class="more-grid">
-    <div class="more-item" onclick="showMorePage('notice')"><div class="more-icon">📢</div><div class="more-label">교회 공지</div></div>
+    <div class="more-item" onclick="showMorePage('notice')"><div class="more-icon">📣</div><div class="more-label">교회 공지</div></div>
     <div class="more-item" onclick="showMorePage('group')"><div class="more-icon">👥</div><div class="more-label">소그룹</div></div>
-    <div class="more-item" onclick="showMorePage('attendance')"><div class="more-icon">✅</div><div class="more-label">예배 출석</div></div>
+    <div class="more-item" onclick="showMorePage('attendance')"><div class="more-icon">🙌</div><div class="more-label">예배 출석</div></div>
     <div class="more-item" onclick="showMorePage('encourage')"><div class="more-icon">💌</div><div class="more-label">성도 격려</div></div>
+  </div>
+
+  <div class="slabel">교회 전용 <span class="pro-badge">✦ PRO</span></div>
+  <div class="more-grid">
+    <div class="more-item pro-item" onclick="proGuard('church-customize')"><div class="more-icon">🏛️</div><div class="more-label">교회 설정</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-notice')"><div class="more-icon">📌</div><div class="more-label">공지 관리</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-dashboard')"><div class="more-icon">👤</div><div class="more-label">성도 현황</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-report')"><div class="more-icon">📈</div><div class="more-label">통계 리포트</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-sermon')"><div class="more-icon">🎙️</div><div class="more-label">설교 관리</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-cloud')"><div class="more-icon">☁️</div><div class="more-label">클라우드 백업</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-alarm')"><div class="more-icon">🔔</div><div class="more-label">단체 알림</div></div>
+    <div class="more-item pro-item" onclick="proGuard('church-members')"><div class="more-icon">🗂️</div><div class="more-label">성도 관리</div></div>
   </div>
 
   <div class="slabel">앱 설정</div>
@@ -1031,6 +1263,15 @@ canvas{max-width:100%}
     <span>›</span>
   </div>
 
+  <div class="settings-group-title">교회 PRO <span class="pro-badge">✦</span></div>
+  <div class="settings-row" onclick="showPage('church-license')" style="cursor:pointer">
+    <div>
+      <div class="settings-label">🏛️ 교회 PRO 라이선스</div>
+      <div class="settings-sub" id="pro-status-text">무료 버전 사용 중 — 교회 전용 기능 잠금</div>
+    </div>
+    <span>›</span>
+  </div>
+
   <div class="settings-group-title">후원</div>
   <div class="info-box teal" style="margin:0 0 10px">
     AI 시대에 휴대기기를 사용한 개인 경건 운동에 동참하기를 원하시는 분은, 하나님께 감사·성도들과 나눔·이웃에게 복음 전하는 '행복일지'가 신앙생활에 유익하다면 아래 계좌로 후원해 주시면 계속 업그레이드를 제공해 드립니다.
@@ -1053,10 +1294,303 @@ canvas{max-width:100%}
     <div><div class="settings-label">📘 기능 상세 안내</div><div class="settings-sub">목적·취지와 모든 기능 상세 설명</div></div>
     <span>›</span>
   </div>
-  <div class="settings-row"><div><div class="settings-label">행복일지 v3.1</div><div class="settings-sub">감사와 나눔의 전도 프로젝트 · AI 시대 경건운동</div></div></div>
+  <div class="settings-row"><div><div class="settings-label">행복일지 v3.1</div><div class="settings-sub">감사와 나눔의 전도 축제 · AI 시대 경건운동</div></div></div>
+</div>
+
+
+<!-- ══════ 교회 전용 페이지들 ══════ -->
+
+<!-- 1. 교회 설정 & 커스터마이징 -->
+<div class="page" id="page-church-customize">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>🏛️ 교회 설정</span>
+  </div>
+  <div id="church-customize-content"></div>
+</div>
+
+<!-- 2. 교회 공지 관리 -->
+<div class="page" id="page-church-notice">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>📢 공지 관리</span>
+  </div>
+  <div id="church-notice-content"></div>
+</div>
+
+<!-- 3. 성도 현황 대시보드 -->
+<div class="page" id="page-church-dashboard">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>📊 성도 현황 대시보드</span>
+  </div>
+  <div id="church-dashboard-content"></div>
+</div>
+
+<!-- 4. 소그룹 통계 리포트 -->
+<div class="page" id="page-church-report">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>📈 소그룹 통계 리포트</span>
+  </div>
+  <div id="church-report-content"></div>
+</div>
+
+<!-- 5. 설교 통합 관리 -->
+<div class="page" id="page-church-sermon">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>🎙️ 설교 통합 관리</span>
+  </div>
+  <div id="church-sermon-content"></div>
+</div>
+
+<!-- 6. 클라우드 백업 -->
+<div class="page" id="page-church-cloud">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>☁️ 클라우드 백업</span>
+  </div>
+  <div id="church-cloud-content"></div>
+</div>
+
+<!-- 7. 단체 알림 -->
+<div class="page" id="page-church-alarm">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>🔔 단체 알림</span>
+  </div>
+  <div id="church-alarm-content"></div>
+</div>
+
+<!-- 8. 성도 관리 -->
+<div class="page" id="page-church-members">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>👨‍👩‍👧‍👦 성도 관리</span>
+  </div>
+  <div id="church-members-content"></div>
+</div>
+
+<!-- 9. PRO 라이선스 -->
+<div class="page" id="page-church-license">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>✦ 교회 PRO 라이선스</span>
+  </div>
+  <div id="church-license-content"></div>
 </div>
 
 <!-- ══════ 앱 소개 & 목적 (은혜일지 통합) ══════ -->
+<!-- ══════ 하루 10분 실천 루틴 ══════ -->
+<div class="page" id="page-daily-routine">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>⏰ 하루 10분 실천 루틴</span>
+  </div>
+
+  <div class="verse">
+    "항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라<br>이것이 그리스도 예수 안에서 너희를 향하신 하나님의 뜻이니라"
+    <cite>— 데살로니가전서 5:16-18</cite>
+  </div>
+
+  <div class="slabel">이번 주 실천 현황</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)">
+      <div style="font-size:22px;font-weight:700;color:var(--teal)" id="hg-stat">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">감사 기록</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)">
+      <div style="font-size:22px;font-weight:700;color:var(--purple)" id="hs-stat">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">나눔 기록</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)">
+      <div style="font-size:22px;font-weight:700;color:var(--blue)" id="he-stat">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">전도 진행</div>
+    </div>
+  </div>
+
+  <div class="slabel">오늘의 실천 알림 설정</div>
+  <div class="routine-grid" style="margin-bottom:1rem">
+    <div class="routine-card">
+      <div class="routine-num">①</div>
+      <div class="routine-label">아침 2분 — 감사</div>
+      <div class="routine-desc">오늘 하나님이 주신 것 한 가지를 감사 일기에 기록</div>
+      <div class="alarm-row">
+        <span class="alarm-bell">🔔</span>
+        <input type="time" class="alarm-time-inp" id="at0" value="07:00" onchange="saveAlarm(0)">
+        <label class="toggle-sw"><input type="checkbox" id="ao0" onchange="toggleAlarm(0)"><span class="toggle-sl"></span></label>
+        <button onclick="testAlarm(0)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">②</div>
+      <div class="routine-label">점심 3분 — 나눔</div>
+      <div class="routine-desc">오늘 누구와 나눌 수 있을지 생각하고 실천 계획</div>
+      <div class="alarm-row">
+        <span class="alarm-bell">🔔</span>
+        <input type="time" class="alarm-time-inp" id="at1" value="12:00" onchange="saveAlarm(1)">
+        <label class="toggle-sw"><input type="checkbox" id="ao1" onchange="toggleAlarm(1)"><span class="toggle-sl"></span></label>
+        <button onclick="testAlarm(1)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">③</div>
+      <div class="routine-label">저녁 3분 — 기도</div>
+      <div class="routine-desc">전도 대상자를 이름으로 부르며 중보기도</div>
+      <div class="alarm-row">
+        <span class="alarm-bell">🔔</span>
+        <input type="time" class="alarm-time-inp" id="at2" value="21:00" onchange="saveAlarm(2)">
+        <label class="toggle-sw"><input type="checkbox" id="ao2" onchange="toggleAlarm(2)"><span class="toggle-sl"></span></label>
+        <button onclick="testAlarm(2)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+      </div>
+    </div>
+    <div class="routine-card">
+      <div class="routine-num">④</div>
+      <div class="routine-label">취침 전 2분 — 회고</div>
+      <div class="routine-desc">오늘 하루를 감사로 마무리하며 내일 실천 다짐</div>
+      <div class="alarm-row">
+        <span class="alarm-bell">🔔</span>
+        <input type="time" class="alarm-time-inp" id="at3" value="22:30" onchange="saveAlarm(3)">
+        <label class="toggle-sw"><input type="checkbox" id="ao3" onchange="toggleAlarm(3)"><span class="toggle-sl"></span></label>
+        <button onclick="testAlarm(3)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="slabel">하루 10분 루틴 가이드</div>
+  <div class="info-box teal">
+    <strong>📱 SNS보다 먼저 — 아침 2분</strong>
+    눈을 뜨면 SNS보다 먼저 행복일지 앱을 열어 감사 일기 1가지를 기록합니다. 7가지 영역 중 하나를 선택하면 하루가 하나님께 감사로 시작됩니다.
+  </div>
+  <div class="info-box" style="border-left-color:var(--purple);background:var(--purple-l)">
+    <strong style="color:var(--purple-d)">🤝 점심 알림 — 나눔 3분</strong>
+    <span style="color:var(--purple-d)">점심 알림이 오면 "오늘 누구와 무엇을 나눌 수 있을까?" 생각합니다. 저녁에 실천한 나눔을 나눔 장부에 기록합니다.</span>
+  </div>
+  <div class="info-box" style="border-left-color:var(--blue);background:var(--blue-l)">
+    <strong style="color:var(--blue-d)">🙏 저녁 알림 — 중보기도 3분</strong>
+    <span style="color:var(--blue-d)">저녁 알림이 오면 전도 대상자의 이름을 부르며 짧게 기도합니다. 앱에서 단계에 맞는 행동이 있다면 오늘 실행합니다.</span>
+  </div>
+  <div class="info-box" style="border-left-color:var(--amber);background:var(--amber-l)">
+    <strong style="color:var(--amber-d)">🌙 취침 전 — 하루 회고 2분</strong>
+    <span style="color:var(--amber-d)">오늘 하루를 감사로 마무리합니다. 잘한 것 1가지, 내일 더 잘할 것 1가지를 생각하며 "오늘도 하나님이 함께하셨다"고 고백합니다.</span>
+  </div>
+
+  <div class="slabel" style="margin-top:1rem">빠른 기록</div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.9rem">
+    <button class="btn btn-p" onclick="openGM()">+ 감사 기록</button>
+    <button class="btn btn-g" onclick="openSM()">+ 나눔 기록</button>
+    <button class="btn btn-g" onclick="openPM()">+ 전도 대상자</button>
+  </div>
+</div>
+
+
+<!-- ══════ 성장 현황 (동기부여 종합) ══════ -->
+<div class="page" id="page-motivation">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>🏆 나의 성장 현황</span>
+  </div>
+
+  <!-- 레벨 카드 -->
+  <div class="slabel">나의 신앙 성장 레벨</div>
+  <div class="level-card" id="motivation-level-card">
+    <!-- 5단계 시각 진행 -->
+    <div class="home-level-steps" id="motivation-level-steps" style="margin-bottom:.75rem">
+      <style>#motivation-level-steps::after{width:0%;transition:width .7s ease}</style>
+    </div>
+    <!-- 현재 레벨 정보 -->
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem">
+      <div id="motivation-level-icon" style="font-size:42px;line-height:1">🌱</div>
+      <div style="flex:1">
+        <div class="level-title" id="motivation-level-name" style="font-size:18px">씨앗 칭호</div>
+        <div id="motivation-level-badge-wrap" style="margin-top:3px"></div>
+      </div>
+    </div>
+    <!-- 진척도 -->
+    <div class="level-progress">
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:4px">
+        <span id="motivation-level-progress-label">다음 레벨까지</span>
+        <span id="motivation-level-progress-val"></span>
+      </div>
+      <div class="lv-bar"><div class="lv-bar-fill" id="motivation-lv-bar-fill" style="width:0%"></div></div>
+    </div>
+    <!-- 성경 구절 -->
+    <div class="level-verse" id="motivation-level-verse" style="margin-top:.5rem"></div>
+    <!-- 각 단계 설명 -->
+    <div id="motivation-level-all" style="margin-top:.85rem;display:flex;flex-direction:column;gap:5px"></div>
+  </div>
+
+  <!-- 누적 통계 -->
+  <div class="slabel">누적 실천 통계</div>
+  <div class="cum-stat-row">
+    <div class="cum-stat">
+      <div class="cum-stat-n" style="color:var(--teal)" id="cum-grat">0</div>
+      <div class="cum-stat-l">감사 기록</div>
+    </div>
+    <div class="cum-stat">
+      <div class="cum-stat-n" style="color:var(--purple)" id="cum-share">0</div>
+      <div class="cum-stat-l">나눔 기록</div>
+    </div>
+    <div class="cum-stat">
+      <div class="cum-stat-n" style="color:var(--blue)" id="cum-evang">0</div>
+      <div class="cum-stat-l">전도 진행</div>
+    </div>
+  </div>
+  <div class="cum-stat-row">
+    <div class="cum-stat">
+      <div class="cum-stat-n" style="color:var(--amber)" id="cum-streak">0</div>
+      <div class="cum-stat-l">연속 기록</div>
+    </div>
+    <div class="cum-stat">
+      <div class="cum-stat-n" style="color:var(--coral)" id="cum-answered">0</div>
+      <div class="cum-stat-l">응답 기도</div>
+    </div>
+    <div class="cum-stat">
+      <div class="cum-stat-n" style="color:var(--green)" id="cum-total">0</div>
+      <div class="cum-stat-l">전체 기록</div>
+    </div>
+  </div>
+
+  <!-- Streak 현황 -->
+  <div class="slabel">🔥 연속 기록 현황</div>
+  <div class="motivation-section">
+    <div id="motivation-streak-detail"></div>
+    <div style="margin-top:.6rem">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:4px">달성한 마일스톤</div>
+      <div id="motivation-milestones" style="display:flex;flex-wrap:wrap;gap:5px"></div>
+    </div>
+  </div>
+
+  <!-- 이달 목표 진척도 -->
+  <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
+    <span>🎯 이달 목표</span>
+    <button onclick="openGoalModal()" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">⚙ 목표 수정</button>
+  </div>
+  <div id="motivation-goals"></div>
+
+  <!-- 연간 히트맵 -->
+  <div class="slabel">📅 올해 기록 히트맵</div>
+  <div class="motivation-section">
+    <div id="motivation-heatmap"></div>
+  </div>
+
+  <!-- 응답 기도 전체 목록 -->
+  <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
+    <span>✅ 응답 기도 갤러리</span>
+    <button onclick="openAnsweredModalV2()" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">+ 응답 기록</button>
+  </div>
+  <div id="motivation-answered"></div>
+
+  <!-- 격려 메시지 -->
+  <div class="slabel">💌 오늘의 격려</div>
+  <div class="motivation-section">
+    <div id="motivation-daily-msg" style="font-size:14px;line-height:1.7;color:var(--text)"></div>
+    <button onclick="showRandomMotivation()" class="btn btn-g btn-sm" style="margin-top:.7rem">🎲 다른 격려 메시지</button>
+  </div>
+</div>
+
+
 <div class="page" id="page-app-intro">
   <div class="top-sub-bar">
     <button class="btn-back" onclick="showPage('settings')">← 앱 정보</button>
@@ -1404,6 +1938,210 @@ canvas{max-width:100%}
     <button class="btn btn-g btn-sm" onclick="showPage('sharing')">🤝 나눔 장부</button>
     <button class="btn btn-g btn-sm" onclick="showPage('evangelism')">✉️ 1&amp;1 전도</button>
   </div>
+
+  <hr style="border:none;border-top:1.5px solid var(--border);margin:1.2rem 0">
+
+  <div class="slabel">동기부여 10가지 기능 활용법</div>
+
+  <div class="acc-item open">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--amber-l);color:var(--amber-d)">🔥</div>
+      <div class="acc-info"><div class="acc-title">① 연속기록 Streak — 절대 끊지 않는 법</div><div class="acc-sub">7·14·21·30·50·100·200·365일 마일스톤 달성 시 폭죽+축하 팝업</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>핵심 원리</strong>연속 기록이 끊기는 게 아깝기 때문에 매일 열게 됩니다. 듀오링고가 수억 명을 매일 앱으로 불러들이는 바로 그 원리입니다.</div>
+      <ul class="checklist">
+        <li><strong>아침 루틴 연결</strong> — 매일 아침 커피 마시기 전에 감사 일기 1줄 쓰기를 습관으로 연결하면 연속 기록이 자연스럽게 이어집니다</li>
+        <li><strong>7일 마일스톤</strong> — 첫 7일 연속 달성 시 폭죽과 함께 "갈라디아서 6:7" 말씀 팝업이 뜹니다. 이 팝업이 처음 앱을 진지하게 쓰는 계기가 됩니다</li>
+        <li><strong>21일 = 습관</strong> — 21일 마일스톤 달성 시 "과학적으로 습관이 형성되는 기간입니다"라는 메시지가 뜹니다. 여기까지 오면 거의 멈추지 않게 됩니다</li>
+        <li><strong>소그룹 공유</strong> — 모임 때 "저 오늘로 30일 연속이에요!"를 나누면 다른 셀원들도 자극받습니다</li>
+        <li><strong>끊겼을 때</strong> — "오늘부터 다시 시작하면 됩니다"라는 격려 메시지와 함께 즉시 재시작. 자책보다 재시작이 중요합니다</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--green-l);color:var(--green-d)">🏆</div>
+      <div class="acc-info"><div class="acc-title">② 레벨 & 칭호 시스템 — 5단계 신앙 성장</div><div class="acc-sub">🌱씨앗 → 🌿새싹 → 🌳나무 → 🍎열매 → ✨빛</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>레벨 기준</strong>감사 기록 + 나눔 기록의 합계로 자동 계산됩니다. 기록하면 할수록 자연스럽게 레벨이 올라갑니다.</div>
+      <ul class="checklist">
+        <li>🌱 <strong>씨앗 (0~10건)</strong> — "씨앗을 심는 자가 있다" (고전 3:6) · 처음 시작하는 단계</li>
+        <li>🌿 <strong>새싹 (11~30건)</strong> — "물을 주는 자도 있다" (고전 3:7) · 습관이 자라는 단계</li>
+        <li>🌳 <strong>나무 (31~100건)</strong> — "뿌리가 땅에 박혔으매" (엡 3:17) · 뿌리내린 신앙</li>
+        <li>🍎 <strong>열매 (101~300건)</strong> — "많은 열매를 맺으라" (요 15:8) · 풍성한 열매</li>
+        <li>✨ <strong>빛 (301건 이상)</strong> — "빛이 되라" (마 5:14) · 최고 레벨 달성</li>
+        <li><strong>레벨업 활용</strong> — 홈 화면에 배지가 표시되고, 레벨업 순간 토스트 알림이 뜹니다. 더보기 → 🌱 성장현황에서 다음 레벨까지 진척도 바를 확인하세요</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--teal-l);color:var(--teal-d)">🎯</div>
+      <div class="acc-info"><div class="acc-title">③ 월간 목표 & 진척도 — 이달의 다짐</div><div class="acc-sub">감사·나눔·전도 각각의 이달 목표를 직접 설정</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>목표 설정의 힘</strong>"이번 달 감사 20번 쓰기"처럼 구체적인 숫자 목표가 생기면 완주 욕구가 강해집니다. 홈 화면에서 실시간 진척도 바로 확인합니다.</div>
+      <ul class="checklist">
+        <li><strong>목표 설정</strong> — 홈 화면 "이달 목표" 섹션 → ⚙ 목표 설정 버튼 → 감사·나눔·전도 각 목표 입력</li>
+        <li><strong>권장 초기 목표</strong> — 감사 15회, 나눔 10건, 전도 2명 (처음엔 낮게 설정해서 성취감을 먼저 경험하세요)</li>
+        <li><strong>달성 시</strong> — 해당 항목에 ✅ 표시와 함께 초록 완료 효과가 나타납니다</li>
+        <li><strong>소그룹 활용</strong> — 셀 모임 첫날 함께 목표를 설정하고, 월말에 달성 여부를 간증으로 나눕니다</li>
+        <li><strong>총동원 주일 연계</strong> — 전도 목표를 "총동원 주일까지 전도 대상자 1명 6단계 도달"로 구체화하세요</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--teal-l);color:var(--teal-d)">✅</div>
+      <div class="acc-info"><div class="acc-title">④ 응답 기도 갤러리 — 하나님의 역사 기록</div><div class="acc-sub">기도 응답을 날짜·제목·내용으로 기록, 갤러리로 보관</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>왜 기록해야 하는가</strong>응답 기도를 기록하면 "하나님이 이때 응답하셨다"는 구체적인 증거가 쌓입니다. 신앙이 흔들릴 때 이 기록을 읽으면 다시 일어서는 힘이 됩니다.</div>
+      <ul class="checklist">
+        <li><strong>기록 방법</strong> — 홈 화면 → 응답 기도 갤러리 → + 응답 기록 버튼 → 날짜·기도제목·응답내용 입력 → 저장 시 폭죽!</li>
+        <li><strong>언제 기록하나</strong> — 취업·병 낫기·관계 회복·재정 해결·전도 성공 등 하나님의 응답이 느껴지는 순간 즉시 기록</li>
+        <li><strong>전도 활용</strong> — 쌓인 응답 기록이 최고의 전도 간증 자료가 됩니다. 전도 대상자에게 "하나님이 이렇게 응답해주셨어요"</li>
+        <li><strong>연말 결산</strong> — 더보기 → 🌱 성장현황 → 응답 기도 갤러리에서 "올해 응답 N개"를 확인하며 감사 예배 드리세요</li>
+        <li><strong>소그룹 간증</strong> — 매달 한 명씩 응답 기도 간증을 나누는 시간을 소그룹 모임에 넣으면 공동체가 살아납니다</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--green-l);color:var(--green-d)">📅</div>
+      <div class="acc-info"><div class="acc-title">⑤ 연간 히트맵 — 신앙의 잔디밭</div><div class="acc-sub">깃허브 잔디 스타일로 올해 기록 밀도를 색으로 시각화</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>시각화의 힘</strong>초록색 잔디가 채워지는 것을 보면 멈추기가 아깝습니다. "나는 이만큼 했다"는 성취감이 지속 동기를 만듭니다.</div>
+      <ul class="checklist">
+        <li><strong>확인 방법</strong> — 홈 화면 하단 "올해 기록 현황" 또는 더보기 → 🌱 성장현황 → 올해 기록 히트맵</li>
+        <li><strong>색상 의미</strong> — 흰색: 기록 없음 / 연초록: 1건 / 초록: 2~3건 / 진초록: 4건 이상</li>
+        <li><strong>목표</strong> — 히트맵을 최대한 진한 초록으로 채우는 것이 목표! 빈 날이 보이면 오늘 바로 채우고 싶어집니다</li>
+        <li><strong>소그룹 나눔</strong> — 월말 모임 때 각자 히트맵 화면을 캡처해서 보여주며 "이번 달 어땠어요?" 나누기</li>
+        <li><strong>연말 결산</strong> — 12월에 1년치 히트맵이 얼마나 채워졌는지 확인하며 하나님께 감사드리세요</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--blue-l);color:var(--blue-d)">👥</div>
+      <div class="acc-info"><div class="acc-title">⑥ 소그룹 팀 통계 — 함께하면 3배 강해집니다</div><div class="acc-sub">교회 PRO 연동 · 소그룹 실천 현황 공유</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>공동체의 힘</strong>혼자보다 함께할 때 지속률이 3배 높아집니다. 같은 방향을 향해 함께 달리는 소그룹이 최고의 동기부여입니다.</div>
+      <ul class="checklist">
+        <li><strong>준비</strong> — 교회 PRO 활성화 후 더보기 → 👤 성도 현황 → 셀원 등록</li>
+        <li><strong>주간 모임 활용</strong> — 소그룹 모임 시작 때 "우리 셀 이번 주 총 N건 감사 기록!" 발표로 시작</li>
+        <li><strong>팀 목표 설정</strong> — "이번 달 우리 셀 감사 기록 합계 100건 달성!" 같은 팀 목표로 함께 도전</li>
+        <li><strong>실천왕 격려</strong> — 매달 가장 많이 기록한 성도를 소그룹에서 격려하고 기도해주기</li>
+        <li><strong>PRO 없이도</strong> — 카카오톡 단톡방에 "오늘 감사 기록 완료! 🙏" 인증 문화를 만들면 됩니다</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--purple-l);color:var(--purple-d)">📖</div>
+      <div class="acc-info"><div class="acc-title">⑦ 설교 연계 주간 과제 — 설교가 삶이 되는 다리</div><div class="acc-sub">설교 제목과 이번 주 실천 과제를 홈 화면에 표시</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>설교와 삶의 연결</strong>주일 설교 후 월요일부터 앱에 과제가 표시되면 설교가 삶으로 연결됩니다. "이번 주 설교에서 뭘 실천했나요?"가 자연스러운 소그룹 질문이 됩니다.</div>
+      <ul class="checklist">
+        <li><strong>등록 방법</strong> — 홈 화면 → 이번 주 설교 과제 → + 과제 등록 버튼 → 설교 제목 + 실천 과제 입력</li>
+        <li><strong>언제 등록하나</strong> — 주일 예배 후 오후에 담당 교역자 또는 소그룹 리더가 등록</li>
+        <li><strong>실천 과제 예시</strong> — "이번 주 감사 일기에 시련 속 감사 영역 1번 쓰기", "전도 대상자에게 안부 연락 1번"</li>
+        <li><strong>실천 완료</strong> — 과제 카드의 ☑ 실천 완료 체크 시 폭죽이 터집니다!</li>
+        <li><strong>소그룹 연계</strong> — 주간 모임에서 "이번 주 과제 실천하셨나요?" 질문으로 나눔 시작</li>
+        <li><strong>교회 PRO 연계</strong> — 설교 통합 관리에서 설교를 먼저 등록하면 과제 등록 시 설교 제목이 자동으로 채워집니다</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--coral-l);color:var(--coral-d)">🎊</div>
+      <div class="acc-info"><div class="acc-title">⑧ 기념일 & 절기 이벤트 배너</div><div class="acc-sub">새해·부활절·가정의달·초청주일·추수감사절·크리스마스에 자동 배너</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>절기별 특별 행동 유발</strong>중요한 날 앱을 열었을 때 특별 배너가 뜨면 그날에 맞는 구체적인 행동을 하게 됩니다.</div>
+      <ul class="checklist">
+        <li><strong>새해 1월 1일</strong> — 올해 1&1 전도 대상자 등록 촉구 배너</li>
+        <li><strong>8월 28일 (총동원 D-2)</strong> — "8월 30일 1차 초청 주일이 이틀 남았습니다!" 배너</li>
+        <li><strong>11월 27일 (총동원 D-2)</strong> — "11월 29일 2차 초청 주일이 이틀 남았습니다!" 배너</li>
+        <li><strong>11월 추수감사절</strong> — 올해 응답 기도 돌아보기 촉구 배너</li>
+        <li><strong>12월 24일</strong> — 크리스마스 전도 행동 촉구 배너</li>
+        <li><strong>12월 31일</strong> — 연간 결산 및 다음 해 준비 배너</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--purple-l);color:var(--purple-d)">🔄</div>
+      <div class="acc-info"><div class="acc-title">⑨ 과거 기록 회고 카드 — 1년 전 오늘의 감사</div><div class="acc-sub">홈 화면에 1년 전·3개월 전 감사 기록을 자동으로 보여줌</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>회고의 감동</strong>"1년 전 오늘 내가 이런 감사를 썼어요"라는 카드를 보면 "하나님이 그때도 함께하셨다"는 강한 감동이 옵니다. 이것이 앱을 계속 쓰게 만드는 가장 깊은 동기입니다.</div>
+      <ul class="checklist">
+        <li><strong>자동 표시</strong> — 감사 기록이 3건 이상 쌓이면 홈 화면에 자동으로 회고 카드가 나타납니다</li>
+        <li><strong>우선 순위</strong> — 1년 전 오늘 기록 → 3개월 전 기록 → 랜덤 과거 기록 순으로 표시됩니다</li>
+        <li><strong>활용법</strong> — 아침에 앱을 열었을 때 과거 회고 카드를 읽으며 "하나님의 신실하심"을 고백하는 묵상으로 시작</li>
+        <li><strong>소그룹 나눔</strong> — 과거 기록 카드를 캡처해서 "저 1년 전에 이런 감사를 썼어요" 나눔으로 시작하면 풍성한 이야기가 열립니다</li>
+        <li><strong>신앙이 냉각될 때</strong> — 과거 기록을 읽으면 "하나님이 그때도 함께하셨다"는 확인이 다시 일어설 힘을 줍니다</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon" style="background:var(--amber-l);color:var(--amber-d)">🎆</div>
+      <div class="acc-info"><div class="acc-title">⑩ 격려 알림 & 폭죽 — 매일 다른 격려</div><div class="acc-sub">15가지 랜덤 격려 메시지 · 성취 시마다 폭죽 애니메이션</div></div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="purpose-box"><strong>다양성의 힘</strong>매일 같은 알림은 무시됩니다. 15가지 랜덤 격려 메시지는 매일 새로운 동기를 선물합니다.</div>
+      <ul class="checklist">
+        <li><strong>하루 한 번</strong> — 하루 첫 번째 앱 접속 시 랜덤 격려 메시지가 토스트로 표시됩니다</li>
+        <li><strong>폭죽 발동 조건</strong> — Streak 마일스톤 달성 / 응답 기도 기록 / 설교 과제 완료 / 레벨업 시 폭죽이 터집니다</li>
+        <li><strong>추가 격려 보기</strong> — 더보기 → 🌱 성장현황 → 오늘의 격려 → 🎲 다른 격려 메시지 버튼으로 언제든 새 격려를 받을 수 있습니다</li>
+        <li><strong>소그룹 활용</strong> — 모임 시작 때 각자 "오늘의 격려 메시지"를 읽고 공유하며 시작하면 분위기가 밝아집니다</li>
+      </ul>
+      <div class="verse" style="border-left-color:var(--amber)">"선을 행하되 낙심하지 말지니 포기하지 아니하면 때가 이르매 거두리로다"<cite>— 갈라디아서 6:9</cite></div>
+    </div></div>
+  </div>
+
+  <div class="slabel">성장현황 페이지 활용법</div>
+  <div class="guide-steps-v2">
+    <div class="gstep">
+      <div class="gs-num"><div class="gs-dot" style="background:var(--teal-l);color:var(--teal-d)">🏆</div><div class="gs-period">더보기</div></div>
+      <div class="gs-body"><div class="gs-title">더보기 → 동기부여·성장 → 🌱 성장현황</div><div class="gs-desc">레벨 카드, 누적 통계 6칸, Streak 현황, 이달 목표, 히트맵, 응답 기도 전체 목록, 오늘의 격려가 한 페이지에 모두 모여 있습니다.</div></div>
+    </div>
+    <div class="gstep">
+      <div class="gs-num"><div class="gs-dot" style="background:var(--purple-l);color:var(--purple-d)">📊</div><div class="gs-period">월말</div></div>
+      <div class="gs-body"><div class="gs-title">월말 자기 점검 루틴</div><div class="gs-desc">성장현황 페이지를 열고 → 레벨 확인 → 이달 목표 달성률 확인 → 응답 기도 되돌아보기 → 히트맵으로 빈 날 파악 → 다음 달 목표 재설정.</div></div>
+    </div>
+    <div class="gstep">
+      <div class="gs-num"><div class="gs-dot" style="background:var(--blue-l);color:var(--blue-d)">📸</div><div class="gs-period">공유</div></div>
+      <div class="gs-body"><div class="gs-title">성장현황 화면 캡처 → 소그룹 공유</div><div class="gs-desc">성장현황 화면을 캡처해서 소그룹 카카오톡에 공유하면 자연스러운 간증과 격려의 문화가 생깁니다. "저 드디어 나무 레벨 됐어요!" 🌳</div></div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -1559,6 +2297,201 @@ canvas{max-width:100%}
   </div>
 
   <hr>
+
+
+  <div class="slabel">10장. 동기부여 시스템 — 버튼별 기능 상세</div>
+
+  <div class="guide-section">
+    <h3>🔥 ① 연속기록 Streak 시스템</h3>
+    <p>홈 화면 상단 또는 더보기 → 🌱 성장현황에서 확인합니다.</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--amber-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">위치</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">버튼/기능</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">동작</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">홈 화면</td><td style="padding:6px 10px;border:1px solid var(--border)">🔥 N일 연속 감사 기록 중! 칩</td><td style="padding:6px 10px;border:1px solid var(--border)">현재 연속 일수 표시. 매일 감사 기록 시 자동 증가</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">자동 팝업</td><td style="padding:6px 10px;border:1px solid var(--border)">마일스톤 달성 축하 팝업</td><td style="padding:6px 10px;border:1px solid var(--border)">7·14·21·30·50·100·200·365일 달성 시 자동 표시. "감사합니다 🙏" 버튼으로 닫기</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">성장현황</td><td style="padding:6px 10px;border:1px solid var(--border)">달성한 마일스톤 배지</td><td style="padding:6px 10px;border:1px solid var(--border)">달성한 날수는 주황색, 미달성은 회색으로 표시</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guide-section">
+    <h3>🏆 ② 레벨 & 칭호 시스템</h3>
+    <p>홈 화면 레벨 배지 + 더보기 → 🌱 성장현황 → 레벨 카드에서 확인합니다.</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--teal-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼/영역</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">기능</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">활용 팁</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">홈 화면 레벨 배지</td><td style="padding:6px 10px;border:1px solid var(--border)">현재 칭호(🌱씨앗~✨빛) 표시</td><td style="padding:6px 10px;border:1px solid var(--border)">매일 앱을 열 때마다 현재 단계를 확인</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">성장현황 레벨 카드</td><td style="padding:6px 10px;border:1px solid var(--border)">레벨 아이콘·이름·성경구절·진척도 바</td><td style="padding:6px 10px;border:1px solid var(--border)">다음 레벨까지 N건 남음을 확인하고 동기 유발</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">레벨업 토스트</td><td style="padding:6px 10px;border:1px solid var(--border)">자동 알림 (하단 토스트)</td><td style="padding:6px 10px;border:1px solid var(--border)">레벨업 순간 "○○ 칭호를 획득했습니다!" 표시</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guide-section">
+    <h3>🎯 ③ 월간 목표 & 진척도</h3>
+    <p>홈 화면 "이달 목표" 섹션에서 확인하고 설정합니다.</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--teal-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">동작</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">⚙ 목표 설정</td><td style="padding:6px 10px;border:1px solid var(--border)">감사·나눔·전도 목표 숫자를 직접 입력하는 모달 팝업 열기. 저장 후 즉시 진척도 바에 반영</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">진척도 바 (자동)</td><td style="padding:6px 10px;border:1px solid var(--border)">이달 실제 기록 ÷ 목표 × 100% 자동 계산. 목표 달성 시 ✅ 표시 + 초록 완료 효과</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">성장현황 → 이달 목표 섹션</td><td style="padding:6px 10px;border:1px solid var(--border)">⚙ 목표 수정 버튼으로 언제든 목표 재설정 가능. 달성률 % 표시로 더 상세 확인</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guide-section">
+    <h3>✅ ④ 응답 기도 갤러리</h3>
+    <p>홈 화면 "응답 기도 갤러리" 섹션 + 더보기 → 동기부여·성장 → 응답 기도</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--teal-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">동작</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">+ 응답 기록 (홈)</td><td style="padding:6px 10px;border:1px solid var(--border)">날짜·기도제목·응답내용 입력 모달 팝업. 저장 시 폭죽 🎆 + 격려 토스트</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">올해 응답 N개 배지</td><td style="padding:6px 10px;border:1px solid var(--border)">올해 기록된 응답 기도 건수를 초록 배지로 표시</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">성장현황 → 응답 기도 전체</td><td style="padding:6px 10px;border:1px solid var(--border)">기록된 모든 응답 기도를 날짜 역순으로 카드 형태로 표시</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">더보기 → ✅ 응답 기도</td><td style="padding:6px 10px;border:1px solid var(--border)">동기부여 섹션 바로가기. 응답 기도 기록 모달 즉시 열기</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guide-section">
+    <h3>📅 ⑤ 연간 히트맵</h3>
+    <p>홈 화면 하단 "올해 기록 현황" + 더보기 → 🌱 성장현황 → 올해 기록 히트맵</p>
+    <ul class="checklist">
+      <li><strong>흰색 칸</strong> — 해당 날 기록 없음 → 오늘 감사·나눔 기록으로 채우기</li>
+      <li><strong>연초록 칸</strong> — 1건 기록 / 초록 칸 — 2~3건 / 진초록 칸 — 4건 이상</li>
+      <li><strong>표시 범위</strong> — 올해 1월 1일부터 6월 30일까지 182일 (감사+나눔 합산)</li>
+      <li><strong>목표</strong> — 최대한 진한 초록으로 가득 채우기! 빈 칸이 보이면 오늘 바로 채우고 싶어집니다</li>
+    </ul>
+  </div>
+
+  <div class="guide-section">
+    <h3>📖 ⑦ 설교 연계 주간 과제</h3>
+    <p>홈 화면 "이번 주 설교 과제" 섹션 + 더보기 → 동기부여·성장 → 설교 과제</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--purple-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--purple-d)">버튼</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--purple-d)">동작</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">+ 과제 등록 (홈)</td><td style="padding:6px 10px;border:1px solid var(--border)">설교 제목 + 실천 과제 입력 모달. 등록 후 홈 화면 카드에 즉시 표시</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">☑ 실천 완료 체크박스</td><td style="padding:6px 10px;border:1px solid var(--border)">체크 시 과제 카드에 취소선 표시 + 폭죽 🎆 + "이번 주 설교 과제를 실천했습니다!" 토스트</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">수정 버튼</td><td style="padding:6px 10px;border:1px solid var(--border)">등록된 과제를 수정. 다음 주 새 설교로 교체 시 사용</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">더보기 → 🖊️ 설교 과제</td><td style="padding:6px 10px;border:1px solid var(--border)">동기부여 섹션 바로가기. 과제 등록 모달 즉시 열기</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guide-section">
+    <h3>💌 ⑩ 격려 알림 & 폭죽 🎆</h3>
+    <p>자동 격려 메시지 + 성취 시 폭죽 애니메이션</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--amber-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">기능</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">발동 조건</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">랜덤 격려 토스트</td><td style="padding:6px 10px;border:1px solid var(--border)">하루 첫 번째 앱 접속 시 15가지 중 1가지 랜덤 표시 (하루 1회)</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">폭죽 🎆</td><td style="padding:6px 10px;border:1px solid var(--border)">Streak 마일스톤 달성 / 응답 기도 기록 / 설교 과제 완료 / 레벨업 시 자동 발동</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">🎲 다른 격려 메시지 버튼</td><td style="padding:6px 10px;border:1px solid var(--border)">성장현황 페이지 하단. 탭할 때마다 새 격려 메시지로 교체</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="guide-section">
+    <h3>🏛️ 교회 PRO 기능 버튼 상세 (더보기 → 교회 전용)</h3>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--teal-d);margin:.8rem 0 .4rem">🏛️ 교회 설정</h4>
+    <ul class="checklist">
+      <li><strong>로고 업로드 버튼</strong> — 기기 갤러리에서 교회 로고 이미지 선택. 정사각형 이미지 권장. 저장 시 홈 화면 로고 아이콘에 즉시 반영</li>
+      <li><strong>로고 삭제 버튼</strong> — 등록된 로고 제거. 기본 🏛️ 이모지로 복귀</li>
+      <li><strong>테마 색상 원형 버튼 6개</strong> — 탭 시 앱 전체 포인트 색상이 즉시 변경. 현재 선택된 색상은 진한 테두리로 표시</li>
+      <li><strong>💾 저장하기 버튼</strong> — 교회 이름·담임목사·전화·예배시간·주소 저장. 저장 후 홈 화면 제목이 "○○교회 행복일지"로 변경</li>
+    </ul>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--blue-d);margin:.8rem 0 .4rem">📌 공지 관리</h4>
+    <ul class="checklist">
+      <li><strong>+ 공지 등록 버튼</strong> — 카테고리(예배·행사·소그룹·기도·봉사·기타)·제목·내용·작성자 입력 후 등록. 즉시 목록에 반영</li>
+      <li><strong>📋 복사 버튼 (공지별)</strong> — 해당 공지를 "[교회명 공지] 카테고리 / 제목 / 내용 / 작성자" 형식으로 클립보드 복사. 카카오톡 바로 붙여넣기 가능</li>
+      <li><strong>📋 공지 복사 버튼 (전체)</strong> — 전체 공지를 한 번에 복사</li>
+      <li><strong>삭제 버튼</strong> — 해당 공지 영구 삭제. 확인 없이 즉시 삭제되므로 주의</li>
+    </ul>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--teal-d);margin:.8rem 0 .4rem">👤 성도 현황 대시보드</h4>
+    <ul class="checklist">
+      <li><strong>+ 성도 추가 버튼</strong> — 이름·역할·소그룹·연락처 입력 후 저장. 즉시 목록에 반영되고 TOP 3에 반영됨</li>
+      <li><strong>수정 버튼 (성도별)</strong> — 이번 달 감사 횟수·나눔 횟수·전도 단계를 직접 숫자로 입력. 소그룹 모임 후 리더가 업데이트</li>
+      <li><strong>📊 현황 복사 버튼</strong> — 전체 성도 실천 현황을 텍스트로 복사. 제직회 보고 자료로 즉시 활용</li>
+      <li><strong>📅 월말 점검 버튼</strong> — 이번 달 실천 기록이 없는 성도 명단 자동 추출. 개인 연락 목양에 활용</li>
+      <li><strong>✕ 삭제 버튼</strong> — 해당 성도 정보 삭제</li>
+    </ul>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--teal-d);margin:.8rem 0 .4rem">📈 소그룹 통계 리포트</h4>
+    <ul class="checklist">
+      <li><strong>📋 리포트 복사 버튼</strong> — 전체 통계(감사 N건·나눔 N건·전도 N명)를 텍스트로 복사. 교역자 보고용</li>
+      <li><strong>📢 단톡 발송용 버튼</strong> — 교회명·날짜·이번 주 통계·격려 말씀이 포함된 카카오톡 발송용 문자 자동 생성·복사</li>
+      <li><strong>🔄 새로고침 버튼</strong> — 최신 데이터로 그래프 재계산</li>
+      <li><strong>막대 그래프 (자동)</strong> — 7영역별 실천 비율을 색상 막대로 시각화. 낮은 영역 → 다음 주 소그룹 집중 주제</li>
+    </ul>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--teal-d);margin:.8rem 0 .4rem">🎙️ 설교 통합 관리</h4>
+    <ul class="checklist">
+      <li><strong>+ 설교 등록 버튼</strong> — 날짜·제목·본문·시리즈·설교자·요약·적용 포인트 입력. 최신 설교가 하이라이트 카드로 상단 표시</li>
+      <li><strong>📢 주보 발송 버튼</strong> — 최신 설교의 날짜·제목·본문·요약·적용 포인트를 카카오톡 발송용으로 자동 생성·복사. 월요일 아침 단톡방 발송에 활용</li>
+      <li><strong>📋 시리즈 보기 버튼</strong> — 등록된 설교 시리즈 목록과 편수를 팝업으로 표시</li>
+      <li><strong>📢 공유 버튼 (설교별)</strong> — 해당 설교 요약을 텍스트로 복사</li>
+    </ul>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--blue-d);margin:.8rem 0 .4rem">☁️ 클라우드 백업</h4>
+    <ul class="checklist">
+      <li><strong>💾 전체 데이터 백업 버튼</strong> — 감사·나눔·전도·공지·성도·설교·PRO 설정 전체를 happyjournal-날짜.json 파일로 저장. 구글 드라이브에 업로드해서 보관</li>
+      <li><strong>📥 백업 파일 복원 버튼</strong> — 저장된 JSON 파일 선택 시 전체 데이터 복원. 스마트폰 변경 시 활용</li>
+      <li><strong>백업 버튼 (항목별)</strong> — 감사·나눔·전도·공지·성도 각각 개별 백업 파일 생성</li>
+    </ul>
+
+    <h4 style="font-size:14px;font-weight:600;color:var(--blue-d);margin:.8rem 0 .4rem">🔔 단체 알림</h4>
+    <ul class="checklist">
+      <li><strong>📋 주간 안내 자동 생성 버튼</strong> — 설교 제목·이번 주 과제·공지를 입력하면 교회명·날짜·성경구절 포함 카카오톡용 문자 자동 생성</li>
+      <li><strong>📋 행사 공지 자동 생성 버튼</strong> — 행사명·일시·장소·준비물·추가 안내를 입력하면 행사 공지 문자 자동 생성</li>
+      <li><strong>📋 기도 요청 문자 생성 버튼</strong> — 기도 제목·합심기도 일시를 입력하면 마태복음 18:19 말씀 포함 기도 요청 문자 생성</li>
+      <li><strong>📋 격려 메시지 생성 버튼</strong> — 격려 대상·말씀·메시지를 입력하면 격려 문자 자동 생성</li>
+      <li><strong>📋 복사하기 버튼</strong> — 생성된 메시지 클립보드 복사. 카카오톡 단톡방에 바로 붙여넣기</li>
+      <li><strong>다시 작성 버튼</strong> — 생성 결과 숨기고 입력 폼으로 돌아가기</li>
+      <li><strong>탭 전환 (주간·행사·기도·격려)</strong> — 알림 유형 전환. 전환 시 이전 생성 결과는 자동 숨김</li>
+    </ul>
+  </div>
+
+  <div class="guide-section">
+    <h3>📱 더보기 → 동기부여·성장 섹션 버튼</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+      <thead><tr style="background:var(--teal-l)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">이동 / 동작</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">🌱 성장 현황</td><td style="padding:6px 10px;border:1px solid var(--border)">레벨·누적통계·Streak·이달목표·히트맵·응답기도·격려가 한 페이지에 모인 종합 성장 대시보드 이동</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">🎯 이달 목표</td><td style="padding:6px 10px;border:1px solid var(--border)">월간 목표 설정 모달 즉시 팝업</td></tr>
+        <tr><td style="padding:6px 10px;border:1px solid var(--border)">✅ 응답 기도</td><td style="padding:6px 10px;border:1px solid var(--border)">응답 기도 기록 모달 즉시 팝업</td></tr>
+        <tr style="background:var(--bg)"><td style="padding:6px 10px;border:1px solid var(--border)">🖊️ 설교 과제</td><td style="padding:6px 10px;border:1px solid var(--border)">주간 설교 과제 등록 모달 즉시 팝업</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
   <div class="slabel">📱 화면별 버튼·기능 상세 안내</div>
 
   <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--teal-l);color:var(--teal-d)">🏠</div><div class="acc-info"><div class="acc-title">홈 화면</div><div class="acc-sub">오늘의 말씀 · 실천 현황 · 빠른 기록 · 알람 설정</div></div><span class="acc-arrow">▼</span></div><div class="acc-body">
@@ -3944,6 +4877,11 @@ function updateStats(){
   if(sw) sw.innerHTML = sn>0 ? `<div class="streak-chip">🔥 ${sn}일 연속 감사 기록 중!</div>` : '';
   const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
   set('hg', gE.length+'개'); set('hs', sE.length+'건'); set('he', pE.length+'명');
+  // 하루 루틴 페이지 이번 주 실천 현황 카드
+  const _wg=wk(gE), _ws=wk(sE), _we=pE.filter(p=>!p.done).length;
+  set('hg-stat', _wg+'회'); set('hs-stat', _ws+'건'); set('he-stat', _we+'명');
+  // 동기부여 시스템 업데이트
+  if(typeof updateMotivation==='function') updateMotivation();
   set('gt', gE.length); set('gw', wk(gE)); set('gs', sn);
   set('st', sE.length);
   set('sg', sE.filter(e=>e.dir==='give').length);
@@ -4275,6 +5213,1863 @@ window.addEventListener('load', __pwaUpdateSettingsUI);
   })();
 
 })();
+
+
+/* ═══ 행복일지 교회 PRO v1.0 ═══ */
+const PRO_KEY='hj_pro_license',CHURCH_CFG_KEY='hj_church_cfg',CHURCH_NOTICE_KEY='hj_church_notices',CHURCH_MEMBER_KEY='hj_church_members',CHURCH_SERMON_KEY='hj_church_sermons_pro';
+function getProLicense(){try{return JSON.parse(localStorage.getItem(PRO_KEY)||'null');}catch(e){return null;}}
+function isPro(){const l=getProLicense();if(!l)return false;if(l.type==='trial'){return Math.floor((Date.now()-l.startDate)/86400000)<=30;}if(l.type==='paid'){return l.expireDate?Date.now()<l.expireDate:true;}return false;}
+function getChurchCfg(){try{return JSON.parse(localStorage.getItem(CHURCH_CFG_KEY)||'{}');}catch(e){return {};}}
+function saveChurchCfg(c){localStorage.setItem(CHURCH_CFG_KEY,JSON.stringify(c));}
+function getChurchNotices(){try{return JSON.parse(localStorage.getItem(CHURCH_NOTICE_KEY)||'[]');}catch(e){return [];}}
+function saveChurchNotices(a){localStorage.setItem(CHURCH_NOTICE_KEY,JSON.stringify(a));}
+function getChurchMembers(){try{return JSON.parse(localStorage.getItem(CHURCH_MEMBER_KEY)||'[]');}catch(e){return [];}}
+function saveChurchMembers(a){localStorage.setItem(CHURCH_MEMBER_KEY,JSON.stringify(a));}
+function getChurchSermons(){try{return JSON.parse(localStorage.getItem(CHURCH_SERMON_KEY)||'[]');}catch(e){return [];}}
+function saveChurchSermons(a){localStorage.setItem(CHURCH_SERMON_KEY,JSON.stringify(a));}
+function escH(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function proGuard(id){
+  const pid=id.replace('church-','');
+  if(isPro()){showPage('church-'+pid);setTimeout(()=>renderChurchPage(pid),50);}
+  else{showPage('church-license');setTimeout(renderLicensePage,50);}
+}
+
+function renderChurchPage(id){
+  const m={'customize':renderCustomizePage,'notice':renderChurchNoticePage,'dashboard':renderDashboardPage,
+    'report':renderReportPage,'sermon':renderChurchSermonPage,'cloud':renderCloudPage,
+    'alarm':renderAlarmPage,'members':renderDashboardPage,'license':renderLicensePage};
+  if(m[id])m[id]();
+}
+
+function renderLicensePage(){
+  const lic=getProLicense(),pro=isPro();
+  const el=document.getElementById('church-license-content');if(!el)return;
+  let days=0;
+  if(lic&&lic.type==='trial')days=30-Math.floor((Date.now()-lic.startDate)/86400000);
+  const badge=!lic?'<span class="license-badge lb-free">🔒 무료 버전</span>':
+    lic.type==='trial'?`<span class="license-badge lb-trial">⏳ 체험판 — 남은 ${Math.max(0,days)}일</span>`:
+    `<span class="license-badge lb-pro">✦ PRO 활성</span>`;
+  el.innerHTML=`<div style="padding:0 .1rem">${badge}
+  <div class="church-hero"><div style="font-size:13px;opacity:.8;margin-bottom:4px">행복일지 교회 전용 서비스</div>
+    <div style="font-size:20px;font-weight:700;margin-bottom:4px">교회 PRO 라이선스</div>
+    <div style="font-size:12px;opacity:.85">교회 단위로 행복일지를 더 강력하게 운영하세요</div></div>
+  <div class="slabel">PRO 전용 기능</div>
+  ${[['🏛️','교회 이름·로고 커스터마이징','앱 상단에 교회 이름과 로고를 표시합니다'],
+    ['📢','교회 공지사항 관리','목사님이 직접 공지를 올리고 성도들과 공유합니다'],
+    ['📊','성도 현황 대시보드','감사·나눔·전도 실천 현황을 한눈에 파악합니다'],
+    ['📈','소그룹 통계 리포트','주간·월간 통계를 자동으로 정리합니다'],
+    ['🎙️','설교 통합 관리','설교 노트를 체계적으로 분류하고 관리합니다'],
+    ['☁️','전체 데이터 백업 & 복원','기기를 바꿔도 모든 기록이 안전하게 보존됩니다'],
+    ['🔔','단체 알림 문자 생성','소그룹·전체 성도에게 알림 문자를 자동 생성합니다'],
+    ['👨‍👩‍👧‍👦','성도 관리 & 소그룹 연결','성도 정보와 소그룹을 체계적으로 관리합니다'],
+  ].map(([i,t,d])=>`<div class="settings-row"><div><div class="settings-label">${i} ${t} <span class="pro-badge">PRO</span></div><div class="settings-sub">${d}</div></div><span style="color:var(--teal)">✓</span></div>`).join('')}
+  <div class="slabel">요금제</div>
+  ${[['소형 교회','100명 이하','월 10,000원','연 100,000원'],
+    ['중형 교회','100~300명','월 30,000원','연 300,000원'],
+    ['대형 교회','300명 이상','월 50,000원','연 500,000원'],
+  ].map(([t,s,m,y])=>`<div class="settings-row" style="flex-direction:column;align-items:flex-start;gap:4px">
+    <div style="display:flex;justify-content:space-between;width:100%;align-items:center">
+      <div class="settings-label" style="font-size:15px">🏛️ ${t}</div><span class="pro-badge" style="font-size:11px">${s}</span></div>
+    <div style="display:flex;gap:12px;font-size:13px;color:var(--text2)">
+      <span>월정액: <strong style="color:var(--teal)">${m}</strong></span>
+      <span>연간: <strong style="color:var(--teal-d)">${y}</strong></span></div></div>`).join('')}
+  <div class="slabel">시작하기</div>
+  ${!pro?`<button class="btn btn-p" style="width:100%;padding:13px;font-size:15px;margin-bottom:10px" onclick="startTrial()">🎁 30일 무료 체험 시작하기</button>
+  <button class="btn btn-g" style="width:100%;padding:12px;font-size:14px;margin-bottom:10px" onclick="showLicInput()">🔑 라이선스 키 입력</button>
+  <div style="text-align:center;font-size:12px;color:var(--text3);margin-bottom:.5rem">라이선스 문의: <strong style="color:var(--teal)">카카오뱅크 3333-15-7956895 (임홍수)</strong></div>
+  <div style="text-align:center;font-size:12px;color:var(--text3)">입금 후 카카오톡으로 교회명·성도수·입금확인을 보내주시면 라이선스 키를 발급해드립니다.</div>`
+  :`<button class="btn btn-g" style="width:100%;padding:12px;font-size:14px;margin-bottom:8px" onclick="showLicInput()">🔑 라이선스 갱신</button>
+  <button class="btn btn-d btn-sm" onclick="if(confirm('PRO를 해제할까요?')){localStorage.removeItem('hj_pro_license');toast('PRO 해제됨');showPage('more');}">PRO 해제</button>`}
+  <div id="lic-input-area" style="display:none;margin-top:.9rem">
+    <label class="fl">라이선스 키</label>
+    <input type="text" id="lic-key-inp" placeholder="HJ-PRO-XXXX-XXXX-XXXX" style="text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">
+    <button class="btn btn-p btn-sm" onclick="activateLic()">활성화</button>
+  </div></div>`;
+  const st=document.getElementById('pro-status-text');
+  if(st)st.textContent=!lic?'무료 버전 사용 중 — 교회 전용 기능 잠금':lic.type==='trial'?`체험판 — 남은 ${Math.max(0,days)}일`:'PRO 활성 ✓';
+}
+
+function startTrial(){if(getProLicense()){toast('이미 라이선스가 있습니다');return;}localStorage.setItem(PRO_KEY,JSON.stringify({type:'trial',startDate:Date.now(),createdAt:Date.now()}));toast('✅ 30일 무료 체험이 시작됩니다!');renderLicensePage();}
+function showLicInput(){const el=document.getElementById('lic-input-area');if(el)el.style.display=el.style.display==='none'?'block':'none';}
+function activateLic(){const key=(document.getElementById('lic-key-inp')?.value||'').trim().toUpperCase();if(!key){toast('라이선스 키를 입력하세요');return;}if(key.startsWith('HJ-PRO-')){const parts=key.split('-');let months=12;const lp=parts[parts.length-1];if(lp.endsWith('M'))months=parseInt(lp)||12;const expireDate=Date.now()+months*30*86400000;localStorage.setItem(PRO_KEY,JSON.stringify({type:'paid',key,activatedAt:Date.now(),expireDate,months}));toast('🎉 PRO 라이선스가 활성화되었습니다!');renderLicensePage();}else if(key.startsWith('HJ-TRIAL-')){startTrial();}else{toast('유효하지 않은 라이선스 키입니다');}}
+
+
+/* ═══════════════════════════════════════════════════════════
+   교회 전용 9개 페이지 — 설명 + 실행 버튼 강화 버전
+   기존 함수명 그대로 덮어씀 (renderChurchPage 라우터 호환)
+   ═══════════════════════════════════════════════════════════ */
+
+// ── 공통 헬퍼 ──
+function _cSection(title, icon, desc, color='var(--teal)'){
+  return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.95rem 1rem;margin-bottom:.8rem;box-shadow:var(--sh)">
+    <div style="display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem">
+      <span style="font-size:18px">${icon}</span>
+      <span style="font-size:14px;font-weight:700;color:${color}">${title}</span>
+    </div>
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.65">${desc}</div>
+  </div>`;
+}
+function _cTip(msg){
+  return `<div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 var(--rs) var(--rs) 0;padding:.6rem .85rem;margin-bottom:.7rem;font-size:12px;color:var(--amber-d);line-height:1.6">💡 ${msg}</div>`;
+}
+function _cQuickBtn(label, onclick, color='var(--teal)'){
+  return `<button onclick="${onclick}" style="display:inline-flex;align-items:center;gap:5px;padding:9px 14px;border-radius:var(--rs);background:${color};color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;margin:0 5px 5px 0">${label}</button>`;
+}
+function _cOutlineBtn(label, onclick){
+  return `<button onclick="${onclick}" style="display:inline-flex;align-items:center;gap:5px;padding:8px 13px;border-radius:var(--rs);background:transparent;color:var(--text2);border:1px solid var(--border);font-size:13px;cursor:pointer;font-family:inherit;margin:0 5px 5px 0">${label}</button>`;
+}
+function _cDivider(label=''){
+  return `<div style="display:flex;align-items:center;gap:.5rem;margin:.75rem 0 .5rem"><div style="flex:1;height:1px;background:var(--border)"></div>${label?`<span style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.06em;white-space:nowrap">${label}</span><div style="flex:1;height:1px;background:var(--border)"></div>`:''}  </div>`;
+}
+
+// ══════════════════════════════════════
+// 1. 교회 설정
+// ══════════════════════════════════════
+function renderCustomizePage(){
+  const cfg=getChurchCfg(), el=document.getElementById('church-customize-content');
+  if(!el) return;
+
+  const cfg_name = cfg.churchName||'';
+  const cfg_pastor = cfg.pastor||'';
+  const cfg_tel = cfg.tel||'';
+  const cfg_worship = cfg.worship||'';
+  const cfg_addr = cfg.addr||'';
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('교회 설정이란?','🏛️',
+      '앱 상단에 교회 이름과 로고를 표시하고, 테마 색상을 교회 상징색으로 맞춥니다. 성도들이 앱을 열 때 <strong>"우리 교회 앱"</strong>이라는 소속감을 느끼게 합니다.',
+      'var(--teal-d)')}
+
+    ${_cTip('담임목사님이 먼저 설정하고, 소그룹 오리엔테이션 때 성도들에게 "우리 교회 색깔로 바뀐 앱"을 보여주세요!')}
+
+    ${_cDivider('교회 기본 정보')}
+
+    <div class="church-info-row" style="margin-bottom:.8rem">
+      <div class="church-logo-box" onclick="document.getElementById('logo-file-inp').click()" style="cursor:pointer">
+        ${cfg.logoData?`<img src="${cfg.logoData}" alt="로고" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`:'🏛️'}
+      </div>
+      <div style="flex:1">
+        <div class="church-name-display">${escH(cfg_name)||'교회 이름을 입력하세요'}</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:2px">${escH(cfg_pastor)||'담임목사명 미설정'}</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:1px">${escH(cfg_worship)||'예배 시간 미설정'}</div>
+      </div>
+    </div>
+
+    <label class="fl">⛪ 교회 이름</label>
+    <input type="text" id="cfg-name" value="${escH(cfg_name)}" placeholder="예: 행복교회">
+
+    <label class="fl">👨‍💼 담임목사명</label>
+    <input type="text" id="cfg-pastor" value="${escH(cfg_pastor)}" placeholder="예: 홍길동 목사">
+
+    <label class="fl">📞 교회 전화</label>
+    <input type="text" id="cfg-tel" value="${escH(cfg_tel)}" placeholder="예: 02-1234-5678">
+
+    <label class="fl">🕐 예배 시간</label>
+    <input type="text" id="cfg-worship" value="${escH(cfg_worship)}" placeholder="예: 주일 1부 9:00 / 2부 11:00">
+
+    <label class="fl">📍 교회 주소</label>
+    <input type="text" id="cfg-addr" value="${escH(cfg_addr)}" placeholder="예: 서울시 강남구...">
+
+    ${_cDivider('앱 테마 색상')}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:.9rem">
+      ${[['teal','#1D9E75','초록(기본)'],['blue','#185FA5','파랑'],['purple','#534AB7','보라'],
+         ['coral','#D85A30','빨강'],['amber','#BA7517','주황'],['green','#3B6D11','진초록']
+        ].map(([id,hex,label])=>`
+        <div onclick="setThemeColor('${id}','${hex}')" style="cursor:pointer;text-align:center">
+          <div style="width:38px;height:38px;border-radius:50%;background:${hex};margin:0 auto 4px;
+            border:3px solid ${cfg.themeColor===id?'#1A1814':'transparent'};box-shadow:0 2px 6px rgba(0,0,0,.15)"></div>
+          <div style="font-size:10px;color:var(--text2)">${label}</div>
+        </div>`).join('')}
+    </div>
+
+    ${_cDivider('교회 로고')}
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1rem">
+      ${_cQuickBtn('📷 로고 업로드', "document.getElementById('logo-file-inp').click()")}
+      ${cfg.logoData ? _cOutlineBtn('🗑 로고 삭제', "removeLogo()") : ''}
+    </div>
+    <input type="file" id="logo-file-inp" accept="image/*" style="display:none" onchange="handleLogoUpload(this)">
+
+    ${_cTip('로고는 정사각형 이미지(512×512px 권장)를 사용하면 가장 깔끔하게 표시됩니다.')}
+
+    <div style="display:flex;gap:8px;margin-top:.5rem">
+      <button class="btn btn-p" style="flex:1;padding:13px;font-size:15px" onclick="saveChurchConfig()">💾 저장하기</button>
+      <button class="btn btn-g" style="padding:13px" onclick="showPage('more')">취소</button>
+    </div>
+
+    ${_cDivider('실제 활용 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8">
+      ① 교회 이름 저장 → 홈 화면 제목이 "○○교회 행복일지"로 바뀜<br>
+      ② 예배 시간 입력 → 전도 대상자에게 앱으로 예배 정보 공유<br>
+      ③ 테마 색상 → 교회 현수막·인쇄물 색상과 통일하면 브랜드 완성
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════
+// 2. 공지 관리
+// ══════════════════════════════════════
+function renderChurchNoticePage(){
+  const notices=getChurchNotices(), el=document.getElementById('church-notice-content');
+  if(!el) return;
+  const cats=['예배','행사','소그룹','기도','봉사','기타'];
+  const catColors={예배:'var(--teal)',행사:'var(--blue)',소그룹:'var(--purple)',
+    기도:'var(--pink)',봉사:'var(--amber)',기타:'var(--text3)'};
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('공지 관리란?','📢',
+      '주보 없이 앱으로 공지를 올립니다. 예배·행사·소그룹·기도 카테고리로 분류되며, 성도들이 앱을 열 때 최신 공지를 바로 확인할 수 있습니다.',
+      'var(--blue-d)')}
+
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.8rem">
+      ${_cQuickBtn('+ 공지 등록', "openM('modal-church-notice')", 'var(--blue)')}
+      ${_cOutlineBtn('📋 공지 복사', "copyAllNotices()")}
+    </div>
+
+    ${_cTip('주일 설교 후 "이번 주 말씀 적용 포인트"를 공지로 올리면, 성도들이 감사 일기를 쓸 때 설교와 연결됩니다!')}
+
+    ${_cDivider(`공지사항 (${notices.length}건)`)}
+
+    ${notices.length===0
+      ? `<div style="text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:13px">
+          <span style="display:block;font-size:28px;margin-bottom:.4rem">📢</span>
+          등록된 공지가 없습니다.<br>
+          <span style="font-size:12px">첫 번째 공지를 올려보세요!</span>
+        </div>`
+      : notices.slice().reverse().map((n,i)=>`
+        <div class="notice-card">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
+            <div class="notice-cat" style="background:${catColors[n.cat]||'var(--text3)'};color:#fff">${escH(n.cat)}</div>
+            <div class="notice-date" style="margin-top:0">${escH(n.date)} · ${escH(n.author||'관리자')}</div>
+          </div>
+          <div class="notice-title">${escH(n.title)}</div>
+          <div class="notice-body">${escH(n.body||'')}</div>
+          <div style="display:flex;gap:5px;margin-top:.5rem">
+            ${_cOutlineBtn('📋 복사', `copyNotice(${notices.length-1-i})`)}
+            <button onclick="deleteNotice(${notices.length-1-i})" style="background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:inherit">삭제</button>
+          </div>
+        </div>`).join('')
+    }
+
+    ${_cDivider('실제 활용 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8">
+      ① <strong>주일 설교 적용 포인트</strong> — 매주 올려서 감사 일기와 연결<br>
+      ② <strong>행사 D-7·D-3·D-1 예고</strong> — 3번 나눠 올리면 참석률 향상<br>
+      ③ <strong>기도 제목 공지</strong> — 공동체가 같은 제목으로 기도하게 됨<br>
+      ④ <strong>총동원 주일 카운트다운</strong> — D-4주부터 매주 독려 공지 게시
+    </div>
+
+    <!-- 공지 모달 -->
+    <div class="modal-bg" id="modal-church-notice">
+      <div class="modal">
+        <div class="modal-title">📢 공지 등록</div>
+        <label class="fl">카테고리</label>
+        <select id="n-cat">${cats.map(c=>`<option>${c}</option>`).join('')}</select>
+        <label class="fl">제목</label>
+        <input type="text" id="n-title" placeholder="공지 제목">
+        <label class="fl">내용</label>
+        <textarea id="n-body" placeholder="공지 내용을 입력하세요..." style="min-height:90px"></textarea>
+        <label class="fl">작성자</label>
+        <input type="text" id="n-author" placeholder="예: 담임목사">
+        <div class="modal-footer">
+          <button class="btn btn-g" onclick="closeM('modal-church-notice')">취소</button>
+          <button class="btn btn-p" onclick="saveNotice()">등록</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function copyNotice(idx){
+  const n=getChurchNotices()[idx]; if(!n) return;
+  const cfg=getChurchCfg();
+  const t=`[${cfg.churchName||'교회'} 공지 — ${n.cat}]\n\n📌 ${n.title}\n\n${n.body||''}\n\n— ${n.author||'관리자'} (${n.date})`;
+  navigator.clipboard?.writeText(t).then(()=>toast('📋 공지가 복사되었습니다')).catch(()=>toast('복사 실패'));
+}
+function copyAllNotices(){
+  const notices=getChurchNotices(); if(!notices.length){toast('공지가 없습니다');return;}
+  const cfg=getChurchCfg();
+  const t=`[${cfg.churchName||'교회'} 전체 공지]\n\n`+
+    notices.slice().reverse().map(n=>`◆ [${n.cat}] ${n.title}\n${n.body||''}`).join('\n\n');
+  navigator.clipboard?.writeText(t).then(()=>toast('📋 전체 공지가 복사되었습니다')).catch(()=>toast('복사 실패'));
+}
+
+// ══════════════════════════════════════
+// 3. 성도 현황 대시보드
+// ══════════════════════════════════════
+function renderDashboardPage(){
+  const members=getChurchMembers();
+  const el=document.getElementById('church-dashboard-content')||document.getElementById('church-members-content');
+  if(!el) return;
+  const total=members.length;
+  const ag=members.filter(m=>(m.gratCount||0)>0).length;
+  const as2=members.filter(m=>(m.shareCount||0)>0).length;
+  const ae=members.filter(m=>(m.evangelismStage||1)>1).length;
+  const top=members.slice().sort((a,b)=>((b.gratCount||0)+(b.shareCount||0))-((a.gratCount||0)+(a.shareCount||0))).slice(0,3);
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('성도 현황 대시보드란?','📊',
+      '등록된 성도들의 감사·나눔·전도 실천 현황을 한눈에 파악합니다. 목사님·장로님의 <strong>디지털 목양 노트</strong>입니다.',
+      'var(--teal-d)')}
+
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.8rem">
+      ${_cQuickBtn('+ 성도 추가', "openM('modal-church-member')")}
+      ${_cQuickBtn('📊 현황 복사', "copyDashboardSummary()", 'var(--purple)')}
+      ${_cOutlineBtn('📅 월말 점검', "showMonthlyCheck()")}
+    </div>
+
+    ${_cDivider('전체 현황')}
+    <div class="stat-grid" style="margin-bottom:.9rem">
+      <div class="stat-card"><div class="stat-n">${total}</div><div class="stat-l">등록 성도</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--teal)">${ag}</div><div class="stat-l">감사 실천</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--purple)">${as2}</div><div class="stat-l">나눔 실천</div></div>
+    </div>
+
+    ${top.length>0?`
+    ${_cDivider('이번 달 실천 TOP 3 🏆')}
+    ${top.map((m,i)=>`
+      <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.65rem .85rem;margin-bottom:5px;box-shadow:var(--sh)">
+        <span style="font-size:18px;width:24px;text-align:center">${['🥇','🥈','🥉'][i]}</span>
+        <div class="member-avatar" style="background:var(--teal-l);color:var(--teal-d)">${escH((m.name||'?').slice(0,1))}</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:500">${escH(m.name)}</div>
+          <div style="font-size:11px;color:var(--text2)">${escH(m.group||'소그룹 미배정')} · ${escH(m.role||'성도')}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:13px;font-weight:500;color:var(--teal)">감${m.gratCount||0} 나${m.shareCount||0}</div>
+          <div style="font-size:10px;color:var(--text3)">이번 달</div>
+        </div>
+      </div>`).join('')}` : ''}
+
+    ${_cDivider(`성도 목록 (${members.length}명)`)}
+
+    ${members.length===0
+      ? `<div style="text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:13px">
+          <span style="display:block;font-size:28px;margin-bottom:.4rem">👥</span>
+          등록된 성도가 없습니다.<br>소그룹 리더가 셀원을 등록해보세요!
+        </div>`
+      : members.map((m,i)=>`
+        <div class="member-row">
+          <div class="member-avatar" style="background:var(--teal-l);color:var(--teal-d)">${escH((m.name||'?').slice(0,1))}</div>
+          <div style="flex:1">
+            <div class="member-name">${escH(m.name)}</div>
+            <div class="member-role">${escH(m.group||'소그룹 미배정')} · ${escH(m.role||'성도')}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <div style="text-align:right">
+              <div style="font-size:12px;font-weight:500;color:var(--teal)">감${m.gratCount||0} 나${m.shareCount||0} 전${m.evangelismStage||1}단</div>
+            </div>
+            <button onclick="editMemberStat(${i})" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:3px 7px;font-family:inherit">수정</button>
+            <button onclick="deleteMember(${i})" style="background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;font-family:inherit">✕</button>
+          </div>
+        </div>`).join('')}
+
+    ${_cTip('소그룹 리더들이 매주 모임 후 셀원 실천 횟수를 업데이트하면, 목사님이 전체 현황을 한눈에 파악할 수 있습니다.')}
+
+    ${_cDivider('실제 활용 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8">
+      ① 소그룹 오리엔테이션 때 셀원 전원 등록<br>
+      ② 주간 모임 후 리더가 실천 횟수 업데이트<br>
+      ③ 월말 점검 버튼으로 제직회 보고 자료 생성<br>
+      ④ 실천 없는 성도 발견 → 개인 연락으로 목양
+    </div>
+
+    <!-- 성도 추가 모달 -->
+    <div class="modal-bg" id="modal-church-member">
+      <div class="modal">
+        <div class="modal-title">👥 성도 추가</div>
+        <label class="fl">이름</label><input type="text" id="m-name" placeholder="성도 이름">
+        <label class="fl">역할/직분</label><input type="text" id="m-role" placeholder="예: 장로, 권사, 집사, 성도">
+        <label class="fl">소그룹/구역</label><input type="text" id="m-group" placeholder="예: 1구역, A셀">
+        <label class="fl">연락처</label><input type="text" id="m-tel" placeholder="010-0000-0000">
+        <div class="modal-footer">
+          <button class="btn btn-g" onclick="closeM('modal-church-member')">취소</button>
+          <button class="btn btn-p" onclick="saveMember()">추가</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 실천 수정 모달 -->
+    <div class="modal-bg" id="modal-member-stat">
+      <div class="modal">
+        <div class="modal-title">✏️ 실천 현황 수정</div>
+        <div id="edit-member-name" style="font-size:14px;font-weight:500;margin-bottom:.7rem;color:var(--teal-d)"></div>
+        <label class="fl">🙏 이번 달 감사 기록 횟수</label>
+        <input type="number" id="edit-grat" min="0" placeholder="0">
+        <label class="fl">🤝 이번 달 나눔 기록 횟수</label>
+        <input type="number" id="edit-share" min="0" placeholder="0">
+        <label class="fl">✉️ 전도 진행 단계 (1~7)</label>
+        <input type="number" id="edit-stage" min="1" max="7" placeholder="1">
+        <div class="modal-footer">
+          <button class="btn btn-g" onclick="closeM('modal-member-stat')">취소</button>
+          <button class="btn btn-p" onclick="saveMemberStat()">저장</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+let _editMemberIdx = -1;
+function editMemberStat(i){
+  _editMemberIdx = i;
+  const m = getChurchMembers()[i]; if(!m) return;
+  const nameEl = document.getElementById('edit-member-name');
+  if(nameEl) nameEl.textContent = m.name + ' 성도';
+  const g = document.getElementById('edit-grat');
+  const s = document.getElementById('edit-share');
+  const e = document.getElementById('edit-stage');
+  if(g) g.value = m.gratCount||0;
+  if(s) s.value = m.shareCount||0;
+  if(e) e.value = m.evangelismStage||1;
+  openM('modal-member-stat');
+}
+function saveMemberStat(){
+  if(_editMemberIdx<0) return;
+  const members = getChurchMembers();
+  members[_editMemberIdx].gratCount = parseInt(document.getElementById('edit-grat')?.value)||0;
+  members[_editMemberIdx].shareCount = parseInt(document.getElementById('edit-share')?.value)||0;
+  members[_editMemberIdx].evangelismStage = parseInt(document.getElementById('edit-stage')?.value)||1;
+  saveChurchMembers(members);
+  closeM('modal-member-stat');
+  toast('✅ 실천 현황이 수정되었습니다');
+  renderDashboardPage();
+}
+function copyDashboardSummary(){
+  const members=getChurchMembers(), cfg=getChurchCfg();
+  const now=new Date().toLocaleDateString('ko-KR');
+  let t=`[${cfg.churchName||'교회'} 성도 현황 — ${now}]\n\n`;
+  t+=`등록 성도: ${members.length}명\n`;
+  t+=`감사 실천: ${members.filter(m=>m.gratCount>0).length}명\n`;
+  t+=`나눔 실천: ${members.filter(m=>m.shareCount>0).length}명\n`;
+  t+=`전도 진행: ${members.filter(m=>m.evangelismStage>1).length}명\n\n`;
+  members.forEach(m=>{t+=`• ${m.name} (${m.group||'미배정'}) — 감${m.gratCount||0} 나${m.shareCount||0} 전${m.evangelismStage||1}단\n`;});
+  navigator.clipboard?.writeText(t).then(()=>toast('📊 현황이 복사되었습니다')).catch(()=>toast('복사 실패'));
+}
+function showMonthlyCheck(){
+  const members=getChurchMembers();
+  const inactive=members.filter(m=>!m.gratCount&&!m.shareCount);
+  const msg=inactive.length>0
+    ? `이번 달 실천이 없는 성도: ${inactive.map(m=>m.name).join(', ')}\n개인적으로 연락해서 격려해주세요! 💌`
+    : '✅ 모든 등록 성도가 이번 달 실천했습니다! 하나님께 감사드립니다!';
+  alert(msg);
+}
+
+// ══════════════════════════════════════
+// 4. 소그룹 통계 리포트
+// ══════════════════════════════════════
+function renderReportPage(){
+  const gA=JSON.parse(localStorage.getItem('hj_grat_v3')||'[]');
+  const sA=JSON.parse(localStorage.getItem('hj_share_v3')||'[]');
+  const pA=JSON.parse(localStorage.getItem('hj_persons_v3')||'[]');
+  const el=document.getElementById('church-report-content'); if(!el) return;
+
+  const now=new Date(),wAgo=new Date(now),mAgo=new Date(now);
+  wAgo.setDate(now.getDate()-7); mAgo.setDate(now.getDate()-30);
+  const ym=now.toISOString().slice(0,7);
+  const wg=gA.filter(e=>new Date(e.date+'T00:00:00')>=wAgo).length;
+  const ws=sA.filter(e=>new Date(e.date+'T00:00:00')>=wAgo).length;
+  const wp=pA.filter(p=>p.stage>=2).length;
+  const mg=gA.filter(e=>e.date&&e.date.startsWith(ym)).length;
+  const ms=sA.filter(e=>e.date&&e.date.startsWith(ym)).length;
+  const sc={},gc={};
+  sA.forEach(e=>{sc[e.type]=(sc[e.type]||0)+1;});
+  gA.forEach(e=>{(e.areas||[]).forEach(a=>{gc[a]=(gc[a]||0)+1;});});
+  const mxS=Math.max(...Object.values(sc),1), mxG=Math.max(...Object.values(gc),1);
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('소그룹 통계 리포트란?','📈',
+      '감사·나눔·전도 실천을 영역별 막대 그래프로 자동 정리합니다. 소그룹 모임 시작 때 열어서 <strong>"이번 주 우리 현황"</strong>을 함께 확인하세요.',
+      'var(--teal-d)')}
+
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.8rem">
+      ${_cQuickBtn('📋 리포트 복사', "copyReportText()", 'var(--teal)')}
+      ${_cQuickBtn('📢 단톡 발송용', "copyReportForKakao()", 'var(--blue)')}
+      ${_cOutlineBtn('🔄 새로고침', "renderReportPage()")}
+    </div>
+
+    ${_cTip('소그룹 모임 시작 때 이 화면을 열어서 "이번 주 감사 몇 번 썼어요?"로 시작하면 자연스럽게 나눔이 시작됩니다!')}
+
+    ${_cDivider('이번 주 실천')}
+    <div class="stat-grid" style="margin-bottom:.9rem">
+      <div class="stat-card"><div class="stat-n">${wg}</div><div class="stat-l">감사 기록</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--purple)">${ws}</div><div class="stat-l">나눔 기록</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--blue)">${wp}</div><div class="stat-l">전도 진행</div></div>
+    </div>
+
+    ${_cDivider('이번 달 누적')}
+    <div class="report-section">
+      <div class="report-title">📊 월간 통계</div>
+      ${[['감사 일기',mg,30,'var(--teal)'],['나눔 기록',ms,30,'var(--purple)'],['전도 진행',wp,10,'var(--blue)']].map(([l,v,t,c])=>`
+        <div class="bar-row">
+          <div class="bar-label">${l}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.min(v/t*100,100)}%;background:${c}"></div></div>
+          <div class="bar-val">${v}</div>
+        </div>`).join('')}
+    </div>
+
+    ${_cDivider('감사 7영역 분포')}
+    <div class="report-section">
+      <div class="report-title">🙏 어느 영역에서 감사가 많나요?</div>
+      ${['구원','일상','관계','시련','응답','찬양','회개'].map(a=>`
+        <div class="bar-row">
+          <div class="bar-label">${a}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.round((gc[a]||0)/mxG*100)}%"></div></div>
+          <div class="bar-val">${gc[a]||0}</div>
+        </div>`).join('')}
+      <div style="font-size:11px;color:var(--text3);margin-top:5px">낮은 영역 → 다음 주 소그룹 집중 주제로 활용하세요</div>
+    </div>
+
+    ${_cDivider('나눔 7영역 분포')}
+    <div class="report-section">
+      <div class="report-title">🤝 어떤 나눔을 가장 많이 하고 있나요?</div>
+      ${['물질','말씀','관계','섬김','기도','위로','재능'].map(t=>`
+        <div class="bar-row">
+          <div class="bar-label">${t}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.round((sc[t]||0)/mxS*100)}%;background:var(--purple)"></div></div>
+          <div class="bar-val">${sc[t]||0}</div>
+        </div>`).join('')}
+      <div style="font-size:11px;color:var(--text3);margin-top:5px">낮은 영역 → 다음 주 나눔 과제로 지정해보세요</div>
+    </div>
+
+    ${_cDivider('전도 단계 분포')}
+    <div class="report-section">
+      <div class="report-title">✉️ 1&1 전도 단계 현황</div>
+      ${[1,2,3,4,5,6,7].map(s=>{
+        const names=['기도선정','관계형성','필요채움','신앙나눔','문화초청','예배초청','제자화'];
+        const cnt=pA.filter(p=>p.stage===s&&!p.done).length;
+        return `<div class="bar-row">
+          <div class="bar-label" style="font-size:11px">${s}.${names[s-1]}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${pA.length?Math.round(cnt/pA.length*100):0}%;background:var(--blue)"></div></div>
+          <div class="bar-val">${cnt}</div>
+        </div>`;}).join('')}
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:6px">
+        <span style="color:var(--text2)">4~6단계 대상자 → 총동원 주일 핵심 초청 타깃</span>
+        <span style="color:var(--teal);font-weight:500">✅완료: ${pA.filter(p=>p.done).length}명</span>
+      </div>
+    </div>
+
+    ${_cDivider('실제 활용 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8">
+      ① 소그룹 모임 시작 — 이 화면을 함께 보며 "이번 주 현황" 나누기<br>
+      ② 낮은 영역 발견 — 다음 주 집중 실천 목표 설정<br>
+      ③ 리포트 복사 — 교역자에게 주간 보고 (카톡으로 10초 완료)<br>
+      ④ 전도 4~6단계 — 총동원 주일 핵심 초청 명단 확인
+    </div>
+  </div>`;
+}
+
+function copyReportForKakao(){
+  const gA=JSON.parse(localStorage.getItem('hj_grat_v3')||'[]');
+  const sA=JSON.parse(localStorage.getItem('hj_share_v3')||'[]');
+  const pA=JSON.parse(localStorage.getItem('hj_persons_v3')||'[]');
+  const cfg=getChurchCfg();
+  const now=new Date();
+  const ym=now.toISOString().slice(0,7);
+  const wAgo=new Date(now); wAgo.setDate(now.getDate()-7);
+  const wg=gA.filter(e=>new Date(e.date+'T00:00:00')>=wAgo).length;
+  const ws=sA.filter(e=>new Date(e.date+'T00:00:00')>=wAgo).length;
+  const t=`[${cfg.churchName||'교회'} 행복일지 주간 리포트]
+📅 ${now.toLocaleDateString('ko-KR')}
+
+🙏 이번 주 감사 기록: ${wg}건
+🤝 이번 주 나눔 기록: ${ws}건
+✉️ 전도 진행 중: ${pA.filter(p=>!p.done).length}명
+
+"범사에 감사하라" (살전 5:18)
+함께 실천하는 우리 소그룹을 위해 기도합니다 🙏`;
+  navigator.clipboard?.writeText(t).then(()=>toast('📱 카카오톡 발송용으로 복사되었습니다')).catch(()=>toast('복사 실패'));
+}
+
+// ══════════════════════════════════════
+// 5. 설교 통합 관리
+// ══════════════════════════════════════
+function renderChurchSermonPage(){
+  const sermons=getChurchSermons(), el=document.getElementById('church-sermon-content');
+  if(!el) return;
+  const series=[...new Set(sermons.map(s=>s.series).filter(Boolean))];
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('설교 통합 관리란?','🎙️',
+      '설교를 날짜·제목·본문·시리즈·요약·적용으로 정리합니다. 주일 설교와 성도들의 <strong>감사 일기가 자연스럽게 연결</strong>됩니다.',
+      'var(--teal-d)')}
+
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.8rem">
+      ${_cQuickBtn('+ 설교 등록', "openM('modal-church-sermon-pro')")}
+      ${sermons.length>0?_cQuickBtn('📢 주보 발송', "copyLatestSermon()", 'var(--blue)'):''}
+      ${sermons.length>0?_cOutlineBtn('📋 시리즈 보기', "showSeriesList()"):''}
+    </div>
+
+    ${_cTip('설교 등록 후 "주보 발송" 버튼을 누르면 최신 설교 요약+적용 포인트가 자동으로 카카오톡 발송용으로 복사됩니다!')}
+
+    ${sermons.length>0?`
+    ${_cDivider('최신 설교')}
+    <div style="background:var(--teal-l);border:1.5px solid var(--teal);border-radius:var(--r);padding:.9rem 1rem;margin-bottom:.8rem">
+      <div style="font-size:11px;color:var(--teal-d);margin-bottom:4px">${sermons[sermons.length-1].date} · ${escH(sermons[sermons.length-1].series||'단편설교')}</div>
+      <div style="font-size:15px;font-weight:700;color:var(--teal-d);margin-bottom:4px">${escH(sermons[sermons.length-1].title)}</div>
+      <div style="font-size:12.5px;color:var(--teal-d);margin-bottom:4px">📖 ${escH(sermons[sermons.length-1].verse||'')}</div>
+      ${sermons[sermons.length-1].apply?`<div style="font-size:12px;color:var(--teal-d);padding:.5rem;background:rgba(255,255,255,.6);border-radius:6px;margin-top:5px">✏️ 이번 주 적용: ${escH(sermons[sermons.length-1].apply)}</div>`:''}
+    </div>`:''
+    }
+
+    ${_cDivider(`설교 목록 (${sermons.length}편)`)}
+
+    ${sermons.length===0
+      ? `<div style="text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:13px">
+          <span style="display:block;font-size:28px;margin-bottom:.4rem">🎙️</span>
+          등록된 설교가 없습니다.<br>첫 번째 설교를 등록해보세요!
+        </div>`
+      : sermons.slice().reverse().map((s,i)=>`
+        <div class="notice-card">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <div class="notice-cat" style="background:var(--teal);color:#fff">${escH(s.series||'단편')}</div>
+            <div class="notice-date" style="margin-top:0">${escH(s.date)} · ${escH(s.preacher||'담임목사')}</div>
+          </div>
+          <div class="notice-title">${escH(s.title)}</div>
+          <div style="font-size:12px;color:var(--teal-d);margin:.3rem 0">📖 ${escH(s.verse||'')}</div>
+          ${s.apply?`<div style="font-size:12px;color:var(--text2)">✏️ 적용: ${escH(s.apply)}</div>`:''}
+          <div style="display:flex;gap:5px;margin-top:.5rem">
+            ${_cOutlineBtn('📢 공유', `copySermonText(${sermons.length-1-i})`)}
+            <button onclick="delSermon(${sermons.length-1-i})" style="background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:inherit">삭제</button>
+          </div>
+        </div>`).join('')
+    }
+
+    ${_cDivider('실제 활용 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8">
+      ① 주일 오후 설교 등록 → 적용 포인트 한 줄 입력<br>
+      ② 월요일 아침 "주보 발송" → 교회 단톡방에 설교 요약 공유<br>
+      ③ 성도들이 적용 포인트를 감사 일기에 연결<br>
+      ④ 연말 — 1년 설교 목록으로 "올해 하나님 말씀" 결산
+    </div>
+
+    <!-- 설교 등록 모달 -->
+    <div class="modal-bg" id="modal-church-sermon-pro">
+      <div class="modal">
+        <div class="modal-title">🎙️ 설교 등록</div>
+        <label class="fl">날짜</label>
+        <input type="date" id="cs-date" value="${new Date().toISOString().split('T')[0]}">
+        <label class="fl">설교 제목</label>
+        <input type="text" id="cs-title" placeholder="설교 제목">
+        <label class="fl">본문 말씀</label>
+        <input type="text" id="cs-verse" placeholder="예: 요한복음 3:16">
+        <label class="fl">시리즈명</label>
+        <input type="text" id="cs-series" placeholder="예: 산상수훈, 단편설교">
+        <label class="fl">설교자</label>
+        <input type="text" id="cs-preacher" placeholder="예: 담임목사">
+        <label class="fl">설교 요약</label>
+        <textarea id="cs-summary" placeholder="핵심 내용 요약..."></textarea>
+        <label class="fl">이번 주 적용 포인트</label>
+        <textarea id="cs-apply" placeholder="성도들이 이번 주 실천할 한 가지..."></textarea>
+        <div class="modal-footer">
+          <button class="btn btn-g" onclick="closeM('modal-church-sermon-pro')">취소</button>
+          <button class="btn btn-p" onclick="saveChurchSermon()">등록</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function copyLatestSermon(){
+  const sermons=getChurchSermons(); if(!sermons.length) return;
+  const s=sermons[sermons.length-1], cfg=getChurchCfg();
+  const t=`[${cfg.churchName||'교회'} 주일 설교]\n📅 ${s.date}\n\n✝ ${s.title}\n📖 ${s.verse||''}\n\n${s.summary||''}\n\n✏️ 이번 주 적용: ${s.apply||''}\n\n— ${s.preacher||'담임목사'}\n#행복일지 #감사일기`;
+  navigator.clipboard?.writeText(t).then(()=>toast('📢 설교 요약이 복사되었습니다. 단톡방에 붙여넣기 하세요!')).catch(()=>toast('복사 실패'));
+}
+function showSeriesList(){
+  const sermons=getChurchSermons();
+  const series=[...new Set(sermons.map(s=>s.series).filter(Boolean))];
+  alert(series.length>0?'📚 설교 시리즈 목록:\n'+series.map(s=>`• ${s}: ${sermons.filter(x=>x.series===s).length}편`).join('\n'):'등록된 시리즈가 없습니다.');
+}
+
+// ══════════════════════════════════════
+// 6. 클라우드 백업
+// ══════════════════════════════════════
+function renderCloudPage(){
+  const el=document.getElementById('church-cloud-content'); if(!el) return;
+  const bt=localStorage.getItem('hj_last_backup');
+  const gLen=JSON.parse(localStorage.getItem('hj_grat_v3')||'[]').length;
+  const sLen=JSON.parse(localStorage.getItem('hj_share_v3')||'[]').length;
+  const pLen=JSON.parse(localStorage.getItem('hj_persons_v3')||'[]').length;
+  const nLen=getChurchNotices().length;
+  const mLen=getChurchMembers().length;
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('클라우드 백업이란?','☁️',
+      '모든 기록을 JSON 파일로 저장합니다. 스마트폰을 바꿔도, 브라우저를 초기화해도 <strong>소중한 신앙 기록을 영구 보존</strong>할 수 있습니다.',
+      'var(--blue-d)')}
+
+    ${bt?`<div style="background:var(--teal-l);border-radius:var(--rs);padding:.65rem .85rem;margin-bottom:.8rem;font-size:13px;color:var(--teal-d)">
+      ✅ 마지막 백업: ${new Date(parseInt(bt)).toLocaleString('ko-KR')}
+    </div>`:''}
+
+    ${_cTip('매달 1일을 "교회 데이터 백업의 날"로 정하고, 담당 교역자가 구글 드라이브에 저장해두세요!')}
+
+    ${_cDivider('현재 저장된 데이터')}
+    <div class="stat-grid" style="margin-bottom:.8rem">
+      <div class="stat-card"><div class="stat-n" style="font-size:18px">${gLen}</div><div class="stat-l">감사 기록</div></div>
+      <div class="stat-card"><div class="stat-n" style="font-size:18px;color:var(--purple)">${sLen}</div><div class="stat-l">나눔 기록</div></div>
+      <div class="stat-card"><div class="stat-n" style="font-size:18px;color:var(--blue)">${pLen}</div><div class="stat-l">전도 대상</div></div>
+    </div>
+    <div class="stat-grid" style="margin-bottom:.9rem">
+      <div class="stat-card"><div class="stat-n" style="font-size:18px;color:var(--amber)">${nLen}</div><div class="stat-l">공지사항</div></div>
+      <div class="stat-card"><div class="stat-n" style="font-size:18px;color:var(--coral)">${mLen}</div><div class="stat-l">등록 성도</div></div>
+      <div class="stat-card"><div class="stat-n" style="font-size:18px;color:var(--green)">${gLen+sLen+pLen}</div><div class="stat-l">전체 기록</div></div>
+    </div>
+
+    ${_cDivider('전체 백업 & 복원')}
+    <button class="btn btn-p" style="width:100%;padding:13px;font-size:15px;margin-bottom:8px" onclick="fullBackup()">
+      💾 전체 데이터 백업 (파일 저장)
+    </button>
+    <div style="position:relative;width:100%;margin-bottom:1rem">
+      <button class="btn btn-g" style="width:100%;padding:12px;font-size:14px">
+        📥 백업 파일로 복원하기
+      </button>
+      <input type="file" accept="application/json" style="position:absolute;inset:0;opacity:0;cursor:pointer" onchange="fullRestore(this)">
+    </div>
+
+    ${_cDivider('항목별 백업')}
+    ${[['🙏 감사 일기','hj_grat_v3','grat',gLen],
+       ['🤝 나눔 장부','hj_share_v3','share',sLen],
+       ['✉️ 전도 대상자','hj_persons_v3','person',pLen],
+       ['📢 교회 공지',CHURCH_NOTICE_KEY,'notice',nLen],
+       ['👥 성도 관리',CHURCH_MEMBER_KEY,'member',mLen],
+    ].map(([label,key,fname,cnt])=>`
+      <div class="settings-row">
+        <div>
+          <div class="settings-label">${label}</div>
+          <div class="settings-sub">${cnt}건 저장됨</div>
+        </div>
+        <button class="btn btn-g btn-sm" onclick="partialBackup('${key}','${fname}')">백업</button>
+      </div>`).join('')}
+
+    ${_cDivider('구글 드라이브 보관 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8;background:var(--surface2);border-radius:var(--rs);padding:.85rem 1rem">
+      ① 위 "전체 데이터 백업" 버튼으로 파일 저장<br>
+      ② 구글 드라이브 앱 열기 → 파일 업로드<br>
+      ③ 폴더명: "행복일지 백업 YYYY-MM" 으로 보관<br>
+      ④ 기기 변경 시: 드라이브에서 파일 다운 → 복원
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════
+// 7. 단체 알림
+// ══════════════════════════════════════
+function renderAlarmPage(){
+  const el=document.getElementById('church-alarm-content'); if(!el) return;
+  const cfg=getChurchCfg();
+  const sermons=getChurchSermons();
+  const latestSermon=sermons.length>0?sermons[sermons.length-1]:null;
+
+  el.innerHTML=`
+  <div style="padding:0 .05rem">
+
+    ${_cSection('단체 알림이란?','🔔',
+      '주간 안내·행사 공지·기도 요청·격려 메시지를 <strong>자동으로 생성</strong>합니다. 복사 후 교회 단톡방에 붙여넣기만 하면 됩니다!',
+      'var(--blue-d)')}
+
+    ${_cTip('매주 월요일 아침 — 주간 안내 생성 후 단톡방 발송이 습관이 되면 성도들이 앱을 더 자주 열게 됩니다!')}
+
+    <div class="tab-bar-sub">
+      <button class="tbs on" onclick="swAt('weekly',this)">📅 주간 안내</button>
+      <button class="tbs" onclick="swAt('event',this)">🎉 행사 공지</button>
+      <button class="tbs" onclick="swAt('prayer',this)">🙏 기도 요청</button>
+      <button class="tbs" onclick="swAt('encourage',this)">💌 격려</button>
+    </div>
+
+    <!-- 주간 안내 -->
+    <div id="at-weekly" class="tp-sub on">
+      ${_cSection('주간 안내 생성','📅',
+        '설교 제목, 이번 주 과제, 특별 공지를 입력하면 카카오톡 발송용 문자가 자동 생성됩니다.','')}
+      <label class="fl">이번 주 설교 제목</label>
+      <input type="text" id="atw-sermon" value="${latestSermon?escH(latestSermon.title):''}" placeholder="예: 오직 믿음으로">
+      <label class="fl">이번 주 행복일지 과제</label>
+      <input type="text" id="atw-task" placeholder="예: 감사 일기 5번 쓰기, 나눔 3건 기록">
+      <label class="fl">특별 공지 (선택)</label>
+      <input type="text" id="atw-notice" placeholder="예: 다음 주 야외예배, 특새 신청">
+      <label class="fl">본문 말씀 (선택)</label>
+      <input type="text" id="atw-verse" value="${latestSermon?escH(latestSermon.verse||''):''}" placeholder="예: 살전 5:18">
+      <button class="btn btn-p" style="width:100%;margin-top:.8rem;padding:12px" onclick="genWeekly()">
+        📋 주간 안내 자동 생성
+      </button>
+    </div>
+
+    <!-- 행사 공지 -->
+    <div id="at-event" class="tp-sub">
+      ${_cSection('행사 공지 생성','🎉','행사명·일시·장소·준비물을 입력하면 공지 문자가 자동 생성됩니다.','')}
+      <label class="fl">행사명</label>
+      <input type="text" id="ate-name" placeholder="예: 여름 수련회, 가을 야외예배">
+      <label class="fl">일시</label>
+      <input type="text" id="ate-date" placeholder="예: 8월 15일(목) 오전 9시">
+      <label class="fl">장소</label>
+      <input type="text" id="ate-place" placeholder="예: 본 교회 본당">
+      <label class="fl">준비물 (선택)</label>
+      <input type="text" id="ate-prep" placeholder="예: 성경, 찬양집, 간편식">
+      <label class="fl">추가 안내 (선택)</label>
+      <input type="text" id="ate-extra" placeholder="예: 신청은 구역장에게, 참가비 없음">
+      <button class="btn btn-p" style="width:100%;margin-top:.8rem;padding:12px" onclick="genEvent()">
+        📋 행사 공지 자동 생성
+      </button>
+    </div>
+
+    <!-- 기도 요청 -->
+    <div id="at-prayer" class="tp-sub">
+      ${_cSection('기도 요청 생성','🙏','이번 주 합심기도 제목을 입력하면 기도 요청 문자가 자동 생성됩니다.','')}
+      <label class="fl">이번 주 기도 제목</label>
+      <textarea id="atp-content" placeholder="예: 1. 총동원 주일을 위한 기도&#10;2. 전도 대상자들의 마음 열림&#10;3. 교회 부흥을 위한 기도" style="min-height:100px"></textarea>
+      <label class="fl">합심기도 일시 (선택)</label>
+      <input type="text" id="atp-date" placeholder="예: 이번 주 수요일 저녁 7시 30분">
+      <button class="btn btn-p" style="width:100%;margin-top:.8rem;padding:12px" onclick="genPrayer()">
+        📋 기도 요청 문자 생성
+      </button>
+    </div>
+
+    <!-- 격려 메시지 -->
+    <div id="at-encourage" class="tp-sub">
+      ${_cSection('격려 메시지 생성','💌','소그룹·성도 개인에게 보낼 격려 메시지를 자동 생성합니다.','')}
+      <label class="fl">격려 대상</label>
+      <input type="text" id="ate2-name" placeholder="예: 전체 성도, 1구역, ○○ 집사님">
+      <label class="fl">격려 말씀</label>
+      <input type="text" id="ate2-verse" placeholder="예: 빌립보서 4:13">
+      <label class="fl">격려 메시지</label>
+      <textarea id="ate2-msg" placeholder="진심 어린 격려의 말을 적어주세요..." style="min-height:80px"></textarea>
+      <button class="btn btn-p" style="width:100%;margin-top:.8rem;padding:12px" onclick="genEnc()">
+        📋 격려 메시지 생성
+      </button>
+    </div>
+
+    <!-- 생성 결과 -->
+    <div id="alarm-result" style="display:none;margin-top:1rem">
+      ${_cDivider('생성된 메시지')}
+      <textarea id="alarm-text-out" style="min-height:180px;font-size:13px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);width:100%;padding:.75rem;font-family:inherit;resize:vertical" readonly></textarea>
+      <div style="display:flex;gap:7px;margin-top:8px">
+        ${_cQuickBtn('📋 복사하기', "navigator.clipboard?.writeText(document.getElementById('alarm-text-out').value).then(()=>toast('카카오톡에 붙여넣기 하세요! 📱')).catch(()=>toast('복사 실패'))")}
+        ${_cOutlineBtn('다시 작성', "document.getElementById('alarm-result').style.display='none'")}
+      </div>
+    </div>
+
+    ${_cDivider('실제 활용 방법')}
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.8">
+      ① 매주 월요일 아침 — 주간 안내 생성 → 단톡방 발송<br>
+      ② 행사 D-7·D-3·D-1 — 행사 공지 3번 나눠서 발송<br>
+      ③ 수요일 저녁 — 기도 요청으로 합심기도 독려<br>
+      ④ 총동원 D-4주부터 — 매주 전도 독려 격려 메시지 발송
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════
+// 8. 성도 관리 (dashboard와 공유)
+// ══════════════════════════════════════
+// (members 페이지는 dashboard와 동일 렌더러 사용)
+
+// ══════════════════════════════════════
+// 보조 함수들
+// ══════════════════════════════════════
+function swAt(id,btn){
+  document.querySelectorAll('#page-church-alarm .tbs').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('#page-church-alarm .tp-sub').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  const tp=document.getElementById('at-'+id); if(tp)tp.classList.add('on');
+  document.getElementById('alarm-result').style.display='none';
+}
+function showAR(t){
+  const e=document.getElementById('alarm-result'), ta=document.getElementById('alarm-text-out');
+  if(e)e.style.display='block'; if(ta)ta.value=t;
+  e?.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function genWeekly(){
+  const cfg=getChurchCfg(),c=cfg.churchName||'교회';
+  const sermon=document.getElementById('atw-sermon')?.value||'';
+  const task=document.getElementById('atw-task')?.value||'';
+  const notice=document.getElementById('atw-notice')?.value||'';
+  const verse=document.getElementById('atw-verse')?.value||'살전 5:16-18';
+  const today=new Date().toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'short'});
+  showAR(`[${c} 행복일지 주간 안내]\n${today}\n\n🙏 이번 주 설교: ${sermon}\n📖 ${verse}\n\n📱 이번 주 행복일지 과제:\n${task}\n\n${notice?'📢 공지: '+notice+'\n\n':''}"항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라" (살전 5:16-18)\n\n행복일지: amosoolim-crypto.github.io/happiness-journal/`);
+}
+function genEvent(){
+  const cfg=getChurchCfg(),c=cfg.churchName||'교회';
+  const name=document.getElementById('ate-name')?.value||'';
+  const date=document.getElementById('ate-date')?.value||'';
+  const place=document.getElementById('ate-place')?.value||'';
+  const prep=document.getElementById('ate-prep')?.value||'';
+  const extra=document.getElementById('ate-extra')?.value||'';
+  showAR(`[${c} 행사 안내]\n\n🎉 ${name}\n📅 일시: ${date}\n📍 장소: ${place}${prep?'\n🎒 준비물: '+prep:''}${extra?'\n📌 '+extra:''}\n\n행복일지 앱에서 이 행사를 나눔 장부 → 관계 나눔으로 기록해보세요 🙏`);
+}
+function genPrayer(){
+  const cfg=getChurchCfg(),c=cfg.churchName||'교회';
+  const content=document.getElementById('atp-content')?.value||'';
+  const pdate=document.getElementById('atp-date')?.value||'';
+  showAR(`[${c} 합심기도 요청]\n\n🙏 이번 주 함께 기도해주세요\n\n${content}\n\n${pdate?'⏰ 합심기도: '+pdate+'\n\n':''}"두 사람이 땅에서 합심하여 무엇이든지 구하면 하늘에 계신 내 아버지께서 이루게 하시리라" (마 18:19)\n\n행복일지 앱 → 나눔 장부 → 기도 나눔으로 함께 기도를 기록해보세요 💌`);
+}
+function genEnc(){
+  const cfg=getChurchCfg(),c=cfg.churchName||'교회';
+  const name=document.getElementById('ate2-name')?.value||'성도 여러분';
+  const verse=document.getElementById('ate2-verse')?.value||'';
+  const msg=document.getElementById('ate2-msg')?.value||'';
+  showAR(`[${c} 격려 메시지]\n\n💌 ${name}에게\n\n${msg}\n\n${verse?'"'+verse+'"\n\n':''}행복일지와 함께 오늘도 감사하는 하루 되세요 🙏\namosoolim-crypto.github.io/happiness-journal/`);
+}
+
+
+
+
+/* ══════════════════════════════════════════════════════════
+   행복일지 동기부여 10가지 시스템 JS v1.0
+   기존 코드·데이터·구조 변경 없이 순수 추가만 함
+   ══════════════════════════════════════════════════════════ */
+
+// ────────────────────────────────────────
+// ① 연속기록 Streak 강화 — 마일스톤 팝업
+// ────────────────────────────────────────
+const STREAK_MILESTONES = [7,14,21,30,50,100,200,365];
+const STREAK_MSGS = {
+  7:'🔥 7일 연속! "무릇 심는 대로 거두리라" — 갈 6:7',
+  14:'🔥🔥 2주 연속! 습관이 되고 있어요. 하나님이 기뻐하십니다!',
+  21:'🏆 21일 연속! 과학적으로 습관이 형성되는 기간입니다. 당신은 해냈어요!',
+  30:'🌟 30일 연속! 한 달을 하나님께 감사로 채웠습니다. 놀라운 여정입니다!',
+  50:'👑 50일 연속! "선을 행하되 낙심하지 말지니" — 갈 6:9',
+  100:'🏅 100일 연속! 당신의 신앙 일지가 역사가 되고 있습니다. 하나님이 기억하십니다!',
+  200:'💎 200일 연속! "네 시작은 미약하였으나 네 나중은 심히 창대하리라" — 욥 8:7',
+  365:'👑✨ 1년 연속! 당신은 진정한 감사의 삶을 살고 있습니다. 하나님의 영광을 위해!',
+};
+
+function checkStreakMilestone(sn){
+  if(!sn || !STREAK_MILESTONES.includes(sn)) return;
+  const key = 'hj_streak_shown_'+sn;
+  if(localStorage.getItem(key)) return;
+  localStorage.setItem(key, '1');
+  showStreakCelebration(sn);
+}
+function showStreakCelebration(sn){
+  const msg = STREAK_MSGS[sn] || `🔥 ${sn}일 연속 달성!`;
+  fireConfetti();
+  const div = document.createElement('div');
+  div.className = 'streak-milestone';
+  div.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2000;max-width:85vw;padding:1.5rem;background:linear-gradient(135deg,#FFF8E7,#FDE68A);border-radius:16px;border:2px solid var(--amber);text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.2)';
+  div.innerHTML = `<span class="streak-fire">🔥</span>
+    <div style="font-size:18px;font-weight:900;color:var(--amber-d);margin-bottom:.4rem">${sn}일 연속 달성!</div>
+    <div style="font-size:13px;color:var(--amber-d);line-height:1.6;margin-bottom:1rem">${msg.replace(/^🔥+|🏆|🌟|👑|🏅|💎|✨/g,'').trim()}</div>
+    <button onclick="this.closest('div').remove()" style="background:var(--amber);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">감사합니다 🙏</button>`;
+  document.body.appendChild(div);
+  setTimeout(()=>div.remove(), 8000);
+}
+
+// ────────────────────────────────────────
+// ② 레벨 & 칭호 시스템
+// ────────────────────────────────────────
+const LEVELS = [
+  {min:0,   max:10,  name:'씨앗',   cls:'lv-seed',   icon:'🌱', verse:'"씨앗을 심는 자가 있다" — 고전 3:6',  next:10},
+  {min:11,  max:30,  name:'새싹',   cls:'lv-sprout', icon:'🌿', verse:'"물을 주는 자도 있다" — 고전 3:7',    next:30},
+  {min:31,  max:100, name:'나무',   cls:'lv-tree',   icon:'🌳', verse:'"뿌리가 땅에 박혔으매" — 엡 3:17',   next:100},
+  {min:101, max:300, name:'열매',   cls:'lv-fruit',  icon:'🍎', verse:'"많은 열매를 맺으라" — 요 15:8',     next:300},
+  {min:301, max:9999,name:'빛',     cls:'lv-light',  icon:'✨', verse:'"빛이 되라" — 마 5:14',              next:null},
+];
+function getLevel(total){
+  return LEVELS.find(l=>total>=l.min && total<=l.max) || LEVELS[0];
+}
+function renderLevelBadge(){
+  const total = (gE||[]).length + (sE||[]).length;
+  const lv = getLevel(total);
+  const el = document.getElementById('home-level-badge');
+  if(!el) return;
+
+  const lvIdx = LEVELS.findIndex(l=>l.name===lv.name);
+  // 진행 바 너비: 현 레벨 내 진행도
+  const pct = lv.next
+    ? Math.min(Math.round((total - lv.min) / (lv.next - lv.min) * 100), 100)
+    : 100;
+  // 단계 선 너비: 완료 단계 비율
+  const lineW = lvIdx===0 ? 0
+    : lvIdx>=LEVELS.length-1 ? 100
+    : Math.round(lvIdx / (LEVELS.length-1) * 100);
+
+  el.innerHTML = `
+    <div class="home-level-card">
+      <div class="home-level-steps" style="--line-w:${lineW}%">
+        <style>#home-level-badge .home-level-steps::after{width:${lineW}%}</style>
+        ${LEVELS.map((l,i)=>{
+          const isDone    = i < lvIdx;
+          const isCurrent = i === lvIdx;
+          const cls = isDone ? 'done' : isCurrent ? 'current' : '';
+          const lblCls = (isDone||isCurrent) ? 'active' : '';
+          return `<div class="hls-item">
+            <div class="hls-icon ${cls}">${isDone ? '✓' : l.icon}</div>
+            <div class="hls-label ${lblCls}">${l.name}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="home-level-info">
+        <div class="home-level-name">${lv.icon} ${lv.name} 단계</div>
+        <div class="home-level-next">${lv.next
+          ? `다음 레벨까지 ${lv.next - total}건`
+          : '🏆 최고 레벨!'}</div>
+      </div>
+      <div class="home-level-bar">
+        <div class="home-level-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div style="font-size:11px;color:var(--text3);margin-top:.35rem;text-align:right">
+        총 기록 ${total}건 · ${pct}% 진행
+      </div>
+    </div>`;
+
+  // 레벨업 체크
+  const prevKey = 'hj_last_level';
+  const prev = localStorage.getItem(prevKey)||'씨앗';
+  if(prev !== lv.name){
+    localStorage.setItem(prevKey, lv.name);
+    if(prev !== '씨앗'){
+      if(typeof fireConfetti==='function') fireConfetti();
+      if(typeof showMotivationToast==='function')
+        showMotivationToast('🎉 레벨업! ' + lv.icon + ' "' + lv.name + '" 칭호를 획득했습니다!');
+    }
+  }
+}
+
+// ────────────────────────────────────────
+// ③ 월간 목표 & 진척도
+// ────────────────────────────────────────
+const GOAL_KEY = 'hj_monthly_goals';
+function getGoals(){
+  try{ return JSON.parse(localStorage.getItem(GOAL_KEY)||'{"g":20,"s":15,"e":3}'); }
+  catch(e){ return {g:20,s:15,e:3}; }
+}
+function saveGoals(goals){ localStorage.setItem(GOAL_KEY,JSON.stringify(goals)); }
+function renderGoals(){
+  const el = document.getElementById('home-goals');
+  if(!el) return;
+  const goals = getGoals();
+  const now = new Date();
+  const ym = now.toISOString().slice(0,7);
+  const mg = (gE||[]).filter(e=>e.date&&e.date.startsWith(ym)).length;
+  const ms = (sE||[]).filter(e=>e.date&&e.date.startsWith(ym)).length;
+  const me = (pE||[]).filter(p=>p.stage>=2).length;
+  const items = [
+    {label:'🙏 감사 기록',val:mg,goal:goals.g,color:'var(--teal)',key:'g'},
+    {label:'🤝 나눔 기록',val:ms,goal:goals.s,color:'var(--purple)',key:'s'},
+    {label:'✉️ 전도 진행',val:me,goal:goals.e,color:'var(--blue)',key:'e'},
+  ];
+  el.innerHTML = items.map(({label,val,goal,color,key})=>{
+    const pct = Math.min(Math.round(val/goal*100),100);
+    const done = val>=goal;
+    return `<div class="goal-card${done?' goal-complete':''}">
+      <div class="goal-row">
+        <div class="goal-label">${label}${done?' ✅':''}</div>
+        <div class="goal-count">${val}/${goal}</div>
+      </div>
+      <div class="goal-bar"><div class="goal-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+    </div>`;
+  }).join('');
+}
+function openGoalModal(){
+  const g=getGoals();
+  const div=document.createElement('div');
+  div.className='modal-bg'; div.id='modal-goals';
+  div.style.display='flex';
+  div.innerHTML=`<div class="modal">
+    <div class="modal-title">🎯 이번 달 목표 설정</div>
+    <label class="fl">🙏 감사 기록 목표 (회)</label>
+    <input type="number" id="goal-g" value="${g.g}" min="1" max="100">
+    <label class="fl">🤝 나눔 기록 목표 (건)</label>
+    <input type="number" id="goal-s" value="${g.s}" min="1" max="100">
+    <label class="fl">✉️ 전도 진행 목표 (명)</label>
+    <input type="number" id="goal-e" value="${g.e}" min="1" max="50">
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="document.getElementById('modal-goals').remove()">취소</button>
+      <button class="btn btn-p" onclick="saveGoalModal()">저장</button>
+    </div>
+  </div>`;
+  document.body.appendChild(div);
+}
+function saveGoalModal(){
+  const g=parseInt(document.getElementById('goal-g')?.value)||20;
+  const s=parseInt(document.getElementById('goal-s')?.value)||15;
+  const e=parseInt(document.getElementById('goal-e')?.value)||3;
+  saveGoals({g,s,e});
+  document.getElementById('modal-goals')?.remove();
+  renderGoals();
+  showMotivationToast('🎯 목표가 저장되었습니다!');
+}
+
+// ────────────────────────────────────────
+// ④ 응답 기도 갤러리 강화
+// ────────────────────────────────────────
+const ANS_KEY = 'hj_answered_v2';
+function getAnswered(){
+  try{ return JSON.parse(localStorage.getItem(ANS_KEY)||'[]'); }
+  catch(e){ return []; }
+}
+function saveAnswered(arr){ localStorage.setItem(ANS_KEY,JSON.stringify(arr)); }
+function renderAnsweredGallery(){
+  const el=document.getElementById('home-answered-gallery');
+  if(!el) return;
+  const arr=getAnswered();
+  if(!arr.length){
+    el.innerHTML='<div style="font-size:12px;color:var(--text3);padding:.5rem 0">응답받은 기도를 기록해보세요 🙏</div>';
+    return;
+  }
+  const recent=arr.slice(-3).reverse();
+  el.innerHTML=`<div class="answered-count-badge" style="margin-bottom:.6rem">✅ 올해 응답 ${arr.filter(a=>a.date&&a.date.startsWith(new Date().getFullYear()+'')).length}개</div>`+
+    recent.map(a=>`<div class="answered-card">
+      <div class="answered-date">${a.date} · 응답받은 기도</div>
+      <div class="answered-content">${(a.content||'').slice(0,60)}${(a.content||'').length>60?'…':''}</div>
+    </div>`).join('');
+}
+function openAnsweredModalV2(){
+  const div=document.createElement('div');
+  div.className='modal-bg'; div.id='modal-answered-v2'; div.style.display='flex';
+  div.innerHTML=`<div class="modal">
+    <div class="modal-title">✅ 응답 기도 기록</div>
+    <label class="fl">날짜</label>
+    <input type="date" id="ans-date" value="${new Date().toISOString().split('T')[0]}">
+    <label class="fl">기도 제목</label>
+    <input type="text" id="ans-title" placeholder="기도했던 내용">
+    <label class="fl">응답 내용</label>
+    <textarea id="ans-content" placeholder="하나님이 어떻게 응답해주셨나요?" style="min-height:90px"></textarea>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="document.getElementById('modal-answered-v2').remove()">취소</button>
+      <button class="btn btn-p" onclick="saveAnsweredV2()">기록</button>
+    </div>
+  </div>`;
+  document.body.appendChild(div);
+}
+function saveAnsweredV2(){
+  const arr=getAnswered();
+  arr.push({
+    id:Date.now(),
+    date:document.getElementById('ans-date')?.value,
+    title:document.getElementById('ans-title')?.value.trim(),
+    content:document.getElementById('ans-content')?.value.trim(),
+  });
+  saveAnswered(arr);
+  document.getElementById('modal-answered-v2')?.remove();
+  renderAnsweredGallery();
+  fireConfetti();
+  showMotivationToast('✅ 응답 기도가 기록되었습니다! 하나님을 찬양합니다!');
+}
+
+// ────────────────────────────────────────
+// ⑤ 누적 통계 + 연간 히트맵
+// ────────────────────────────────────────
+// 현재 히트맵 분기 (기본: 현재 분기)
+let _hmQuarter = Math.ceil((new Date().getMonth()+1)/3);
+
+function switchHmTab(q, btn){
+  _hmQuarter = q;
+  renderHeatmap();
+}
+
+function renderHeatmap(){
+  const el=document.getElementById('home-heatmap');
+  if(!el) return;
+  const now=new Date();
+  const year=now.getFullYear();
+  const q=_hmQuarter;
+
+  // 데이터 집계
+  const dateCnt={};
+  (gE||[]).forEach(e=>{if(e.date&&e.date.startsWith(year+'')) dateCnt[e.date]=(dateCnt[e.date]||0)+1;});
+  (sE||[]).forEach(e=>{if(e.date&&e.date.startsWith(year+'')) dateCnt[e.date]=(dateCnt[e.date]||0)+1;});
+
+  // 분기별 월 범위
+  const QUARTERS={1:{months:[1,2,3],label:'1분기 (1~3월)'},2:{months:[4,5,6],label:'2분기 (4~6월)'},
+    3:{months:[7,8,9],label:'3분기 (7~9월)'},4:{months:[10,11,12],label:'4분기 (10~12월)'}};
+  const MN=['','1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  const qInfo=QUARTERS[q];
+  const todayStr=now.toISOString().split('T')[0];
+  let qTotal=0,qDays=0,qActive=0;
+
+  const monthBlocks=qInfo.months.map(m=>{
+    const dim=new Date(year,m,0).getDate();
+    let mTotal=0;
+    const cells=[];
+    for(let d=1;d<=dim;d++){
+      const ds=year+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+      const cnt=dateCnt[ds]||0;
+      const isFuture=ds>todayStr;
+      const isToday=ds===todayStr;
+      const lvl=isFuture||cnt===0?0:cnt<=1?1:cnt<=3?2:3;
+      const style=(isToday?'outline:2px solid var(--teal);outline-offset:1px;':'')+(isFuture?'opacity:.3;':'');
+      cells.push(`<div class="hm-day hm-${lvl}" style="${style}" title="${ds}: ${cnt}건"></div>`);
+      if(!isFuture){qTotal+=cnt;qDays++;if(cnt>0)qActive++;}
+      mTotal+=cnt;
+    }
+    return `<div class="hm-month-block">
+      <div class="hm-month-label">${MN[m]} <span style="font-size:10px;color:var(--text3);font-weight:400">${mTotal}건</span></div>
+      <div class="hm-month-grid">${cells.join('')}</div>
+    </div>`;
+  }).join('');
+
+  const avg=qDays>0?(qTotal/qDays).toFixed(1):'0';
+  const rate=qDays>0?Math.round(qActive/qDays*100):0;
+
+  el.innerHTML=`<div class="hm-quarter-wrap">
+    <div class="hm-quarter-title">
+      <div class="hm-quarter-label">${year}년 ${qInfo.label}</div>
+      <div class="hm-quarter-cnt">총 ${qTotal}건</div>
+    </div>
+    ${monthBlocks}
+    <div class="hm-summary-row">
+      <div class="hm-summary-chip"><div class="hm-summary-n">${qTotal}</div><div class="hm-summary-l">분기 총 기록</div></div>
+      <div class="hm-summary-chip"><div class="hm-summary-n">${qActive}</div><div class="hm-summary-l">기록한 날</div></div>
+      <div class="hm-summary-chip"><div class="hm-summary-n">${rate}%</div><div class="hm-summary-l">실천율</div></div>
+      <div class="hm-summary-chip"><div class="hm-summary-n">${avg}</div><div class="hm-summary-l">일 평균</div></div>
+    </div>
+    <div class="hm-legend" style="display:flex;align-items:center;gap:4px;margin-top:.4rem;justify-content:flex-end">
+      <span style="font-size:10px;color:var(--text3)">적음</span>
+      ${[0,1,2,3].map(l=>`<div style="width:10px;height:10px;border-radius:2px;background:${['var(--border)','#BBF7D0','#4ADE80','#16A34A'][l]}"></div>`).join('')}
+      <span style="font-size:10px;color:var(--text3)">많음</span>
+    </div>
+  </div>`;
+
+  // 탭 스타일 업데이트
+  const curQ=Math.ceil((now.getMonth()+1)/3);
+  document.querySelectorAll('.hm-tab').forEach((t,i)=>{
+    t.classList.remove('active','on','active-now');
+    if(i+1===q) t.classList.add('on');
+    else if(i+1===curQ) t.classList.add('active-now');
+  });
+}
+
+// ────────────────────────────────────────
+// ⑥ 소그룹 팀 통계 (교회 PRO 연동)
+// ────────────────────────────────────────
+function renderTeamStat(){
+  const el=document.getElementById('home-team-stat');
+  if(!el) return;
+  if(typeof isPro !== 'function' || !isPro()){
+    el.innerHTML='<div style="font-size:13px;color:var(--teal-d);line-height:1.8;font-weight:500;background:var(--teal-l);border-radius:var(--rs);padding:.85rem 1rem;border-left:3px solid var(--teal)">행복일지를 작성하여, 날마다 하나님께 감사 드리고, 성도들과 나눔 가지고, 이웃에게 복음 전하는 축제의 삶이 되기를 축원합니다!!!</div>';
+    return;
+  }
+  const members=(typeof getChurchMembers==='function'?getChurchMembers():[]);
+  if(!members.length){
+    el.innerHTML='<div style="font-size:12px;color:var(--text3)">성도 관리에서 성도를 추가하면 현황이 표시됩니다</div>';
+    return;
+  }
+  const total=(gE||[]).length+(sE||[]).length;
+  const cfg=(typeof getChurchCfg==='function'?getChurchCfg():{});
+  el.innerHTML=`<div class="team-stat-card">
+    <div class="team-stat-title">📊 ${cfg.churchName||'우리 교회'} 이번 주 현황</div>
+    <div style="font-size:13px;color:var(--teal-d);margin-bottom:.3rem">등록 성도 ${members.length}명 · 전체 기록 ${total}건</div>
+    <div style="font-size:12px;color:var(--text2)">더 많은 통계는 더보기 → 소그룹 통계 리포트에서 확인하세요</div>
+  </div>`;
+}
+
+// ────────────────────────────────────────
+// ⑦ 설교 연계 주간 과제
+// ────────────────────────────────────────
+const SERMON_TASK_KEY='hj_sermon_task';
+function getSermonTask(){
+  try{ return JSON.parse(localStorage.getItem(SERMON_TASK_KEY)||'null'); }
+  catch(e){ return null; }
+}
+function renderSermonTask(){
+  const el=document.getElementById('home-sermon-task');
+  if(!el) return;
+  const task=getSermonTask();
+  if(!task){
+    el.innerHTML=`<div style="font-size:12px;color:var(--text3);line-height:1.6">
+      이번 주 설교 과제가 없습니다.<br>
+      <button onclick="openSermonTaskModal()" style="background:none;border:none;color:var(--purple);font-size:12px;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;margin-top:4px">+ 주간 과제 등록하기</button>
+    </div>`;
+    return;
+  }
+  const done=task.done||false;
+  el.innerHTML=`<div class="sermon-task-card${done?' sermon-task-done':''}">
+    <div class="sermon-task-title">📖 ${task.sermon||'이번 주 설교'}</div>
+    <div class="sermon-task-body">${task.task||''}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
+      <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;color:var(--purple-d)">
+        <input type="checkbox" ${done?'checked':''} onchange="toggleSermonTaskDone(this)"> 실천 완료
+      </label>
+      <button onclick="openSermonTaskModal()" style="background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;font-family:inherit">수정</button>
+    </div>
+  </div>`;
+}
+function toggleSermonTaskDone(cb){
+  const task=getSermonTask()||{};
+  task.done=cb.checked;
+  localStorage.setItem(SERMON_TASK_KEY,JSON.stringify(task));
+  if(cb.checked){ fireConfetti(); showMotivationToast('🙌 이번 주 설교 과제를 실천했습니다!'); }
+  renderSermonTask();
+}
+function openSermonTaskModal(){
+  const t=getSermonTask()||{};
+  const div=document.createElement('div');
+  div.className='modal-bg'; div.id='modal-sermon-task'; div.style.display='flex';
+  div.innerHTML=`<div class="modal">
+    <div class="modal-title">📖 주간 설교 과제</div>
+    <label class="fl">설교 제목</label>
+    <input type="text" id="st-sermon" value="${t.sermon||''}" placeholder="이번 주 설교 제목">
+    <label class="fl">실천 과제</label>
+    <textarea id="st-task" placeholder="이번 주 실천할 내용을 적어주세요..." style="min-height:80px">${t.task||''}</textarea>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="document.getElementById('modal-sermon-task').remove()">취소</button>
+      <button class="btn btn-p" onclick="saveSermonTask()">저장</button>
+    </div>
+  </div>`;
+  document.body.appendChild(div);
+}
+function saveSermonTask(){
+  const sermon=document.getElementById('st-sermon')?.value.trim();
+  const task=document.getElementById('st-task')?.value.trim();
+  if(!task){ showMotivationToast('과제 내용을 입력하세요'); return; }
+  localStorage.setItem(SERMON_TASK_KEY,JSON.stringify({sermon,task,done:false,date:new Date().toISOString().split('T')[0]}));
+  document.getElementById('modal-sermon-task')?.remove();
+  renderSermonTask();
+  showMotivationToast('📖 주간 과제가 등록되었습니다!');
+}
+
+// ────────────────────────────────────────
+// ⑧ 기념일 & 절기 이벤트 배너
+// ────────────────────────────────────────
+const EVENTS=[
+  {month:1,  day:1,  title:'🎊 새해 첫날', body:'"내가 계획하는 것들을 이루리라" — 렘 29:11\n올해 1&1 전도 대상자를 지금 등록해보세요!'},
+  {month:3,  day:31, title:'🌸 부활절 시즌', body:'부활의 기쁨을 전도 대상자와 나눌 특별한 기회입니다!'},
+  {month:5,  day:1,  title:'👨‍👩‍👧‍👦 가정의 달', body:'5월, 가족 나눔 기록을 특별히 채워보세요. 가족이 최고의 전도 대상입니다!'},
+  {month:8,  day:28, title:'🎺 1차 초청 주일 D-2', body:'8월 30일 초청 주일이 이틀 남았습니다! 전도 대상자에게 연락했나요?'},
+  {month:11, day:27, title:'🎺 2차 초청 주일 D-2', body:'11월 29일 초청 주일이 이틀 남았습니다! 마지막 초청 약속을 확인하세요!'},
+  {month:11, day:1,  title:'🍂 추수감사절', body:'올해 하나님이 응답하신 기도를 돌아보며 감사를 기록해보세요!'},
+  {month:12, day:24, title:'🌟 크리스마스 이브', body:'오늘 전도 대상자에게 크리스마스 선물과 함께 복음을 나눠보세요!'},
+  {month:12, day:31, title:'🎆 한 해의 마지막 날', body:'올해 감사 일기를 돌아보며 하나님의 역사를 세어보세요!'},
+];
+function renderEventBanner(){
+  const el=document.getElementById('home-event-banner');
+  if(!el) return;
+  const now=new Date();
+  const m=now.getMonth()+1, d=now.getDate();
+  const ev=EVENTS.find(e=>e.month===m&&e.day===d);
+  if(!ev){ el.style.display='none'; return; }
+  el.style.display='block';
+  el.innerHTML=`<div class="event-banner">
+    <div class="event-banner-title">${ev.title}</div>
+    <div class="event-banner-body">${ev.body.replace(/\n/g,'<br>')}</div>
+  </div>`;
+}
+
+// ────────────────────────────────────────
+// ⑨ 과거 기록 "오늘의 회고" 카드
+// ────────────────────────────────────────
+function renderRetroCard(){
+  const el=document.getElementById('home-retro');
+  if(!el) return;
+  const allG=gE||[];
+  if(allG.length<3){ el.style.display='none'; return; }
+  // 1년 전, 3개월 전, 랜덤 중 하나 선택
+  const now=new Date();
+  const oneYearAgo=new Date(now); oneYearAgo.setFullYear(now.getFullYear()-1);
+  const threeMonAgo=new Date(now); threeMonAgo.setMonth(now.getMonth()-3);
+  const oyStr=oneYearAgo.toISOString().split('T')[0];
+  const tmStr=threeMonAgo.toISOString().split('T')[0].slice(0,7);
+  let retro=allG.find(e=>e.date&&e.date===oyStr);
+  if(!retro) retro=allG.find(e=>e.date&&e.date.startsWith(tmStr));
+  if(!retro) retro=allG[Math.floor(Math.random()*Math.min(allG.length,30))];
+  if(!retro){ el.style.display='none'; return; }
+  const isYearAgo=retro.date===oyStr;
+  const label=isYearAgo?'📅 1년 전 오늘의 감사':'📅 과거의 감사 기록';
+  el.style.display='block';
+  el.innerHTML=`<div class="retro-card">
+    <div class="retro-label">${label}</div>
+    <div class="retro-content">${(retro.body||retro.note||retro.title||'감사 기록').slice(0,80)}${(retro.body||'').length>80?'…':''}</div>
+    <div class="retro-date">${retro.date} · ${retro.area||retro.areas?.[0]||'감사'} 영역</div>
+  </div>`;
+}
+
+// ────────────────────────────────────────
+// ⑩ 다양한 격려 알림 & 폭죽
+// ────────────────────────────────────────
+const MOTIVATION_MSGS=[
+  '🌅 오늘도 하나님이 주신 선물 하나를 찾아보세요!',
+  '🙏 감사는 믿음의 고백입니다. 오늘 하루도 감사로 시작하세요!',
+  '🤝 누군가 당신의 나눔을 기다리고 있습니다!',
+  '✉️ 이름을 불러주면 기도가 됩니다. 오늘 누구를 위해 기도하셨나요?',
+  '🌱 작은 기록이 쌓여 신앙의 역사가 됩니다!',
+  '🔥 연속 기록을 이어가세요. 하나님은 성실함을 기뻐하십니다!',
+  '💌 오늘 전도 대상자에게 짧은 안부를 전해보세요!',
+  '📖 오늘 QT 말씀을 감사 일기에 연결해보세요!',
+  '🌟 받은 나눔에도 감사를 기록해보세요!',
+  '🎯 이번 달 목표에 한 걸음 더 가까워질 수 있어요!',
+  '💡 "선을 행하되 낙심하지 말지니" — 갈 6:9',
+  '🌊 "범사에 감사하라" — 오늘의 범사 중 한 가지를 찾아보세요!',
+  '🏆 꾸준한 기록이 가장 강한 신앙 훈련입니다!',
+  '💎 오늘의 시련 속에서도 감사를 발견할 수 있다면 믿음이 자란 것입니다!',
+  '🌺 나눔의 기록이 쌓일수록 사랑의 공동체가 됩니다!',
+];
+let motivationToastTimer=null;
+function showMotivationToast(msg, duration=3000){
+  const prev=document.querySelector('.motivation-toast');
+  if(prev) prev.remove();
+  if(motivationToastTimer) clearTimeout(motivationToastTimer);
+  const div=document.createElement('div');
+  div.className='motivation-toast'; div.textContent=msg;
+  document.body.appendChild(div);
+  motivationToastTimer=setTimeout(()=>{
+    div.style.opacity='0'; div.style.transition='opacity .3s';
+    setTimeout(()=>div.remove(),300);
+  },duration);
+}
+function showRandomMotivation(){
+  const msg=MOTIVATION_MSGS[Math.floor(Math.random()*MOTIVATION_MSGS.length)];
+  showMotivationToast(msg, 4000);
+}
+
+// 폭죽 애니메이션
+function fireConfetti(){
+  const colors=['#1D9E75','#534AB7','#185FA5','#F59E0B','#EF4444','#10B981','#8B5CF6'];
+  const overlay=document.createElement('div'); overlay.className='confetti-overlay';
+  for(let i=0;i<40;i++){
+    const p=document.createElement('div'); p.className='confetti-piece';
+    p.style.cssText=`left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${1.5+Math.random()*1.5}s;animation-delay:${Math.random()*.5}s;width:${6+Math.random()*6}px;height:${6+Math.random()*6}px;border-radius:${Math.random()>0.5?'50%':'2px'}`;
+    overlay.appendChild(p);
+  }
+  document.body.appendChild(overlay);
+  setTimeout(()=>overlay.remove(),3000);
+}
+
+// ────────────────────────────────────────
+// 전체 동기부여 시스템 초기화 & 업데이트
+// ────────────────────────────────────────
+function updateMotivation(){
+  // Streak 마일스톤 체크
+  const sn = typeof streak==='function' ? streak(gE||[]) : 0;
+  checkStreakMilestone(sn);
+  // 레벨 배지
+  renderLevelBadge();
+  // 목표 진척도
+  renderGoals();
+  // 응답 기도 갤러리
+  renderAnsweredGallery();
+  // 히트맵
+  renderHeatmap();
+  // 팀 통계
+  renderTeamStat();
+  // 설교 과제
+  renderSermonTask();
+  // 이벤트 배너
+  renderEventBanner();
+  // 회고 카드
+  renderRetroCard();
+}
+
+// 앱 시작 시 랜덤 격려 (홈 열 때마다)
+(function initMotivation(){
+  document.addEventListener('DOMContentLoaded',()=>{
+    setTimeout(updateMotivation, 500);
+    // 하루 한 번 랜덤 격려 메시지
+    const today=new Date().toISOString().split('T')[0];
+    const lastMsg=localStorage.getItem('hj_last_motivation_date');
+    if(lastMsg!==today){
+      localStorage.setItem('hj_last_motivation_date',today);
+      setTimeout(showRandomMotivation,1500);
+    }
+  });
+})();
+
+
+/* ── 성장 현황 페이지 렌더 ── */
+function renderMotivationPage(){
+  const allG = gE||[], allS = sE||[], allP = pE||[];
+  const total = allG.length + allS.length;
+  const lv = getLevel(total);
+  const sn = typeof streak==='function' ? streak(allG) : 0;
+  const ans = getAnswered();
+
+  // 레벨 카드 — 5단계 시각화
+  const lvIdx = LEVELS.findIndex(l=>l.name===lv.name);
+  const lineW = lvIdx<=0 ? 0 : lvIdx>=LEVELS.length-1 ? 100
+    : Math.round(lvIdx/(LEVELS.length-1)*100);
+
+  // 5단계 진행 스텝
+  const stepsEl = document.getElementById('motivation-level-steps');
+  if(stepsEl){
+    stepsEl.innerHTML = `<style>#motivation-level-steps::after{width:${lineW}%}</style>`
+      + LEVELS.map((l,i)=>{
+          const isDone    = i < lvIdx;
+          const isCurrent = i === lvIdx;
+          const cls = isDone ? 'done' : isCurrent ? 'current' : '';
+          const lblCls = (isDone||isCurrent) ? 'active' : '';
+          return `<div class="hls-item">
+            <div class="hls-icon ${cls}" style="width:40px;height:40px;font-size:20px">${isDone?'✓':l.icon}</div>
+            <div class="hls-label ${lblCls}" style="font-size:11px">${l.name}</div>
+          </div>`;
+        }).join('');
+  }
+
+  // 현재 레벨 정보
+  const iconEl = document.getElementById('motivation-level-icon');
+  const nameEl = document.getElementById('motivation-level-name');
+  const badgeEl = document.getElementById('motivation-level-badge-wrap');
+  const verseEl = document.getElementById('motivation-level-verse');
+  const barEl   = document.getElementById('motivation-lv-bar-fill');
+  const progLbl = document.getElementById('motivation-level-progress-label');
+  const progVal = document.getElementById('motivation-level-progress-val');
+  if(iconEl) iconEl.textContent = lv.icon;
+  if(nameEl) nameEl.textContent = lv.name + ' 칭호';
+  if(badgeEl) badgeEl.innerHTML = `<span class="level-badge ${lv.cls}">${lv.icon} ${lv.name}</span>`;
+  if(verseEl) verseEl.textContent = lv.verse;
+  if(lv.next && barEl){
+    const pct = Math.min(Math.round((total-lv.min)/(lv.next-lv.min)*100),100);
+    barEl.style.width = pct+'%';
+    if(progLbl) progLbl.textContent = '다음 레벨까지';
+    if(progVal) progVal.textContent = total+'/'+lv.next+'건 ('+pct+'%)';
+  } else if(barEl){
+    barEl.style.width='100%';
+    if(progLbl) progLbl.textContent = '🏆 최고 레벨 달성!';
+    if(progVal) progVal.textContent = total+'건';
+  }
+
+  // 전체 단계 목록 카드
+  const allEl = document.getElementById('motivation-level-all');
+  if(allEl){
+    allEl.innerHTML = LEVELS.map((l,i)=>{
+      const isDone    = i < lvIdx;
+      const isCurrent = i === lvIdx;
+      const bg = isDone ? 'var(--teal-l)' : isCurrent ? 'var(--teal-l)' : 'var(--surface2)';
+      const border = (isDone||isCurrent) ? '1.5px solid var(--teal)' : '1px solid var(--border)';
+      const opacity = (!isDone&&!isCurrent) ? 'opacity:.5' : '';
+      const tag = isCurrent
+        ? `<span style="background:var(--teal);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px">현재</span>`
+        : isDone
+        ? `<span style="background:var(--teal-d);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px">완료</span>`
+        : `<span style="background:var(--border);color:var(--text3);font-size:10px;padding:1px 7px;border-radius:10px;margin-left:6px">${l.min}건~</span>`;
+      return `<div style="display:flex;align-items:center;gap:.65rem;padding:.65rem .85rem;
+        background:${bg};border:${border};border-radius:var(--rs);${opacity}">
+        <div style="font-size:22px;width:28px;text-align:center">${isDone?'✓':l.icon}</div>
+        <div style="flex:1">
+          <div style="font-size:13.5px;font-weight:700;color:var(--text)">${l.icon} ${l.name}${tag}</div>
+          <div style="font-size:11.5px;color:var(--text2);margin-top:1px">${l.verse}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // 누적 통계
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('cum-grat',  allG.length+'개');
+  set('cum-share', allS.length+'건');
+  set('cum-evang', allP.filter(p=>!p.done).length+'명');
+  set('cum-streak', sn+'일');
+  set('cum-answered', ans.length+'개');
+  set('cum-total', total+'건');
+
+  // Streak 상세
+  const sdEl = document.getElementById('motivation-streak-detail');
+  if(sdEl) sdEl.innerHTML = sn>0
+    ? `<div class="streak-chip">🔥 ${sn}일 연속 감사 기록 중!</div>
+       <div style="font-size:12px;color:var(--text2);margin-top:.4rem">
+         ${STREAK_MILESTONES.filter(m=>sn>=m).length > 0
+           ? '달성한 마일스톤: ' + STREAK_MILESTONES.filter(m=>sn>=m).map(m=>m+'일').join(' · ')
+           : '7일 연속 달성을 향해 나아가세요!'}
+       </div>`
+    : '<div style="font-size:13px;color:var(--text2)">오늘 감사 일기를 기록하면 연속 기록이 시작됩니다!</div>';
+
+  // 마일스톤 배지
+  const msEl = document.getElementById('motivation-milestones');
+  if(msEl) msEl.innerHTML = STREAK_MILESTONES.map(m=>{
+    const done = sn>=m;
+    return `<span style="padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;background:${done?'var(--amber)':'var(--border)'};color:${done?'#fff':'var(--text3)'}">
+      ${done?'🔥':''} ${m}일
+    </span>`;
+  }).join('');
+
+  // 이달 목표 (goal-card 재렌더)
+  const goalEl = document.getElementById('motivation-goals');
+  if(goalEl){
+    const goals = getGoals();
+    const now = new Date(), ym = now.toISOString().slice(0,7);
+    const mg=(allG).filter(e=>e.date&&e.date.startsWith(ym)).length;
+    const ms=(allS).filter(e=>e.date&&e.date.startsWith(ym)).length;
+    const me=(allP).filter(p=>p.stage>=2).length;
+    const items=[
+      {label:'🙏 감사 기록',val:mg,goal:goals.g,color:'var(--teal)'},
+      {label:'🤝 나눔 기록',val:ms,goal:goals.s,color:'var(--purple)'},
+      {label:'✉️ 전도 진행',val:me,goal:goals.e,color:'var(--blue)'},
+    ];
+    goalEl.innerHTML = items.map(({label,val,goal,color})=>{
+      const pct=Math.min(Math.round(val/goal*100),100);
+      const done=val>=goal;
+      return `<div class="goal-card">
+        <div class="goal-row">
+          <div class="goal-label">${label}${done?' ✅':''}</div>
+          <div class="goal-count">${val}/${goal} (${pct}%)</div>
+        </div>
+        <div class="goal-bar"><div class="goal-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+      </div>`;
+    }).join('');
+  }
+
+  // 히트맵 (성장현황 페이지용)
+  const hmEl = document.getElementById('motivation-heatmap');
+  if(hmEl){
+    const dateCnt={};
+    allG.forEach(e=>{if(e.date)dateCnt[e.date]=(dateCnt[e.date]||0)+1;});
+    allS.forEach(e=>{if(e.date)dateCnt[e.date]=(dateCnt[e.date]||0)+1;});
+    const cells=[], start=new Date(new Date().getFullYear(),0,1);
+    for(let i=0;i<182;i++){
+      const d=new Date(start); d.setDate(start.getDate()+i);
+      const ds=d.toISOString().split('T')[0];
+      const cnt=dateCnt[ds]||0;
+      const lvl=cnt===0?0:cnt<=1?1:cnt<=3?2:3;
+      cells.push(`<div class="hm-cell hm-${lvl}" title="${ds}"></div>`);
+    }
+    hmEl.innerHTML=`<div class="heatmap-grid">${cells.join('')}</div>
+      <div class="hm-tooltip">올해 1월~6월 · 초록이 진할수록 많이 기록</div>`;
+  }
+
+  // 응답 기도 전체 목록
+  const ansEl = document.getElementById('motivation-answered');
+  if(ansEl){
+    if(!ans.length){
+      ansEl.innerHTML='<div style="font-size:12px;color:var(--text3);padding:.5rem 0">아직 기록된 응답 기도가 없습니다. 하나님의 응답을 기록해보세요!</div>';
+    } else {
+      ansEl.innerHTML = ans.slice().reverse().map(a=>`
+        <div class="answered-card">
+          <div class="answered-date">${a.date||''}</div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:3px">${a.title||''}</div>
+          <div class="answered-content">${a.content||''}</div>
+        </div>`).join('');
+    }
+  }
+
+  // 오늘의 격려 메시지
+  const msgEl = document.getElementById('motivation-daily-msg');
+  if(msgEl){
+    const msg = MOTIVATION_MSGS[Math.floor(Math.random()*MOTIVATION_MSGS.length)];
+    msgEl.textContent = msg;
+  }
+}
+
+// showPage 훅: motivation 페이지 열 때 자동 렌더
+const _origShowPageMotivation = window.showPage;
+if(typeof _origShowPageMotivation === 'function'){
+  window.showPage = function(id){
+    _origShowPageMotivation(id);
+    if(id==='motivation') setTimeout(renderMotivationPage, 100);
+  };
+}
+
+
+function applyChurchBranding(){
+  if(!isPro()) return;
+  const cfg=getChurchCfg();
+  if(cfg.churchName){
+    const h=document.querySelector('#page-home .hero h1');
+    if(h) h.textContent=cfg.churchName+' 행복일지';
+  }
+  if(cfg.themeHex) document.documentElement.style.setProperty('--teal',cfg.themeHex);
+}
+
+
+/* ── 교회 전용 누락 함수 복구 ── */
+
+function saveChurchConfig(){
+  const cfg=getChurchCfg();
+  const n=document.getElementById('cfg-name')?.value.trim();
+  const p=document.getElementById('cfg-pastor')?.value.trim();
+  const t=document.getElementById('cfg-tel')?.value.trim();
+  const w=document.getElementById('cfg-worship')?.value.trim();
+  const a=document.getElementById('cfg-addr')?.value.trim();
+  if(n) cfg.churchName=n;
+  if(p) cfg.pastor=p;
+  if(t) cfg.tel=t;
+  if(w) cfg.worship=w;
+  if(a) cfg.addr=a;
+  saveChurchCfg(cfg);
+  toast('✅ 교회 정보가 저장되었습니다');
+  applyChurchBranding();
+  renderCustomizePage();
+}
+
+function handleLogoUpload(input){
+  const file=input?.files?.[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const cfg=getChurchCfg();
+    cfg.logoData=e.target.result;
+    saveChurchCfg(cfg);
+    toast('✅ 로고가 저장되었습니다');
+    renderCustomizePage();
+  };
+  r.readAsDataURL(file);
+}
+
+function removeLogo(){
+  const cfg=getChurchCfg();
+  delete cfg.logoData;
+  saveChurchCfg(cfg);
+  toast('로고를 삭제했습니다');
+  renderCustomizePage();
+}
+
+function setThemeColor(id,hex){
+  const cfg=getChurchCfg();
+  cfg.themeColor=id; cfg.themeHex=hex;
+  saveChurchCfg(cfg);
+  document.documentElement.style.setProperty('--teal',hex);
+  toast('테마 색상이 변경되었습니다');
+  renderCustomizePage();
+}
+
+function saveNotice(){
+  const title=document.getElementById('n-title')?.value.trim();
+  if(!title){toast('제목을 입력하세요');return;}
+  const notices=getChurchNotices();
+  notices.push({
+    id:Date.now(),
+    cat:document.getElementById('n-cat')?.value||'기타',
+    title,
+    body:document.getElementById('n-body')?.value.trim()||'',
+    author:document.getElementById('n-author')?.value.trim()||'관리자',
+    date:new Date().toLocaleDateString('ko-KR',{month:'short',day:'numeric'})
+  });
+  saveChurchNotices(notices);
+  closeM('modal-church-notice');
+  toast('✅ 공지가 등록되었습니다');
+  renderChurchNoticePage();
+}
+
+function deleteNotice(i){
+  if(!confirm('공지를 삭제할까요?')) return;
+  const notices=getChurchNotices();
+  notices.splice(i,1);
+  saveChurchNotices(notices);
+  toast('삭제되었습니다');
+  renderChurchNoticePage();
+}
+
+function saveMember(){
+  const name=document.getElementById('m-name')?.value.trim();
+  if(!name){toast('이름을 입력하세요');return;}
+  const members=getChurchMembers();
+  members.push({
+    id:Date.now(),
+    name,
+    role:document.getElementById('m-role')?.value.trim()||'성도',
+    group:document.getElementById('m-group')?.value.trim()||'',
+    tel:document.getElementById('m-tel')?.value.trim()||'',
+    gratCount:0, shareCount:0, evangelismStage:1,
+    joinDate:new Date().toISOString().split('T')[0]
+  });
+  saveChurchMembers(members);
+  closeM('modal-church-member');
+  toast('✅ 성도가 추가되었습니다');
+  renderDashboardPage();
+}
+
+function deleteMember(i){
+  if(!confirm('성도를 삭제할까요?')) return;
+  const members=getChurchMembers();
+  members.splice(i,1);
+  saveChurchMembers(members);
+  toast('삭제되었습니다');
+  renderDashboardPage();
+}
+
+function saveChurchSermon(){
+  const title=document.getElementById('cs-title')?.value.trim();
+  if(!title){toast('설교 제목을 입력하세요');return;}
+  const sermons=getChurchSermons();
+  sermons.push({
+    id:Date.now(),
+    date:document.getElementById('cs-date')?.value||new Date().toISOString().split('T')[0],
+    title,
+    verse:document.getElementById('cs-verse')?.value.trim()||'',
+    series:document.getElementById('cs-series')?.value.trim()||'단편설교',
+    preacher:document.getElementById('cs-preacher')?.value.trim()||'담임목사',
+    summary:document.getElementById('cs-summary')?.value.trim()||'',
+    apply:document.getElementById('cs-apply')?.value.trim()||''
+  });
+  saveChurchSermons(sermons);
+  closeM('modal-church-sermon-pro');
+  toast('✅ 설교가 등록되었습니다');
+  renderChurchSermonPage();
+}
+
+function copySermonText(i){
+  const sermons=getChurchSermons();
+  const s=sermons[i]; if(!s) return;
+  const cfg=getChurchCfg();
+  const t=`[${cfg.churchName||'교회'} 설교]
+📅 ${s.date}
+✝ ${s.title}
+📖 ${s.verse||''}
+
+${s.summary||''}
+
+✏️ 이번 주 적용: ${s.apply||''}
+— ${s.preacher||'담임목사'}`;
+  navigator.clipboard?.writeText(t).then(()=>toast('설교 내용이 복사되었습니다')).catch(()=>toast('복사 실패'));
+}
+
+function fullBackup(){
+  const data={
+    version:'3.1', createdAt:new Date().toISOString(),
+    gratitude:JSON.parse(localStorage.getItem('hj_grat_v3')||'[]'),
+    sharing:JSON.parse(localStorage.getItem('hj_share_v3')||'[]'),
+    persons:JSON.parse(localStorage.getItem('hj_persons_v3')||'[]'),
+    alarms:JSON.parse(localStorage.getItem('hj_alarms_v3')||'[]'),
+    churchConfig:JSON.parse(localStorage.getItem(CHURCH_CFG_KEY)||'{}'),
+    churchNotices:JSON.parse(localStorage.getItem(CHURCH_NOTICE_KEY)||'[]'),
+    churchMembers:JSON.parse(localStorage.getItem(CHURCH_MEMBER_KEY)||'[]'),
+    churchSermons:JSON.parse(localStorage.getItem(CHURCH_SERMON_KEY)||'[]'),
+    proLicense:JSON.parse(localStorage.getItem(PRO_KEY)||'null')
+  };
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`happyjournal-${new Date().toISOString().split('T')[0]}.json`;
+  a.click(); URL.revokeObjectURL(url);
+  localStorage.setItem('hj_last_backup',Date.now().toString());
+  toast('✅ 전체 백업이 완료되었습니다');
+  renderCloudPage();
+}
+
+function partialBackup(key,fname){
+  const data=JSON.parse(localStorage.getItem(key)||'[]');
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`${fname}-${new Date().toISOString().split('T')[0]}.json`;
+  a.click(); URL.revokeObjectURL(url);
+  toast('백업 파일이 생성되었습니다');
+}
+
+function fullRestore(input){
+  const file=input?.files?.[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!confirm('전체 데이터를 복원할까요? 현재 데이터가 덮어씌워집니다.')) return;
+      if(data.gratitude)  localStorage.setItem('hj_grat_v3',     JSON.stringify(data.gratitude));
+      if(data.sharing)    localStorage.setItem('hj_share_v3',    JSON.stringify(data.sharing));
+      if(data.persons)    localStorage.setItem('hj_persons_v3',  JSON.stringify(data.persons));
+      if(data.alarms)     localStorage.setItem('hj_alarms_v3',   JSON.stringify(data.alarms));
+      if(data.churchConfig)  localStorage.setItem(CHURCH_CFG_KEY,   JSON.stringify(data.churchConfig));
+      if(data.churchNotices) localStorage.setItem(CHURCH_NOTICE_KEY,JSON.stringify(data.churchNotices));
+      if(data.churchMembers) localStorage.setItem(CHURCH_MEMBER_KEY,JSON.stringify(data.churchMembers));
+      if(data.churchSermons) localStorage.setItem(CHURCH_SERMON_KEY,JSON.stringify(data.churchSermons));
+      if(data.proLicense)    localStorage.setItem(PRO_KEY,          JSON.stringify(data.proLicense));
+      toast('✅ 복원이 완료되었습니다. 앱을 새로고침하세요.');
+      if(typeof loadData==='function') loadData();
+    }catch(err){ toast('올바르지 않은 백업 파일입니다'); }
+  };
+  r.readAsText(file);
+}
+
 </script>
 
 </body>
