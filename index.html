@@ -926,6 +926,15 @@ canvas{max-width:100%}
   animation: burstCircle .6s ease-out forwards;
 }
 
+
+/* ── 개인 기도 & 기도 응답 카드 ── */
+.prayer-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh);transition:all .2s}
+.prayer-card.answered{background:var(--teal-l);border-color:var(--teal)}
+.prayer-card-header{display:flex;align-items:flex-start;gap:.7rem}
+.prayer-date{font-size:11.5px;color:var(--text3);margin-bottom:3px}
+.prayer-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.prayer-body{font-size:13px;color:var(--text2);line-height:1.65}
+
 </style>
 </head>
 <body>
@@ -1117,46 +1126,40 @@ canvas{max-width:100%}
     <p>말씀 · 통계 · 교회 · 설정</p>
   </div>
 
+  <!-- 신앙 훈련 -->
   <div class="slabel">신앙 훈련</div>
   <div class="more-grid">
-    <div class="more-item" onclick="showMorePage('daily-routine')"><div class="more-icon">⏰</div><div class="more-label">하루 루틴</div></div>
+    <div class="more-item" onclick="showMorePage('attendance')"><div class="more-icon">🙌</div><div class="more-label">예배 출석</div></div>
     <div class="more-item" onclick="showMorePage('qt')"><div class="more-icon">📖</div><div class="more-label">QT 묵상</div></div>
     <div class="more-item" onclick="showMorePage('reading-plan')"><div class="more-icon">📅</div><div class="more-label">성경 읽기표</div></div>
     <div class="more-item" onclick="showMorePage('memory-game')"><div class="more-icon">🎮</div><div class="more-label">암송 게임</div></div>
-  </div>
-
-  <div class="slabel">동기부여 · 성장</div>
-  <div class="more-grid">
-    <div class="more-item" onclick="showPage('motivation')"><div class="more-icon">🌱</div><div class="more-label">성장 현황</div></div>
-    <div class="more-item" onclick="openGoalModal()"><div class="more-icon">🎯</div><div class="more-label">이달 목표</div></div>
-    <div class="more-item" onclick="openAnsweredModalV2()"><div class="more-icon">✅</div><div class="more-label">응답 기도</div></div>
-    <div class="more-item" onclick="openSermonTaskModal()"><div class="more-icon">🖊️</div><div class="more-label">설교 과제</div></div>
-  </div>
-
-  <div class="slabel">챌린지 · 통계</div>
-  <div class="more-grid">
-    <div class="more-item" onclick="showMorePage('challenge')"><div class="more-icon">🎖️</div><div class="more-label">365 챌린지</div></div>
-    <div class="more-item" onclick="showMorePage('stats')"><div class="more-icon">📊</div><div class="more-label">통계</div></div>
-    <div class="more-item" onclick="showMorePage('answered')"><div class="more-icon">🕊️</div><div class="more-label">응답 기록</div></div>
-    <div class="more-item" onclick="showMorePage('sermon')"><div class="more-icon">📝</div><div class="more-label">설교노트</div></div>
-  </div>
-
-  <div class="slabel">기도</div>
-  <div class="more-grid">
-    <div class="more-item" onclick="showMorePage('intercession')"><div class="more-icon">🙏</div><div class="more-label">중보기도</div></div>
-    <div class="more-item" onclick="showMorePage('evangelism-prayer')"><div class="more-icon">✉️</div><div class="more-label">전도기도</div></div>
-    <div class="more-item" onclick="showMorePage('family-prayer')"><div class="more-icon">👨‍👩‍👧‍👦</div><div class="more-label">가족 기도</div></div>
-    <div class="more-item" onclick="showMorePage('mission-prayer')"><div class="more-icon">🌍</div><div class="more-label">선교 기도</div></div>
-  </div>
-
-  <div class="slabel">교회 생활</div>
-  <div class="more-grid">
     <div class="more-item" onclick="showMorePage('notice')"><div class="more-icon">📣</div><div class="more-label">교회 공지</div></div>
-    <div class="more-item" onclick="showMorePage('group')"><div class="more-icon">👥</div><div class="more-label">소그룹</div></div>
-    <div class="more-item" onclick="showMorePage('attendance')"><div class="more-icon">🙌</div><div class="more-label">예배 출석</div></div>
     <div class="more-item" onclick="showMorePage('encourage')"><div class="more-icon">💌</div><div class="more-label">성도 격려</div></div>
   </div>
 
+  <!-- 동기부여 -->
+  <div class="slabel">동기부여</div>
+  <div class="more-grid">
+    <div class="more-item" onclick="showPage('motivation')"><div class="more-icon">🌱</div><div class="more-label">성장 현황</div></div>
+    <div class="more-item" onclick="openGoalModal()"><div class="more-icon">🎯</div><div class="more-label">이달 목표</div></div>
+    <div class="more-item" onclick="showMorePage('daily-routine')"><div class="more-icon">⏰</div><div class="more-label">하루 루틴</div></div>
+    <div class="more-item" onclick="showMorePage('challenge')"><div class="more-icon">🎖️</div><div class="more-label">365 챌린지</div></div>
+    <div class="more-item" onclick="showMorePage('stats')"><div class="more-icon">📊</div><div class="more-label">통계</div></div>
+    <div class="more-item" onclick="showMorePage('group')"><div class="more-icon">👥</div><div class="more-label">소그룹</div></div>
+  </div>
+
+  <!-- 기도 -->
+  <div class="slabel">기도</div>
+  <div class="more-grid">
+    <div class="more-item" onclick="showMorePage('personal-prayer')"><div class="more-icon">🤲</div><div class="more-label">개인 기도</div></div>
+    <div class="more-item" onclick="showMorePage('family-prayer')"><div class="more-icon">👨‍👩‍👧‍👦</div><div class="more-label">가족 기도</div></div>
+    <div class="more-item" onclick="showMorePage('intercession')"><div class="more-icon">🙏</div><div class="more-label">중보 기도</div></div>
+    <div class="more-item" onclick="showMorePage('evangelism-prayer')"><div class="more-icon">✉️</div><div class="more-label">전도 기도</div></div>
+    <div class="more-item" onclick="showMorePage('mission-prayer')"><div class="more-icon">🌍</div><div class="more-label">선교 기도</div></div>
+    <div class="more-item" onclick="showMorePage('prayer-answer')"><div class="more-icon">✨</div><div class="more-label">기도 응답</div></div>
+  </div>
+
+  <!-- 교회 전용 PRO -->
   <div class="slabel">교회 전용 <span class="pro-badge">✦ PRO</span></div>
   <div class="more-grid">
     <div class="more-item pro-item" onclick="proGuard('church-customize')"><div class="more-icon">🏛️</div><div class="more-label">교회 설정</div></div>
@@ -1169,10 +1172,35 @@ canvas{max-width:100%}
     <div class="more-item pro-item" onclick="proGuard('church-members')"><div class="more-icon">🗂️</div><div class="more-label">성도 관리</div></div>
   </div>
 
+  <!-- 앱 설정 -->
   <div class="slabel">앱 설정</div>
   <div class="more-grid" style="grid-template-columns:repeat(1,1fr)">
     <div class="more-item" onclick="showMorePage('settings')"><div class="more-icon">⚙️</div><div class="more-label">설정</div></div>
   </div>
+</div>
+
+<!-- ══════ 개인 기도 ══════ -->
+<div class="page" id="page-personal-prayer">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>🤲 개인 기도</span>
+  </div>
+  <div style="margin-bottom:1rem">
+    <button class="btn btn-p" onclick="openPersonalPrayerModal()">+ 개인 기도 제목 추가</button>
+  </div>
+  <div id="personal-prayer-list"></div>
+</div>
+
+<!-- ══════ 기도 응답 ══════ -->
+<div class="page" id="page-prayer-answer">
+  <div class="top-sub-bar">
+    <button class="btn-back" onclick="showPage('more')">← 더보기</button>
+    <span>✨ 기도 응답</span>
+  </div>
+  <div style="margin-bottom:1rem">
+    <button class="btn btn-p" onclick="openPrayerAnswerModal()">+ 기도 응답 기록</button>
+  </div>
+  <div id="prayer-answer-list"></div>
 </div>
 
 <!-- ══════ QT 묵상 ══════ -->
@@ -4240,6 +4268,8 @@ function showMorePage(id){
     'intercession': renderIntercession, 'evangelism-prayer': renderEvangelismPrayer,
     'encourage': renderEncourage, 'reading-plan': renderReadingPlan,
     'stats': renderStatsPage, 'challenge': renderChallenges,
+    'personal-prayer': renderPersonalPrayer,
+    'prayer-answer': renderPrayerAnswer,
     'settings': () => { if (typeof __pwaUpdateSettingsUI === 'function') __pwaUpdateSettingsUI(); },
   };
   if(renderMap[id]) renderMap[id]();
@@ -7889,6 +7919,214 @@ function openSermonModal(){
   openM('modal-church-sermon-pro');
 }
 
+
+/* ═══════════════════════════════════════════════════════════
+   개인 기도 & 기도 응답 — 저장·렌더 시스템
+   ═══════════════════════════════════════════════════════════ */
+
+const PP_KEY  = 'hj_personal_prayer_v1';
+const PA_KEY  = 'hj_prayer_answer_v1';
+
+function getPersonalPrayers(){ try{ return JSON.parse(localStorage.getItem(PP_KEY)||'[]'); }catch(e){ return []; } }
+function savePersonalPrayers(arr){ localStorage.setItem(PP_KEY, JSON.stringify(arr)); }
+function getPrayerAnswers(){ try{ return JSON.parse(localStorage.getItem(PA_KEY)||'[]'); }catch(e){ return []; } }
+function savePrayerAnswers(arr){ localStorage.setItem(PA_KEY, JSON.stringify(arr)); }
+
+// ── 개인 기도 ──
+let _ppEditId = null;
+
+function openPersonalPrayerModal(editId){
+  _ppEditId = editId || null;
+  const titleEl = document.getElementById('modal-pp-title');
+  const btnEl   = document.getElementById('modal-pp-savebtn');
+  const dateEl  = document.getElementById('pp-date');
+  const nameEl  = document.getElementById('pp-name');
+  const bodyEl  = document.getElementById('pp-body');
+  if(_ppEditId){
+    const e = getPersonalPrayers().find(x=>x.id===_ppEditId);
+    if(e){
+      if(dateEl) dateEl.value = e.date||'';
+      if(nameEl) nameEl.value = e.name||'';
+      if(bodyEl) bodyEl.value = e.body||'';
+    }
+    if(titleEl) titleEl.textContent = '🤲 개인 기도 수정';
+    if(btnEl)   btnEl.textContent   = '수정 완료';
+  } else {
+    if(dateEl) dateEl.value = new Date().toISOString().split('T')[0];
+    if(nameEl) nameEl.value = '';
+    if(bodyEl) bodyEl.value = '';
+    if(titleEl) titleEl.textContent = '🤲 개인 기도 제목';
+    if(btnEl)   btnEl.textContent   = '저장';
+  }
+  openM('modal-personal-prayer');
+}
+
+function savePersonalPrayer(){
+  const name = (document.getElementById('pp-name')?.value||'').trim();
+  if(!name){ toast('기도 제목을 입력해주세요'); return; }
+  const data = {
+    date: document.getElementById('pp-date')?.value || new Date().toISOString().split('T')[0],
+    name,
+    body: (document.getElementById('pp-body')?.value||'').trim(),
+  };
+  const arr = getPersonalPrayers();
+  if(_ppEditId){
+    const idx = arr.findIndex(x=>x.id===_ppEditId);
+    if(idx>=0) arr[idx] = { ...arr[idx], ...data };
+    _ppEditId = null;
+    toast('✏️ 기도 제목이 수정되었습니다!',{color:'amber',duration:2200});
+  } else {
+    arr.unshift({ id:Date.now(), ...data, answered:false });
+    toast('🤲 기도 제목이 저장되었습니다!',{color:'green',duration:2500});
+  }
+  savePersonalPrayers(arr);
+  closeM('modal-personal-prayer');
+  renderPersonalPrayer();
+}
+
+function deletePersonalPrayer(id){
+  if(!confirm('삭제할까요?')) return;
+  const arr = getPersonalPrayers().filter(x=>x.id!==id);
+  savePersonalPrayers(arr);
+  toast('🗑 삭제되었습니다',{color:'coral',duration:2000});
+  renderPersonalPrayer();
+}
+
+function togglePrayerAnswered(id){
+  const arr = getPersonalPrayers();
+  const item = arr.find(x=>x.id===id);
+  if(item){ item.answered = !item.answered; savePersonalPrayers(arr); renderPersonalPrayer(); }
+}
+
+function renderPersonalPrayer(){
+  const el = document.getElementById('personal-prayer-list'); if(!el) return;
+  const arr = getPersonalPrayers();
+  if(!arr.length){
+    el.innerHTML = `<div class="empty"><span class="empty-icon">🤲</span>아직 기도 제목이 없습니다.<br>첫 번째 기도 제목을 추가해보세요!</div>`;
+    return;
+  }
+  const unanswered = arr.filter(x=>!x.answered);
+  const answered   = arr.filter(x=>x.answered);
+
+  const renderItem = (item) => `
+    <div class="prayer-card${item.answered?' answered':''}">
+      <div class="prayer-card-header">
+        <div style="flex:1">
+          <div class="prayer-date">${escH(item.date||'')}</div>
+          <div class="prayer-title">${escH(item.name)}</div>
+          ${item.body ? `<div class="prayer-body">${escH(item.body)}</div>` : ''}
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end">
+          <button onclick="togglePrayerAnswered(${item.id})"
+            style="background:${item.answered?'var(--teal)':'var(--surface2)'};color:${item.answered?'#fff':'var(--text2)'};border:1px solid ${item.answered?'var(--teal)':'var(--border)'};border-radius:var(--rs);padding:3px 10px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap">
+            ${item.answered?'✅ 응답됨':'응답 확인'}
+          </button>
+        </div>
+      </div>
+      <div style="display:flex;gap:5px;margin-top:.5rem">
+        <button onclick="openPersonalPrayerModal(${item.id})" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text2)">수정</button>
+        <button onclick="deletePersonalPrayer(${item.id})" style="background:none;border:none;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text3)">삭제</button>
+      </div>
+    </div>`;
+
+  el.innerHTML = `
+    ${unanswered.length>0 ? `
+      <div style="font-size:12px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">🙏 기도 중 (${unanswered.length})</div>
+      ${unanswered.map(renderItem).join('')}` : ''}
+    ${answered.length>0 ? `
+      <div style="font-size:12px;font-weight:700;color:var(--text3);margin:.8rem 0 .5rem">✅ 응답받은 기도 (${answered.length})</div>
+      ${answered.map(renderItem).join('')}` : ''}`;
+}
+
+// ── 기도 응답 ──
+let _paEditId = null;
+
+function openPrayerAnswerModal(editId){
+  _paEditId = editId || null;
+  const titleEl = document.getElementById('modal-pa-title');
+  const btnEl   = document.getElementById('modal-pa-savebtn');
+  const dateEl  = document.getElementById('pa-date');
+  const nameEl  = document.getElementById('pa-name');
+  const bodyEl  = document.getElementById('pa-body');
+  if(_paEditId){
+    const e = getPrayerAnswers().find(x=>x.id===_paEditId);
+    if(e){
+      if(dateEl) dateEl.value = e.date||'';
+      if(nameEl) nameEl.value = e.name||'';
+      if(bodyEl) bodyEl.value = e.body||'';
+    }
+    if(titleEl) titleEl.textContent = '✨ 기도 응답 수정';
+    if(btnEl)   btnEl.textContent   = '수정 완료';
+  } else {
+    if(dateEl) dateEl.value = new Date().toISOString().split('T')[0];
+    if(nameEl) nameEl.value = '';
+    if(bodyEl) bodyEl.value = '';
+    if(titleEl) titleEl.textContent = '✨ 기도 응답 기록';
+    if(btnEl)   btnEl.textContent   = '🙏 기록하기';
+  }
+  openM('modal-prayer-answer');
+}
+
+function savePrayerAnswer(){
+  const name = (document.getElementById('pa-name')?.value||'').trim();
+  const body = (document.getElementById('pa-body')?.value||'').trim();
+  if(!name){ toast('기도 제목을 입력해주세요'); return; }
+  if(!body){ toast('응답 내용을 입력해주세요'); return; }
+  const data = {
+    date: document.getElementById('pa-date')?.value || new Date().toISOString().split('T')[0],
+    name, body,
+  };
+  const arr = getPrayerAnswers();
+  if(_paEditId){
+    const idx = arr.findIndex(x=>x.id===_paEditId);
+    if(idx>=0) arr[idx] = { ...arr[idx], ...data };
+    _paEditId = null;
+    toast('✏️ 기도 응답이 수정되었습니다!',{color:'amber',duration:2200});
+  } else {
+    arr.unshift({ id:Date.now(), ...data });
+    toast('✨ 기도 응답이 기록되었습니다!',{color:'green',duration:3000});
+    if(typeof fireConfetti==='function') fireConfetti();
+    if(typeof showMotivationToast==='function') setTimeout(()=>showMotivationToast('하나님이 응답하셨습니다! 감사와 찬양을 드리세요 🙏'),600);
+  }
+  savePrayerAnswers(arr);
+  closeM('modal-prayer-answer');
+  renderPrayerAnswer();
+}
+
+function deletePrayerAnswer(id){
+  if(!confirm('삭제할까요?')) return;
+  const arr = getPrayerAnswers().filter(x=>x.id!==id);
+  savePrayerAnswers(arr);
+  toast('🗑 삭제되었습니다',{color:'coral',duration:2000});
+  renderPrayerAnswer();
+}
+
+function renderPrayerAnswer(){
+  const el = document.getElementById('prayer-answer-list'); if(!el) return;
+  const arr = getPrayerAnswers();
+  if(!arr.length){
+    el.innerHTML = `<div class="empty"><span class="empty-icon">✨</span>아직 기도 응답 기록이 없습니다.<br>하나님의 응답을 기록해보세요!</div>`;
+    return;
+  }
+  el.innerHTML = arr.map(item=>`
+    <div class="prayer-card answered">
+      <div class="prayer-card-header">
+        <div style="flex:1">
+          <div class="prayer-date">${escH(item.date||'')}</div>
+          <div class="prayer-title">🙏 ${escH(item.name)}</div>
+          <div class="prayer-body" style="margin-top:.3rem;padding:.5rem .7rem;background:rgba(29,158,117,.08);border-radius:var(--rs);border-left:3px solid var(--teal)">
+            <div style="font-size:11px;color:var(--teal-d);font-weight:700;margin-bottom:3px">✨ 응답 내용</div>
+            ${escH(item.body)}
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:5px;margin-top:.5rem">
+        <button onclick="openPrayerAnswerModal(${item.id})" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text2)">수정</button>
+        <button onclick="deletePrayerAnswer(${item.id})" style="background:none;border:none;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text3)">삭제</button>
+      </div>
+    </div>`).join('');
+}
+
 </script>
 
 
@@ -8011,6 +8249,50 @@ function openSermonModal(){
     <div class="modal-footer">
       <button class="btn btn-g" onclick="closeM('modal-answered-v2')">취소</button>
       <button class="btn btn-p" onclick="saveAnsweredV2()">🙏 기록하기</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 개인 기도 모달 -->
+<div class="modal-bg" id="modal-personal-prayer">
+  <div class="modal">
+    <div class="modal-title" id="modal-pp-title">🤲 개인 기도 제목</div>
+    <label class="fl">날짜</label>
+    <input type="date" id="pp-date">
+    <label class="fl">기도 제목</label>
+    <div class="field-with-voice">
+      <input type="text" id="pp-name" placeholder="기도 제목을 입력하세요">
+      <button class="voice-btn" onclick="toggleVoiceInput('pp-name',this)">🎤</button>
+    </div>
+    <label class="fl">기도 내용</label>
+    <div class="field-with-voice">
+      <textarea id="pp-body" rows="4" placeholder="구체적인 기도 내용을 적어주세요"></textarea>
+      <button class="voice-btn" onclick="toggleVoiceInput('pp-body',this)">🎤</button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-personal-prayer')">취소</button>
+      <button class="btn btn-p" id="modal-pp-savebtn" onclick="savePersonalPrayer()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- 기도 응답 모달 -->
+<div class="modal-bg" id="modal-prayer-answer">
+  <div class="modal">
+    <div class="modal-title" id="modal-pa-title">✨ 기도 응답 기록</div>
+    <label class="fl">날짜</label>
+    <input type="date" id="pa-date">
+    <label class="fl">기도했던 제목</label>
+    <input type="text" id="pa-name" placeholder="어떤 기도를 드렸나요?">
+    <label class="fl">응답 내용</label>
+    <div class="field-with-voice">
+      <textarea id="pa-body" rows="4" placeholder="하나님이 어떻게 응답하셨나요? 구체적으로 기록해주세요"></textarea>
+      <button class="voice-btn" onclick="toggleVoiceInput('pa-body',this)">🎤</button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-prayer-answer')">취소</button>
+      <button class="btn btn-p" id="modal-pa-savebtn" onclick="savePrayerAnswer()">🙏 기록하기</button>
     </div>
   </div>
 </div>
