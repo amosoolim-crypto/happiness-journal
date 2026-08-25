@@ -5052,6 +5052,10 @@ function init(){
   updateLangUI();
   renderChallenges();
   startMemoryGame();
+
+  /* ── 교회 PRO 상태 복원 ── */
+  if(typeof applyChurchBranding === 'function') applyChurchBranding();
+  if(typeof updateProStatusUI   === 'function') updateProStatusUI();
 }
 
 init();
@@ -5602,24 +5606,7 @@ function renderChurchNoticePage(){
       ④ <strong>총동원 주일 카운트다운</strong> — D-4주부터 매주 독려 공지 게시
     </div>
 
-    <!-- 공지 모달 -->
-    <div class="modal-bg" id="modal-church-notice">
-      <div class="modal">
-        <div class="modal-title">📢 공지 등록</div>
-        <label class="fl">카테고리</label>
-        <select id="n-cat">${cats.map(c=>`<option>${c}</option>`).join('')}</select>
-        <label class="fl">제목</label>
-        <input type="text" id="n-title" placeholder="공지 제목">
-        <label class="fl">내용</label>
-        <textarea id="n-body" placeholder="공지 내용을 입력하세요..." style="min-height:90px"></textarea>
-        <label class="fl">작성자</label>
-        <input type="text" id="n-author" placeholder="예: 담임목사">
-        <div class="modal-footer">
-          <button class="btn btn-g" onclick="closeM('modal-church-notice')">취소</button>
-          <button class="btn btn-p" onclick="saveNotice()">등록</button>
-        </div>
-      </div>
-    </div>
+
   </div>`;
 }
 
@@ -5719,39 +5706,8 @@ function renderDashboardPage(){
       ④ 실천 없는 성도 발견 → 개인 연락으로 목양
     </div>
 
-    <!-- 성도 추가 모달 -->
-    <div class="modal-bg" id="modal-church-member">
-      <div class="modal">
-        <div class="modal-title">👥 성도 추가</div>
-        <label class="fl">이름</label><input type="text" id="m-name" placeholder="성도 이름">
-        <label class="fl">역할/직분</label><input type="text" id="m-role" placeholder="예: 장로, 권사, 집사, 성도">
-        <label class="fl">소그룹/구역</label><input type="text" id="m-group" placeholder="예: 1구역, A셀">
-        <label class="fl">연락처</label><input type="text" id="m-tel" placeholder="010-0000-0000">
-        <div class="modal-footer">
-          <button class="btn btn-g" onclick="closeM('modal-church-member')">취소</button>
-          <button class="btn btn-p" onclick="saveMember()">추가</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 실천 수정 모달 -->
-    <div class="modal-bg" id="modal-member-stat">
-      <div class="modal">
-        <div class="modal-title">✏️ 실천 현황 수정</div>
-        <div id="edit-member-name" style="font-size:14px;font-weight:500;margin-bottom:.7rem;color:var(--teal-d)"></div>
-        <label class="fl">🙏 이번 달 감사 기록 횟수</label>
-        <input type="number" id="edit-grat" min="0" placeholder="0">
-        <label class="fl">🤝 이번 달 나눔 기록 횟수</label>
-        <input type="number" id="edit-share" min="0" placeholder="0">
-        <label class="fl">✉️ 전도 진행 단계 (1~7)</label>
-        <input type="number" id="edit-stage" min="1" max="7" placeholder="1">
-        <div class="modal-footer">
-          <button class="btn btn-g" onclick="closeM('modal-member-stat')">취소</button>
-          <button class="btn btn-p" onclick="saveMemberStat()">저장</button>
-        </div>
-      </div>
-    </div>
-  </div>`;
+    
+      </div>`;
 }
 
 let _editMemberIdx = -1;
@@ -5943,7 +5899,7 @@ function renderChurchSermonPage(){
       'var(--teal-d)')}
 
     <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.8rem">
-      ${_cQuickBtn('+ 설교 등록', "openM('modal-church-sermon-pro')")}
+      ${_cQuickBtn('+ 설교 등록', "openSermonModal()")}
       ${sermons.length>0?_cQuickBtn('📢 주보 발송', "copyLatestSermon()", 'var(--blue)'):''}
       ${sermons.length>0?_cOutlineBtn('📋 시리즈 보기', "showSeriesList()"):''}
     </div>
@@ -5991,31 +5947,7 @@ function renderChurchSermonPage(){
       ④ 연말 — 1년 설교 목록으로 "올해 하나님 말씀" 결산
     </div>
 
-    <!-- 설교 등록 모달 -->
-    <div class="modal-bg" id="modal-church-sermon-pro">
-      <div class="modal">
-        <div class="modal-title">🎙️ 설교 등록</div>
-        <label class="fl">날짜</label>
-        <input type="date" id="cs-date" value="${new Date().toISOString().split('T')[0]}">
-        <label class="fl">설교 제목</label>
-        <input type="text" id="cs-title" placeholder="설교 제목">
-        <label class="fl">본문 말씀</label>
-        <input type="text" id="cs-verse" placeholder="예: 요한복음 3:16">
-        <label class="fl">시리즈명</label>
-        <input type="text" id="cs-series" placeholder="예: 산상수훈, 단편설교">
-        <label class="fl">설교자</label>
-        <input type="text" id="cs-preacher" placeholder="예: 담임목사">
-        <label class="fl">설교 요약</label>
-        <textarea id="cs-summary" placeholder="핵심 내용 요약..."></textarea>
-        <label class="fl">이번 주 적용 포인트</label>
-        <textarea id="cs-apply" placeholder="성도들이 이번 주 실천할 한 가지..."></textarea>
-        <div class="modal-footer">
-          <button class="btn btn-g" onclick="closeM('modal-church-sermon-pro')">취소</button>
-          <button class="btn btn-p" onclick="saveChurchSermon()">등록</button>
-        </div>
-      </div>
-    </div>
-  </div>`;
+      </div>`;
 }
 
 function copyLatestSermon(){
@@ -7102,13 +7034,53 @@ if(typeof _origShowPageMotivation === 'function'){
 
 
 function applyChurchBranding(){
-  if(!isPro()) return;
-  const cfg=getChurchCfg();
+  // localStorage에서 PRO 상태를 직접 읽어서 복원 (isPro() 의존 없이 안전하게)
+  try {
+    const raw = localStorage.getItem('hj_pro_license');
+    if(!raw) return;
+    const lic = JSON.parse(raw);
+    if(!lic) return;
+    // 유효 기간 확인
+    if(lic.type==='trial'){
+      const days = Math.floor((Date.now()-lic.startDate)/86400000);
+      if(days > 30) return;
+    } else if(lic.type==='paid'){
+      if(lic.expireDate && Date.now() > lic.expireDate) return;
+    }
+  } catch(e){ return; }
+
+  const cfg = getChurchCfg();
+  // 홈 화면 제목에 교회 이름 반영
   if(cfg.churchName){
-    const h=document.querySelector('#page-home .hero h1');
-    if(h) h.textContent=cfg.churchName+' 행복일지';
+    const h = document.querySelector('#page-home .hero h1');
+    if(h) h.textContent = cfg.churchName + ' 행복일지';
   }
-  if(cfg.themeHex) document.documentElement.style.setProperty('--teal',cfg.themeHex);
+  // 테마 색상 복원
+  if(cfg.themeHex){
+    document.documentElement.style.setProperty('--teal', cfg.themeHex);
+  }
+}
+
+// PRO 상태 텍스트 UI 업데이트
+function updateProStatusUI(){
+  try{
+    const el = document.getElementById('pro-status-text');
+    if(!el) return;
+    const raw = localStorage.getItem('hj_pro_license');
+    if(!raw){ el.textContent='무료 버전 사용 중 — 교회 전용 기능 잠금'; return; }
+    const lic = JSON.parse(raw);
+    if(!lic){ el.textContent='무료 버전 사용 중 — 교회 전용 기능 잠금'; return; }
+    if(lic.type==='trial'){
+      const days = 30-Math.floor((Date.now()-lic.startDate)/86400000);
+      el.textContent = `체험판 — 남은 기간 ${Math.max(0,days)}일`;
+    } else if(lic.type==='paid'){
+      const church = lic.churchName||'';
+      const exp = lic.expireDate
+        ? new Date(lic.expireDate).toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'})
+        : '무제한';
+      el.textContent = `${church} PRO 활성 ✓ — ${exp}까지`;
+    }
+  }catch(e){}
 }
 
 
@@ -7390,6 +7362,133 @@ function renderMembersPage(){
   el.innerHTML = `
   <div style="padding:0 .05rem">
 
+    <!-- 9가지 기능 소개 & 실행 버튼 -->
+    <div style="background:linear-gradient(135deg,var(--teal-d),var(--teal));border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:.85rem;color:#fff">
+      <div style="font-size:13px;opacity:.85;margin-bottom:3px">교회 전용 PRO 기능</div>
+      <div style="font-size:17px;font-weight:800;margin-bottom:3px">🗂️ 성도 관리</div>
+      <div style="font-size:12px;opacity:.85">9가지 기능으로 성도를 체계적으로 목양하세요</div>
+    </div>
+
+    <!-- ① 검색 & 필터 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">🔍</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">① 검색 & 필터</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        이름·소그룹으로 실시간 검색, 소그룹별 탭 필터로 원하는 성도만 빠르게 찾습니다.
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px">📌 아래 검색창에서 바로 사용</div>
+      </div>
+    </div>
+
+    <!-- ② 성도별 상세 카드 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">👤</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">② 성도별 상세 카드</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        성도 이름을 탭하면 상세 모달이 열립니다. 기본 정보(이름·직분·소그룹·연락처·생일)와 모든 실천 현황을 한 화면에서 확인합니다.
+      </div>
+      <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px;display:inline-block">📌 아래 성도 목록에서 이름 탭하기</div>
+    </div>
+
+    <!-- ③ 출석 체크 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">🙌</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">③ 출석 체크</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        최근 5주 예배 출석을 ✓(출석) / ✗(결석) / ?(미입력)으로 탭해서 기록합니다. 출석률이 자동 계산됩니다.
+      </div>
+      <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px;display:inline-block">📌 성도 상세 카드 → 출석 체크 탭하기</div>
+    </div>
+
+    <!-- ④ 생일 알림 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">🎂</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">④ 생일 알림 & 축하 메시지</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        오늘 생일인 성도가 있으면 상단에 배너가 뜹니다. 축하 메시지 생성 버튼으로 카카오톡 발송용 문자를 자동 생성합니다.
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="genBirthdayMsg()" style="background:var(--coral);color:#fff;border:none;border-radius:var(--rs);padding:7px 13px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit">🎂 생일 축하 메시지 생성</button>
+        <div style="font-size:11.5px;color:var(--text3);align-self:center">※ 오늘 생일 성도 기준</div>
+      </div>
+    </div>
+
+    <!-- ⑤ 목양 메모 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">📝</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">⑤ 목양 메모 (비공개)</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        심방·상담 내용을 날짜와 함께 기록하고 관리합니다. 성도 본인에게는 보이지 않는 비공개 노트입니다.
+      </div>
+      <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px;display:inline-block">📌 성도 상세 카드 → 목양 메모 섹션에서 입력</div>
+    </div>
+
+    <!-- ⑥ 소그룹 변경 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">🔄</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">⑥ 소그룹 변경</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        버튼 하나로 성도의 소그룹을 즉시 변경합니다. 기존 소그룹 목록이 안내되어 오입력을 방지합니다.
+      </div>
+      <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px;display:inline-block">📌 성도 상세 카드 → 소그룹 변경 버튼</div>
+    </div>
+
+    <!-- ⑦ 성장 그래프 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">📈</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">⑦ 성장 그래프</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        이전달·지난달·이번달 감사·나눔 기록 추이를 색상 막대 그래프로 시각화합니다.
+      </div>
+      <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px;display:inline-block">📌 성도 상세 카드 → 3개월 성장 추이 그래프</div>
+    </div>
+
+    <!-- ⑧ 격려 메시지 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">💌</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">⑧ 개인별 격려 메시지 자동 생성</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        성도의 실천 현황을 분석해서 맞춤 격려 메시지를 자동으로 만듭니다. 🔄 다시 생성으로 다른 버전을 만들고 📋 복사로 바로 발송합니다.
+      </div>
+      <div style="font-size:12px;color:var(--text3);background:var(--surface2);border-radius:var(--rs);padding:4px 10px;display:inline-block">📌 성도 상세 카드 → 맞춤 격려 메시지 섹션</div>
+    </div>
+
+    <!-- ⑨ 미실천 독려 -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.85rem;box-shadow:var(--sh)">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem">
+        <span style="font-size:17px">⚠️</span>
+        <span style="font-size:14px;font-weight:700;color:var(--teal-d)">⑨ 미실천 성도 자동 독려</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--text2);line-height:1.65;margin-bottom:.6rem">
+        이번 달 기록이 없는 성도를 자동으로 감지하고 독려 메시지를 자동 생성해서 단체 발송합니다.
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="genInactiveMsg()" style="background:var(--amber);color:#fff;border:none;border-radius:var(--rs);padding:7px 13px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit">⚠️ 미실천 성도 독려 메시지</button>
+        <button onclick="showMonthlyCheck()" style="background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:var(--rs);padding:7px 13px;font-size:12.5px;cursor:pointer;font-family:inherit">📅 월말 점검</button>
+      </div>
+    </div>
+
+    <div style="border-top:2px solid var(--teal-l);padding-top:.85rem;margin-bottom:.85rem">
+      <div style="font-size:13px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">📋 전체 성도 현황</div>
+    </div>
+
     <!-- 상단 요약 통계 -->
     <div class="stat-grid" style="margin-bottom:.8rem">
       <div class="stat-card"><div class="stat-n">${members.length}</div><div class="stat-l">전체 성도</div></div>
@@ -7471,32 +7570,6 @@ function renderMembersPage(){
           </div>`;
         }).join('')}
 
-    <!-- 성도 추가 모달 -->
-    <div class="modal-bg" id="modal-church-member"><div class="modal">
-      <div class="modal-title">👥 성도 추가</div>
-      <label class="fl">이름 *</label><input type="text" id="m-name" placeholder="성도 이름">
-      <label class="fl">역할/직분</label><input type="text" id="m-role" placeholder="예: 장로, 권사, 집사, 성도">
-      <label class="fl">소그룹/구역</label><input type="text" id="m-group" placeholder="예: 1구역, A셀">
-      <label class="fl">연락처</label><input type="text" id="m-tel" placeholder="010-0000-0000">
-      <label class="fl">🎂 생일</label><input type="date" id="m-birthday">
-      <div class="modal-footer">
-        <button class="btn btn-g" onclick="closeM('modal-church-member')">취소</button>
-        <button class="btn btn-p" onclick="saveMember()">추가</button>
-      </div>
-    </div></div>
-
-    <!-- 성도 상세 모달 -->
-    <div class="modal-bg" id="modal-member-detail"><div class="modal member-detail-modal" id="member-detail-inner"></div></div>
-
-    <!-- 격려/독려 메시지 결과 -->
-    <div class="modal-bg" id="modal-msg-result"><div class="modal">
-      <div class="modal-title" id="msg-result-title">메시지</div>
-      <textarea id="msg-result-text" style="min-height:150px;font-size:13px;background:var(--surface2)" readonly></textarea>
-      <div class="modal-footer">
-        <button class="btn btn-g" onclick="closeM('modal-msg-result')">닫기</button>
-        <button class="btn btn-p" onclick="navigator.clipboard?.writeText(document.getElementById('msg-result-text').value).then(()=>toast('📋 복사됨'))">📋 복사</button>
-      </div>
-    </div></div>
   </div>`;
 }
 
@@ -7747,7 +7820,143 @@ function saveMember(){
   renderMembersPage();
 }
 
+
+// ── 앱 시작 시 PRO 상태 자동 복원 ──
+(function restoreProOnLoad(){
+  function _restore(){
+    if(typeof applyChurchBranding==='function') applyChurchBranding();
+    if(typeof updateProStatusUI==='function')   updateProStatusUI();
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(_restore, 350); });
+  } else {
+    setTimeout(_restore, 350);
+  }
+  // 페이지 포커스 복귀 시에도 복원 (PWA 백그라운드 후 복귀 대응)
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState==='visible') setTimeout(_restore, 200);
+  });
+})();
+
+
+function openSermonModal(){
+  const d = document.getElementById('cs-date');
+  if(d && !d.value) d.value = new Date().toISOString().split('T')[0];
+  // 입력창 초기화
+  ['cs-title','cs-verse','cs-series','cs-preacher','cs-summary','cs-apply'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  openM('modal-church-sermon-pro');
+}
+
 </script>
+
+
+<!-- ══ 교회 전용 고정 모달 (body 최상단 고정, innerHTML 중복 방지) ══ -->
+
+<!-- 공지 등록 -->
+<div class="modal-bg" id="modal-church-notice">
+  <div class="modal">
+    <div class="modal-title">📢 공지 등록</div>
+    <label class="fl">카테고리</label>
+    <select id="n-cat">
+      <option>예배</option><option>행사</option><option>소그룹</option>
+      <option>기도</option><option>봉사</option><option>기타</option>
+    </select>
+    <label class="fl">제목</label>
+    <input type="text" id="n-title" placeholder="공지 제목">
+    <label class="fl">내용</label>
+    <textarea id="n-body" placeholder="공지 내용을 입력하세요..." style="min-height:90px"></textarea>
+    <label class="fl">작성자</label>
+    <input type="text" id="n-author" placeholder="예: 담임목사">
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-church-notice')">취소</button>
+      <button class="btn btn-p" onclick="saveNotice()">등록</button>
+    </div>
+  </div>
+</div>
+
+<!-- 성도 추가 -->
+<div class="modal-bg" id="modal-church-member">
+  <div class="modal">
+    <div class="modal-title">👥 성도 추가</div>
+    <label class="fl">이름 *</label>
+    <input type="text" id="m-name" placeholder="성도 이름">
+    <label class="fl">역할/직분</label>
+    <input type="text" id="m-role" placeholder="예: 장로, 권사, 집사, 성도">
+    <label class="fl">소그룹/구역</label>
+    <input type="text" id="m-group" placeholder="예: 1구역, A셀">
+    <label class="fl">연락처</label>
+    <input type="text" id="m-tel" placeholder="010-0000-0000">
+    <label class="fl">🎂 생일</label>
+    <input type="date" id="m-birthday">
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-church-member')">취소</button>
+      <button class="btn btn-p" onclick="saveMember()">추가</button>
+    </div>
+  </div>
+</div>
+
+<!-- 실천 현황 수정 -->
+<div class="modal-bg" id="modal-member-stat">
+  <div class="modal">
+    <div class="modal-title">✏️ 실천 현황 수정</div>
+    <div id="edit-member-name" style="font-size:14px;font-weight:500;margin-bottom:.7rem;color:var(--teal-d)"></div>
+    <label class="fl">🙏 이번 달 감사 기록 횟수</label>
+    <input type="number" id="edit-grat" min="0" placeholder="0">
+    <label class="fl">🤝 이번 달 나눔 기록 횟수</label>
+    <input type="number" id="edit-share" min="0" placeholder="0">
+    <label class="fl">✉️ 전도 진행 단계 (1~7)</label>
+    <input type="number" id="edit-stage" min="1" max="7" placeholder="1">
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-member-stat')">취소</button>
+      <button class="btn btn-p" onclick="saveMemberStat()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- 성도 상세 카드 -->
+<div class="modal-bg" id="modal-member-detail">
+  <div class="modal member-detail-modal" id="member-detail-inner"></div>
+</div>
+
+<!-- 설교 등록 -->
+<div class="modal-bg" id="modal-church-sermon-pro">
+  <div class="modal">
+    <div class="modal-title">🎙️ 설교 등록</div>
+    <label class="fl">날짜</label>
+    <input type="date" id="cs-date">
+    <label class="fl">설교 제목</label>
+    <input type="text" id="cs-title" placeholder="설교 제목">
+    <label class="fl">본문 말씀</label>
+    <input type="text" id="cs-verse" placeholder="예: 요한복음 3:16">
+    <label class="fl">시리즈명</label>
+    <input type="text" id="cs-series" placeholder="예: 산상수훈, 단편설교">
+    <label class="fl">설교자</label>
+    <input type="text" id="cs-preacher" placeholder="예: 담임목사">
+    <label class="fl">설교 요약</label>
+    <textarea id="cs-summary" placeholder="핵심 내용 요약..."></textarea>
+    <label class="fl">이번 주 적용 포인트</label>
+    <textarea id="cs-apply" placeholder="성도들이 이번 주 실천할 한 가지..."></textarea>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-church-sermon-pro')">취소</button>
+      <button class="btn btn-p" onclick="saveChurchSermon()">등록</button>
+    </div>
+  </div>
+</div>
+
+<!-- 메시지 결과 -->
+<div class="modal-bg" id="modal-msg-result">
+  <div class="modal">
+    <div class="modal-title" id="msg-result-title">메시지</div>
+    <textarea id="msg-result-text" style="min-height:150px;font-size:13px;background:var(--surface2)" readonly></textarea>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-msg-result')">닫기</button>
+      <button class="btn btn-p" onclick="navigator.clipboard?.writeText(document.getElementById('msg-result-text').value).then(()=>toast('📋 복사됨'))">📋 복사</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
