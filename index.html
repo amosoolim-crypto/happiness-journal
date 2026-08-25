@@ -170,8 +170,30 @@ textarea{resize:vertical;min-height:72px}
 .empty{text-align:center;padding:2.2rem 1rem;color:var(--text3);font-size:13px}
 .empty-icon{font-size:30px;margin-bottom:.4rem;display:block}
 hr{border:none;border-top:1px solid var(--border);margin:1rem 0}
-.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(8px);background:var(--text);color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;opacity:0;transition:all .25s;pointer-events:none;z-index:999;white-space:nowrap}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ── 토스트 알림 — 슬라이드업 + 페이드 애니메이션 ── */
+@keyframes toastIn  { 0%{opacity:0;transform:translateX(-50%) translateY(20px) scale(.92)} 60%{transform:translateX(-50%) translateY(-4px) scale(1.03)} 100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)} }
+@keyframes toastOut { 0%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)} 100%{opacity:0;transform:translateX(-50%) translateY(-12px) scale(.95)} }
+.toast{
+  position:fixed;bottom:1.5rem;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--text);color:#fff;
+  padding:10px 22px;border-radius:24px;
+  font-size:13.5px;font-weight:500;
+  opacity:0;pointer-events:none;z-index:9990;
+  white-space:nowrap;max-width:90vw;
+  box-shadow:0 4px 20px rgba(0,0,0,.22);
+  display:flex;align-items:center;gap:7px;
+  transition:none;
+}
+.toast.show{ animation:toastIn .38s cubic-bezier(.34,1.56,.64,1) forwards; }
+.toast.hide{ animation:toastOut .28s ease-in forwards; }
+/* 색상 테마별 */
+.toast.t-green { background:var(--teal); }
+.toast.t-purple{ background:var(--purple); }
+.toast.t-blue  { background:var(--blue); }
+.toast.t-amber { background:var(--amber); }
+.toast.t-coral { background:var(--coral); }
+.toast.t-dark  { background:#222; }
 .streak-chip{display:inline-flex;align-items:center;gap:5px;background:var(--amber-l);color:var(--amber-d);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;margin-bottom:.75rem}
 .routine-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:1rem}
 .routine-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem;box-shadow:var(--sh)}
@@ -1244,14 +1266,14 @@ canvas{max-width:100%}
 
 <div class="page" id="page-family-prayer">
   <div class="top-sub-bar"><button class="btn-back" onclick="showPage('more')">← 더보기</button><span>가족 기도</span></div>
-  <div style="margin-bottom:1rem"><button class="btn btn-p" onclick="openM('modal-fam')">+ 가족 기도 제목 추가</button></div>
+  <div style="margin-bottom:1rem"><button class="btn btn-p" onclick="openPrayerModal('family')">+ 가족 기도 제목 추가</button></div>
   <div id="fam-list"></div>
 </div>
 
 <!-- ══════ 선교 기도 ══════ -->
 <div class="page" id="page-mission-prayer">
   <div class="top-sub-bar"><button class="btn-back" onclick="showPage('more')">← 더보기</button><span>선교 기도</span></div>
-  <div style="margin-bottom:1rem"><button class="btn btn-p" onclick="openM('modal-mis')">+ 선교 기도 제목 추가</button></div>
+  <div style="margin-bottom:1rem"><button class="btn btn-p" onclick="openPrayerModal('mission')">+ 선교 기도 제목 추가</button></div>
   <div id="mis-list"></div>
 </div>
 
@@ -3612,10 +3634,12 @@ function saveQT(){
   if(editingId){
     const idx = qtE.findIndex(x=>x.id===editingId);
     if(idx>=0) qtE[idx] = { ...qtE[idx], ...data };
-    saveExtra('qt'); renderQT(); closeM('modal-qt'); toast('QT 묵상을 수정했습니다 ✏️');
+    saveExtra('qt'); renderQT(); closeM('modal-qt');
+    toast('✏️ QT 묵상이 수정되었습니다!',{color:'amber',duration:2500});
   } else {
     qtE.unshift({ id:Date.now(), ...data });
-    saveExtra('qt'); renderQT(); closeM('modal-qt'); toast('QT 묵상을 저장했습니다 📖');
+    saveExtra('qt'); renderQT(); closeM('modal-qt');
+    toast('📖 QT 묵상이 저장되었습니다!',{color:'green',duration:2500});
   }
   editingId = null;
 }
@@ -4579,12 +4603,29 @@ const sTxt   = ['var(--teal-d)','var(--blue-d)','var(--purple-d)','var(--amber-d
 
 function esc(s){ if(!s)return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function fd(d){ if(!d)return ''; try{ return new Date(d+'T00:00:00').toLocaleDateString('ko-KR',{month:'short',day:'numeric'}); }catch(_){ return d; } }
-function toast(msg){
+let _toastTimer = null;
+function toast(msg, opts={}){
   const t = document.getElementById('toast');
   if(!t) return;
-  t.textContent = msg;
+  // 이전 토스트 즉시 숨기기
+  if(_toastTimer) clearTimeout(_toastTimer);
+  t.className = 'toast';
+  t.innerHTML = '';
+  void t.offsetWidth; // reflow — 애니메이션 재시작
+  // 색상 클래스
+  const colorMap = {green:'t-green',purple:'t-purple',blue:'t-blue',
+                    amber:'t-amber',coral:'t-coral',dark:'t-dark'};
+  const colorCls = colorMap[opts.color] || '';
+  if(colorCls) t.classList.add(colorCls);
+  // 내용 설정
+  t.innerHTML = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  const dur = opts.duration || 2800;
+  _toastTimer = setTimeout(()=>{
+    t.classList.remove('show');
+    t.classList.add('hide');
+    setTimeout(()=>{ t.className='toast'; t.innerHTML=''; }, 320);
+  }, dur);
 }
 function wk(arr){
   const n=new Date(), m=new Date(n);
@@ -4767,6 +4808,7 @@ function saveG(){
     gE.unshift({ id:Date.now(), ...data });
     save(); renderAll(); closeM('modal-g');
     fireGratitudeEffect();
+    toast('🙏 감사 일기가 저장되었습니다!',{color:'green',duration:2500});
     if(challenges.gratitude.active) checkChallengeToday('gratitude');
   }
   editingId = null;
@@ -4791,6 +4833,7 @@ function saveS(){
     sE.unshift({ id:Date.now(), ...data });
     save(); renderAll(); closeM('modal-s');
     fireSharingEffect();
+    toast('🤝 나눔 내역이 기록되었습니다!',{color:'purple',duration:2500});
   }
   editingId = null;
 }
@@ -4827,6 +4870,7 @@ function saveP(){
     });
     save(); renderAll(); closeM('modal-p');
     fireEvangelismEffect();
+    toast('✉️ 전도 대상자가 등록되었습니다!',{color:'blue',duration:2500});
     if(challenges.evangelism.active) checkChallengeToday('evangelism');
   }
   editingId = null;
@@ -5428,7 +5472,7 @@ function activateLic(){
     if(!cfg.churchName && licInfo.churchName) cfg.churchName = licInfo.churchName;
     saveChurchCfg(cfg);
     applyChurchBranding();
-    toast('🎉 ' + licInfo.churchName + ' PRO 라이선스가 활성화되었습니다!');
+    toast('🎉 ' + licInfo.churchName + ' PRO 활성화 완료!',{color:'green',duration:3500});
     renderLicensePage();
   } else if(key.startsWith('HJ-TRIAL-')){
     startTrial();
@@ -5614,14 +5658,14 @@ function copyNotice(idx){
   const n=getChurchNotices()[idx]; if(!n) return;
   const cfg=getChurchCfg();
   const t=`[${cfg.churchName||'교회'} 공지 — ${n.cat}]\n\n📌 ${n.title}\n\n${n.body||''}\n\n— ${n.author||'관리자'} (${n.date})`;
-  navigator.clipboard?.writeText(t).then(()=>toast('📋 공지가 복사되었습니다')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(t).then(()=>toast('📋 공지가 복사되었습니다!',{color:'dark',duration:2000})).catch(()=>toast('복사 실패'));
 }
 function copyAllNotices(){
   const notices=getChurchNotices(); if(!notices.length){toast('공지가 없습니다');return;}
   const cfg=getChurchCfg();
   const t=`[${cfg.churchName||'교회'} 전체 공지]\n\n`+
     notices.slice().reverse().map(n=>`◆ [${n.cat}] ${n.title}\n${n.body||''}`).join('\n\n');
-  navigator.clipboard?.writeText(t).then(()=>toast('📋 전체 공지가 복사되었습니다')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(t).then(()=>toast('📋 전체 공지가 복사됩니다!',{color:'dark',duration:2000})).catch(()=>toast('복사 실패'));
 }
 
 // ══════════════════════════════════════
@@ -5732,7 +5776,7 @@ function saveMemberStat(){
   members[_editMemberIdx].evangelismStage = parseInt(document.getElementById('edit-stage')?.value)||1;
   saveChurchMembers(members);
   closeM('modal-member-stat');
-  toast('✅ 실천 현황이 수정되었습니다');
+  toast('✏️ 실천 현황이 수정되었습니다!',{color:'amber',duration:2500});
   renderDashboardPage();
 }
 function copyDashboardSummary(){
@@ -5744,7 +5788,7 @@ function copyDashboardSummary(){
   t+=`나눔 실천: ${members.filter(m=>m.shareCount>0).length}명\n`;
   t+=`전도 진행: ${members.filter(m=>m.evangelismStage>1).length}명\n\n`;
   members.forEach(m=>{t+=`• ${m.name} (${m.group||'미배정'}) — 감${m.gratCount||0} 나${m.shareCount||0} 전${m.evangelismStage||1}단\n`;});
-  navigator.clipboard?.writeText(t).then(()=>toast('📊 현황이 복사되었습니다')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(t).then(()=>toast('📊 현황이 복사되었습니다!',{color:'dark',duration:2000})).catch(()=>toast('복사 실패'));
 }
 function showMonthlyCheck(){
   const members=getChurchMembers();
@@ -5880,7 +5924,7 @@ function copyReportForKakao(){
 
 "범사에 감사하라" (살전 5:18)
 함께 실천하는 우리 소그룹을 위해 기도합니다 🙏`;
-  navigator.clipboard?.writeText(t).then(()=>toast('📱 카카오톡 발송용으로 복사되었습니다')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(t).then(()=>toast('📱 카카오톡 발송용으로 복사됨!',{color:'blue',duration:2800})).catch(()=>toast('복사 실패'));
 }
 
 // ══════════════════════════════════════
@@ -5954,7 +5998,7 @@ function copyLatestSermon(){
   const sermons=getChurchSermons(); if(!sermons.length) return;
   const s=sermons[sermons.length-1], cfg=getChurchCfg();
   const t=`[${cfg.churchName||'교회'} 주일 설교]\n📅 ${s.date}\n\n✝ ${s.title}\n📖 ${s.verse||''}\n\n${s.summary||''}\n\n✏️ 이번 주 적용: ${s.apply||''}\n\n— ${s.preacher||'담임목사'}\n#행복일지 #감사일기`;
-  navigator.clipboard?.writeText(t).then(()=>toast('📢 설교 요약이 복사되었습니다. 단톡방에 붙여넣기 하세요!')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(t).then(()=>toast('📢 설교 복사! 단톡방에 붙여넣기 하세요.',{color:'blue',duration:3000})).catch(()=>toast('복사 실패'));
 }
 function showSeriesList(){
   const sermons=getChurchSermons();
@@ -6126,7 +6170,7 @@ function renderAlarmPage(){
       ${_cDivider('생성된 메시지')}
       <textarea id="alarm-text-out" style="min-height:180px;font-size:13px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);width:100%;padding:.75rem;font-family:inherit;resize:vertical" readonly></textarea>
       <div style="display:flex;gap:7px;margin-top:8px">
-        ${_cQuickBtn('📋 복사하기', "navigator.clipboard?.writeText(document.getElementById('alarm-text-out').value).then(()=>toast('카카오톡에 붙여넣기 하세요! 📱')).catch(()=>toast('복사 실패'))")}
+        ${_cQuickBtn('📋 복사하기', "navigator.clipboard?.writeText(document.getElementById('alarm-text-out').value).then(()=>toast('📱 카카오톡에 붙여넣기 하세요!',{color:'blue',duration:3000})).catch(()=>toast('복사 실패'))")}
         ${_cOutlineBtn('다시 작성', "document.getElementById('alarm-result').style.display='none'")}
       </div>
     </div>
@@ -6398,36 +6442,31 @@ function renderAnsweredGallery(){
     </div>`).join('');
 }
 function openAnsweredModalV2(){
-  const div=document.createElement('div');
-  div.className='modal-bg'; div.id='modal-answered-v2'; div.style.display='flex';
-  div.innerHTML=`<div class="modal">
-    <div class="modal-title">✅ 응답 기도 기록</div>
-    <label class="fl">날짜</label>
-    <input type="date" id="ans-date" value="${new Date().toISOString().split('T')[0]}">
-    <label class="fl">기도 제목</label>
-    <input type="text" id="ans-title" placeholder="기도했던 내용">
-    <label class="fl">응답 내용</label>
-    <textarea id="ans-content" placeholder="하나님이 어떻게 응답해주셨나요?" style="min-height:90px"></textarea>
-    <div class="modal-footer">
-      <button class="btn btn-g" onclick="document.getElementById('modal-answered-v2').remove()">취소</button>
-      <button class="btn btn-p" onclick="saveAnsweredV2()">기록</button>
-    </div>
-  </div>`;
-  document.body.appendChild(div);
+  // 고정 모달 사용 — 동적 생성 폐기 (getElementById 충돌 해소)
+  const d = document.getElementById('anv2-date');
+  if(d) d.value = new Date().toISOString().split('T')[0];
+  const t = document.getElementById('anv2-title');
+  if(t) t.value = '';
+  const c = document.getElementById('anv2-content');
+  if(c) c.value = '';
+  openM('modal-answered-v2');
 }
 function saveAnsweredV2(){
+  const title = document.getElementById('anv2-title')?.value.trim();
+  if(!title){ toast('기도 제목을 입력해주세요'); return; }
   const arr=getAnswered();
   arr.push({
     id:Date.now(),
-    date:document.getElementById('ans-date')?.value,
-    title:document.getElementById('ans-title')?.value.trim(),
-    content:document.getElementById('ans-content')?.value.trim(),
+    date:document.getElementById('anv2-date')?.value || new Date().toISOString().split('T')[0],
+    title,
+    content:document.getElementById('anv2-content')?.value.trim()||'',
   });
   saveAnswered(arr);
-  document.getElementById('modal-answered-v2')?.remove();
+  closeM('modal-answered-v2');
   renderAnsweredGallery();
+  toast('✅ 응답 기도가 기록되었습니다!',{color:'green',duration:3000});
   fireConfetti();
-  showMotivationToast('✅ 응답 기도가 기록되었습니다! 하나님을 찬양합니다!');
+  showMotivationToast('하나님이 응답하셨습니다! 찬양합니다! 🙌');
 }
 
 // ────────────────────────────────────────
@@ -7099,7 +7138,7 @@ function saveChurchConfig(){
   if(w) cfg.worship=w;
   if(a) cfg.addr=a;
   saveChurchCfg(cfg);
-  toast('✅ 교회 정보가 저장되었습니다');
+  toast('🏛️ 교회 정보가 저장되었습니다!',{color:'green',duration:2500});
   applyChurchBranding();
   renderCustomizePage();
 }
@@ -7111,7 +7150,7 @@ function handleLogoUpload(input){
     const cfg=getChurchCfg();
     cfg.logoData=e.target.result;
     saveChurchCfg(cfg);
-    toast('✅ 로고가 저장되었습니다');
+    toast('🖼 로고가 저장되었습니다!',{color:'green',duration:2200});
     renderCustomizePage();
   };
   r.readAsDataURL(file);
@@ -7121,7 +7160,7 @@ function removeLogo(){
   const cfg=getChurchCfg();
   delete cfg.logoData;
   saveChurchCfg(cfg);
-  toast('로고를 삭제했습니다');
+  toast('🗑 로고가 삭제되었습니다',{color:'coral',duration:2000});
   renderCustomizePage();
 }
 
@@ -7130,7 +7169,7 @@ function setThemeColor(id,hex){
   cfg.themeColor=id; cfg.themeHex=hex;
   saveChurchCfg(cfg);
   document.documentElement.style.setProperty('--teal',hex);
-  toast('테마 색상이 변경되었습니다');
+  toast('🎨 테마 색상이 변경되었습니다!',{color:'green',duration:2000});
   renderCustomizePage();
 }
 
@@ -7148,7 +7187,7 @@ function saveNotice(){
   });
   saveChurchNotices(notices);
   closeM('modal-church-notice');
-  toast('✅ 공지가 등록되었습니다');
+  toast('📢 공지가 등록되었습니다!',{color:'blue',duration:2500});
   renderChurchNoticePage();
 }
 
@@ -7157,7 +7196,7 @@ function deleteNotice(i){
   const notices=getChurchNotices();
   notices.splice(i,1);
   saveChurchNotices(notices);
-  toast('삭제되었습니다');
+  toast('🗑 공지가 삭제되었습니다',{color:'coral',duration:2000});
   renderChurchNoticePage();
 }
 
@@ -7185,7 +7224,7 @@ function deleteMember(i){
   const members=getChurchMembers();
   members.splice(i,1);
   saveChurchMembers(members);
-  toast('삭제되었습니다');
+  toast('🗑 성도가 삭제되었습니다',{color:'coral',duration:2000});
   renderDashboardPage();
 }
 
@@ -7205,7 +7244,7 @@ function saveChurchSermon(){
   });
   saveChurchSermons(sermons);
   closeM('modal-church-sermon-pro');
-  toast('✅ 설교가 등록되었습니다');
+  toast('🎙️ 설교가 등록되었습니다!',{color:'green',duration:2500});
   renderChurchSermonPage();
 }
 
@@ -7222,7 +7261,7 @@ ${s.summary||''}
 
 ✏️ 이번 주 적용: ${s.apply||''}
 — ${s.preacher||'담임목사'}`;
-  navigator.clipboard?.writeText(t).then(()=>toast('설교 내용이 복사되었습니다')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(t).then(()=>toast('📋 설교 내용이 복사됩니다!',{color:'dark',duration:2000})).catch(()=>toast('복사 실패'));
 }
 
 function fullBackup(){
@@ -7245,7 +7284,7 @@ function fullBackup(){
   a.download=`happyjournal-${new Date().toISOString().split('T')[0]}.json`;
   a.click(); URL.revokeObjectURL(url);
   localStorage.setItem('hj_last_backup',Date.now().toString());
-  toast('✅ 전체 백업이 완료되었습니다');
+  toast('💾 백업 완료! 파일을 안전한 곳에 보관하세요.',{color:'dark',duration:3000});
   renderCloudPage();
 }
 
@@ -7276,7 +7315,7 @@ function fullRestore(input){
       if(data.churchMembers) localStorage.setItem(CHURCH_MEMBER_KEY,JSON.stringify(data.churchMembers));
       if(data.churchSermons) localStorage.setItem(CHURCH_SERMON_KEY,JSON.stringify(data.churchSermons));
       if(data.proLicense)    localStorage.setItem(PRO_KEY,          JSON.stringify(data.proLicense));
-      toast('✅ 복원이 완료되었습니다. 앱을 새로고침하세요.');
+      toast('📥 복원 완료! 앱을 새로고침하세요.',{color:'green',duration:3500});
       if(typeof loadData==='function') loadData();
     }catch(err){ toast('올바르지 않은 백업 파일입니다'); }
   };
@@ -7316,7 +7355,7 @@ function activateLicFromSettings(){
     // 상태 텍스트 즉시 갱신
     const st = document.getElementById('pro-status-text');
     if(st) st.textContent = 'PRO 활성 ✓ — ' + licInfo.churchName;
-    toast('🎉 ' + licInfo.churchName + ' PRO 라이선스가 활성화되었습니다!');
+    toast('🎉 ' + licInfo.churchName + ' PRO 활성화!',{color:'green',duration:3500});
     if(typeof fireConfetti==='function') fireConfetti();
   } else if(key.startsWith('HJ-TRIAL-')){
     startTrial();
@@ -7754,7 +7793,7 @@ function _genEncourageText(m){
 function copyEncourage(i){
   const el = document.getElementById(`encourage-preview-${i}`);
   const text = el?.innerText||el?.textContent||'';
-  navigator.clipboard?.writeText(text).then(()=>toast('📋 격려 메시지가 복사되었습니다')).catch(()=>toast('복사 실패'));
+  navigator.clipboard?.writeText(text).then(()=>toast('💌 격려 메시지가 복사됩니다!',{color:'purple',duration:2500})).catch(()=>toast('복사 실패'));
 }
 function refreshEncourage(i){
   const members = getChurchMembers();
@@ -7773,7 +7812,7 @@ function addMemo(memberIdx){
   m.memos.push({ date: new Date().toLocaleDateString('ko-KR',{month:'short',day:'numeric'}), text });
   saveChurchMembers(members);
   if(inputEl) inputEl.value = '';
-  toast('✅ 메모가 추가되었습니다');
+  toast('📝 메모가 추가되었습니다!',{color:'dark',duration:2200});
   openMemberDetail(memberIdx);
 }
 function deleteMemo(memberIdx, memoIdx){
@@ -7793,7 +7832,7 @@ function changeGroup(i){
   if(newGroup===null) return;
   m.group = newGroup.trim();
   saveChurchMembers(members);
-  toast(`✅ ${m.name} 성도의 소그룹이 "${m.group}"로 변경되었습니다`);
+  toast(`🔄 ${m.name} 성도의 소그룹이 변경되었습니다!`,{color:'green',duration:2500});
   openMemberDetail(i);
   renderMembersPage();
 }
@@ -7816,7 +7855,7 @@ function saveMember(){
   });
   saveChurchMembers(members);
   closeM('modal-church-member');
-  toast('✅ 성도가 추가되었습니다');
+  toast('👥 성도가 추가되었습니다!',{color:'green',duration:2500});
   renderMembersPage();
 }
 
@@ -7953,7 +7992,25 @@ function openSermonModal(){
     <textarea id="msg-result-text" style="min-height:150px;font-size:13px;background:var(--surface2)" readonly></textarea>
     <div class="modal-footer">
       <button class="btn btn-g" onclick="closeM('modal-msg-result')">닫기</button>
-      <button class="btn btn-p" onclick="navigator.clipboard?.writeText(document.getElementById('msg-result-text').value).then(()=>toast('📋 복사됨'))">📋 복사</button>
+      <button class="btn btn-p" onclick="navigator.clipboard?.writeText(document.getElementById('msg-result-text').value).then(()=>toast('📋 복사됨!',{color:'dark',duration:1800}))">📋 복사</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 응답 기도 기록 모달 (v2 고정, anv2- 접두어로 충돌 방지) -->
+<div class="modal-bg" id="modal-answered-v2">
+  <div class="modal">
+    <div class="modal-title">✅ 응답 기도 기록</div>
+    <label class="fl">날짜</label>
+    <input type="date" id="anv2-date">
+    <label class="fl">기도 제목</label>
+    <input type="text" id="anv2-title" placeholder="기도했던 내용을 적어주세요">
+    <label class="fl">응답 내용</label>
+    <textarea id="anv2-content" placeholder="하나님이 어떻게 응답해주셨나요?" style="min-height:90px"></textarea>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="closeM('modal-answered-v2')">취소</button>
+      <button class="btn btn-p" onclick="saveAnsweredV2()">🙏 기록하기</button>
     </div>
   </div>
 </div>
