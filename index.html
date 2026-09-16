@@ -3283,6 +3283,7 @@ function openGM(editId){
     if(titleEl) titleEl.textContent = '🙏 감사 일기 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
+    const gd=document.getElementById('g-date'); if(gd) gd.value=new Date().toISOString().split('T')[0];
     if(titleEl) titleEl.textContent = '🙏 감사 기록';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -3319,6 +3320,7 @@ function openSM(editId){
     if(titleEl) titleEl.textContent = '🤝 나눔 기록 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
+    const sd=document.getElementById('s-date'); if(sd) sd.value=new Date().toISOString().split('T')[0];
     if(titleEl) titleEl.textContent = '🤝 나눔 기록';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -3352,6 +3354,7 @@ function openPM(editId){
     if(titleEl) titleEl.textContent = '✉️ 전도 대상자 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
+    const pd=document.getElementById('p-date'); if(pd) pd.value=new Date().toISOString().split('T')[0];
     if(titleEl) titleEl.textContent = '✉️ 전도 대상자 등록';
     if(btnEl) btnEl.textContent = '등록';
   }
