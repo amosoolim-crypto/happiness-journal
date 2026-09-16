@@ -2198,7 +2198,6 @@ function saveExtra(type){
 /* ── QT 묵상 ─────────────────────────────────────────────── */
 function saveQT(){
   const verse=(document.getElementById('qt-verse')||{}).value||'';
-  if(!verse.trim()){ toast('본문 구절을 입력해주세요',{color:'amber',duration:2000}); return; }
   const data = {
     date:document.getElementById('qt-date').value,
     verse:verse.trim(),
@@ -2280,7 +2279,6 @@ function openAnsweredModal(editId){
 }
 function saveAnswered(){
   const t=(document.getElementById('ans-title')||{}).value||'';
-  if(!t.trim()){ toast('제목을 입력해주세요',{color:'amber',duration:2000}); return; }
   const data = { date:document.getElementById('ans-date').value, title:t.trim(), body:(document.getElementById('ans-body').value||'').trim() };
   if(editingId){
     const idx = answeredE.findIndex(x=>x.id===editingId);
@@ -2335,7 +2333,6 @@ function savePrayerItem(type){
   const bodyId  = type==='family' ? 'fam-body' : 'mis-body';
   const modalId = type==='family' ? 'modal-fam' : 'modal-mis';
   const name=(document.getElementById(inputId)||{}).value||'';
-  if(!name.trim()){ toast('이름/대상을 입력해주세요'); return; }
   const body = (document.getElementById(bodyId).value||'').trim();
 
   if(editingId){
@@ -2397,7 +2394,6 @@ function openIntercessionModal(editId){
 }
 function saveIntercession(){
   const name=(document.getElementById('ic-name')||{}).value||'';
-  if(!name.trim()){ toast('기도 대상을 입력해주세요',{color:'amber',duration:2000}); return; }
   const body = (document.getElementById('ic-body').value||'').trim();
   if(editingId){
     const idx = intercessionE.findIndex(x=>x.id===editingId);
@@ -2462,7 +2458,6 @@ function openSermonModal(editId){
 }
 function saveSermonNote(){
   const t=(document.getElementById('sermon-title')||{}).value||'';
-  if(!t.trim()){ toast('설교 제목을 입력해주세요'); return; }
   const data = {
     date:document.getElementById('sermon-date').value,
     title:t.trim(), pastor:(document.getElementById('sermon-pastor').value||'').trim(),
@@ -2522,7 +2517,6 @@ function saveEncourage(){
   const toName=(document.getElementById('enc-to-name')||{}).value||'';
   const toPhone=(document.getElementById('enc-to-phone')||{}).value||'';
   const msg=(document.getElementById('enc-msg')||{}).value||'';
-  if(!name.trim()||!msg.trim()){ toast('이름과 메시지를 모두 입력해주세요'); return; }
   if(editingId){
     const idx = encourageE.findIndex(x=>x.id===editingId);
     if(idx>=0) encourageE[idx] = { ...encourageE[idx], name:name.trim(), toName:toName.trim(), toPhone:toPhone.trim(), msg:msg.trim() };
@@ -2645,7 +2639,6 @@ function saveGroup(){
   const w3=(document.getElementById('grp-w3')||{}).value||'';
   const w4=(document.getElementById('grp-w4')||{}).value||'';
   const w5=(document.getElementById('grp-w5')||{}).value||'';
-  if(!target.trim()){ toast('대상을 입력해주세요',{color:'amber',duration:2000}); return; }
   if(editingId){
     const idx = groupE.findIndex(x=>x.id===editingId);
     if(idx>=0) groupE[idx] = { ...groupE[idx], tier, target:target.trim(), time:time.trim(), place:place.trim(), w1:w1.trim(), w2:w2.trim(), w3:w3.trim(), w4:w4.trim(), w5:w5.trim() };
@@ -3372,7 +3365,6 @@ function setStar(n){ curStar=n; document.querySelectorAll('#g-stars .star-btn').
 // ════════════════════════════════════════════════════════════════
 function saveG(){
   const t=(document.getElementById('g-title')||{}).value||'';
-  if(!t.trim()){ toast('감사 제목을 입력해주세요'); return; }
   const data = {
     date:document.getElementById('g-date').value,
     areas:[...curArea], title:t.trim(),
@@ -3397,7 +3389,6 @@ function delG(id){ if(!confirm('삭제할까요?')) return; gE=gE.filter(e=>e.id
 
 function saveS(){
   const who=(document.getElementById('s-who')||{}).value||'';
-  if(!who.trim()){ toast('나눔 대상을 입력해주세요'); return; }
   const data = {
     date:document.getElementById('s-date').value,
     dir:document.getElementById('s-dir').value, who:who.trim(),
@@ -3421,7 +3412,6 @@ function delS(id){ if(!confirm('삭제할까요?')) return; sE=sE.filter(e=>e.id
 
 function saveP(){
   const name=(document.getElementById('p-name')||{}).value||'';
-  if(!name.trim()){ toast('이름을 입력해주세요',{color:'amber',duration:2000}); return; }
   if(editingId){
     const idx = pE.findIndex(x=>x.id===editingId);
     if(idx>=0){
@@ -3967,7 +3957,6 @@ function openAnsweredModalV2(){
 }
 function saveAnsweredV2(){
   const title = document.getElementById('anv2-title')?.value.trim();
-  if(!title){ toast('기도 제목을 입력해주세요',{color:'amber',duration:2000}); return; }
   const arr=getAnswered();
   arr.push({
     id:Date.now(),
@@ -4684,7 +4673,6 @@ function openPersonalPrayerModal(editId){
 
 function savePersonalPrayer(){
   const name = (document.getElementById('pp-name')?.value||'').trim();
-  if(!name){ toast('기도 제목을 입력해주세요',{color:'amber',duration:2000}); return; }
   const data = {
     date: document.getElementById('pp-date')?.value || new Date().toISOString().split('T')[0],
     name,
@@ -4791,8 +4779,6 @@ function openPrayerAnswerModal(editId){
 function savePrayerAnswer(){
   const name = (document.getElementById('pa-name')?.value||'').trim();
   const body = (document.getElementById('pa-body')?.value||'').trim();
-  if(!name){ toast('기도 제목을 입력해주세요',{color:'amber',duration:2000}); return; }
-  if(!body){ toast('응답 내용을 입력해주세요'); return; }
   const data = {
     date: document.getElementById('pa-date')?.value || new Date().toISOString().split('T')[0],
     name, body,
