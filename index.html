@@ -1262,6 +1262,7 @@ textarea{font-size:16px;font-family:inherit}</style>
       </div>
     </div>
   </div>
+  <div id="alarm-status-txt"></div>
 
   <div class="slabel">하루 10분 루틴 가이드</div>
   <div class="info-box teal">
@@ -3666,6 +3667,8 @@ function init(){
   updateLangUI();
   renderChallenges();
   startMemoryGame();
+  if(typeof renderAnsweredGallery==='function') renderAnsweredGallery();
+  if(typeof renderSermonTask==='function') renderSermonTask();
 
 }
 
@@ -4619,14 +4622,8 @@ let _memberDetailIdx = -1;   // 상세 카드 대상 인덱스
 
 
 function openChurchSermonModal(){
-  const d = document.getElementById('cs-date');
-  if(d && !d.value) d.value = new Date().toISOString().split('T')[0];
-  // 입력창 초기화
-  ['cs-title','cs-verse','cs-series','cs-preacher','cs-summary','cs-apply'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.value = '';
-  });
-  openM('modal-sermon');
+  // modal-sermon (설교노트) 모달 열기
+  openSermonModal();
 }
 
 
