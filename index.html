@@ -5,24 +5,20 @@
 
 <meta charset="UTF-8">
 <script>
-/* ── 유령 Service Worker 자동 해제 ──────────────────────────────
-   과거 버전에서 등록됐을 수 있는 Service Worker가 브라우저에 남아
-   이후 페이지 요청을 가로채면 "127.0.0.1 연결 거부" 같은 엉뚱한
-   오류를 일으킬 수 있다. 이 앱은 Service Worker를 전혀 쓰지 않으므로
-   혹시 남아있는 게 있으면 즉시 전부 해제한다. */
-(function unregisterGhostServiceWorkers(){
-  try {
-    if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistrations) {
-      navigator.serviceWorker.getRegistrations().then(function(regs){
-        regs.forEach(function(reg){ reg.unregister(); });
-      }).catch(function(){});
-    }
-    if ('caches' in window && caches.keys) {
-      caches.keys().then(function(names){
-        names.forEach(function(name){ caches.delete(name); });
-      }).catch(function(){});
-    }
-  } catch (e) {}
+/* ── Service Worker 등록 (GitHub Pages / https://) ──────────────
+   · https:// 환경: sw.js 등록 → 오프라인 캐시 + 알림 지원
+   · file:// 환경 : 기존 유령 SW만 해제 (로컬 실행용)       */
+(function initServiceWorker(){
+  if (!('serviceWorker' in navigator)) return;
+  if (location.protocol === 'https:') {
+    navigator.serviceWorker.register('./sw.js')
+      .then(function(reg){ console.log('[SW] 등록 완료:', reg.scope); })
+      .catch(function(err){ console.warn('[SW] 등록 실패:', err); });
+  } else {
+    navigator.serviceWorker.getRegistrations()
+      .then(function(regs){ regs.forEach(function(r){ r.unregister(); }); })
+      .catch(function(){});
+  }
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -960,37 +956,19 @@ textarea{font-size:16px;font-family:inherit}</style>
     <div class="qcard" onclick="showPage('sharing')"><div class="qicon">🤝</div><div class="qlabel">나눔 장부</div><div class="qcount" id="hs">0건</div></div>
     <div class="qcard" onclick="showPage('evangelism')"><div class="qicon">✉️</div><div class="qlabel">전도 대상</div><div class="qcount" id="he">0명</div></div>
   </div>
-  <div class="slabel">오늘의 말씀</div>
-  <div class="verse" id="daily-verse"></div>
+
   <!-- ⑧ 기념일·이벤트 배너 -->
   <div id="home-event-banner" style="display:none"></div>
 
   <!-- ⑨ 과거 회고 카드 -->
   <div id="home-retro" style="display:none"></div>
 
-  <div class="slabel">이번 주 실천 현황</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem">
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer" onclick="showPage('gratitude')">
-      <div style="font-size:22px;font-weight:700;color:var(--teal)" id="hg-stat">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">감사 기록</div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer" onclick="showPage('sharing')">
-      <div style="font-size:22px;font-weight:700;color:var(--purple)" id="hs-stat">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">나눔 기록</div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer" onclick="showPage('evangelism')">
-      <div style="font-size:22px;font-weight:700;color:var(--blue)" id="he-stat">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">전도 진행</div>
-    </div>
-  </div>
   <div class="slabel">빠른 기록</div>
   <div style="display:flex;gap:7px;flex-wrap:wrap">
     <button class="btn btn-p" onclick="openGM()">🙏 감사 기록</button>
     <button class="btn btn-p" style="background:var(--purple);color:#fff" onclick="openSM()">🤝 나눔 기록</button>
     <button class="btn btn-p" style="background:var(--blue);color:#fff" onclick="openPM()">✉️ 전도 진행</button>
   </div>
-
-  <div style="height:.6rem"></div>
 
   <!-- ② 레벨 배지 + ③ 월간 목표 -->
   <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
