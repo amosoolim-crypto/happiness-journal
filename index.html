@@ -963,7 +963,20 @@ textarea{font-size:16px;font-family:inherit}</style>
     <h1>행복일지 — 감사와 나눔의 복음 축제</h1>
     <p>하나님께 감사 · 성도들과 나눔 · 이웃에게 복음</p>
   </div>
-  <div id="streak-wrap"></div>
+  
+<!-- PWA 설치 배너 -->
+<div id="pwa-install-banner" style="display:none;margin-bottom:.75rem;padding:.75rem 1rem;background:linear-gradient(135deg,#1D9E75,#0d7a5a);border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:.5rem;box-shadow:0 2px 8px rgba(29,158,117,.35)">
+  <div style="display:flex;align-items:center;gap:.6rem;flex:1;min-width:0">
+    <span style="font-size:1.4rem">📲</span>
+    <div>
+      <div style="font-weight:700;font-size:13px">홈화면에 설치하기</div>
+      <div style="font-size:11px;opacity:.85">앱처럼 빠르게 실행됩니다</div>
+    </div>
+  </div>
+  <button id="pwa-install-btn" onclick="doPwaInstall()" style="background:#fff;color:#1D9E75;border:none;border-radius:8px;padding:.4rem .9rem;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit">설치</button>
+  <button onclick="document.getElementById('pwa-install-banner').style.display='none'" style="background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;padding:.2rem;opacity:.8;line-height:1">✕</button>
+</div>
+<div id="streak-wrap"></div>
   <div class="quick-grid">
     <div class="qcard" onclick="showPage('gratitude')"><div class="qicon">🙏</div><div class="qlabel">감사 일기</div><div class="qcount" id="hg">0개</div></div>
     <div class="qcard" onclick="showPage('sharing')"><div class="qicon">🤝</div><div class="qlabel">나눔 장부</div><div class="qcount" id="hs">0건</div></div>
@@ -3737,7 +3750,25 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   __pwaDeferredPrompt = e;
   __pwaUpdateSettingsUI();
+  /* 홈 배너 표시 */
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner && !sessionStorage.getItem('pwa-banner-closed')) {
+    banner.style.display = 'flex';
+  }
 });
+
+function doPwaInstall() {
+  if (__pwaDeferredPrompt) {
+    __pwaDeferredPrompt.prompt();
+    __pwaDeferredPrompt.userChoice.then((choice) => {
+      __pwaDeferredPrompt = null;
+      __pwaUpdateSettingsUI();
+      const banner = document.getElementById('pwa-install-banner');
+      if (banner) banner.style.display = 'none';
+      sessionStorage.setItem('pwa-banner-closed', '1');
+    });
+  }
+}
 
 window.addEventListener('appinstalled', () => {
   __pwaDeferredPrompt = null;

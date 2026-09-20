@@ -7,116 +7,101 @@
      자동 버전이 계산되어 캐시가 갱신됩니다.
    ═══════════════════════════════════════════════════════════════ */
 
+const FALLBACK_VERSION = 'hj-20260920-1957';
+const STATIC_URLS = ['./', './index.html'];
+
 /* ── 자동 버전: index.html의 Last-Modified + Content-Length ── */
 async function getAutoVersion() {
   try {
     const res = await fetch('./index.html', { method: 'HEAD', cache: 'no-store' });
     const modified = res.headers.get('last-modified') || '';
     const size     = res.headers.get('content-length') || '';
-    /* 날짜+크기 조합 → 짧은 해시 */
     const raw = modified + '|' + size;
     let hash = 0;
     for (let i = 0; i < raw.length; i++) {
       hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
     }
-    return 'hj-auto-' + Math.abs(hash).toString(36);
+    const ver = 'hj-auto-' + Math.abs(hash).toString(36);
+    console.log('[SW] 자동 버전:', ver, '(modified:', modified, 'size:', size + ')');
+    return ver;
   } catch (_) {
-    /* 네트워크 실패 시 날짜 기반 폴백 */
-    return 'hj-' + new Date().toISOString().slice(0, 10);
+    console.log('[SW] 버전 자동계산 실패, fallback:', FALLBACK_VERSION);
+    return FALLBACK_VERSION;
   }
 }
 
-const STATIC_URLS = [
-  './',
-  './index.html',
-];
-
-/* ── 설치 ────────────────────────────────────────────────────── */
-self.addEventListener('install', event => {
+/* ── install ── */
+self.addEventListener('install', (event) => {
+  console.log('[SW] install');
   event.waitUntil(
-    getAutoVersion().then(ver =>
-      caches.open(ver).then(cache => cache.addAll(STATIC_URLS))
-    ).then(() => self.skipWaiting())
+    getAutoVersion().then(async (ver) => {
+      const cache = await caches.open(ver);
+      await cache.addAll(STATIC_URLS);
+      console.log('[SW] 캐시 완료:', ver);
+    })
   );
+  self.skipWaiting();
 });
 
-/* ── 활성화: 이전 캐시 자동 삭제 ───────────────────────────── */
-self.addEventListener('activate', event => {
+/* ── activate: 이전 캐시 삭제 ── */
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    getAutoVersion().then(currentVer =>
-      caches.keys().then(keys =>
-        Promise.all(
-          keys
-            .filter(k => k !== currentVer)
-            .map(k => caches.delete(k))
-        )
-      )
-    ).then(() => self.clients.claim())
+    getAutoVersion().then(async (currentVer) => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.filter(k => k !== currentVer).map(k => {
+          console.log('[SW] 이전 캐시 삭제:', k);
+          return caches.delete(k);
+        })
+      );
+    })
   );
+  self.clients.claim();
 });
 
-/* ── Fetch: Cache-First ──────────────────────────────────────── */
-self.addEventListener('fetch', event => {
+/* ── fetch: 네트워크 우선, 실패 시 캐시 ── */
+self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-  if (!event.request.url.startsWith('http')) return;
+
+  const url = new URL(event.request.url);
+
+  /* 같은 origin의 요청만 처리 */
+  if (url.origin !== location.origin) return;
 
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-
-      return fetch(event.request)
-        .then(response => {
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          const toCache = response.clone();
-          getAutoVersion().then(ver =>
-            caches.open(ver).then(cache => cache.put(event.request, toCache))
-          );
-          return response;
-        })
-        .catch(() => {
-          if (event.request.destination === 'document') {
-            return caches.match('./index.html');
-          }
-        });
-    })
-  );
-});
-
-/* ── Push 알림 수신 ─────────────────────────────────────────── */
-self.addEventListener('push', event => {
-  if (!event.data) return;
-  let data = {};
-  try { data = event.data.json(); } catch(_) { data = { title:'행복일지', body: event.data.text() }; }
-
-  const title   = data.title || '행복일지';
-  const options = {
-    body:     data.body  || '기록할 시간입니다 🙏',
-    icon:     './icon-192.png',
-    badge:    './icon-72.png',
-    tag:      data.tag   || 'hj-alarm',
-    renotify: true,
-    vibrate:  [200, 100, 200],
-    data:     { url: data.url || './' }
-  };
-
-  event.waitUntil(self.registration.showNotification(title, options));
-});
-
-/* ── 알림 클릭 → 앱 열기 ────────────────────────────────────── */
-self.addEventListener('notificationclick', event => {
-  event.notification.close();
-  const target = (event.notification.data && event.notification.data.url) || './';
-
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
-      for (const client of list) {
-        if (client.url.includes('happiness-journal') && 'focus' in client) {
-          return client.focus();
+    fetch(event.request)
+      .then(async (res) => {
+        if (res.ok) {
+          const ver = await getAutoVersion();
+          const cache = await caches.open(ver);
+          cache.put(event.request, res.clone());
         }
-      }
-      if (clients.openWindow) return clients.openWindow(target);
+        return res;
+      })
+      .catch(async () => {
+        const cached = await caches.match(event.request);
+        if (cached) return cached;
+        /* 네비게이션 실패 → index.html 반환 */
+        if (event.request.mode === 'navigate') {
+          return caches.match('./index.html');
+        }
+      })
+  );
+});
+
+/* ── 푸시 알림 ── */
+self.addEventListener('push', (event) => {
+  const data = event.data ? event.data.json() : {};
+  event.waitUntil(
+    self.registration.showNotification(data.title || '행복일지', {
+      body: data.body || '',
+      icon: './icon-192.png',
+      badge: './icon-192.png',
     })
   );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(clients.openWindow('./'));
 });
