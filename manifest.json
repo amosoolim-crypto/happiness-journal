@@ -2,7 +2,7 @@
   "name": "행복일지 — 감사와 나눔의 전도 프로젝트",
   "short_name": "행복일지",
   "description": "하나님께 감사 · 성도들과 나눔 · 이웃에게 복음",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F7F5F0",
@@ -23,6 +23,8 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [],
-  "categories": ["lifestyle", "productivity"]
+  "categories": [
+    "lifestyle",
+    "productivity"
+  ]
 }
