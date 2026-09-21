@@ -984,6 +984,26 @@ textarea{font-size:16px;font-family:inherit}</style>
     <button class="btn btn-p" style="background:var(--blue);color:#fff" onclick="openPM()">✉️ 전도 진행</button>
   </div>
 
+  <!-- 이번 주 실천 현황 -->
+  <div class="slabel" style="display:flex;justify-content:space-between;align-items:center;margin-top:.9rem">
+    <span>이번 주 실천 현황</span>
+    <button onclick="showMorePage('daily-routine')" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">자세히 보기 ›</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem">
+    <div onclick="showPage('gratitude')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:transform .1s" onpointerdown="this.style.transform='scale(.96)'" onpointerup="this.style.transform=''" onpointercancel="this.style.transform=''">
+      <div style="font-size:22px;font-weight:700;color:var(--teal)" id="hm-wg">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">🙏 감사 기록</div>
+    </div>
+    <div onclick="showPage('sharing')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:transform .1s" onpointerdown="this.style.transform='scale(.96)'" onpointerup="this.style.transform=''" onpointercancel="this.style.transform=''">
+      <div style="font-size:22px;font-weight:700;color:var(--purple)" id="hm-ws">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">🤝 나눔 기록</div>
+    </div>
+    <div onclick="showPage('evangelism')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:transform .1s" onpointerdown="this.style.transform='scale(.96)'" onpointerup="this.style.transform=''" onpointercancel="this.style.transform=''">
+      <div style="font-size:22px;font-weight:700;color:var(--blue)" id="hm-we">0</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px">✉️ 전도 진행</div>
+    </div>
+  </div>
+
   <!-- ② 레벨 배지 + ③ 월간 목표 -->
   <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
     <span>이번 달 목표</span>
@@ -3346,7 +3366,7 @@ function openPM(editId){
   }
   openM('modal-p');
 }
-function closeM(id){ const el=document.getElementById(id); if(el) el.classList.remove('open'); }
+function closeM(id){ const el=document.getElementById(id); if(el) el.classList.remove('open'); __hjClearDraft(id); }
 function tA(btn,area){
   if(btn.classList.contains('sel')){ btn.classList.remove('sel'); curArea=curArea.filter(a=>a!==area); }
   else{ btn.classList.add('sel'); curArea.push(area); }
@@ -3570,9 +3590,11 @@ function updateStats(){
   if(sw) sw.innerHTML = sn>0 ? `<div class="streak-chip">🔥 ${sn}일 연속 감사 기록 중!</div>` : '';
   const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
   set('hg', gE.length+'개'); set('hs', sE.length+'건'); set('he', pE.length+'명');
-  // 하루 루틴 페이지 이번 주 실천 현황 카드
+  // 이번 주 실천 현황 — 홈 카드 + 하루 루틴 페이지 공용
   const _wg=wk(gE), _ws=wk(sE), _we=pE.filter(p=>!p.done).length;
   set('hg-stat', _wg+'회'); set('hs-stat', _ws+'건'); set('he-stat', _we+'명');
+  // 홈화면 이번 주 실천 현황 카드
+  set('hm-wg', _wg+'회'); set('hm-ws', _ws+'건'); set('hm-we', _we+'명');
   // 동기부여 시스템 업데이트
   if(typeof updateMotivation==='function') updateMotivation();
   set('gt', gE.length); set('gw', wk(gE)); set('gs', sn);
@@ -3608,6 +3630,92 @@ let pwaIsStandalone = false;
 // 초기화
 // ════════════════════════════════════════════════════════════════
 function openM(id){ const el=document.getElementById(id); if(el) el.classList.add('open'); }
+
+// ════════════════════════════════════════════════════════════════
+// 입력 자동 임시저장 (Draft) — 작성 중 앱을 나가거나 화면을 이동해도
+// 마지막까지 입력한 내용을 자동으로 보존했다가 다시 열면 복원한다.
+// 저장(등록/기록)이 완료되거나 "취소"를 누르면 해당 임시글은 삭제된다.
+// ════════════════════════════════════════════════════════════════
+const HJ_DRAFT_PREFIX = 'hj_draft_';
+let __hjDraftTimer = null;
+
+function __hjDraftFields(modalEl){
+  // 실수로 값을 덮어쓸 위험이 없는 텍스트류 입력만 대상으로 한다.
+  return Array.from(modalEl.querySelectorAll(
+    'input[type="text"][id], input[type="tel"][id], input[type="date"][id], textarea[id]'
+  ));
+}
+
+function __hjSaveDraft(modalEl){
+  if(!modalEl || !modalEl.id) return;
+  const fields = __hjDraftFields(modalEl);
+  const data = {};
+  let hasContent = false;
+  fields.forEach(el=>{
+    const v = (el.value||'').trim();
+    if(v){ data[el.id] = el.value; hasContent = true; }
+  });
+  const key = HJ_DRAFT_PREFIX + modalEl.id;
+  try{
+    if(hasContent){ localStorage.setItem(key, JSON.stringify(data)); }
+    else{ localStorage.removeItem(key); }
+  }catch(_){}
+}
+
+function __hjSaveAllOpenDrafts(){
+  document.querySelectorAll('.modal-bg.open').forEach(__hjSaveDraft);
+}
+
+function __hjRestoreDraft(modalEl){
+  if(!modalEl || !modalEl.id) return;
+  const key = HJ_DRAFT_PREFIX + modalEl.id;
+  let data;
+  try{ data = JSON.parse(localStorage.getItem(key) || 'null'); }catch(_){ data = null; }
+  if(!data) return;
+  let restored = false;
+  Object.keys(data).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el && !el.value){ el.value = data[id]; restored = true; }
+  });
+  if(restored && typeof toast === 'function'){
+    toast('📝 작성 중이던 내용을 불러왔습니다', {color:'amber', duration:2400});
+  }
+}
+
+function __hjClearDraft(modalId){
+  try{ localStorage.removeItem(HJ_DRAFT_PREFIX + modalId); }catch(_){}
+}
+
+// 입력 중 자동 저장 (디바운스 400ms)
+document.addEventListener('input', (e)=>{
+  const modalEl = e.target && e.target.closest && e.target.closest('.modal-bg.open');
+  if(!modalEl) return;
+  clearTimeout(__hjDraftTimer);
+  __hjDraftTimer = setTimeout(()=>__hjSaveDraft(modalEl), 400);
+});
+
+// 앱을 나가거나(백그라운드 전환), 화면을 새로고침/닫을 때 즉시 저장
+document.addEventListener('visibilitychange', ()=>{
+  if(document.hidden) __hjSaveAllOpenDrafts();
+});
+window.addEventListener('pagehide', __hjSaveAllOpenDrafts);
+window.addEventListener('beforeunload', __hjSaveAllOpenDrafts);
+
+// 모달이 열릴 때(class="open" 부여) 임시저장 내용을 자동 복원
+// (모달 HTML은 이 스크립트보다 아래쪽에 있으므로 DOM 파싱 완료 후 연결한다)
+function __hjInitDraftObservers(){
+  document.querySelectorAll('.modal-bg').forEach(modalEl=>{
+    const obs = new MutationObserver(()=>{
+      if(modalEl.classList.contains('open')) __hjRestoreDraft(modalEl);
+    });
+    obs.observe(modalEl, {attributes:true, attributeFilter:['class']});
+  });
+}
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', __hjInitDraftObservers);
+} else {
+  __hjInitDraftObservers();
+}
 function openQTModal(editId){
   editingId = editId || null;
   const titleEl = document.getElementById('modal-qt-title');
@@ -3695,37 +3803,54 @@ function __pwaIsStandalone(){
       || window.navigator.standalone === true;
 }
 
+function __pwaIsChrome(){
+  const ua = navigator.userAgent;
+  return /Chrome\//.test(ua) && !/SamsungBrowser|EdgA|OPR|OPiOS/.test(ua);
+}
+
 function __pwaUpdateSettingsUI(){
   const row = document.getElementById('install-row');
   const label = document.getElementById('install-label');
   const arrow = document.getElementById('install-arrow');
   if (!row) return;
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/.test(ua);
+  const isSamsung = /SamsungBrowser/i.test(ua);
+  const isChrome = __pwaIsChrome();
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
   if (__pwaDeferredPrompt) {
-    // Chrome Android — 설치 프롬프트 사용 가능
+    // Chrome / 삼성인터넷 — 네이티브 설치 프롬프트 준비됨
     row.style.display = '';
     label.textContent = '📲 홈화면에 설치하기';
     arrow.textContent = '›';
     row.style.cursor = 'pointer';
-  } else if (navigator.standalone === true) {
-    // iOS — 이미 설치됨
-    row.style.display = '';
-    label.textContent = '✅ 이미 홈화면에 설치됨';
-    arrow.textContent = '';
-    row.style.cursor = 'default';
-  } else if (/iPhone|iPad|iPod/.test(navigator.userAgent) && !window.matchMedia('(display-mode: standalone)').matches) {
-    // iOS — 미설치 → 수동 안내
-    row.style.display = '';
-    label.textContent = '📲 홈화면에 추가 (안내 보기)';
-    arrow.textContent = '›';
-    row.style.cursor = 'pointer';
-  } else if (window.matchMedia('(display-mode: standalone)').matches) {
-    // 이미 설치된 PWA로 실행 중
+  } else if (navigator.standalone === true || isStandalone) {
+    // 이미 홈화면에서 실행 중
     row.style.display = '';
     label.textContent = '✅ 앱으로 실행 중';
     arrow.textContent = '';
     row.style.cursor = 'default';
+  } else if (isIOS) {
+    // iOS Safari — 수동 안내
+    row.style.display = '';
+    label.textContent = '📲 홈화면에 추가 (안내 보기)';
+    arrow.textContent = '›';
+    row.style.cursor = 'pointer';
+  } else if (isChrome) {
+    // Chrome — beforeinstallprompt 아직 준비 안됨
+    row.style.display = '';
+    label.textContent = '📲 홈화면에 설치하기';
+    arrow.textContent = '›';
+    row.style.cursor = 'pointer';
+  } else if (isSamsung) {
+    // 삼성인터넷 — 수동 안내
+    row.style.display = '';
+    label.textContent = '📲 홈화면에 추가 (삼성 인터넷 안내)';
+    arrow.textContent = '›';
+    row.style.cursor = 'pointer';
   } else {
-    // 일반 브라우저 — 메뉴 통해 설치 안내
+    // 기타 브라우저
     row.style.display = '';
     label.textContent = '📲 홈화면에 추가 (브라우저 메뉴 이용)';
     arrow.textContent = '›';
@@ -3747,23 +3872,49 @@ window.addEventListener('appinstalled', () => {
 
 function triggerInstall(){
   if (__pwaDeferredPrompt) {
-    // Chrome Android: 네이티브 설치 팝업
+    // Chrome / 삼성인터넷 신버전: 네이티브 설치 팝업
     __pwaDeferredPrompt.prompt();
-    __pwaDeferredPrompt.userChoice.then(() => { __pwaDeferredPrompt = null; __pwaUpdateSettingsUI(); });
+    __pwaDeferredPrompt.userChoice.then((choice) => {
+      __pwaDeferredPrompt = null;
+      __pwaUpdateSettingsUI();
+      if (choice.outcome === 'accepted' && typeof toast === 'function') {
+        toast('🎉 설치가 시작되었습니다!');
+      }
+    });
     return;
   }
-  // iOS / 기타 브라우저: 안내 모달 표시 (기기에 따라 분기)
-  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  // 브라우저별 수동 안내 모달
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/.test(ua);
+  const isSamsung = /SamsungBrowser/i.test(ua);
+  const isChrome = __pwaIsChrome();
+
   const guideIOS = document.getElementById('install-guide-ios');
+  const guideChr = document.getElementById('install-guide-chrome');
+  const guideSam = document.getElementById('install-guide-samsung');
   const guideAnd = document.getElementById('install-guide-android');
+
   if (guideIOS) guideIOS.style.display = isIOS ? '' : 'none';
-  if (guideAnd) guideAnd.style.display = isIOS ? 'none' : '';
+  if (guideChr) guideChr.style.display = (!isIOS && isChrome) ? '' : 'none';
+  if (guideSam) guideSam.style.display = (!isIOS && !isChrome && isSamsung) ? '' : 'none';
+  if (guideAnd) guideAnd.style.display = (!isIOS && !isChrome && !isSamsung) ? '' : 'none';
+
   openM('modal-install');
 }
 
 function escH(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 
+const STREAK_MILESTONES = [7, 14, 30, 50, 100, 200, 365];
+const STREAK_MSGS = {
+  7:   '🔥 7일 연속! 습관의 첫 걸음을 내디뎠습니다.',
+  14:  '🔥🔥 14일 연속! 감사가 자연스러워지고 있어요.',
+  30:  '🏆 30일 연속! 한 달을 채웠습니다. 정말 대단해요!',
+  50:  '🌟 50일 연속! 꾸준함이 삶이 되고 있습니다.',
+  100: '💎 100일 연속! 감사의 습관이 뿌리내렸습니다.',
+  200: '👑 200일 연속! 놀라운 신앙의 여정입니다.',
+  365: '✨ 365일 연속! 1년을 하나님께 감사로 채웠습니다!'
+};
 function checkStreakMilestone(sn){
   if(!sn || !STREAK_MILESTONES.includes(sn)) return;
   const key = 'hj_streak_shown_'+sn;
@@ -5862,6 +6013,8 @@ init();
 
 <div class="modal-bg" id="modal-install"><div class="modal">
   <div class="modal-title">📲 홈 화면에 설치하는 방법</div>
+
+  <!-- iOS Safari -->
   <div id="install-guide-ios" style="display:none">
     <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
       iPhone / iPad (Safari)에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
@@ -5875,26 +6028,57 @@ init();
       💡 Chrome/다른 브라우저는 Safari로 열어야 홈화면 추가가 가능합니다.
     </p>
   </div>
-  <div id="install-guide-android">
+
+  <!-- Chrome Android -->
+  <div id="install-guide-chrome" style="display:none">
     <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
-      Android Chrome에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
+      Chrome에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
     </p>
     <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
       <li>화면 <b>오른쪽 위 ⋮ (점 3개) 메뉴</b>를 누르세요</li>
-      <li>메뉴에서 <b>"홈 화면에 추가"</b> 또는 <b>"앱 설치"</b>를 누르세요</li>
-      <li>이름 확인 후 <b>"추가"</b>를 누르면 완료!</li>
+      <li><b>"앱 설치"</b> 또는 <b>"홈 화면에 추가"</b>를 누르세요</li>
+      <li>이름 확인 후 <b>"설치"</b>를 누르면 완료!</li>
     </ol>
+    <p style="margin:0 0 8px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:13px;color:var(--teal-d)">
+      💡 설치 팝업이 자동으로 뜨면 "설치" 버튼을 눌러주세요.
+    </p>
     <p style="margin:0 0 14px;padding:10px 12px;background:var(--surface2);border-radius:10px;font-size:13px;color:var(--text2)">
       ⚠️ 기존 아이콘이 있다면 홈 화면에서 먼저 삭제 후 다시 추가해주세요.
     </p>
   </div>
+
+  <!-- 삼성 인터넷 -->
+  <div id="install-guide-samsung" style="display:none">
+    <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
+      삼성 인터넷에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
+    </p>
+    <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
+      <li>화면 하단의 <b>☰ 메뉴 버튼</b>을 누르세요</li>
+      <li><b>"페이지 추가"</b>를 누르세요</li>
+      <li><b>"홈 화면"</b>을 선택하세요</li>
+      <li>이름 확인 후 <b>"추가"</b>를 누르면 완료!</li>
+    </ol>
+    <p style="margin:0 0 14px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:13px;color:var(--teal-d)">
+      💡 삼성 인터넷 15 이상에서는 설치 팝업이 자동으로 뜰 수 있습니다.
+    </p>
+  </div>
+
+  <!-- 기타 Android -->
+  <div id="install-guide-android">
+    <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
+      브라우저 메뉴에서 홈 화면에 추가할 수 있습니다. <b>기록은 그대로 보존됩니다.</b>
+    </p>
+    <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
+      <li>브라우저 <b>메뉴 (⋮ 또는 ☰)</b>를 누르세요</li>
+      <li><b>"홈 화면에 추가"</b> 또는 <b>"앱 설치"</b>를 누르세요</li>
+      <li>이름 확인 후 <b>"추가"</b>를 누르면 완료!</li>
+    </ol>
+    <p style="margin:0 0 14px;padding:10px 12px;background:var(--surface2);border-radius:10px;font-size:13px;color:var(--text2)">
+      ⚠️ 가장 잘 지원되는 브라우저는 Chrome 또는 삼성 인터넷입니다.
+    </p>
+  </div>
+
   <div class="modal-footer"><button class="btn btn-g" onclick="closeM('modal-install')">닫기</button></div>
-</div></div>
-
-  
-  <p style="margin:8px 0 0;font-size:11.5px;color:var(--text2);line-height:1.6">
-
-  </p>
 </div></div>
 
 <!-- ══════ 성장 현황 (동기부여 종합) ══════ -->
@@ -6001,14 +6185,6 @@ init();
     <button onclick="showRandomMotivation()" class="btn btn-g btn-sm" style="margin-top:.7rem">🎲 다른 격려 메시지</button>
   </div>
 </div>
-
-
-
-
-
-
-
-</div></div>
 
 <div class="modal-bg" id="modal-qt"><div class="modal">
   <div class="modal-title" id="modal-qt-title">📖 오늘의 QT</div>
