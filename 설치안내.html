@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>행복일지 — 앱 설치 안내</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    background: linear-gradient(180deg, #F7F5F0 0%, #E1F5EE 100%);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px 28px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  .icon { font-size: 48px; margin-bottom: 8px; }
+  h1 { font-size: 22px; color: #1A1814; margin-bottom: 4px; }
+  .sub { font-size: 14px; color: #6B6560; margin-bottom: 28px; }
+
+  /* QR */
+  .qr-box {
+    background: #F7F5F0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .qr-box img { width: 200px; height: 200px; display: block; }
+  .qr-caption { font-size: 13px; color: #6B6560; margin-top: 10px; }
+
+  /* 버튼 */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #1D9E75;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+  .link-box {
+    background: #F0EDE6;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #534AB7;
+    word-break: break-all;
+    margin-bottom: 22px;
+    user-select: all;
+    cursor: copy;
+    text-align: left;
+  }
+
+  /* 섹션 공통 */
+  .section {
+    text-align: left;
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 13px;
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1814;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .step-row { display: flex; gap: 10px; margin-bottom: 7px; align-items: flex-start; }
+  .step-num {
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .step-txt b { color: #1A1814; }
+
+  /* 브라우저 선택 탭 */
+  .browser-tabs {
+    display: flex; gap: 6px; margin-bottom: 14px;
+    background: #F0EDE6; border-radius: 12px; padding: 4px;
+  }
+  .browser-tab {
+    flex: 1; text-align: center; padding: 9px 4px;
+    border-radius: 9px; font-size: 12px; font-weight: 700;
+    color: #6B6560; cursor: pointer; user-select: none;
+    border: none; background: none; font-family: inherit;
+  }
+  .browser-tab.active { background: #fff; color: #1A1814; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+  .browser-panel { display: none; }
+  .browser-panel.active { display: block; }
+
+  /* 크롬 설치 */
+  .chrome-box { background: #EEF2FF; color: #2A2580; }
+  .chrome-box .step-num { background: #4F46E5; }
+  .chrome-box .step-txt { color: #2A2580; }
+
+  /* 행복일지 설치 */
+  .install-box { background: #F7F5F0; color: #6B6560; }
+  .install-box .step-num { background: #1D9E75; }
+  .install-box .step-txt { color: #4A4540; }
+
+  /* 삼성 인터넷 */
+  .samsung-box { background: #EAF6FF; color: #0B4A6F; }
+  .samsung-box .step-num { background: #1976D2; }
+  .samsung-box .step-txt { color: #0B4A6F; }
+
+  /* iOS 추가 */
+  .ios-box { background: #FFF7ED; color: #7C4400; }
+  .ios-box .step-num { background: #EA7C00; }
+  .ios-box .step-txt { color: #7C4400; }
+
+  /* 데이터 */
+  .data-box { background: #EEEDFE; color: #3C3489; }
+  .data-box table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
+  .data-box td { padding: 5px 4px; border-bottom: 1px solid rgba(83,74,183,0.15); vertical-align: top; }
+  .data-box td:first-child { font-weight: 700; color: #1A1814; white-space: nowrap; padding-right: 8px; }
+  .data-box .warn {
+    margin-top: 10px; padding: 10px 12px;
+    background: #FAEEDA; border-radius: 10px;
+    color: #633806; font-size: 12px;
+  }
+
+  /* FAQ */
+  .faq-box { background: #FFF; border: 1.5px solid #F0EDE6; }
+  .faq-item { border-bottom: 1px solid #F0EDE6; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 2px; cursor: pointer; font-weight: 700; color: #1A1814;
+    font-size: 13px; gap: 8px;
+  }
+  .faq-q .mark { color: #1D9E75; font-size: 16px; flex-shrink: 0; transition: transform .2s; }
+  .faq-item.open .faq-q .mark { transform: rotate(45deg); }
+  .faq-a {
+    display: none; padding: 0 2px 14px; font-size: 12.5px; color: #6B6560; line-height: 1.7;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* OS 뱃지 */
+  .os-badge {
+    display: inline-block; padding: 2px 10px;
+    border-radius: 20px; font-size: 12px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .android-badge { background: #3DDC84; color: #fff; }
+  .ios-badge { background: #007AFF; color: #fff; }
+  .samsung-badge { background: #1976D2; color: #fff; }
+  .chrome-badge { background: #4F46E5; color: #fff; }
+
+  .divider { border: none; border-top: 1.5px solid #F0EDE6; margin: 18px 0; }
+
+  footer { margin-top: 20px; font-size: 12px; color: #A09890; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="icon">📖</div>
+  <h1>행복일지</h1>
+  <div class="sub">감사와 나눔의 복음 축제</div>
+
+  <!-- QR -->
+  <div class="qr-box">
+    <img src="data:image/png;base64,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" alt="QR코드">
+    <div class="qr-caption">📷 카메라로 스캔하면 바로 열립니다</div>
+  </div>
+
+  <a class="btn" href="https://amosoolim-crypto.github.io/happiness-journal/">📲 지금 바로 앱 열기</a>
+
+  <div class="link-box">🔗 https://amosoolim-crypto.github.io/happiness-journal/</div>
+
+  <hr class="divider">
+
+  <!-- 안내 -->
+  <div class="section" style="background:#E8F9F2;color:#0F5F3F">
+    <div class="section-title"><span style="font-size:18px">✅</span> 지원 브라우저 안내</div>
+    행복일지는 <b>크롬(Chrome)</b>, <b>삼성 인터넷</b>, <b>아이폰 Safari</b> 세 브라우저 모두에서 홈 화면 설치를 지원합니다. 이미 갤럭시를 쓰고 계시면 <b>삼성 인터넷</b>을 그대로 쓰셔도 되고, 별도로 크롬을 설치하실 필요가 없습니다. 아래에서 사용 중인 브라우저를 선택해 순서대로 따라 해주세요.
+  </div>
+
+  <!-- 브라우저 탭 -->
+  <div class="browser-tabs">
+    <button class="browser-tab active" onclick="switchBrowser('chrome', this)">🟦 크롬</button>
+    <button class="browser-tab" onclick="switchBrowser('samsung', this)">🔵 삼성인터넷</button>
+    <button class="browser-tab" onclick="switchBrowser('ios', this)">🍎 아이폰</button>
+  </div>
+
+  <!-- ══════════════ 크롬 패널 ══════════════ -->
+  <div class="browser-panel active" id="panel-chrome">
+    <div class="section chrome-box">
+      <div class="section-title"><span style="font-size:18px">🟦</span> STEP 1 — 앱 열기</div>
+      <div class="os-badge chrome-badge">🤖 안드로이드 · Chrome</div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-txt">크롬(Chrome) 앱을 실행합니다 (대부분 기기에 이미 설치되어 있습니다)</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-txt">주소창에 아래 주소를 입력하거나, 위 QR 코드를 스캔합니다<br><span style="font-size:12px;color:#4F46E5;font-weight:700">amosoolim-crypto.github.io/happiness-journal/</span></div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-txt">행복일지 화면이 뜨면 준비 완료!</div></div>
+    </div>
+    <div class="section chrome-box">
+      <div class="section-title"><span style="font-size:18px">📲</span> STEP 2 — 홈 화면에 설치</div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-txt">화면이 열린 후 <b>잠시 기다리면</b> 하단에 <b>"설치"</b> 팝업이 자동으로 뜹니다</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-txt">팝업에서 <b>"설치"</b>를 누르면 홈 화면에 아이콘이 추가됩니다</div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-txt">팝업이 뜨지 않으면 → 오른쪽 위 <b>⋮ (점 3개)</b> → <b>"앱 설치"</b> 또는 <b>"홈 화면에 추가"</b></div></div>
+      <div class="step-row"><div class="step-num">4</div><div class="step-txt">또는 앱 안에서 <b>더보기 → 설정 → "홈화면에 설치하기"</b> 버튼을 눌러도 됩니다</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ 삼성인터넷 패널 ══════════════ -->
+  <div class="browser-panel" id="panel-samsung">
+    <div class="section samsung-box">
+      <div class="section-title"><span style="font-size:18px">🔵</span> STEP 1 — 앱 열기</div>
+      <div class="os-badge samsung-badge">📱 갤럭시 · 삼성 인터넷</div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-txt">삼성 인터넷 앱을 실행합니다 (갤럭시 기본 브라우저)</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-txt">주소창에 아래 주소를 입력하거나, 위 QR 코드를 스캔합니다<br><span style="font-size:12px;color:#1976D2;font-weight:700">amosoolim-crypto.github.io/happiness-journal/</span></div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-txt">행복일지 화면이 뜨면 준비 완료!</div></div>
+    </div>
+    <div class="section samsung-box">
+      <div class="section-title"><span style="font-size:18px">📲</span> STEP 2 — 홈 화면에 설치</div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-txt">삼성 인터넷 최신 버전(15 이상)에서는 <b>설치 팝업이 자동으로</b> 뜰 수 있습니다 — 뜨면 바로 "설치"를 누르세요</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-txt">팝업이 없으면 화면 하단의 <b>☰ 메뉴 버튼</b>을 누릅니다</div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-txt">메뉴에서 <b>"페이지 추가"</b>를 누릅니다</div></div>
+      <div class="step-row"><div class="step-num">4</div><div class="step-txt"><b>"홈 화면"</b>을 선택하고 이름 확인 후 <b>"추가"</b>를 누르면 완료!</div></div>
+      <div class="step-row"><div class="step-num">5</div><div class="step-txt">또는 앱 안에서 <b>더보기 → 설정 → "홈화면에 설치하기"</b> 버튼을 눌러도 됩니다</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ 아이폰 패널 ══════════════ -->
+  <div class="browser-panel" id="panel-ios">
+    <div class="section ios-box">
+      <div class="section-title"><span style="font-size:18px">🍎</span> STEP 1 — 앱 열기</div>
+      <div class="os-badge ios-badge">🍎 아이폰 · Safari 필수</div>
+      <div style="font-size:12px;margin-bottom:10px;color:#7C4400">
+        ※ iOS(아이폰)에서는 반드시 <b>Safari</b>로 열어야 홈 화면 설치가 가능합니다. 크롬 등 다른 브라우저로는 설치할 수 없습니다.
+      </div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-txt"><b>Safari</b>를 실행합니다</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-txt">주소창에 아래 주소를 입력하거나, 위 QR 코드를 스캔합니다<br><span style="font-size:12px;color:#EA7C00;font-weight:700">amosoolim-crypto.github.io/happiness-journal/</span></div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-txt">행복일지 화면이 뜨면 준비 완료!</div></div>
+    </div>
+    <div class="section ios-box">
+      <div class="section-title"><span style="font-size:18px">📲</span> STEP 2 — 홈 화면에 추가</div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-txt">Safari 하단(또는 상단)의 <b>공유 버튼 (□↑)</b>을 누릅니다</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-txt">아래로 스크롤해서 <b>"홈 화면에 추가"</b>를 누릅니다</div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-txt">이름은 <b>"행복일지"</b>로 두고 <b>"추가"</b>를 누릅니다</div></div>
+      <div class="step-row"><div class="step-num">4</div><div class="step-txt">홈 화면에 📖 아이콘이 생기면 <b>설치 완료!</b></div></div>
+    </div>
+  </div>
+
+  <!-- STEP 3: 설치 확인 (공통) -->
+  <div class="section" style="background:#E8F9F2;color:#0F5F3F;">
+    <div class="section-title">
+      <span style="font-size:18px">✅</span>
+      설치 확인 &amp; 첫 실행
+    </div>
+    <div class="step-row">
+      <div class="step-num" style="background:#1D9E75">1</div>
+      <div class="step-txt" style="color:#0F5F3F">홈 화면에서 <b>📖 행복일지</b> 아이콘을 누릅니다</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num" style="background:#1D9E75">2</div>
+      <div class="step-txt" style="color:#0F5F3F">주소창 없이 앱처럼 전체 화면으로 열리면 <b>성공!</b></div>
+    </div>
+    <div class="step-row">
+      <div class="step-num" style="background:#1D9E75">3</div>
+      <div class="step-txt" style="color:#0F5F3F">이후에는 <b>인터넷 없이도</b> 사용할 수 있습니다</div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(29,158,117,0.12);border-radius:10px;font-size:12.5px;color:#0F5F3F">
+      🎉 축하합니다! 이제 날마다 감사 일기를 쓰고, 성도들과 나눔을 나누고, 이웃에게 복음을 전하는 행복한 신앙생활을 시작하세요!
+    </div>
+  </div>
+
+  <!-- 데이터 보안 -->
+  <div class="section data-box">
+    <div class="section-title"><span>🔒</span> 입력한 데이터는 어디에 저장되나요?</div>
+    감사 일기, 나눔 기록, 전도 대상자 등 모든 기록은 <b>서버로 전송되지 않고, 오직 이 휴대폰 안에만</b> 저장됩니다.
+    <table>
+      <tr><td>저장 위치</td><td>이 휴대폰의 브라우저 내부 (다른 기기·서버 전송 없음)</td></tr>
+      <tr><td>인터넷</td><td>필요 없음 — 처음 한 번 연 뒤에는 완전 오프라인 저장·사용 가능</td></tr>
+      <tr><td>열람 가능자</td><td>오직 이 휴대폰 사용자 본인만</td></tr>
+    </table>
+    <div class="warn">
+      ⚠️ 브라우저 데이터를 삭제하거나 휴대폰을 초기화하면 기록이 함께 사라질 수 있어요.
+      <br><b>더보기 → 설정 → "백업 파일 내보내기"</b>로 정기적으로 백업해두세요.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section faq-box">
+    <div class="section-title"><span style="font-size:18px">❓</span> 자주 묻는 질문</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>설치 팝업이 안 떠요. 어떻게 하나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">기기와 브라우저 버전에 따라 자동 팝업이 안 뜰 수 있습니다. 이럴 때는 앱 안에서 <b>더보기 → 설정 → "홈화면에 설치하기"</b>를 누르면 안내 화면이 뜹니다. 그래도 안 되면 브라우저 메뉴(⋮ 또는 ☰)에서 직접 <b>"홈 화면에 추가" / "앱 설치" / "페이지 추가"</b>를 찾아 눌러주세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>크롬과 삼성 인터넷 중 어떤 걸 써야 하나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">두 브라우저 모두 완전히 지원되며 기능 차이는 없습니다. 갤럭시를 쓰신다면 이미 설치되어 있는 <b>삼성 인터넷</b>을 그대로 쓰셔도 되고, 평소 쓰시는 브라우저로 설치하시면 됩니다. 단, 한 번 설치한 뒤에는 <b>같은 브라우저로 계속 사용</b>하시는 것을 권장합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>이미 크롬으로 설치했는데 삼성 인터넷으로도 설치해도 되나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">가능하지만 두 개의 별도 아이콘이 생기고, <b>기록(데이터)이 서로 공유되지 않습니다.</b> 브라우저별로 저장 공간이 나뉘기 때문입니다. 헷갈리지 않도록 한 브라우저만 골라 설치하시길 권장합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>아이폰에서는 왜 자동 설치 팝업이 없나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">iOS(아이폰)의 Safari는 정책상 자동 설치 팝업을 지원하지 않습니다. 대신 공유 버튼(□↑) → <b>"홈 화면에 추가"</b>를 직접 눌러 수동으로 설치해야 합니다. Safari가 아닌 다른 브라우저(크롬 등)로는 아이폰에서 홈 화면 설치가 되지 않으니 꼭 Safari를 사용해주세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>인터넷이 안 되는 곳에서도 쓸 수 있나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">네. 처음 한 번 앱을 열어 설치한 뒤에는 인터넷 연결 없이도 감사 일기 작성, 나눔 기록, 전도 대상자 관리 등 모든 기능을 오프라인으로 사용할 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>앱이 업데이트되면 다시 설치해야 하나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">아니요. 인터넷에 연결된 상태에서 앱을 열면 새로운 내용이 자동으로 반영됩니다. 다시 설치하실 필요가 없습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>휴대폰을 바꾸면 기록이 자동으로 넘어가나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">자동으로 넘어가지 않습니다. 모든 기록은 현재 휴대폰 안에만 저장되기 때문입니다. 기기를 바꾸시기 전에 <b>더보기 → 설정 → "백업 파일 내보내기"</b>로 JSON 파일을 저장해두시고, 새 기기에서 앱 설치 후 <b>"백업 파일 복원"</b>으로 불러오시면 됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>작성하다가 실수로 화면을 나가면 입력한 내용이 사라지나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">아니요. 감사 일기·나눔 기록 등 작성 중이던 내용은 자동으로 임시 저장되며, 같은 입력창을 다시 열면 이어서 작성할 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>홈 화면 아이콘을 눌렀는데 주소창이 보여요. 설치가 잘못됐나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">주소창이 보인다면 홈 화면 설치가 아니라 단순 바로가기로 추가된 경우입니다. 홈 화면의 아이콘을 삭제하신 뒤, 이 안내를 다시 처음부터 따라 <b>"설치"</b> 과정을 완료해주세요. 정상 설치되면 주소창 없이 전체 화면으로 열립니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>여러 사람이 같은 휴대폰에서 각자 써도 되나요?</span><span class="mark">+</span></div>
+      <div class="faq-a">기록이 한 곳에 저장되므로 한 휴대폰은 한 사람이 사용하시는 것을 권장합니다. 가족이 함께 쓰시려면 각자의 휴대폰에 따로 설치하시는 것이 좋습니다.</div>
+    </div>
+  </div>
+
+  <footer>
+    하나님께 감사 · 성도들과 나눔 · 이웃에게 복음<br>
+    설치가 어려우시면 소그룹 리더나 교회 담당자에게 문의해주세요.
+  </footer>
+
+</div>
+
+<script>
+function switchBrowser(name, btn){
+  document.querySelectorAll('.browser-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.browser-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
+}
+function toggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
