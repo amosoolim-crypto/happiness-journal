@@ -54,13 +54,13 @@
   --r:14px; --rs:8px; --sh:0 1px 3px rgba(0,0,0,.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15.5px;line-height:1.6}
 .top-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 1.25rem;display:flex;align-items:center;gap:.75rem;height:56px;position:sticky;top:0;z-index:100}
-.logo{font-size:15px;font-weight:700;color:var(--teal);white-space:nowrap}
-.logo span{color:var(--text);font-weight:400;font-size:12px}
+.logo{font-size:16.5px;font-weight:700;color:var(--teal);white-space:nowrap}
+.logo span{color:var(--text);font-weight:400;font-size:14px}
 .nav-tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
 .nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;border:none;background:transparent;color:var(--text2);transition:all .15s;font-family:inherit}
+.nav-tab{padding:5px 13px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;border:none;background:transparent;color:var(--text2);transition:all .15s;font-family:inherit}
 .nav-tab.active{background:var(--teal);color:#fff}
 .nav-tab:hover:not(.active){background:var(--surface2)}
 .page{display:none;padding:1.25rem;max-width:820px;margin:0 auto}
@@ -68,35 +68,35 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .hero{background:var(--teal);border-radius:var(--r);padding:1.4rem 1.5rem;color:#fff;margin-bottom:1rem;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07)}
 .hero::before{content:'';position:absolute;right:50px;bottom:-40px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.05)}
-.hero-date{font-size:11px;opacity:.7;margin-bottom:4px;position:relative}
+.hero-date{font-size:13px;opacity:.7;margin-bottom:4px;position:relative}
 .hero h1{font-size:18px;font-weight:700;margin-bottom:3px;position:relative}
-.hero p{font-size:12px;opacity:.85;position:relative}
+.hero p{font-size:14px;opacity:.85;position:relative}
 .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
 .qcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem .6rem;text-align:center;cursor:pointer;transition:all .15s;box-shadow:var(--sh)}
 .qcard:hover{border-color:var(--teal);transform:translateY(-1px)}
 .qicon{font-size:20px;margin-bottom:4px}
-.qlabel{font-size:12px;font-weight:500}
-.qcount{font-size:11px;color:var(--text2);margin-top:1px}
-.verse{background:var(--surface2);border-left:3px solid var(--teal);border-radius:0 var(--rs) var(--rs) 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:13px;line-height:1.7}
-.verse cite{font-size:11px;color:var(--text3);display:block;margin-top:3px}
-.slabel{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.55rem}
+.qlabel{font-size:14px;font-weight:500}
+.qcount{font-size:13px;color:var(--text2);margin-top:1px}
+.verse{background:var(--surface2);border-left:3px solid var(--teal);border-radius:0 var(--rs) var(--rs) 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:15px;line-height:1.7}
+.verse cite{font-size:13px;color:var(--text3);display:block;margin-top:3px}
+.slabel{font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.55rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
 .sbox{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.8rem;text-align:center;box-shadow:var(--sh)}
 .sn{font-size:22px;font-weight:700}
-.sl{font-size:11px;color:var(--text2);margin-top:1px}
+.sl{font-size:13px;color:var(--text2);margin-top:1px}
 .pmini{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.7rem 1rem;margin-bottom:7px;box-shadow:var(--sh)}
 .pring{width:34px;height:34px;flex-shrink:0}
 .pring circle{fill:none;stroke-width:3;stroke-linecap:round}
 .pring .track{stroke:var(--border)}
 .pring .fill{transition:stroke-dashoffset .5s}
-.pm-label{font-size:13px;font-weight:500}
-.pm-sub{font-size:11px;color:var(--text2)}
-.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .15s}
+.pm-label{font-size:15px;font-weight:500}
+.pm-sub{font-size:13px;color:var(--text2)}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border-radius:var(--rs);font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;border:none;transition:all .15s}
 .btn-p{background:var(--teal);color:#fff}.btn-p:hover{background:var(--teal-d)}
 .btn-g{background:transparent;border:1px solid var(--border);color:var(--text2)}.btn-g:hover{background:var(--surface2)}
 .btn-d{background:transparent;border:1px solid #fca5a5;color:#b91c1c}.btn-d:hover{background:#fef2f2}
-.btn-sm{padding:5px 11px;font-size:12px}
-.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px}
+.btn-sm{padding:5px 11px;font-size:14px}
+.badge{display:inline-block;font-size:13px;font-weight:500;padding:2px 7px;border-radius:20px}
 .b-teal{background:var(--teal-l);color:var(--teal-d)}
 .b-purple{background:var(--purple-l);color:var(--purple-d)}
 .b-blue{background:var(--blue-l);color:var(--blue-d)}
@@ -107,43 +107,43 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .acc-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:7px;overflow:hidden;box-shadow:var(--sh)}
 .acc-header{display:flex;align-items:center;gap:10px;padding:.85rem 1rem;cursor:pointer;transition:background .12s;user-select:none}
 .acc-header:hover{background:var(--bg)}
-.acc-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.acc-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .acc-info{flex:1}
-.acc-title{font-size:14px;font-weight:500;color:var(--text)}
-.acc-sub{font-size:12px;color:var(--text2);margin-top:1px}
-.acc-arrow{font-size:12px;color:var(--text3);transition:transform .25s;flex-shrink:0}
+.acc-title{font-size:15.5px;font-weight:500;color:var(--text)}
+.acc-sub{font-size:14px;color:var(--text2);margin-top:1px}
+.acc-arrow{font-size:14px;color:var(--text3);transition:transform .25s;flex-shrink:0}
 .acc-item.open .acc-arrow{transform:rotate(180deg)}
 .acc-body{display:none;border-top:1px solid var(--border);padding:1rem;background:var(--surface)}
 .acc-item.open .acc-body{display:block}
-.acc-purpose{background:var(--surface2);border-radius:var(--rs);padding:.75rem .9rem;margin-bottom:.75rem;font-size:13px;line-height:1.75;color:var(--text)}
-.acc-purpose strong{display:block;font-size:13px;font-weight:700;margin-bottom:3px}
-.acc-section-title{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);margin-bottom:.45rem;margin-top:.65rem}
+.acc-purpose{background:var(--surface2);border-radius:var(--rs);padding:.75rem .9rem;margin-bottom:.75rem;font-size:15px;line-height:1.75;color:var(--text)}
+.acc-purpose strong{display:block;font-size:15px;font-weight:700;margin-bottom:3px}
+.acc-section-title{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);margin-bottom:.45rem;margin-top:.65rem}
 .acc-steps{list-style:none;padding:0}
-.acc-steps li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.6}
+.acc-steps li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:15px;line-height:1.6}
 .acc-steps li:last-child{border-bottom:none}
-.acc-steps li::before{content:attr(data-n);min-width:20px;height:20px;border-radius:50%;background:var(--teal-l);color:var(--teal-d);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.acc-verse{background:var(--purple-l);border-radius:var(--rs);padding:.65rem .9rem;font-size:12px;color:var(--purple-d);font-style:italic;line-height:1.7;margin-top:.65rem}
-.acc-verse cite{font-size:11px;color:var(--purple-d);opacity:.8;display:block;margin-top:2px;font-style:normal}
+.acc-steps li::before{content:attr(data-n);min-width:20px;height:20px;border-radius:50%;background:var(--teal-l);color:var(--teal-d);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.acc-verse{background:var(--purple-l);border-radius:var(--rs);padding:.65rem .9rem;font-size:14px;color:var(--purple-d);font-style:italic;line-height:1.7;margin-top:.65rem}
+.acc-verse cite{font-size:13px;color:var(--purple-d);opacity:.8;display:block;margin-top:2px;font-style:normal}
 .acc-actions{display:flex;gap:7px;margin-top:.75rem;flex-wrap:wrap}
 .entry{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:7px;animation:fi .2s ease}
-.entry-date{font-size:11px;color:var(--text3)}
-.entry-title{font-size:14px;font-weight:500;margin:2px 0 4px}
-.entry-body{font-size:13px;color:var(--text2);line-height:1.6}
+.entry-date{font-size:13px;color:var(--text3)}
+.entry-title{font-size:15.5px;font-weight:500;margin:2px 0 4px}
+.entry-body{font-size:15px;color:var(--text2);line-height:1.6}
 .entry-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
 .entry-acts{display:flex;gap:6px;margin-top:7px}
 .sh-entry{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:7px;animation:fi .2s ease}
-.sh-dir{min-width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.sh-dir{min-width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16.5px;flex-shrink:0}
 .sh-give{background:var(--teal-l);color:var(--teal-d)}
 .sh-rcv{background:var(--purple-l);color:var(--purple-d)}
 .sh-meta{flex:1}
-.sh-who{font-size:13px;font-weight:500}
-.sh-what{font-size:12px;color:var(--text2);margin-top:1px}
-.sh-date{font-size:11px;color:var(--text3);margin-top:2px}
+.sh-who{font-size:15px;font-weight:500}
+.sh-what{font-size:14px;color:var(--text2);margin-top:1px}
+.sh-date{font-size:13px;color:var(--text3);margin-top:2px}
 .pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1rem;box-shadow:var(--sh);animation:fi .2s ease}
 .ph{display:flex;align-items:center;gap:10px;padding:.9rem 1rem .75rem;border-bottom:1px solid var(--border)}
-.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-.pname{font-size:15px;font-weight:700}
-.prel{font-size:12px;color:var(--text2);margin-top:1px}
+.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
+.pname{font-size:16.5px;font-weight:700}
+.prel{font-size:14px;color:var(--text2);margin-top:1px}
 .pbody{padding:.8rem 1rem}
 .ptrack{display:flex;gap:3px;margin:.55rem 0}
 .pip{width:26px;height:5px;border-radius:3px;background:var(--border);transition:background .3s}
@@ -151,32 +151,32 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .pip.cur{background:var(--amber)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:.65rem}
 .pf{background:var(--bg);border-radius:var(--rs);padding:.5rem .7rem}
-.pfl{font-size:10px;color:var(--text3);margin-bottom:2px}
-.pfv{font-size:12px;color:var(--text)}
+.pfl{font-size:12.5px;color:var(--text3);margin-bottom:2px}
+.pfv{font-size:14px;color:var(--text)}
 .pacts{display:flex;gap:7px;padding:.7rem 1rem;border-top:1px solid var(--border);background:var(--bg);flex-wrap:wrap}
-.prayer{background:var(--purple-l);border-radius:var(--rs);padding:.75rem .9rem;margin-top:.65rem;font-size:12px;color:var(--purple-d);font-style:italic;line-height:1.7}
+.prayer{background:var(--purple-l);border-radius:var(--rs);padding:.75rem .9rem;margin-top:.65rem;font-size:14px;color:var(--purple-d);font-style:italic;line-height:1.7}
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:1rem}
 .modal-bg.open{display:flex}
 .modal{background:var(--surface);border-radius:var(--r);width:100%;max-width:480px;max-height:92vh;overflow-y:auto;padding:1.4rem}
-.modal-title{font-size:16px;font-weight:700;margin-bottom:1rem}
+.modal-title{font-size:17px;font-weight:700;margin-bottom:1rem}
 .modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:1.1rem}
-label.fl{display:block;font-size:12px;font-weight:500;color:var(--text2);margin-bottom:3px;margin-top:.8rem}
+label.fl{display:block;font-size:14px;font-weight:500;color:var(--text2);margin-bottom:3px;margin-top:.8rem}
 label.fl:first-child{margin-top:0}
-input[type=text],input[type=date],textarea,select{width:100%;padding:8px 11px;border:1px solid var(--border);border-radius:var(--rs);font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);outline:none;transition:border .15s}
+input[type=text],input[type=date],textarea,select{width:100%;padding:8px 11px;border:1px solid var(--border);border-radius:var(--rs);font-family:inherit;font-size:17px;background:var(--bg);color:var(--text);outline:none;transition:border .15s}
 input[type=text]:focus,input[type=date]:focus,textarea:focus,select:focus{border-color:var(--teal)}
 textarea{resize:vertical;min-height:72px}
 .area-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.65rem}
-.area-btn{padding:4px 9px;border-radius:20px;font-size:12px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);transition:all .12s;font-family:inherit}
+.area-btn{padding:4px 9px;border-radius:20px;font-size:14px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);transition:all .12s;font-family:inherit}
 .area-btn.sel{background:var(--teal);border-color:var(--teal);color:#fff}
 .stars{display:flex;gap:3px;margin:.45rem 0}
 .star-btn{font-size:20px;cursor:pointer;background:none;border:none;color:var(--border);transition:color .12s;padding:0;font-family:inherit}
 .star-btn.lit{color:#F59E0B}
 .cat-tabs{display:flex;gap:5px;margin-bottom:.8rem;flex-wrap:wrap}
-.ctab{padding:4px 11px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text2);transition:all .15s;font-family:inherit}
+.ctab{padding:4px 11px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text2);transition:all .15s;font-family:inherit}
 .ctab.at{background:var(--teal);border-color:var(--teal);color:#fff}
 .ctab.ap{background:var(--purple);border-color:var(--purple);color:#fff}
 .ctab.ab{background:var(--blue);border-color:var(--blue);color:#fff}
-.empty{text-align:center;padding:2.2rem 1rem;color:var(--text3);font-size:13px}
+.empty{text-align:center;padding:2.2rem 1rem;color:var(--text3);font-size:15px}
 .empty-icon{font-size:30px;margin-bottom:.4rem;display:block}
 hr{border:none;border-top:1px solid var(--border);margin:1rem 0}
 /* ── 토스트 알림 — 슬라이드업 + 페이드 애니메이션 ── */
@@ -187,7 +187,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1rem 0}
   transform:translateX(-50%) translateY(20px);
   background:var(--text);color:#fff;
   padding:10px 22px;border-radius:24px;
-  font-size:13.5px;font-weight:500;
+  font-size:15.5px;font-weight:500;
   opacity:0;pointer-events:none;z-index:9990;
   white-space:nowrap;max-width:90vw;
   box-shadow:0 4px 20px rgba(0,0,0,.22);
@@ -203,32 +203,32 @@ hr{border:none;border-top:1px solid var(--border);margin:1rem 0}
 .toast.t-amber { background:var(--amber); }
 .toast.t-coral { background:var(--coral); }
 .toast.t-dark  { background:#222; }
-.streak-chip{display:inline-flex;align-items:center;gap:5px;background:var(--amber-l);color:var(--amber-d);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;margin-bottom:.75rem}
+.streak-chip{display:inline-flex;align-items:center;gap:5px;background:var(--amber-l);color:var(--amber-d);border-radius:20px;padding:5px 12px;font-size:14px;font-weight:700;margin-bottom:.75rem}
 .routine-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:1rem}
 .routine-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem;box-shadow:var(--sh)}
 .routine-num{font-size:22px;font-weight:800;color:var(--teal);margin-bottom:3px}
-.routine-label{font-size:13px;font-weight:600;margin-bottom:3px}
-.routine-desc{font-size:11px;color:var(--text2);line-height:1.5}
-.info-box{border-radius:var(--rs);padding:.9rem 1rem;margin-bottom:.75rem;font-size:13px;line-height:1.7}
+.routine-label{font-size:15px;font-weight:600;margin-bottom:3px}
+.routine-desc{font-size:13px;color:var(--text2);line-height:1.5}
+.info-box{border-radius:var(--rs);padding:.9rem 1rem;margin-bottom:.75rem;font-size:15px;line-height:1.7}
 .info-box.teal{background:var(--teal-l);border-left:3px solid var(--teal);color:var(--teal-d)}
 .info-box.purple{background:var(--purple-l);border-left:3px solid var(--purple);color:var(--purple-d)}
 .info-box.blue{background:var(--blue-l);border-left:3px solid var(--blue);color:var(--blue-d)}
 .info-box.amber{background:var(--amber-l);border-left:3px solid var(--amber);color:var(--amber-d)}
 .guide-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.75rem;box-shadow:var(--sh)}
-.guide-section h3{font-size:14px;font-weight:700;margin-bottom:.65rem}
+.guide-section h3{font-size:15.5px;font-weight:700;margin-bottom:.65rem}
 .guide-steps{counter-reset:gs;list-style:none;padding:0}
-.guide-steps li{counter-increment:gs;display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.6}
+.guide-steps li{counter-increment:gs;display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:15px;line-height:1.6}
 .guide-steps li:last-child{border-bottom:none}
-.guide-steps li::before{content:counter(gs);min-width:22px;height:22px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.script-box{background:var(--bg);border-radius:var(--rs);padding:.8rem 1rem;margin:.5rem 0;font-size:12px;color:var(--text2);line-height:1.7;border-left:2px solid var(--border)}
-.script-box strong{display:block;font-size:11px;font-weight:700;color:var(--text3);margin-bottom:3px;text-transform:uppercase}
-.month-row{display:flex;gap:6px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;line-height:1.5}
+.guide-steps li::before{content:counter(gs);min-width:22px;height:22px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.script-box{background:var(--bg);border-radius:var(--rs);padding:.8rem 1rem;margin:.5rem 0;font-size:14px;color:var(--text2);line-height:1.7;border-left:2px solid var(--border)}
+.script-box strong{display:block;font-size:13px;font-weight:700;color:var(--text3);margin-bottom:3px;text-transform:uppercase}
+.month-row{display:flex;gap:6px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;line-height:1.5}
 .month-row:last-child{border-bottom:none}
-.month-badge{min-width:38px;padding:2px 4px;border-radius:20px;font-size:10px;font-weight:700;text-align:center;background:var(--teal-l);color:var(--teal-d);flex-shrink:0}
+.month-badge{min-width:38px;padding:2px 4px;border-radius:20px;font-size:12.5px;font-weight:700;text-align:center;background:var(--teal-l);color:var(--teal-d);flex-shrink:0}
 .checklist{list-style:none;padding:0}
-.checklist li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.checklist li{padding:5px 0;border-bottom:1px solid var(--border);font-size:15px;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
 .checklist li:last-child{border-bottom:none}
-.checklist li::before{content:'□';color:var(--teal);font-size:14px;flex-shrink:0;margin-top:1px}
+.checklist li::before{content:'□';color:var(--teal);font-size:15.5px;flex-shrink:0;margin-top:1px}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media(max-width:480px){.pgrid{grid-template-columns:1fr}.page{padding:.9rem}.top-bar{padding:0 .9rem}.routine-grid{grid-template-columns:1fr}}
 
@@ -237,21 +237,21 @@ hr{border:none;border-top:1px solid var(--border);margin:1rem 0}
 .pwa-banner.show{transform:translateY(0)}
 .pwa-banner-icon{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .pwa-banner-text{flex:1}
-.pwa-banner-title{font-size:14px;font-weight:700;margin-bottom:1px}
-.pwa-banner-sub{font-size:11px;opacity:.85}
-.pwa-banner-btn{background:#fff;color:#085041;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0}
+.pwa-banner-title{font-size:15.5px;font-weight:700;margin-bottom:1px}
+.pwa-banner-sub{font-size:13px;opacity:.85}
+.pwa-banner-btn{background:#fff;color:#085041;border:none;border-radius:8px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0}
 .pwa-banner-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px;opacity:.7;flex-shrink:0}
 /* iOS 설치 가이드 모달 */
 .ios-guide{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:flex-end;justify-content:center;padding:0}
 .ios-guide.open{display:flex}
 .ios-guide-box{background:#fff;border-radius:20px 20px 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
 .ios-guide-title{font-size:17px;font-weight:700;color:#1A1814;margin-bottom:6px}
-.ios-guide-sub{font-size:13px;color:#6B6560;margin-bottom:20px;line-height:1.5}
+.ios-guide-sub{font-size:15px;color:#6B6560;margin-bottom:20px;line-height:1.5}
 .ios-guide-step{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
-.ios-guide-num{min-width:28px;height:28px;border-radius:50%;background:#1D9E75;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.ios-guide-step p{font-size:14px;color:#1A1814;line-height:1.5;margin:0}
+.ios-guide-num{min-width:28px;height:28px;border-radius:50%;background:#1D9E75;color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ios-guide-step p{font-size:15.5px;color:#1A1814;line-height:1.5;margin:0}
 .ios-guide-step p span{font-weight:700;color:#1D9E75}
-.ios-close{width:100%;padding:13px;background:#1D9E75;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px}
+.ios-close{width:100%;padding:13px;background:#1D9E75;color:#fff;border:none;border-radius:12px;font-size:16.5px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px}
 /* Safe area 대응 */
 body{padding-bottom:env(safe-area-inset-bottom)}
 .top-bar{padding-top:env(safe-area-inset-top)}
@@ -265,14 +265,14 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 .routine-card{position:relative;min-height:128px;padding-bottom:3.4rem}
 .alarm-row{position:absolute;bottom:.5rem;left:.75rem;right:.75rem;display:flex;align-items:center;gap:5px}
 /* 🔔 아이콘 */
-.alarm-bell{font-size:13px;line-height:1;flex-shrink:0}
+.alarm-bell{font-size:15px;line-height:1;flex-shrink:0}
 /* 시간 input — 항상 보이고, 직접 탭하면 picker 열림 */
 .alarm-time-inp{
   flex:1;
   border:none;
   border-radius:6px;
   padding:3px 4px;
-  font-size:13px;
+  font-size:15px;
   font-weight:700;
   font-family:inherit;
   background:transparent;
@@ -299,13 +299,13 @@ body{padding-bottom:env(safe-area-inset-bottom)}
   -webkit-text-fill-color:var(--teal);
   font-weight:700;
 }
-#alarm-status-txt{font-size:11px;color:var(--text3);text-align:center;padding:.2rem 0 .5rem;display:none}
+#alarm-status-txt{font-size:13px;color:var(--text3);text-align:center;padding:.2rem 0 .5rem;display:none}
 .guide-shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
 .gsc-btn{background:var(--surface);border-radius:var(--rs);padding:.75rem .4rem .65rem;text-align:center;cursor:pointer;box-shadow:var(--sh);-webkit-tap-highlight-color:transparent;border:1.5px solid var(--border);transition:transform .1s}
 .gsc-btn:active{transform:scale(.95)}
 .gsc-icon{font-size:22px;margin-bottom:4px}
-.gsc-label{font-size:12px;font-weight:700;margin-bottom:1px}
-.gsc-sub{font-size:10px;color:var(--text2)}
+.gsc-label{font-size:14px;font-weight:700;margin-bottom:1px}
+.gsc-sub{font-size:12.5px;color:var(--text2)}
 .gsc-teal{border-color:var(--teal)}.gsc-teal .gsc-label{color:var(--teal-d)}
 .gsc-purple{border-color:var(--purple)}.gsc-purple .gsc-label{color:var(--purple-d)}
 .gsc-blue{border-color:var(--blue)}.gsc-blue .gsc-label{color:var(--blue-d)}
@@ -325,11 +325,11 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 .pwa-banner.show{transform:translateY(0)}
 .pwa-banner-icon{font-size:24px;flex-shrink:0}
 .pwa-banner-text{flex:1}
-.pwa-banner-title{font-size:14px;font-weight:700;margin-bottom:2px}
-.pwa-banner-sub{font-size:11px;opacity:.88;line-height:1.4}
+.pwa-banner-title{font-size:15.5px;font-weight:700;margin-bottom:2px}
+.pwa-banner-sub{font-size:13px;opacity:.88;line-height:1.4}
 .pwa-banner-btn{
   background:#fff;color:#085041;border:none;border-radius:8px;
-  padding:8px 14px;font-size:13px;font-weight:700;
+  padding:8px 14px;font-size:15px;font-weight:700;
   cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;
   -webkit-tap-highlight-color:transparent;
 }
@@ -349,26 +349,26 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
   padding:1.4rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom,0px));
   width:100%;max-width:480px;max-height:85vh;overflow-y:auto;
 }
-.ios-guide-title{font-size:16px;font-weight:700;margin-bottom:5px}
-.ios-guide-sub{font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.5}
+.ios-guide-title{font-size:17px;font-weight:700;margin-bottom:5px}
+.ios-guide-sub{font-size:15px;color:var(--text2);margin-bottom:16px;line-height:1.5}
 .ios-guide-step{display:flex;align-items:flex-start;gap:11px;margin-bottom:13px}
 .ios-guide-num{
   min-width:26px;height:26px;border-radius:50%;
   background:var(--teal);color:#fff;
-  font-size:12px;font-weight:700;
+  font-size:14px;font-weight:700;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.ios-guide-step p{font-size:13px;line-height:1.55;margin:0}
+.ios-guide-step p{font-size:15px;line-height:1.55;margin:0}
 .ios-guide-step p b{color:var(--teal);font-weight:700}
 .ios-close{
   width:100%;padding:13px;background:var(--teal);color:#fff;
-  border:none;border-radius:12px;font-size:15px;font-weight:700;
+  border:none;border-radius:12px;font-size:16.5px;font-weight:700;
   cursor:pointer;font-family:inherit;margin-top:4px;
   -webkit-tap-highlight-color:transparent;
 }
 /* ── 알람 상태 텍스트 ───────────────────── */
 #alarm-status-txt{
-  font-size:11px;color:var(--text3);
+  font-size:13px;color:var(--text3);
   text-align:center;padding:.25rem 0 .6rem;display:none;
 }
 
@@ -399,12 +399,12 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
   50%{transform:rotate(0)}
 }
 .alarm-popup-title{font-size:20px;font-weight:700;color:#1A1814;margin-bottom:.5rem}
-.alarm-popup-body{font-size:14px;color:#6B6560;line-height:1.6;margin-bottom:1.5rem}
+.alarm-popup-body{font-size:15.5px;color:#6B6560;line-height:1.6;margin-bottom:1.5rem}
 .alarm-popup-btn{
   width:100%;padding:14px;
   background:var(--teal);color:#fff;
   border:none;border-radius:14px;
-  font-size:16px;font-weight:700;
+  font-size:17px;font-weight:700;
   cursor:pointer;font-family:inherit;
   -webkit-tap-highlight-color:transparent;
 }
@@ -417,11 +417,11 @@ body{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
 .btab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:7px 2px;border:none;background:none;cursor:pointer;color:var(--text3);font-family:inherit;-webkit-tap-highlight-color:transparent;min-height:52px}
 .btab-btn.active{color:var(--teal)}
 .btab-icon{font-size:19px;line-height:1}
-.btab-label{font-size:9.5px;font-weight:500}
+.btab-label{font-size:12px;font-weight:500}
 /* 서브 페이지 상단바 */
 .top-sub-bar{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
-.top-sub-bar span{font-size:15px;font-weight:700}
-.btn-back{background:none;border:none;color:var(--teal);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;padding:0;-webkit-tap-highlight-color:transparent}
+.top-sub-bar span{font-size:16.5px;font-weight:700}
+.btn-back{background:none;border:none;color:var(--teal);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;padding:0;-webkit-tap-highlight-color:transparent}
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -476,12 +476,12 @@ body{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
   background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
   padding:.85rem 1rem;margin-bottom:7px;box-shadow:var(--sh)
 }
-.settings-label{font-size:13px;font-weight:500}
-.settings-sub{font-size:11px;color:var(--text2);margin-top:1px}
-.settings-group-title{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);margin:1.1rem 0 .5rem}
+.settings-label{font-size:15px;font-weight:500}
+.settings-sub{font-size:13px;color:var(--text2);margin-top:1px}
+.settings-group-title{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);margin:1.1rem 0 .5rem}
 .settings-group-title:first-child{margin-top:0}
 .seg-control{display:flex;background:var(--surface2);border-radius:10px;padding:3px;gap:2px}
-.seg-btn{flex:1;padding:6px 10px;border:none;background:none;border-radius:8px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.seg-btn{flex:1;padding:6px 10px;border:none;background:none;border-radius:8px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;transition:all .15s}
 .seg-btn.active{background:var(--surface);color:var(--teal);box-shadow:0 1px 3px rgba(0,0,0,.1)}
 
 /* ══════════════════════════════════════════════════════════════
@@ -490,7 +490,7 @@ body{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
 .photo-row{display:flex;gap:6px;flex-wrap:wrap;margin:.5rem 0}
 .photo-thumb{position:relative;width:64px;height:64px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
 .photo-thumb img{width:100%;height:100%;object-fit:cover}
-.photo-thumb .photo-del{position:absolute;top:2px;right:2px;width:18px;height:18px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.photo-thumb .photo-del{position:absolute;top:2px;right:2px;width:18px;height:18px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
 .photo-add-btn{width:64px;height:64px;border-radius:10px;border:2px dashed var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--text3);cursor:pointer}
 .entry-photos{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .entry-photos img{width:52px;height:52px;object-fit:cover;border-radius:8px;cursor:pointer}
@@ -506,7 +506,7 @@ body{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
   display:inline-flex;align-items:center;justify-content:center;
   width:34px;height:34px;border-radius:50%;
   background:var(--surface2);border:1px solid var(--border);
-  color:var(--text2);cursor:pointer;font-size:15px;flex-shrink:0;
+  color:var(--text2);cursor:pointer;font-size:16.5px;flex-shrink:0;
   -webkit-tap-highlight-color:transparent;transition:all .2s
 }
 .voice-btn.recording{background:#fee2e2;border-color:#fca5a5;color:#dc2626;animation:pulseVoice 1s ease infinite}
@@ -518,11 +518,11 @@ body{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
    통계 그래프
    ══════════════════════════════════════════════════════════════ */
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.9rem;box-shadow:var(--sh)}
-.stat-card-title{font-size:13px;font-weight:700;margin-bottom:.7rem}
+.stat-card-title{font-size:15px;font-weight:700;margin-bottom:.7rem}
 .stat-grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:1rem}
 .stat-mini{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.8rem;text-align:center;box-shadow:var(--sh)}
 .stat-mini-num{font-size:22px;font-weight:800;color:var(--teal)}
-.stat-mini-label{font-size:11px;color:var(--text2);margin-top:2px}
+.stat-mini-label{font-size:13px;color:var(--text2);margin-top:2px}
 canvas{max-width:100%}
 
 /* ══════════════════════════════════════════════════════════════
@@ -532,11 +532,11 @@ canvas{max-width:100%}
 .challenge-card.purple{background:linear-gradient(135deg,var(--purple),#3C3489)}
 .challenge-card.blue{background:linear-gradient(135deg,var(--blue),#0C447C)}
 .challenge-card::after{content:'';position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.08)}
-.challenge-title{font-size:14px;font-weight:700;margin-bottom:2px;position:relative}
-.challenge-sub{font-size:11px;opacity:.85;margin-bottom:.8rem;position:relative}
+.challenge-title{font-size:15.5px;font-weight:700;margin-bottom:2px;position:relative}
+.challenge-sub{font-size:13px;opacity:.85;margin-bottom:.8rem;position:relative}
 .challenge-bar-track{height:8px;background:rgba(255,255,255,.25);border-radius:5px;overflow:hidden;position:relative}
 .challenge-bar-fill{height:100%;background:#fff;border-radius:5px;transition:width .4s}
-.challenge-days{font-size:11px;margin-top:5px;opacity:.9;position:relative}
+.challenge-days{font-size:13px;margin-top:5px;opacity:.9;position:relative}
 .challenge-grid-mini{display:grid;grid-template-columns:repeat(30,1fr);gap:2px;margin-top:.7rem;position:relative}
 .cgm-cell{aspect-ratio:1;border-radius:2px;background:rgba(255,255,255,.15)}
 .cgm-cell.done{background:#fff}
@@ -547,34 +547,34 @@ canvas{max-width:100%}
 .bible-search-box{display:flex;gap:6px;margin-bottom:.9rem}
 .bible-search-box input{flex:1}
 .bible-verse-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 var(--rs) var(--rs) 0;padding:.8rem 1rem;margin-bottom:7px;box-shadow:var(--sh)}
-.bible-verse-ref{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:3px}
-.bible-verse-text{font-size:13px;line-height:1.7}
+.bible-verse-ref{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.bible-verse-text{font-size:15px;line-height:1.7}
 .reading-plan-row{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.7rem .9rem;margin-bottom:6px;box-shadow:var(--sh)}
-.reading-plan-check{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;transition:all .15s}
+.reading-plan-check{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:transparent;transition:all .15s}
 .reading-plan-check.done{background:var(--teal);border-color:var(--teal);color:#fff}
 .reading-plan-info{flex:1}
-.reading-plan-day{font-size:11px;color:var(--text3)}
-.reading-plan-text{font-size:13px;font-weight:500}
+.reading-plan-day{font-size:13px;color:var(--text3)}
+.reading-plan-text{font-size:15px;font-weight:500}
 .qt-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
-.qt-field-label{font-size:11px;font-weight:700;color:var(--text3);margin:.7rem 0 .3rem;text-transform:uppercase;letter-spacing:.04em}
+.qt-field-label{font-size:13px;font-weight:700;color:var(--text3);margin:.7rem 0 .3rem;text-transform:uppercase;letter-spacing:.04em}
 .qt-field-label:first-child{margin-top:0}
 
 /* ══════════════════════════════════════════════════════════════
    교회 공지 / 소그룹
    ══════════════════════════════════════════════════════════════ */
 .notice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.9rem 1rem;margin-bottom:7px;box-shadow:var(--sh)}
-.notice-pin{display:inline-block;font-size:10px;background:var(--coral-l);color:var(--coral-d);padding:2px 7px;border-radius:20px;margin-bottom:4px;font-weight:700}
-.notice-title{font-size:14px;font-weight:700;margin-bottom:3px}
-.notice-date{font-size:11px;color:var(--text3);margin-bottom:5px}
-.notice-body{font-size:12px;color:var(--text2);line-height:1.6}
+.notice-pin{display:inline-block;font-size:12.5px;background:var(--coral-l);color:var(--coral-d);padding:2px 7px;border-radius:20px;margin-bottom:4px;font-weight:700}
+.notice-title{font-size:15.5px;font-weight:700;margin-bottom:3px}
+.notice-date{font-size:13px;color:var(--text3);margin-bottom:5px}
+.notice-body{font-size:14px;color:var(--text2);line-height:1.6}
 .group-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
 .group-header{display:flex;align-items:center;gap:10px;margin-bottom:.6rem}
 .group-icon{width:40px;height:40px;border-radius:12px;background:var(--purple-l);color:var(--purple-d);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.group-name{font-size:14px;font-weight:700}
-.group-meta{font-size:11px;color:var(--text2)}
+.group-name{font-size:15.5px;font-weight:700}
+.group-meta{font-size:13px;color:var(--text2)}
 .encourage-msg{display:flex;gap:8px;background:var(--surface2);border-radius:var(--rs);padding:.6rem .8rem;margin-bottom:6px}
-.encourage-avatar{width:28px;height:28px;border-radius:50%;background:var(--teal-l);color:var(--teal-d);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.encourage-body{flex:1;font-size:12px}
+.encourage-avatar{width:28px;height:28px;border-radius:50%;background:var(--teal-l);color:var(--teal-d);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.encourage-body{flex:1;font-size:14px}
 .encourage-name{font-weight:600;margin-bottom:1px}
 
 /* ══════════════════════════════════════════════════════════════
@@ -582,7 +582,7 @@ canvas{max-width:100%}
    ══════════════════════════════════════════════════════════════ */
 .sermon-note-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.9rem 1rem;margin-bottom:7px;box-shadow:var(--sh)}
 .attendance-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:.6rem}
-.attendance-cell{aspect-ratio:1;border-radius:6px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text3)}
+.attendance-cell{aspect-ratio:1;border-radius:6px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--text3)}
 .attendance-cell.present{background:var(--teal);color:#fff;font-weight:700}
 
 /* ══════════════════════════════════════════════════════════════
@@ -592,15 +592,15 @@ canvas{max-width:100%}
 .more-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:.8rem .3rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);cursor:pointer;box-shadow:var(--sh);-webkit-tap-highlight-color:transparent}
 .more-item:active{transform:scale(.95)}
 .more-icon{font-size:22px}
-.more-label{font-size:10.5px;font-weight:500;text-align:center;line-height:1.3}
+.more-label{font-size:13px;font-weight:500;text-align:center;line-height:1.3}
 
 /* ══════════════════════════════════════════════════════════════
    AI 생성 박스
    ══════════════════════════════════════════════════════════════ */
 .ai-box{background:linear-gradient(135deg,var(--purple-l),var(--blue-l));border-radius:var(--r);padding:1rem;margin-bottom:.8rem;border:1px solid var(--border)}
-.ai-box-title{font-size:12px;font-weight:700;color:var(--purple-d);margin-bottom:.5rem;display:flex;align-items:center;gap:5px}
-.ai-box-body{font-size:13px;line-height:1.7;white-space:pre-wrap}
-.ai-loading{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);padding:.5rem 0}
+.ai-box-title{font-size:14px;font-weight:700;color:var(--purple-d);margin-bottom:.5rem;display:flex;align-items:center;gap:5px}
+.ai-box-body{font-size:15px;line-height:1.7;white-space:pre-wrap}
+.ai-loading{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text2);padding:.5rem 0}
 .ai-dots{display:inline-flex;gap:3px}
 .ai-dots span{width:5px;height:5px;border-radius:50%;background:var(--purple);animation:aiDot 1.2s ease infinite}
 .ai-dots span:nth-child(2){animation-delay:.2s}
@@ -613,7 +613,7 @@ canvas{max-width:100%}
 [lang-hide]{display:none !important}
 .app-loading{position:fixed;inset:0;background:var(--bg);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem}
 .app-loading-logo{font-size:40px}
-.app-loading-text{font-size:13px;color:var(--text2)}
+.app-loading-text{font-size:15px;color:var(--text2)}
 
 @media(max-width:360px){
   .more-grid{grid-template-columns:repeat(3,1fr)}
@@ -625,7 +625,7 @@ canvas{max-width:100%}
 .offline-badge{
   display:none;align-items:center;gap:6px;
   background:var(--amber-l);color:var(--amber-d);
-  border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;
+  border-radius:20px;padding:5px 12px;font-size:13px;font-weight:600;
   margin-bottom:.75rem;width:fit-content;
 }
 .offline-badge.show{display:flex}
@@ -636,30 +636,30 @@ canvas{max-width:100%}
 .btn-pp{background:var(--purple);color:#fff}.btn-pp:hover{background:var(--purple-dark,#3C3489)}
 .btn-pb{background:var(--blue);color:#fff}.btn-pb:hover{background:var(--blue-dark,#0C447C)}
 .acc-inner{padding:.85rem .95rem}
-.purpose-box{background:var(--surface2,#F0EDE6);border-radius:8px;padding:.72rem .9rem;margin-bottom:.72rem;font-size:13px;line-height:1.75}
-.purpose-box strong{display:block;font-weight:500;margin-bottom:3px;font-size:13px}
+.purpose-box{background:var(--surface2,#F0EDE6);border-radius:8px;padding:.72rem .9rem;margin-bottom:.72rem;font-size:15px;line-height:1.75}
+.purpose-box strong{display:block;font-weight:500;margin-bottom:3px;font-size:15px}
 .guide-steps-v2{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1rem}
 .gstep{display:grid;grid-template-columns:60px 1fr;border-bottom:1px solid var(--border)}
 .gstep:last-child{border-bottom:none}
 .gstep:hover{background:var(--surface2,#F0EDE6)}
 .gs-num{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.85rem .4rem;border-right:1px solid var(--border);gap:3px}
-.gs-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500}
-.gs-period{font-size:9px;color:var(--text3,#A09890);text-align:center}
+.gs-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500}
+.gs-period{font-size:12px;color:var(--text3,#A09890);text-align:center}
 .gs-body{padding:.85rem .95rem}
-.gs-title{font-size:13px;font-weight:500;margin-bottom:2px}
-.gs-desc{font-size:12px;color:var(--text2,#6B6560);line-height:1.6}
+.gs-title{font-size:15px;font-weight:500;margin-bottom:2px}
+.gs-desc{font-size:14px;color:var(--text2,#6B6560);line-height:1.6}
 /* 앱 정보 탭 내부 탭 */
 .info-tab-bar{display:flex;gap:4px;background:var(--surface2,#F0EDE6);border-radius:10px;padding:4px;margin-bottom:1.1rem}
-.info-tab{flex:1;padding:8px 6px;border-radius:8px;border:none;background:transparent;font-family:inherit;font-size:13px;font-weight:500;color:var(--text2,#6B6560);cursor:pointer;transition:all .15s}
+.info-tab{flex:1;padding:8px 6px;border-radius:8px;border:none;background:transparent;font-family:inherit;font-size:15px;font-weight:500;color:var(--text2,#6B6560);cursor:pointer;transition:all .15s}
 .info-tab.active{background:var(--surface,#FFF);color:var(--text,#1A1814);border:0.5px solid var(--border)}
 .info-panel{display:none}.info-panel.active{display:block}
 
 
 
-.pro-lock{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:500;
+.pro-lock{display:inline-flex;align-items:center;gap:3px;font-size:12.5px;font-weight:500;
   padding:2px 7px;border-radius:10px;background:var(--surface2);color:var(--text3);border:1px solid var(--border)}
 .more-item.pro-item::after{content:'PRO';position:absolute;top:5px;right:5px;
-  font-size:8px;font-weight:700;padding:1px 4px;border-radius:4px;
+  font-size:11.5px;font-weight:700;padding:1px 4px;border-radius:4px;
   background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
 .more-item.locked{opacity:.65;cursor:not-allowed}
 .church-hero{background:linear-gradient(135deg,var(--teal-d) 0%,var(--teal) 60%,var(--blue) 100%);
@@ -676,52 +676,52 @@ canvas{max-width:100%}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
   padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)}
 .stat-n{font-size:22px;font-weight:700;color:var(--teal)}
-.stat-l{font-size:11px;color:var(--text2);margin-top:2px}
+.stat-l{font-size:13px;color:var(--text2);margin-top:2px}
 .notice-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
   padding:.8rem .95rem;margin-bottom:7px;box-shadow:var(--sh);animation:fadeIn .2s ease}
-.notice-cat{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-bottom:5px}
-.notice-title{font-size:14px;font-weight:500;margin-bottom:3px}
-.notice-body{font-size:12.5px;color:var(--text2);line-height:1.6}
-.notice-date{font-size:11px;color:var(--text3);margin-top:4px}
+.notice-cat{display:inline-block;font-size:12.5px;font-weight:700;padding:1px 7px;border-radius:10px;margin-bottom:5px}
+.notice-title{font-size:15.5px;font-weight:500;margin-bottom:3px}
+.notice-body{font-size:14.5px;color:var(--text2);line-height:1.6}
+.notice-date{font-size:13px;color:var(--text3);margin-top:4px}
 .member-row{display:flex;align-items:center;gap:10px;background:var(--surface);
   border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .95rem;
   margin-bottom:7px;box-shadow:var(--sh)}
 .member-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
-.member-name{font-size:14px;font-weight:500}
-.member-role{font-size:11px;color:var(--text2);margin-top:1px}
+  justify-content:center;font-size:15.5px;font-weight:700;flex-shrink:0}
+.member-name{font-size:15.5px;font-weight:500}
+.member-role{font-size:13px;color:var(--text2);margin-top:1px}
 .member-stat{margin-left:auto;text-align:right}
-.member-stat-n{font-size:13px;font-weight:500;color:var(--teal)}
-.member-stat-l{font-size:10px;color:var(--text3)}
+.member-stat-n{font-size:15px;font-weight:500;color:var(--teal)}
+.member-stat-l{font-size:12.5px;color:var(--text3)}
 .report-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);
   padding:.9rem 1rem;margin-bottom:.9rem;box-shadow:var(--sh)}
-.report-title{font-size:14px;font-weight:500;margin-bottom:.6rem;color:var(--teal-d)}
+.report-title{font-size:15.5px;font-weight:500;margin-bottom:.6rem;color:var(--teal-d)}
 .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.bar-label{font-size:12px;color:var(--text2);min-width:55px}
+.bar-label{font-size:14px;color:var(--text2);min-width:55px}
 .bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
 .bar-fill{height:100%;border-radius:4px;transition:width .6s ease;background:var(--teal)}
-.bar-val{font-size:12px;color:var(--text2);min-width:28px;text-align:right}
+.bar-val{font-size:14px;color:var(--text2);min-width:28px;text-align:right}
 .pro-gate{text-align:center;padding:2.5rem 1rem;background:var(--surface);
   border-radius:var(--r);border:1.5px dashed var(--border)}
 .pro-gate-icon{font-size:40px;margin-bottom:.5rem}
-.pro-gate-title{font-size:16px;font-weight:700;margin-bottom:.3rem;color:var(--text)}
-.pro-gate-sub{font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6}
+.pro-gate-title{font-size:17px;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+.pro-gate-sub{font-size:15px;color:var(--text2);margin-bottom:1rem;line-height:1.6}
 .btn-pro{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;
-  padding:10px 20px;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;
+  padding:10px 20px;border-radius:var(--rs);font-size:15.5px;font-weight:700;cursor:pointer;
   font-family:inherit;transition:opacity .15s}
 .btn-pro:hover{opacity:.9}
 .license-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;
-  border-radius:20px;font-size:12px;font-weight:700;margin-bottom:.7rem}
+  border-radius:20px;font-size:14px;font-weight:700;margin-bottom:.7rem}
 .lb-free{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
 .lb-pro{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
 .lb-trial{background:var(--blue-l);color:var(--blue-d);border:1px solid var(--blue)}
 .tab-bar-sub{display:flex;gap:4px;background:var(--surface2);border-radius:10px;
   padding:4px;margin-bottom:.9rem}
 .tbs{flex:1;padding:7px 6px;border-radius:8px;border:none;background:transparent;
-  font-family:inherit;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s}
+  font-family:inherit;font-size:14.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s}
 .tbs.on{background:var(--surface);color:var(--text);border:.5px solid var(--border)}
 .tp-sub{display:none}.tp-sub.on{display:block}
-.empty-pro{text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:13px}
+.empty-pro{text-align:center;padding:1.5rem 1rem;color:var(--text3);font-size:15px}
 .empty-pro span{display:block;font-size:26px;margin-bottom:.3rem}
 
 
@@ -730,21 +730,21 @@ canvas{max-width:100%}
    ══════════════════════════════════════════ */
 
 /* ① 연속기록 Streak 강화 */
-.streak-chip{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--amber-l),#FDE68A);color:var(--amber-d);border:1.5px solid var(--amber);border-radius:20px;padding:5px 13px;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(186,117,23,.15)}
+.streak-chip{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--amber-l),#FDE68A);color:var(--amber-d);border:1.5px solid var(--amber);border-radius:20px;padding:5px 13px;font-size:15px;font-weight:700;box-shadow:0 2px 8px rgba(186,117,23,.15)}
 .streak-milestone{text-align:center;padding:1rem;background:linear-gradient(135deg,#FFF8E7,#FDE68A);border-radius:var(--r);border:2px solid var(--amber);margin-bottom:.8rem;animation:popIn .4s ease}
 @keyframes popIn{0%{transform:scale(.8);opacity:0}80%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
 .streak-fire{font-size:32px;display:block;margin-bottom:4px}
 
 /* ② 레벨·칭호 */
-.level-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid}
+.level-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:14px;font-weight:700;border:1.5px solid}
 .lv-seed{background:#F0FDF4;color:#166534;border-color:#86EFAC}
 .lv-sprout{background:#ECFDF5;color:#065F46;border-color:#34D399}
 .lv-tree{background:#D1FAE5;color:#064E3B;border-color:#10B981}
 .lv-fruit{background:#FEF3C7;color:#92400E;border-color:#F59E0B}
 .lv-light{background:linear-gradient(135deg,#FEF3C7,#DBEAFE);color:#1E40AF;border-color:#93C5FD}
 .level-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
-.level-title{font-size:16px;font-weight:700;margin-bottom:4px}
-.level-verse{font-size:12px;color:var(--text2);font-style:italic;line-height:1.6;margin-top:.4rem}
+.level-title{font-size:17px;font-weight:700;margin-bottom:4px}
+.level-verse{font-size:14px;color:var(--text2);font-style:italic;line-height:1.6;margin-top:.4rem}
 .level-progress{margin-top:.6rem}
 .lv-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:4px}
 .lv-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .8s ease}
@@ -752,21 +752,21 @@ canvas{max-width:100%}
 /* ③ 월간 목표 & 진척도 */
 .goal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:7px;box-shadow:var(--sh)}
 .goal-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.goal-label{font-size:13px;font-weight:500;flex:1}
-.goal-count{font-size:12px;color:var(--text2);min-width:40px;text-align:right}
+.goal-label{font-size:15px;font-weight:500;flex:1}
+.goal-count{font-size:14px;color:var(--text2);min-width:40px;text-align:right}
 .goal-bar{height:7px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:3px}
 .goal-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
 .goal-complete{animation:celebrate .5s ease}
 @keyframes celebrate{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.goal-set-btn{background:none;border:1px dashed var(--border);border-radius:var(--rs);padding:.7rem;width:100%;text-align:center;font-size:13px;color:var(--text2);cursor:pointer;font-family:inherit}
+.goal-set-btn{background:none;border:1px dashed var(--border);border-radius:var(--rs);padding:.7rem;width:100%;text-align:center;font-size:15px;color:var(--text2);cursor:pointer;font-family:inherit}
 .goal-set-btn:hover{background:var(--surface2)}
 
 /* ④ 응답 기도 갤러리 강화 */
 .answered-card{background:linear-gradient(135deg,var(--teal-l),#FFF);border:1px solid var(--teal);border-radius:var(--r);padding:.9rem 1rem;margin-bottom:8px;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(29,158,117,.1)}
 .answered-card::before{content:'✅';position:absolute;right:12px;top:10px;font-size:20px;opacity:.3}
-.answered-date{font-size:11px;color:var(--teal-d);font-weight:500;margin-bottom:4px}
-.answered-content{font-size:13.5px;color:var(--text);line-height:1.65}
-.answered-count-badge{display:inline-flex;align-items:center;gap:5px;background:var(--teal);color:#fff;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700}
+.answered-date{font-size:13px;color:var(--teal-d);font-weight:500;margin-bottom:4px}
+.answered-content{font-size:15.5px;color:var(--text);line-height:1.65}
+.answered-count-badge{display:inline-flex;align-items:center;gap:5px;background:var(--teal);color:#fff;border-radius:20px;padding:3px 10px;font-size:14px;font-weight:700}
 
 /* ⑤ 누적 통계 + 히트맵 */
 .heatmap-grid{display:grid;grid-template-columns:repeat(26,1fr);gap:2px;margin-bottom:.5rem}
@@ -775,47 +775,47 @@ canvas{max-width:100%}
 .hm-1{background:#BBF7D0}
 .hm-2{background:#4ADE80}
 .hm-3{background:#16A34A}
-.hm-tooltip{font-size:10px;color:var(--text3);text-align:right;margin-top:2px}
+.hm-tooltip{font-size:12.5px;color:var(--text3);text-align:right;margin-top:2px}
 .cum-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.8rem}
 .cum-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)}
 .cum-stat-n{font-size:24px;font-weight:700}
-.cum-stat-l{font-size:11px;color:var(--text2);margin-top:2px}
+.cum-stat-l{font-size:13px;color:var(--text2);margin-top:2px}
 
 /* ⑥ 소그룹 팀 현황 카드 */
 .team-stat-card{background:linear-gradient(135deg,var(--teal-l),var(--blue-l));border:1px solid var(--teal);border-radius:var(--r);padding:1rem;margin-bottom:.8rem}
-.team-stat-title{font-size:14px;font-weight:700;color:var(--teal-d);margin-bottom:.6rem}
+.team-stat-title{font-size:15.5px;font-weight:700;color:var(--teal-d);margin-bottom:.6rem}
 .team-member-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.team-crown{font-size:16px;width:24px;text-align:center;flex-shrink:0}
-.team-name{font-size:13px;font-weight:500;flex:1}
-.team-cnt{font-size:12px;color:var(--text2)}
+.team-crown{font-size:17px;width:24px;text-align:center;flex-shrink:0}
+.team-name{font-size:15px;font-weight:500;flex:1}
+.team-cnt{font-size:14px;color:var(--text2)}
 
 /* ⑦ 설교 연계 과제 */
 .sermon-task-card{background:var(--purple-l);border:1.5px solid var(--purple);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:.8rem}
-.sermon-task-title{font-size:13px;font-weight:700;color:var(--purple-d);margin-bottom:4px}
-.sermon-task-body{font-size:12.5px;color:var(--purple-d);line-height:1.65}
+.sermon-task-title{font-size:15px;font-weight:700;color:var(--purple-d);margin-bottom:4px}
+.sermon-task-body{font-size:14.5px;color:var(--purple-d);line-height:1.65}
 .sermon-task-done{opacity:.55;text-decoration:line-through}
 
 /* ⑧ 기념일·특별 이벤트 */
 .event-banner{background:linear-gradient(135deg,var(--coral-l),var(--amber-l));border:1.5px solid var(--coral);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:.8rem;animation:fadeIn .4s ease}
-.event-banner-title{font-size:14px;font-weight:700;color:var(--coral-d);margin-bottom:3px}
-.event-banner-body{font-size:12.5px;color:var(--coral-d);line-height:1.65}
+.event-banner-title{font-size:15.5px;font-weight:700;color:var(--coral-d);margin-bottom:3px}
+.event-banner-body{font-size:14.5px;color:var(--coral-d);line-height:1.65}
 
 /* ⑨ 과거 기록 "오늘의 회고" 카드 */
 .retro-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--rs);padding:.85rem 1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
-.retro-label{font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px;letter-spacing:.05em}
-.retro-content{font-size:13px;color:var(--text);line-height:1.65}
-.retro-date{font-size:11px;color:var(--text3);margin-top:4px}
+.retro-label{font-size:13px;font-weight:700;color:var(--purple);margin-bottom:4px;letter-spacing:.05em}
+.retro-content{font-size:15px;color:var(--text);line-height:1.65}
+.retro-date{font-size:13px;color:var(--text3);margin-top:4px}
 
 /* ⑩ 다양한 격려 알림 & 폭죽 */
 .confetti-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
 .confetti-piece{position:absolute;width:8px;height:8px;border-radius:2px;animation:confettiFall linear forwards}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
-.motivation-toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--teal-d),var(--teal));color:#fff;padding:.75rem 1.2rem;border-radius:20px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(8,80,65,.35);z-index:1000;animation:toastSlide .3s ease;white-space:nowrap;max-width:90vw}
+.motivation-toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--teal-d),var(--teal));color:#fff;padding:.75rem 1.2rem;border-radius:20px;font-size:15px;font-weight:600;box-shadow:0 4px 20px rgba(8,80,65,.35);z-index:1000;animation:toastSlide .3s ease;white-space:nowrap;max-width:90vw}
 @keyframes toastSlide{from{transform:translateX(-50%) translateY(20px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
 
 /* 공통 */
 .motivation-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.8rem;box-shadow:var(--sh)}
-.motivation-section-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.6rem;display:flex;align-items:center;gap:6px}
+.motivation-section-title{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:.6rem;display:flex;align-items:center;gap:6px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
 
@@ -830,55 +830,55 @@ canvas{max-width:100%}
 .hls-icon.done{border-color:var(--teal);background:var(--teal);filter:brightness(1)}
 .hls-icon.current{border-color:var(--teal);background:var(--teal-l);transform:scale(1.2);box-shadow:0 3px 14px rgba(29,158,117,.35);animation:levelPulse 2s ease-in-out infinite}
 @keyframes levelPulse{0%,100%{box-shadow:0 3px 14px rgba(29,158,117,.35)}50%{box-shadow:0 3px 22px rgba(29,158,117,.55)}}
-.hls-label{font-size:10px;font-weight:600;color:var(--text3);transition:color .3s;white-space:nowrap}
+.hls-label{font-size:12.5px;font-weight:600;color:var(--text3);transition:color .3s;white-space:nowrap}
 .hls-label.active{color:var(--teal-d)}
 .home-level-info{display:flex;align-items:center;justify-content:space-between;margin-top:.2rem}
-.home-level-name{font-size:15px;font-weight:700;color:var(--teal-d)}
-.home-level-next{font-size:11.5px;color:var(--text3)}
+.home-level-name{font-size:16.5px;font-weight:700;color:var(--teal-d)}
+.home-level-next{font-size:13.5px;color:var(--text3)}
 .home-level-bar{height:6px;background:var(--border);border-radius:3px;margin-top:.45rem;overflow:hidden}
 .home-level-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .7s ease}
 
 
 /* ── 분기별 히트맵 탭 ── */
 .hm-tab-bar{display:flex;gap:4px;margin-bottom:.55rem}
-.hm-tab{flex:1;display:flex;flex-direction:column;align-items:center;padding:7px 4px;border-radius:var(--rs);border:1px solid var(--border);background:var(--surface);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;line-height:1.2}
+.hm-tab{flex:1;display:flex;flex-direction:column;align-items:center;padding:7px 4px;border-radius:var(--rs);border:1px solid var(--border);background:var(--surface);font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;line-height:1.2}
 .hm-tab.active,.hm-tab.on{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 2px 8px rgba(29,158,117,.25)}
 .hm-tab.active-now{background:var(--teal-l);color:var(--teal-d);border-color:var(--teal);font-weight:700}
-.hm-tab-sub{font-size:9px;font-weight:400;opacity:.8;margin-top:1px}
+.hm-tab-sub{font-size:12px;font-weight:400;opacity:.8;margin-top:1px}
 .hm-quarter-wrap{animation:fadeIn .2s ease}
 .hm-quarter-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem}
-.hm-quarter-label{font-size:12px;font-weight:700;color:var(--teal-d)}
-.hm-quarter-cnt{font-size:11px;color:var(--text3)}
+.hm-quarter-label{font-size:14px;font-weight:700;color:var(--teal-d)}
+.hm-quarter-cnt{font-size:13px;color:var(--text3)}
 .hm-month-block{margin-bottom:.7rem}
-.hm-month-label{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px}
+.hm-month-label{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:4px}
 .hm-month-grid{display:flex;flex-wrap:wrap;gap:3px}
 .hm-day{width:calc((100% - 90px) / 31);min-width:11px;max-width:16px;aspect-ratio:1;border-radius:2px;background:var(--border);position:relative;cursor:default}
-.hm-day:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:10px;padding:2px 6px;border-radius:4px;white-space:nowrap;z-index:10;pointer-events:none}
+.hm-day:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:12.5px;padding:2px 6px;border-radius:4px;white-space:nowrap;z-index:10;pointer-events:none}
 .hm-0{background:var(--border)}
 .hm-1{background:#BBF7D0}
 .hm-2{background:#4ADE80}
 .hm-3{background:#16A34A}
 .hm-legend{display:flex;align-items:center;gap:4px;margin-top:.35rem;justify-content:flex-end}
 .hm-legend-cell{width:10px;height:10px;border-radius:2px}
-.hm-legend-label{font-size:10px;color:var(--text3)}
+.hm-legend-label{font-size:12.5px;color:var(--text3)}
 .hm-summary-row{display:flex;gap:6px;margin-top:.55rem}
 .hm-summary-chip{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.5rem .4rem;text-align:center}
-.hm-summary-n{font-size:16px;font-weight:700;color:var(--teal)}
-.hm-summary-l{font-size:10px;color:var(--text2);margin-top:1px}
+.hm-summary-n{font-size:17px;font-weight:700;color:var(--teal)}
+.hm-summary-l{font-size:12.5px;color:var(--text2);margin-top:1px}
 
 
 /* ── 성도 관리 9가지 기능 CSS ── */
 .member-search-bar{display:flex;gap:7px;margin-bottom:.7rem;align-items:center}
-.member-search-bar input{flex:1;margin:0;font-size:16px;padding:8px 12px}
+.member-search-bar input{flex:1;margin:0;font-size:17px;padding:8px 12px}
 .member-filter-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:.7rem}
-.mf-tab{padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:11.5px;font-weight:500;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+.mf-tab{padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:13.5px;font-weight:500;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
 .mf-tab.on{background:var(--teal);color:#fff;border-color:var(--teal)}
 .member-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:8px;box-shadow:var(--sh);cursor:pointer;transition:all .15s}
 .member-card:hover{border-color:var(--teal);box-shadow:0 2px 10px rgba(29,158,117,.12)}
 .member-card-header{display:flex;align-items:center;gap:10px;margin-bottom:.5rem}
-.member-card-body{font-size:12.5px;color:var(--text2);line-height:1.7}
+.member-card-body{font-size:14.5px;color:var(--text2);line-height:1.7}
 .member-stat-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:.45rem}
-.msc{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;font-size:11.5px;font-weight:500}
+.msc{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;font-size:13.5px;font-weight:500}
 .msc-g{background:var(--teal-l);color:var(--teal-d)}
 .msc-s{background:var(--purple-l);color:var(--purple-d)}
 .msc-e{background:var(--blue-l);color:var(--blue-d)}
@@ -886,17 +886,17 @@ canvas{max-width:100%}
 .msc-warn{background:var(--coral-l);color:var(--coral-d)}
 .member-detail-modal{max-height:85vh;overflow-y:auto}
 .attend-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:.7rem}
-.attend-cell{aspect-ratio:1;border-radius:var(--rs);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;cursor:pointer;color:var(--text3);transition:all .15s;background:var(--surface)}
+.attend-cell{aspect-ratio:1;border-radius:var(--rs);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;color:var(--text3);transition:all .15s;background:var(--surface)}
 .attend-cell.present{background:var(--teal);border-color:var(--teal);color:#fff}
 .attend-cell.absent{background:var(--coral-l);border-color:var(--coral);color:var(--coral-d)}
 .memo-item{background:var(--surface2);border-radius:var(--rs);padding:.6rem .8rem;margin-bottom:5px}
-.memo-date{font-size:10px;color:var(--text3);margin-bottom:2px}
-.memo-text{font-size:13px;color:var(--text)}
+.memo-date{font-size:12.5px;color:var(--text3);margin-bottom:2px}
+.memo-text{font-size:15px;color:var(--text)}
 .growth-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .growth-bar{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
 .growth-bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
-.encourage-msg-box{background:var(--teal-l);border:1px solid var(--teal);border-radius:var(--rs);padding:.85rem 1rem;font-size:13px;color:var(--teal-d);line-height:1.7;margin-bottom:.7rem}
-.alert-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:var(--coral-l);color:var(--coral-d);border:1px solid var(--coral)}
+.encourage-msg-box{background:var(--teal-l);border:1px solid var(--teal);border-radius:var(--rs);padding:.85rem 1rem;font-size:15px;color:var(--teal-d);line-height:1.7;margin-bottom:.7rem}
+.alert-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:13px;font-weight:600;background:var(--coral-l);color:var(--coral-d);border:1px solid var(--coral)}
 
 
 /* ── 감사·나눔·전도 저장 폭죽 & 색종이 ── */
@@ -936,12 +936,12 @@ canvas{max-width:100%}
 .prayer-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;margin-bottom:.65rem;box-shadow:var(--sh);transition:all .2s}
 .prayer-card.answered{background:var(--teal-l);border-color:var(--teal)}
 .prayer-card-header{display:flex;align-items:flex-start;gap:.7rem}
-.prayer-date{font-size:11.5px;color:var(--text3);margin-bottom:3px}
-.prayer-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
-.prayer-body{font-size:13px;color:var(--text2);line-height:1.65}
+.prayer-date{font-size:13.5px;color:var(--text3);margin-bottom:3px}
+.prayer-title{font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:4px}
+.prayer-body{font-size:15px;color:var(--text2);line-height:1.65}
 
 
-textarea{font-size:16px;font-family:inherit}</style>
+textarea{font-size:17px;font-family:inherit}</style>
 </head>
 <body>
 
@@ -987,27 +987,27 @@ textarea{font-size:16px;font-family:inherit}</style>
   <!-- 이번 주 실천 현황 -->
   <div class="slabel" style="display:flex;justify-content:space-between;align-items:center;margin-top:.9rem">
     <span>이번 주 실천 현황</span>
-    <button onclick="showMorePage('daily-routine')" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">자세히 보기 ›</button>
+    <button onclick="showMorePage('daily-routine')" style="background:none;border:none;color:var(--teal);font-size:14px;cursor:pointer;font-family:inherit;font-weight:500">자세히 보기 ›</button>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem">
     <div onclick="showPage('gratitude')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:transform .1s" onpointerdown="this.style.transform='scale(.96)'" onpointerup="this.style.transform=''" onpointercancel="this.style.transform=''">
       <div style="font-size:22px;font-weight:700;color:var(--teal)" id="hm-wg">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">🙏 감사 기록</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">🙏 감사 기록</div>
     </div>
     <div onclick="showPage('sharing')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:transform .1s" onpointerdown="this.style.transform='scale(.96)'" onpointerup="this.style.transform=''" onpointercancel="this.style.transform=''">
       <div style="font-size:22px;font-weight:700;color:var(--purple)" id="hm-ws">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">🤝 나눔 기록</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">🤝 나눔 기록</div>
     </div>
     <div onclick="showPage('evangelism')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:transform .1s" onpointerdown="this.style.transform='scale(.96)'" onpointerup="this.style.transform=''" onpointercancel="this.style.transform=''">
       <div style="font-size:22px;font-weight:700;color:var(--blue)" id="hm-we">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">✉️ 전도 진행</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">✉️ 전도 진행</div>
     </div>
   </div>
 
   <!-- ② 레벨 배지 + ③ 월간 목표 -->
   <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
     <span>이번 달 목표</span>
-    <button onclick="openGoalModal()" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">⚙ 목표 설정</button>
+    <button onclick="openGoalModal()" style="background:none;border:none;color:var(--teal);font-size:14px;cursor:pointer;font-family:inherit;font-weight:500">⚙ 목표 설정</button>
   </div>
   <div id="home-goals"></div>
 
@@ -1104,13 +1104,13 @@ textarea{font-size:16px;font-family:inherit}</style>
     <div class="sbox"><div class="sn" id="ed" style="color:var(--amber)">0</div><div class="sl">교회 등록</div></div>
   </div>
   <div class="slabel">1&amp;1 전도 7단계 로드맵 — 각 단계를 클릭하면 목적과 구체적 방법을 확인할 수 있습니다</div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--teal-l);color:var(--teal-d);font-weight:700;font-size:13px">1</div><div class="acc-info"><div class="acc-title">기도 대상자 선정 — Prayer List</div><div class="acc-sub">이름을 올리고 매일 중보기도로 시작하는 전도의 첫 걸음</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>전도는 내 능력이 아닌 하나님의 역사입니다. 기도 대상자를 구체적으로 정하고 이름을 적는 것은 "이 사람을 하나님께 맡긴다"는 신앙의 고백입니다. 막연히 "좋은 일이 일어나게 해주세요"가 아니라 "○○○의 마음을 열어주세요"라고 이름을 부르며 기도할 때 성령께서 역사하십니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">1~3명 구체적으로 이름 정하기 — 가족·직장동료·이웃·친구 중 마음에 걸리는 사람</li><li data-n="2">매일 이름을 부르며 중보기도 — "주님, ○○의 마음 문을 열어주세요"</li><li data-n="3">그 사람의 상황·관심사·필요 파악 — 자연스러운 대화에서 삶 이해하기</li><li data-n="4">기도 제목 구체화 — 건강·가정·직장·인간관계 등 실제 필요로 기도</li><li data-n="5">소그룹에 중보기도 요청 — 혼자 기도하지 않고 공동체와 함께 기도</li><li data-n="6">기도 일지 기록 — 언제부터 기도했는지, 어떤 변화가 보이는지 꾸준히 기록하여 하나님의 역사를 확인</li></ul><div class="acc-verse">"추수할 것은 많되 일꾼이 적으니 그러므로 추수하는 주인에게 청하여 추수할 일꾼들을 보내 주소서 하라"<cite>— 마태복음 9:37–38</cite></div></div></div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--blue-l);color:var(--blue-d);font-weight:700;font-size:13px">2</div><div class="acc-info"><div class="acc-title">관계 형성 — Friendship Building</div><div class="acc-sub">복음 전하기 전, 먼저 진심으로 친구가 되는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>사람들은 메시지를 듣기 전에 사람을 먼저 봅니다. 관계가 없는 전도는 거부감을 줄 수 있습니다. 예수님도 3년간 제자들과 함께 먹고, 자고, 걸으셨습니다. 관계 형성 단계의 목표는 복음을 전하는 것이 아니라, "이 사람은 나를 진심으로 대하는구나"라는 신뢰를 쌓는 것입니다. 신뢰가 쌓이면 복음은 자연스럽게 흘러갑니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">안부 문자 보내기 — "잘 지내고 계세요?" 한 문장의 진심 어린 연락</li><li data-n="2">밥 한 끼 함께 — 식사 자리는 마음 문을 여는 가장 자연스러운 공간</li><li data-n="3">취미·관심사 공유 — 상대방의 관심사에 진심으로 참여하거나 공부하기</li><li data-n="4">생일·기념일 챙기기 — 잊지 않고 기억해준다는 것이 큰 감동이 됨</li><li data-n="5">경조사 함께하기 — 기쁨은 배가 되고 슬픔은 반이 되는 나눔의 시작</li><li data-n="6">SNS 소통 — 댓글·좋아요·응원 메시지로 지속적인 관심 표현</li></ul><div class="acc-verse">"사람이 친구를 위하여 자기 목숨을 버리면 이보다 더 큰 사랑이 없나니"<cite>— 요한복음 15:13</cite></div></div></div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--purple-l);color:var(--purple-d);font-weight:700;font-size:13px">3</div><div class="acc-info"><div class="acc-title">필요 채움 — Servant Evangelism</div><div class="acc-sub">삶의 실제 필요를 섬기며 하나님의 사랑을 행동으로 보여주는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>Servant Evangelism(섬김 전도)은 말보다 행동으로 복음을 전하는 방식입니다. 상대방의 필요를 파악하고, 그것을 채워줄 때 "왜 저렇게까지 해주지?"라는 질문이 생깁니다. 그 질문이 복음 나눔의 문을 엽니다. 이 단계는 상대방의 신뢰를 행동으로 확인받는 단계입니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">이사 도움 — 이삿날 인력을 지원하고 청소·정리까지 도움</li><li data-n="2">병원 동행 — 혼자 가기 무서운 검사나 수술 날 함께 가주기</li><li data-n="3">아이 돌봄 — 갑작스러운 상황에서 아이를 잠시 봐주기</li><li data-n="4">재능 나눔 — 내 전문성(법률·세무·IT·요리 등)을 무료로 제공</li><li data-n="5">위기 상황 동행 — 사고·이혼·실직 등 위기 때 가장 먼저 달려가기</li><li data-n="6">짐 들어주기·수리 봉사 — 집 수리, 무거운 짐 운반 등 몸으로 섬기기</li></ul><div class="acc-verse">"우리가 말과 혀로만 사랑하지 말고 행함과 진실함으로 하자"<cite>— 요한일서 3:18</cite></div></div></div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--amber-l);color:var(--amber-d);font-weight:700;font-size:13px">4</div><div class="acc-info"><div class="acc-title">신앙 이야기 나눔 — Faith Sharing</div><div class="acc-sub">내 삶 속 하나님을 자연스럽게 나누는 간증의 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>신앙 이야기 나눔은 변론이나 설득이 아닙니다. "내가 경험한 하나님"을 자연스럽게 이야기하는 것입니다. 철학적 논쟁보다 개인의 간증이 훨씬 더 강력합니다. 상대방이 동의하지 않아도 좋습니다. 씨앗을 뿌리는 것이 목표입니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">일상 대화 중 자연스러운 간증 — "지난주 교회에서 이런 말씀을 들었는데…"</li><li data-n="2">"기도해도 될까요?" 묻기 — 상대방의 고민을 듣고 기도 제안</li><li data-n="3">감사 이야기 나누기 — "요즘 이런 일이 있었는데 감사하더라"는 자연스러운 표현</li><li data-n="4">하나님의 응답 나누기 — 실제로 경험한 기도 응답 이야기 전달</li><li data-n="5">교회 활동 자연스럽게 언급 — "이번 주 교회에서 이런 행사가 있어" 가볍게 소개</li><li data-n="6">상대방 상황에 맞는 말씀 전달 — 힘든 상황에서 위로가 되는 성경 구절 나눔</li></ul><div class="acc-verse">"너희 안에 있는 소망에 관한 이유를 묻는 자에게는 대답할 것을 항상 준비하되 온유와 두려움으로 하고"<cite>— 베드로전서 3:15</cite></div></div></div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--green-l);color:var(--green-d);font-weight:700;font-size:13px">5</div><div class="acc-info"><div class="acc-title">문화 초청 — Low-barrier Invitation</div><div class="acc-sub">부담 없는 교회 행사로 자연스럽게 문턱을 낮추는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>"교회 나와"가 아닌 "이런 행사가 있어, 같이 가볼래?"라는 낮은 문턱의 초청입니다. 음악회·바자회·체육대회·크리스마스 행사는 신앙이 없어도 부담 없이 참여할 수 있는 공간입니다. 이 단계에서 처음으로 교회 문을 넘습니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">음악회·콘서트 초청 — 교회 찬양 콘서트, CCM 공연에 동반 참석</li><li data-n="2">바자회·체육대회 초청 — 비신자도 부담 없이 참여 가능한 행사</li><li data-n="3">크리스마스·부활절 행사 — 문화적으로 친숙한 절기 행사 초청</li><li data-n="4">교회 카페·열린 공간 — 부담 없이 들어올 수 있는 열린 모임 소개</li><li data-n="5">지역 봉사·섬김 행사 — 함께 선한 일을 하며 교회를 경험하게 하기</li><li data-n="6">유튜브·SNS 콘텐츠 공유 — 예배 영상이나 설교를 자연스럽게 링크 전달</li></ul><div class="acc-verse">"보라 내가 문 밖에 서서 두드리노니 누구든지 내 음성을 듣고 문을 열면 내가 그에게로 들어가"<cite>— 요한계시록 3:20</cite></div></div></div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--coral-l);color:var(--coral-d);font-weight:700;font-size:13px">6</div><div class="acc-info"><div class="acc-title">예배 초청 — Worship Invitation</div><div class="acc-sub">주일 예배에 함께 동반 출석하는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>초청의 날을 중심으로 "내가 함께 가겠다"는 동행의 약속이 핵심입니다. 예배 30분 전 입장, 자리 안내, 예배 후 식사까지 준비된 환영이 첫 예배 경험을 결정합니다. "교회 나와"가 아닌 "내가 옆에 있을게"가 6단계의 언어입니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">초청의 날 일정 — 1차(3.30), 2차(6.29), 3차(8.31), 4차(11.30) 중 가장 가까운 날짜로 구체적인 약속 잡기</li><li data-n="2">함께 교통 수단 해결 — 차로 데려다 드리거나 함께 출발</li><li data-n="3">예배 30분 전 입장 — 자리 안내, 예배 순서 간단히 설명</li><li data-n="4">예배 후 담임목사·교역자 자연스럽게 소개</li><li data-n="5">예배 후 셀원 1~2명 합류 — 따뜻한 공동체 경험 제공</li><li data-n="6">식사 자리에서 소감 경청 — 판단 없이 듣기만, 결신 강요 절대 금지</li></ul><div class="acc-verse">"주의 성령이 내게 임하셨으니 이는 가난한 자에게 복음을 전하게 하시려고 내게 기름을 부으시고"<cite>— 누가복음 4:18</cite></div></div></div>
-  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--pink-l);color:var(--pink-d);font-weight:700;font-size:13px">7</div><div class="acc-info"><div class="acc-title">제자화 &amp; 연결 — Discipleship</div><div class="acc-sub">소그룹·새신자반 연결로 공동체에 정착시키는 완성 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>1&1의 완성은 전도된 사람이 또 다른 1&1을 시작하는 것입니다. 새신자반 동행, 소그룹 연결, 성경 통독 파트너로 공동체에 뿌리를 내리도록 돕습니다. 이 단계가 완주될 때 한 영혼이 진정한 제자로 세워집니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">새신자반 함께 등록 — 교육 일정 안내 및 동행 참석</li><li data-n="2">소그룹(셀·구역) 소개 및 동반 참석 — 공동체와 연결</li><li data-n="3">성경 통독 파트너 — 신앙의 첫 걸음을 함께 걸어주기</li><li data-n="4">담당 교역자·리더에게 연결 — 지속적인 신앙 돌봄 연결</li><li data-n="5">3개월간 매 주일 함께 앉기 — 정착까지 동반 관계 유지</li><li data-n="6">"이제 당신도 한 사람을 품어보세요" — 1&1 도전으로 제자화 완성</li></ul><div class="acc-verse">"내가 심었고 아볼로는 물을 주었으되 오직 하나님께서 자라나게 하셨나니"<cite>— 고린도전서 3:6</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--teal-l);color:var(--teal-d);font-weight:700;font-size:15px">1</div><div class="acc-info"><div class="acc-title">기도 대상자 선정 — Prayer List</div><div class="acc-sub">이름을 올리고 매일 중보기도로 시작하는 전도의 첫 걸음</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>전도는 내 능력이 아닌 하나님의 역사입니다. 기도 대상자를 구체적으로 정하고 이름을 적는 것은 "이 사람을 하나님께 맡긴다"는 신앙의 고백입니다. 막연히 "좋은 일이 일어나게 해주세요"가 아니라 "○○○의 마음을 열어주세요"라고 이름을 부르며 기도할 때 성령께서 역사하십니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">1~3명 구체적으로 이름 정하기 — 가족·직장동료·이웃·친구 중 마음에 걸리는 사람</li><li data-n="2">매일 이름을 부르며 중보기도 — "주님, ○○의 마음 문을 열어주세요"</li><li data-n="3">그 사람의 상황·관심사·필요 파악 — 자연스러운 대화에서 삶 이해하기</li><li data-n="4">기도 제목 구체화 — 건강·가정·직장·인간관계 등 실제 필요로 기도</li><li data-n="5">소그룹에 중보기도 요청 — 혼자 기도하지 않고 공동체와 함께 기도</li><li data-n="6">기도 일지 기록 — 언제부터 기도했는지, 어떤 변화가 보이는지 꾸준히 기록하여 하나님의 역사를 확인</li></ul><div class="acc-verse">"추수할 것은 많되 일꾼이 적으니 그러므로 추수하는 주인에게 청하여 추수할 일꾼들을 보내 주소서 하라"<cite>— 마태복음 9:37–38</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--blue-l);color:var(--blue-d);font-weight:700;font-size:15px">2</div><div class="acc-info"><div class="acc-title">관계 형성 — Friendship Building</div><div class="acc-sub">복음 전하기 전, 먼저 진심으로 친구가 되는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>사람들은 메시지를 듣기 전에 사람을 먼저 봅니다. 관계가 없는 전도는 거부감을 줄 수 있습니다. 예수님도 3년간 제자들과 함께 먹고, 자고, 걸으셨습니다. 관계 형성 단계의 목표는 복음을 전하는 것이 아니라, "이 사람은 나를 진심으로 대하는구나"라는 신뢰를 쌓는 것입니다. 신뢰가 쌓이면 복음은 자연스럽게 흘러갑니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">안부 문자 보내기 — "잘 지내고 계세요?" 한 문장의 진심 어린 연락</li><li data-n="2">밥 한 끼 함께 — 식사 자리는 마음 문을 여는 가장 자연스러운 공간</li><li data-n="3">취미·관심사 공유 — 상대방의 관심사에 진심으로 참여하거나 공부하기</li><li data-n="4">생일·기념일 챙기기 — 잊지 않고 기억해준다는 것이 큰 감동이 됨</li><li data-n="5">경조사 함께하기 — 기쁨은 배가 되고 슬픔은 반이 되는 나눔의 시작</li><li data-n="6">SNS 소통 — 댓글·좋아요·응원 메시지로 지속적인 관심 표현</li></ul><div class="acc-verse">"사람이 친구를 위하여 자기 목숨을 버리면 이보다 더 큰 사랑이 없나니"<cite>— 요한복음 15:13</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--purple-l);color:var(--purple-d);font-weight:700;font-size:15px">3</div><div class="acc-info"><div class="acc-title">필요 채움 — Servant Evangelism</div><div class="acc-sub">삶의 실제 필요를 섬기며 하나님의 사랑을 행동으로 보여주는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>Servant Evangelism(섬김 전도)은 말보다 행동으로 복음을 전하는 방식입니다. 상대방의 필요를 파악하고, 그것을 채워줄 때 "왜 저렇게까지 해주지?"라는 질문이 생깁니다. 그 질문이 복음 나눔의 문을 엽니다. 이 단계는 상대방의 신뢰를 행동으로 확인받는 단계입니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">이사 도움 — 이삿날 인력을 지원하고 청소·정리까지 도움</li><li data-n="2">병원 동행 — 혼자 가기 무서운 검사나 수술 날 함께 가주기</li><li data-n="3">아이 돌봄 — 갑작스러운 상황에서 아이를 잠시 봐주기</li><li data-n="4">재능 나눔 — 내 전문성(법률·세무·IT·요리 등)을 무료로 제공</li><li data-n="5">위기 상황 동행 — 사고·이혼·실직 등 위기 때 가장 먼저 달려가기</li><li data-n="6">짐 들어주기·수리 봉사 — 집 수리, 무거운 짐 운반 등 몸으로 섬기기</li></ul><div class="acc-verse">"우리가 말과 혀로만 사랑하지 말고 행함과 진실함으로 하자"<cite>— 요한일서 3:18</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--amber-l);color:var(--amber-d);font-weight:700;font-size:15px">4</div><div class="acc-info"><div class="acc-title">신앙 이야기 나눔 — Faith Sharing</div><div class="acc-sub">내 삶 속 하나님을 자연스럽게 나누는 간증의 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>신앙 이야기 나눔은 변론이나 설득이 아닙니다. "내가 경험한 하나님"을 자연스럽게 이야기하는 것입니다. 철학적 논쟁보다 개인의 간증이 훨씬 더 강력합니다. 상대방이 동의하지 않아도 좋습니다. 씨앗을 뿌리는 것이 목표입니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">일상 대화 중 자연스러운 간증 — "지난주 교회에서 이런 말씀을 들었는데…"</li><li data-n="2">"기도해도 될까요?" 묻기 — 상대방의 고민을 듣고 기도 제안</li><li data-n="3">감사 이야기 나누기 — "요즘 이런 일이 있었는데 감사하더라"는 자연스러운 표현</li><li data-n="4">하나님의 응답 나누기 — 실제로 경험한 기도 응답 이야기 전달</li><li data-n="5">교회 활동 자연스럽게 언급 — "이번 주 교회에서 이런 행사가 있어" 가볍게 소개</li><li data-n="6">상대방 상황에 맞는 말씀 전달 — 힘든 상황에서 위로가 되는 성경 구절 나눔</li></ul><div class="acc-verse">"너희 안에 있는 소망에 관한 이유를 묻는 자에게는 대답할 것을 항상 준비하되 온유와 두려움으로 하고"<cite>— 베드로전서 3:15</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--green-l);color:var(--green-d);font-weight:700;font-size:15px">5</div><div class="acc-info"><div class="acc-title">문화 초청 — Low-barrier Invitation</div><div class="acc-sub">부담 없는 교회 행사로 자연스럽게 문턱을 낮추는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>"교회 나와"가 아닌 "이런 행사가 있어, 같이 가볼래?"라는 낮은 문턱의 초청입니다. 음악회·바자회·체육대회·크리스마스 행사는 신앙이 없어도 부담 없이 참여할 수 있는 공간입니다. 이 단계에서 처음으로 교회 문을 넘습니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">음악회·콘서트 초청 — 교회 찬양 콘서트, CCM 공연에 동반 참석</li><li data-n="2">바자회·체육대회 초청 — 비신자도 부담 없이 참여 가능한 행사</li><li data-n="3">크리스마스·부활절 행사 — 문화적으로 친숙한 절기 행사 초청</li><li data-n="4">교회 카페·열린 공간 — 부담 없이 들어올 수 있는 열린 모임 소개</li><li data-n="5">지역 봉사·섬김 행사 — 함께 선한 일을 하며 교회를 경험하게 하기</li><li data-n="6">유튜브·SNS 콘텐츠 공유 — 예배 영상이나 설교를 자연스럽게 링크 전달</li></ul><div class="acc-verse">"보라 내가 문 밖에 서서 두드리노니 누구든지 내 음성을 듣고 문을 열면 내가 그에게로 들어가"<cite>— 요한계시록 3:20</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--coral-l);color:var(--coral-d);font-weight:700;font-size:15px">6</div><div class="acc-info"><div class="acc-title">예배 초청 — Worship Invitation</div><div class="acc-sub">주일 예배에 함께 동반 출석하는 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>초청의 날을 중심으로 "내가 함께 가겠다"는 동행의 약속이 핵심입니다. 예배 30분 전 입장, 자리 안내, 예배 후 식사까지 준비된 환영이 첫 예배 경험을 결정합니다. "교회 나와"가 아닌 "내가 옆에 있을게"가 6단계의 언어입니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">초청의 날 일정 — 1차(3.30), 2차(6.29), 3차(8.31), 4차(11.30) 중 가장 가까운 날짜로 구체적인 약속 잡기</li><li data-n="2">함께 교통 수단 해결 — 차로 데려다 드리거나 함께 출발</li><li data-n="3">예배 30분 전 입장 — 자리 안내, 예배 순서 간단히 설명</li><li data-n="4">예배 후 담임목사·교역자 자연스럽게 소개</li><li data-n="5">예배 후 셀원 1~2명 합류 — 따뜻한 공동체 경험 제공</li><li data-n="6">식사 자리에서 소감 경청 — 판단 없이 듣기만, 결신 강요 절대 금지</li></ul><div class="acc-verse">"주의 성령이 내게 임하셨으니 이는 가난한 자에게 복음을 전하게 하시려고 내게 기름을 부으시고"<cite>— 누가복음 4:18</cite></div></div></div>
+  <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><div class="acc-icon" style="background:var(--pink-l);color:var(--pink-d);font-weight:700;font-size:15px">7</div><div class="acc-info"><div class="acc-title">제자화 &amp; 연결 — Discipleship</div><div class="acc-sub">소그룹·새신자반 연결로 공동체에 정착시키는 완성 단계</div></div><span class="acc-arrow">▼</span></div><div class="acc-body"><div class="acc-purpose"><strong>목적과 취지</strong>1&1의 완성은 전도된 사람이 또 다른 1&1을 시작하는 것입니다. 새신자반 동행, 소그룹 연결, 성경 통독 파트너로 공동체에 뿌리를 내리도록 돕습니다. 이 단계가 완주될 때 한 영혼이 진정한 제자로 세워집니다.</div><div class="acc-section-title">구체적 실천 방법</div><ul class="acc-steps"><li data-n="1">새신자반 함께 등록 — 교육 일정 안내 및 동행 참석</li><li data-n="2">소그룹(셀·구역) 소개 및 동반 참석 — 공동체와 연결</li><li data-n="3">성경 통독 파트너 — 신앙의 첫 걸음을 함께 걸어주기</li><li data-n="4">담당 교역자·리더에게 연결 — 지속적인 신앙 돌봄 연결</li><li data-n="5">3개월간 매 주일 함께 앉기 — 정착까지 동반 관계 유지</li><li data-n="6">"이제 당신도 한 사람을 품어보세요" — 1&1 도전으로 제자화 완성</li></ul><div class="acc-verse">"내가 심었고 아볼로는 물을 주었으되 오직 하나님께서 자라나게 하셨나니"<cite>— 고린도전서 3:6</cite></div></div></div>
   <hr>
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem"><div class="slabel" style="margin:0">내 전도 대상자</div><button class="btn btn-p btn-sm" style="background:var(--blue)" onclick="openPM()">+ 등록하기</button></div>
   <div class="cat-tabs">
@@ -1215,15 +1215,15 @@ textarea{font-size:16px;font-family:inherit}</style>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem">
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)">
       <div style="font-size:22px;font-weight:700;color:var(--teal)" id="hg-stat">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">감사 기록</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">감사 기록</div>
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)">
       <div style="font-size:22px;font-weight:700;color:var(--purple)" id="hs-stat">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">나눔 기록</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">나눔 기록</div>
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.75rem .5rem;text-align:center;box-shadow:var(--sh)">
       <div style="font-size:22px;font-weight:700;color:var(--blue)" id="he-stat">0</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">전도 진행</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:2px">전도 진행</div>
     </div>
   </div>
 
@@ -1237,7 +1237,7 @@ textarea{font-size:16px;font-family:inherit}</style>
         <span class="alarm-bell">🔔</span>
         <input type="time" class="alarm-time-inp" id="at0" value="07:00" onchange="saveAlarm(0)">
         <label class="toggle-sw"><input type="checkbox" id="ao0" onchange="toggleAlarm(0)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(0)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+        <button onclick="testAlarm(0)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:13px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
       </div>
     </div>
     <div class="routine-card">
@@ -1248,7 +1248,7 @@ textarea{font-size:16px;font-family:inherit}</style>
         <span class="alarm-bell">🔔</span>
         <input type="time" class="alarm-time-inp" id="at1" value="12:00" onchange="saveAlarm(1)">
         <label class="toggle-sw"><input type="checkbox" id="ao1" onchange="toggleAlarm(1)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(1)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+        <button onclick="testAlarm(1)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:13px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
       </div>
     </div>
     <div class="routine-card">
@@ -1259,7 +1259,7 @@ textarea{font-size:16px;font-family:inherit}</style>
         <span class="alarm-bell">🔔</span>
         <input type="time" class="alarm-time-inp" id="at2" value="21:00" onchange="saveAlarm(2)">
         <label class="toggle-sw"><input type="checkbox" id="ao2" onchange="toggleAlarm(2)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(2)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+        <button onclick="testAlarm(2)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:13px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
       </div>
     </div>
     <div class="routine-card">
@@ -1270,7 +1270,7 @@ textarea{font-size:16px;font-family:inherit}</style>
         <span class="alarm-bell">🔔</span>
         <input type="time" class="alarm-time-inp" id="at3" value="22:30" onchange="saveAlarm(3)">
         <label class="toggle-sw"><input type="checkbox" id="ao3" onchange="toggleAlarm(3)"><span class="toggle-sl"></span></label>
-        <button onclick="testAlarm(3)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:11px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
+        <button onclick="testAlarm(3)" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:13px;cursor:pointer;color:var(--text2);padding:2px 6px;font-family:inherit">▶ 테스트</button>
       </div>
     </div>
   </div>
@@ -1332,15 +1332,15 @@ textarea{font-size:16px;font-family:inherit}</style>
 <div class="page" id="page-memory-game">
   <div class="top-sub-bar"><button class="btn-back" onclick="showPage('more')">← 더보기</button><span>성경암송 게임</span></div>
   <div class="qt-box">
-    <div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">빈칸에 들어갈 단어를 맞춰보세요!</div>
+    <div style="font-size:14px;color:var(--text3);margin-bottom:.5rem">빈칸에 들어갈 단어를 맞춰보세요!</div>
     <div class="bible-verse-ref" id="mem-game-ref" style="margin-bottom:.5rem"></div>
-    <div style="font-size:15px;line-height:1.8;font-weight:600;margin-bottom:1rem" id="mem-game-text"></div>
+    <div style="font-size:16.5px;line-height:1.8;font-weight:600;margin-bottom:1rem" id="mem-game-text"></div>
     <input type="text" id="mem-game-input" placeholder="빈칸 단어를 입력하세요">
     <div style="display:flex;gap:8px;margin-top:.7rem">
       <button class="btn btn-p" onclick="checkMemoryGame()">정답 확인</button>
       <button class="btn btn-g" onclick="startMemoryGame()">다음 문제</button>
     </div>
-    <div id="mem-game-result" style="margin-top:.8rem;font-size:13px"></div>
+    <div id="mem-game-result" style="margin-top:.8rem;font-size:15px"></div>
   </div>
 </div>
 
@@ -1498,6 +1498,14 @@ textarea{font-size:16px;font-family:inherit}</style>
 
 
 <script>
+/* 로컬(기기 시간대) 기준 YYYY-MM-DD.
+   toISOString()은 UTC 기준이라 한국(UTC+9)에서 새벽 0~9시에 '어제'가 되고,
+   연속일수 계산이 틀어지므로 날짜 키는 반드시 이 함수를 사용한다. */
+function localISO(d){
+  d = d || new Date();
+  var z = function(n){ return String(n).padStart(2,'0'); };
+  return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' + z(d.getDate());
+}
 /* ═══ i18n.js ═══ */
 /* i18n.js — 한국어/영어 다국어 지원 */
 const I18N = {
@@ -1933,7 +1941,7 @@ function saveChallenges(){
 }
 function startChallenge(type){
   challenges[type].active = true;
-  challenges[type].startDate = new Date().toISOString().split('T')[0];
+  challenges[type].startDate = localISO();
   challenges[type].days = {};
   saveChallenges();
   renderChallenges();
@@ -1941,7 +1949,7 @@ function startChallenge(type){
 }
 function checkChallengeToday(type){
   if(!challenges[type].active){ toast('먼저 챌린지를 시작해주세요',{color:'amber',duration:2000}); return; }
-  const today = new Date().toISOString().split('T')[0];
+  const today = localISO();
   challenges[type].days[today] = true;
   saveChallenges();
   renderChallenges();
@@ -1954,9 +1962,9 @@ function getChallengeStreak(type){
   const days = challenges[type].days || {};
   const dates = Object.keys(days).sort().reverse();
   if(!dates.length) return 0;
-  let s=0, check=new Date().toISOString().split('T')[0];
+  let s=0, check=localISO();
   for(let i=0;i<400;i++){
-    if(days[check]){ s++; const d=new Date(check+'T00:00:00'); d.setDate(d.getDate()-1); check=d.toISOString().split('T')[0]; }
+    if(days[check]){ s++; const d=new Date(check+'T00:00:00'); d.setDate(d.getDate()-1); check=localISO(d); }
     else break;
   }
   return s;
@@ -1981,7 +1989,7 @@ function renderChallenges(){
         <button class="btn btn-p" style="background:rgba(255,255,255,.25);color:#fff" onclick="startChallenge('${cfg.key}')">🚀 챌린지 시작하기</button>
       </div>`;
     }
-    const today = new Date().toISOString().split('T')[0];
+    const today = localISO();
     const doneToday = !!c.days[today];
     return `<div class="challenge-card ${cfg.cls}">
       <div class="challenge-title">${cfg.title}</div>
@@ -1989,7 +1997,7 @@ function renderChallenges(){
       <div class="challenge-bar-track"><div class="challenge-bar-fill" style="width:${pct}%"></div></div>
       <div class="challenge-days">${pct}% 달성</div>
       ${doneToday
-        ? '<div style="margin-top:.6rem;font-size:12px;opacity:.9">✅ 오늘 완료했습니다!</div>'
+        ? '<div style="margin-top:.6rem;font-size:14px;opacity:.9">✅ 오늘 완료했습니다!</div>'
         : `<button class="btn" style="margin-top:.6rem;background:#fff;color:#085041" onclick="checkChallengeToday('${cfg.key}')">오늘 체크하기</button>`}
     </div>`;
   }).join('');
@@ -2012,7 +2020,7 @@ function getLast7DaysCounts(arr){
   const counts = [];
   for(let i=6;i>=0;i--){
     const d = new Date(); d.setDate(d.getDate()-i);
-    const key = d.toISOString().split('T')[0];
+    const key = localISO(d);
     counts.push(arr.filter(e=>e.date===key).length);
   }
   return counts;
@@ -2038,7 +2046,7 @@ function renderStatsFallback(){
   const bar = (label, val, max, color) => {
     const pct = max>0 ? Math.round(val/max*100) : 0;
     return `<div style="margin-bottom:8px">
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:3px"><span>${label}</span><span>${val}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-bottom:3px"><span>${label}</span><span>${val}</span></div>
       <div style="height:8px;background:var(--surface2);border-radius:4px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${color};border-radius:4px"></div></div>
     </div>`;
   };
@@ -2157,7 +2165,7 @@ function loadExtraData(){
   // 샘플 공지/소그룹 (최초 1회)
   if(!noticeE.length){
     noticeE = [
-      {id:4, pinned:false, title:'행복일지 작성 안내', date:new Date().toISOString().split('T')[0], body:'하나님께 감사, 성도들과 나눔, 이웃에게 복음을 전하는 행복일지를 작성해 보세요. 행복일지를 쓰면 행복합니다!'},
+      {id:4, pinned:false, title:'행복일지 작성 안내', date:localISO(), body:'하나님께 감사, 성도들과 나눔, 이웃에게 복음을 전하는 행복일지를 작성해 보세요. 행복일지를 쓰면 행복합니다!'},
     ];
     saveExtra('notice');
   } else {
@@ -2176,7 +2184,7 @@ function loadExtraData(){
     noticeChanged = true;
     // 행복일지 작성 안내 없으면 추가
     if(!noticeE.some(n => n.title === '행복일지 작성 안내')){
-      noticeE.push({id:4, pinned:false, title:'행복일지 작성 안내', date:new Date().toISOString().split('T')[0], body:'하나님께 감사, 성도들과 나눔, 이웃에게 복음을 전하는 행복일지를 작성해 보세요. 행복일지를 쓰면 행복합니다!'});
+      noticeE.push({id:4, pinned:false, title:'행복일지 작성 안내', date:localISO(), body:'하나님께 감사, 성도들과 나눔, 이웃에게 복음을 전하는 행복일지를 작성해 보세요. 행복일지를 쓰면 행복합니다!'});
       noticeChanged = true;
     }
     if(noticeChanged) saveExtra('notice');
@@ -2187,12 +2195,12 @@ function loadExtraData(){
        w1:'한 주간 지낸 이야기를 나누며 근황을 물었다.', w2:'찬양 \'주 은혜임을\'을 함께 불렀다.',
        w3:'요한복음 15장 — 포도나무 비유를 나누며 주님 안에 거하는 삶을 묵상했다.',
        w4:'가정의 회복을 위해 함께 기도했다.', w5:'다음 주 직장 동료를 초청하기로 함께 결단했다.',
-       date:new Date().toISOString().split('T')[0]},
+       date:localISO()},
       {id:2, tier:2, target:'박믿음, 이소망, 최사랑', time:'매주 화요일 오전 10시', place:'○○ 카페',
        w1:'각자의 이번 주 감사 제목을 나눴다.', w2:'\'오직 주만이\'를 함께 찬양했다.',
        w3:'시편 23편을 읽고 목자되신 하나님을 묵상했다.',
        w4:'서로의 건강과 가정을 위해 중보기도했다.', w5:'전도 대상자 명단을 함께 점검했다.',
-       date:new Date().toISOString().split('T')[0]},
+       date:localISO()},
     ];
     saveExtra('group');
   }
@@ -2236,10 +2244,10 @@ function renderQT(){
   if(!qtE.length){ list.innerHTML='<div class="empty"><span class="empty-icon">📖</span>아직 QT 기록이 없습니다.<br>오늘의 말씀을 묵상해보세요!</div>'; return; }
   list.innerHTML = qtE.map(e => `<div class="qt-box">
     <div class="entry-date">${fd(e.date)}</div>
-    <div style="font-weight:700;font-size:13px;margin:4px 0">${esc(e.verse)}</div>
-    ${e.observe?`<div class="qt-field-label">관찰</div><div style="font-size:12px">${esc(e.observe)}</div>`:''}
-    ${e.apply?`<div class="qt-field-label">적용</div><div style="font-size:12px">${esc(e.apply)}</div>`:''}
-    ${e.prayer?`<div class="qt-field-label">기도</div><div style="font-size:12px">${esc(e.prayer)}</div>`:''}
+    <div style="font-weight:700;font-size:15px;margin:4px 0">${esc(e.verse)}</div>
+    ${e.observe?`<div class="qt-field-label">관찰</div><div style="font-size:14px">${esc(e.observe)}</div>`:''}
+    ${e.apply?`<div class="qt-field-label">적용</div><div style="font-size:14px">${esc(e.apply)}</div>`:''}
+    ${e.prayer?`<div class="qt-field-label">기도</div><div style="font-size:14px">${esc(e.prayer)}</div>`:''}
     <div class="entry-acts" style="margin-top:8px"><button class="btn btn-g btn-sm" onclick="openQTModal(${e.id})">수정</button> <button class="btn btn-d btn-sm" onclick="delQT(${e.id})">삭제</button></div>
   </div>`).join('');
 }
@@ -2262,7 +2270,7 @@ function renderAttendance(){
   const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
   set('attend-count', attendE.length+'회');
   wrap.innerHTML = sundays.map(sun=>{
-    const key = sun.toISOString().split('T')[0];
+    const key = localISO(sun);
     const present = attendE.includes(key);
     return `<div class="attendance-cell ${present?'present':''}" onclick="toggleAttendance('${key}')" style="cursor:pointer" title="${key}">${sun.getDate()}</div>`;
   }).join('');
@@ -2284,7 +2292,7 @@ function openAnsweredModal(editId){
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
     ['ans-title','ans-body'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
-    const d=document.getElementById('ans-date'); if(d) d.value=new Date().toISOString().split('T')[0];
+    const d=document.getElementById('ans-date'); if(d) d.value=localISO();
     if(titleEl) titleEl.textContent = '🎉 응답받은 기도';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -2355,7 +2363,7 @@ function savePrayerItem(type){
     if(type==='family'){ saveExtra('famPrayer'); renderFamPrayer(); } else { saveExtra('misPrayer'); renderMisPrayer(); }
     closeM(modalId); toast('✏️ 기도 제목이 수정되었습니다!',{color:'amber',duration:2200});
   } else {
-    const item = { id:Date.now(), name:name.trim(), body, date:new Date().toISOString().split('T')[0] };
+    const item = { id:Date.now(), name:name.trim(), body, date:localISO() };
     if(type==='family'){ famPrayerE.unshift(item); saveExtra('famPrayer'); renderFamPrayer(); closeM('modal-fam'); }
     else{ misPrayerE.unshift(item); saveExtra('misPrayer'); renderMisPrayer(); closeM('modal-mis'); }
     toast('🙏 기도 제목이 등록되었습니다!',{color:'green',duration:2500});
@@ -2413,7 +2421,7 @@ function saveIntercession(){
     if(idx>=0) intercessionE[idx] = { ...intercessionE[idx], name:name.trim(), body };
     saveExtra('intercession'); renderIntercession(); closeM('modal-intercession'); toast('✏️ 중보기도가 수정되었습니다!',{color:'amber',duration:2200});
   } else {
-    intercessionE.unshift({ id:Date.now(), name:name.trim(), body, date:new Date().toISOString().split('T')[0] });
+    intercessionE.unshift({ id:Date.now(), name:name.trim(), body, date:localISO() });
     saveExtra('intercession'); renderIntercession(); closeM('modal-intercession'); toast('🙏 중보기도 제목이 등록되었습니다!',{color:'green',duration:2500});
   }
   editingId = null;
@@ -2463,7 +2471,7 @@ function openSermonModal(editId){
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
     ['sermon-title','sermon-pastor','sermon-verse','sermon-notes','sermon-apply'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
-    const d=document.getElementById('sermon-date'); if(d) d.value=new Date().toISOString().split('T')[0];
+    const d=document.getElementById('sermon-date'); if(d) d.value=localISO();
     if(titleEl) titleEl.textContent = '📝 설교노트';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -2497,7 +2505,7 @@ function renderSermon(){
     <div class="entry-title">${esc(e.title)}</div>
     ${e.verse?`<div class="badge b-blue" style="margin:3px 0">${esc(e.verse)}</div>`:''}
     ${e.notes?`<div class="entry-body">${esc(e.notes)}</div>`:''}
-    ${e.apply?`<div style="font-size:12px;color:var(--teal);margin-top:4px">📌 적용: ${esc(e.apply)}</div>`:''}
+    ${e.apply?`<div style="font-size:14px;color:var(--teal);margin-top:4px">📌 적용: ${esc(e.apply)}</div>`:''}
     <div class="entry-acts" style="margin-top:6px"><button class="btn btn-g btn-sm" onclick="openSermonModal(${e.id})">수정</button> <button class="btn btn-d btn-sm" onclick="delSermon(${e.id})">삭제</button></div>
   </div>`).join('');
 }
@@ -2535,7 +2543,7 @@ function saveEncourage(){
     if(idx>=0) encourageE[idx] = { ...encourageE[idx], name:name.trim(), toName:toName.trim(), toPhone:toPhone.trim(), msg:msg.trim() };
     saveExtra('encourage'); renderEncourage(); closeM('modal-encourage'); toast('✏️ 격려 메시지가 수정되었습니다!',{color:'amber',duration:2200});
   } else {
-    encourageE.unshift({ id:Date.now(), name:name.trim(), toName:toName.trim(), toPhone:toPhone.trim(), msg:msg.trim(), date:new Date().toISOString().split('T')[0] });
+    encourageE.unshift({ id:Date.now(), name:name.trim(), toName:toName.trim(), toPhone:toPhone.trim(), msg:msg.trim(), date:localISO() });
     saveExtra('encourage'); renderEncourage(); closeM('modal-encourage'); toast('격려 메시지를 남겼습니다 💌');
   }
   editingId = null;
@@ -2556,8 +2564,8 @@ function renderEncourage(){
   list.innerHTML = encourageE.map(e=>`<div class="encourage-msg">
     <div class="encourage-avatar">${esc((e.toName||e.name||'?').slice(0,1))}</div>
     <div class="encourage-body">
-      <div class="encourage-name">${e.toName ? esc(e.toName)+' 님께' : '(받는 사람 미입력)'} <span style="font-weight:400;color:var(--text2);font-size:12px">— ${esc(e.name)} 드림</span></div>
-      ${e.toPhone ? `<div style="font-size:11px;color:var(--text2);margin-bottom:4px">📞 ${esc(e.toPhone)}</div>` : ''}
+      <div class="encourage-name">${e.toName ? esc(e.toName)+' 님께' : '(받는 사람 미입력)'} <span style="font-weight:400;color:var(--text2);font-size:14px">— ${esc(e.name)} 드림</span></div>
+      ${e.toPhone ? `<div style="font-size:13px;color:var(--text2);margin-bottom:4px">📞 ${esc(e.toPhone)}</div>` : ''}
       ${esc(e.msg)}
       <div style="margin-top:5px"><button class="btn btn-g btn-sm" onclick="openEncourageModal(${e.id})">수정</button> <button class="btn btn-d btn-sm" onclick="delEncourage(${e.id})">삭제</button></div>
     </div>
@@ -2605,11 +2613,11 @@ function renderGroups(){
       <div class="group-icon">👥</div>
       <div><div class="group-name">${esc(g.target||'대상 미입력')}</div><div class="group-meta">${fd(g.date)} · ${esc(g.time||'-')}</div></div>
     </div>
-    <div style="font-size:12px;color:var(--text2);margin-bottom:6px">📍 ${esc(g.place||'-')}</div>
+    <div style="font-size:14px;color:var(--text2);margin-bottom:6px">📍 ${esc(g.place||'-')}</div>
     ${GROUP_W_LABELS.filter(w=>g[w.k] && g[w.k].trim()).map(w=>`
       <div style="margin-top:6px;padding:8px 10px;background:var(--surface2);border-radius:8px">
-        <div style="font-size:11px;font-weight:700;color:var(--teal-d);margin-bottom:2px">${w.icon} ${esc(w.label)}</div>
-        <div style="font-size:13px;color:var(--text)">${esc(g[w.k])}</div>
+        <div style="font-size:13px;font-weight:700;color:var(--teal-d);margin-bottom:2px">${w.icon} ${esc(w.label)}</div>
+        <div style="font-size:15px;color:var(--text)">${esc(g[w.k])}</div>
       </div>`).join('')}
     <div style="margin-top:8px"><button class="btn btn-g btn-sm" onclick="openGroupModal(${g.id})">수정</button> <button class="btn btn-d btn-sm" onclick="delGroup(${g.id})">삭제</button></div>
   </div>`).join('');
@@ -2657,7 +2665,7 @@ function saveGroup(){
     if(idx>=0) groupE[idx] = { ...groupE[idx], tier, target:target.trim(), time:time.trim(), place:place.trim(), w1:w1.trim(), w2:w2.trim(), w3:w3.trim(), w4:w4.trim(), w5:w5.trim() };
     saveExtra('group'); currentGroupTier = tier; renderGroups(); closeM('modal-group'); toast('✏️ 모임 기록이 수정되었습니다!',{color:'amber',duration:2200});
   } else {
-    groupE.unshift({ id:Date.now(), tier, target:target.trim(), time:time.trim(), place:place.trim(), w1:w1.trim(), w2:w2.trim(), w3:w3.trim(), w4:w4.trim(), w5:w5.trim(), date:new Date().toISOString().split('T')[0] });
+    groupE.unshift({ id:Date.now(), tier, target:target.trim(), time:time.trim(), place:place.trim(), w1:w1.trim(), w2:w2.trim(), w3:w3.trim(), w4:w4.trim(), w5:w5.trim(), date:localISO() });
     saveExtra('group'); currentGroupTier = tier; renderGroups(); closeM('modal-group'); toast('👥 모임 기록이 저장되었습니다!',{color:'green',duration:2500});
   }
   editingId = null;
@@ -2770,7 +2778,7 @@ function exportBackup(){
   const blob = new Blob([JSON.stringify(backup, null, 2)], {type:'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'happiness-journal-backup-'+new Date().toISOString().split('T')[0]+'.json';
+  a.href = url; a.download = 'happiness-journal-backup-'+localISO()+'.json';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   URL.revokeObjectURL(url);
   toast('💾 백업 파일이 다운로드됐습니다');
@@ -2996,7 +3004,7 @@ function checkAlarms(){
   const mm     = String(now.getMinutes()).padStart(2, '0');
   const nowStr = hh + ':' + mm;
   /* 현재 분의 ISO 키 (중복 방지용) */
-  const firedKey = now.toISOString().slice(0, 13) + ':' + mm; /* YYYY-MM-DDTHH:MM */
+  const firedKey = localISO(now) + 'T' + nowStr; /* YYYY-MM-DDTHH:MM */
 
   alarmData.forEach((alarm, i) => {
     if(!alarm.on || !alarm.time) return;
@@ -3024,7 +3032,7 @@ function checkMissedAlarms(){
 
     /* 현재 분 일치 */
     if(alarm.time === nowStr){
-      const firedKey = now.toISOString().slice(0, 13) + ':' + mm;
+      const firedKey = localISO(now) + 'T' + nowStr;
       const dupKey   = 'hj_last_' + i;
       try{
         if(localStorage.getItem(dupKey) === firedKey) return;
@@ -3041,7 +3049,7 @@ function checkMissedAlarms(){
     const diff     = nowMin - alarmMin;
     if(diff > 0 && diff <= 3){
       /* 오늘 이미 울렸는지 확인 */
-      const missedKey = now.toISOString().slice(0, 10) + 'T' + alarm.time;
+      const missedKey = localISO(now) + 'T' + alarm.time;
       const dupKey    = 'hj_last_' + i;
       try{
         if(localStorage.getItem(dupKey) === missedKey) return;
@@ -3218,9 +3226,9 @@ function wk(arr){
 function streak(arr){
   if(!arr.length) return 0;
   const dates = [...new Set(arr.map(e=>e.date))].sort().reverse();
-  let s=0, check=new Date().toISOString().split('T')[0];
+  let s=0, check=localISO();
   for(const d of dates){
-    if(d===check){ s++; const dt=new Date(check+'T00:00:00'); dt.setDate(dt.getDate()-1); check=dt.toISOString().split('T')[0]; }
+    if(d===check){ s++; const dt=new Date(check+'T00:00:00'); dt.setDate(dt.getDate()-1); check=localISO(dt); }
     else break;
   }
   return s;
@@ -3289,7 +3297,7 @@ function openGM(editId){
     if(titleEl) titleEl.textContent = '🙏 감사 일기 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
-    const gd=document.getElementById('g-date'); if(gd) gd.value=new Date().toISOString().split('T')[0];
+    const gd=document.getElementById('g-date'); if(gd) gd.value=localISO();
     if(titleEl) titleEl.textContent = '🙏 감사 기록';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -3326,7 +3334,7 @@ function openSM(editId){
     if(titleEl) titleEl.textContent = '🤝 나눔 기록 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
-    const sd=document.getElementById('s-date'); if(sd) sd.value=new Date().toISOString().split('T')[0];
+    const sd=document.getElementById('s-date'); if(sd) sd.value=localISO();
     if(titleEl) titleEl.textContent = '🤝 나눔 기록';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -3360,7 +3368,7 @@ function openPM(editId){
     if(titleEl) titleEl.textContent = '✉️ 전도 대상자 수정';
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
-    const pd=document.getElementById('p-date'); if(pd) pd.value=new Date().toISOString().split('T')[0];
+    const pd=document.getElementById('p-date'); if(pd) pd.value=localISO();
     if(titleEl) titleEl.textContent = '✉️ 전도 대상자 등록';
     if(btnEl) btnEl.textContent = '등록';
   }
@@ -3475,7 +3483,7 @@ function updStage(){
   const note=((document.getElementById('ms-note')||{}).value||'').trim();
   if(v==='done'){ p.done=true; p.stage=7; }
   else{ p.stage=parseInt(v)||1; p.done=false; }
-  if(note) p.notes.unshift({date:new Date().toISOString().split('T')[0], text:note});
+  if(note) p.notes.unshift({date:localISO(), text:note});
   save(); renderAll(); closeM('modal-stage'); toast('단계를 업데이트했습니다');
 }
 
@@ -3498,7 +3506,7 @@ function rG(f){
       <div class="entry-date">${fd(e.date)} ${'★'.repeat(e.star||0)}</div>
       <div class="entry-title">${esc(e.title)}</div>
       ${e.body?`<div class="entry-body">${esc(e.body)}</div>`:''}
-      ${e.apply?`<div style="font-size:12px;color:var(--teal);margin-top:3px">📌 ${esc(e.apply)}</div>`:''}
+      ${e.apply?`<div style="font-size:14px;color:var(--teal);margin-top:3px">📌 ${esc(e.apply)}</div>`:''}
       ${renderEntryPhotos(e.photos)}
       <div class="entry-tags">${(e.areas||[]).map(a=>`<span class="badge b-teal">${esc(a)}</span>`).join('')}</div>
       <div class="entry-acts"><button class="btn btn-g btn-sm" onclick="openGM(${e.id})">수정</button><button class="btn btn-d btn-sm" onclick="delG(${e.id})">삭제</button></div>
@@ -3565,7 +3573,7 @@ function rP(f){
           <div class="pf"><div class="pfl">기도 제목</div><div class="pfv">${esc(p.prayer)||'—'}</div></div>
         </div>
         ${p.notes&&p.notes.length
-          ? `<div style="margin-top:.6rem;font-size:12px;color:var(--text2)">
+          ? `<div style="margin-top:.6rem;font-size:14px;color:var(--text2)">
                <div style="font-weight:500;margin-bottom:3px">최근 메모</div>
                ${p.notes.slice(0,2).map(n=>`<div style="padding:3px 0;border-bottom:1px solid var(--border)">[${esc(n.date)}] ${esc(n.text)}</div>`).join('')}
              </div>` : ''}
@@ -3733,7 +3741,7 @@ function openQTModal(editId){
     if(btnEl) btnEl.textContent = '수정 완료';
   } else {
     ['qt-verse','qt-observe','qt-apply','qt-prayer'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
-    const el=document.getElementById('qt-date'); if(el) el.value=new Date().toISOString().split('T')[0];
+    const el=document.getElementById('qt-date'); if(el) el.value=localISO();
     if(titleEl) titleEl.textContent = '📖 오늘의 QT';
     if(btnEl) btnEl.textContent = '저장';
   }
@@ -3750,7 +3758,7 @@ function init(){
   if(dd) dd.textContent = n.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
   const dv = document.getElementById('daily-verse');
   if(dv){ const v=verses[n.getDay()%verses.length]; dv.innerHTML=v.t+'<cite>— '+v.r+'</cite>'; }
-  const td = n.toISOString().split('T')[0];
+  const td = localISO(n);
   ['g-date','s-date','p-date','offer-date','ans-date','sermon-date'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=td; });
   // 모달 배경 클릭 닫기
   document.querySelectorAll('.modal-bg').forEach(bg=>{
@@ -3930,8 +3938,8 @@ function showStreakCelebration(sn){
   div.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2000;max-width:85vw;padding:1.5rem;background:linear-gradient(135deg,#FFF8E7,#FDE68A);border-radius:16px;border:2px solid var(--amber);text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.2)';
   div.innerHTML = `<span class="streak-fire">🔥</span>
     <div style="font-size:18px;font-weight:900;color:var(--amber-d);margin-bottom:.4rem">${sn}일 연속 달성!</div>
-    <div style="font-size:13px;color:var(--amber-d);line-height:1.6;margin-bottom:1rem">${msg.replace(/^🔥+|🏆|🌟|👑|🏅|💎|✨/g,'').trim()}</div>
-    <button onclick="this.closest('div').remove()" style="background:var(--amber);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer">감사합니다 🙏</button>`;
+    <div style="font-size:15px;color:var(--amber-d);line-height:1.6;margin-bottom:1rem">${msg.replace(/^🔥+|🏆|🌟|👑|🏅|💎|✨/g,'').trim()}</div>
+    <button onclick="this.closest('div').remove()" style="background:var(--amber);color:#fff;border:none;border-radius:10px;padding:9px 20px;font-size:15.5px;font-weight:700;font-family:inherit;cursor:pointer">감사합니다 🙏</button>`;
   document.body.appendChild(div);
   setTimeout(()=>div.remove(), 8000);
 }
@@ -3989,7 +3997,7 @@ function renderLevelBadge(){
       <div class="home-level-bar">
         <div class="home-level-bar-fill" style="width:${pct}%"></div>
       </div>
-      <div style="font-size:11px;color:var(--text3);margin-top:.35rem;text-align:right">
+      <div style="font-size:13px;color:var(--text3);margin-top:.35rem;text-align:right">
         총 기록 ${total}건 · ${pct}% 진행
       </div>
     </div>`;
@@ -4021,7 +4029,7 @@ function renderGoals(){
   if(!el) return;
   const goals = getGoals();
   const now = new Date();
-  const ym = now.toISOString().slice(0,7);
+  const ym = localISO(now).slice(0,7);
   const mg = (gE||[]).filter(e=>e.date&&e.date.startsWith(ym)).length;
   const ms = (sE||[]).filter(e=>e.date&&e.date.startsWith(ym)).length;
   const me = (pE||[]).filter(p=>p.stage>=2).length;
@@ -4086,7 +4094,7 @@ function renderAnsweredGallery(){
   if(!el) return;
   const arr=getAnswered();
   if(!arr.length){
-    el.innerHTML='<div style="font-size:12px;color:var(--text3);padding:.5rem 0">응답받은 기도를 기록해보세요 🙏</div>';
+    el.innerHTML='<div style="font-size:14px;color:var(--text3);padding:.5rem 0">응답받은 기도를 기록해보세요 🙏</div>';
     return;
   }
   const recent=arr.slice(-3).reverse();
@@ -4099,7 +4107,7 @@ function renderAnsweredGallery(){
 function openAnsweredModalV2(){
   // 고정 모달 사용 — 동적 생성 폐기 (getElementById 충돌 해소)
   const d = document.getElementById('anv2-date');
-  if(d) d.value = new Date().toISOString().split('T')[0];
+  if(d) d.value = localISO();
   const t = document.getElementById('anv2-title');
   if(t) t.value = '';
   const c = document.getElementById('anv2-content');
@@ -4111,7 +4119,7 @@ function saveAnsweredV2(){
   const arr=getAnswered();
   arr.push({
     id:Date.now(),
-    date:document.getElementById('anv2-date')?.value || new Date().toISOString().split('T')[0],
+    date:document.getElementById('anv2-date')?.value || localISO(),
     title,
     content:document.getElementById('anv2-content')?.value.trim()||'',
   });
@@ -4151,7 +4159,7 @@ function renderHeatmap(){
     3:{months:[7,8,9],label:'3분기 (7~9월)'},4:{months:[10,11,12],label:'4분기 (10~12월)'}};
   const MN=['','1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
   const qInfo=QUARTERS[q];
-  const todayStr=now.toISOString().split('T')[0];
+  const todayStr=localISO(now);
   let qTotal=0,qDays=0,qActive=0;
 
   const monthBlocks=qInfo.months.map(m=>{
@@ -4170,7 +4178,7 @@ function renderHeatmap(){
       mTotal+=cnt;
     }
     return `<div class="hm-month-block">
-      <div class="hm-month-label">${MN[m]} <span style="font-size:10px;color:var(--text3);font-weight:400">${mTotal}건</span></div>
+      <div class="hm-month-label">${MN[m]} <span style="font-size:12.5px;color:var(--text3);font-weight:400">${mTotal}건</span></div>
       <div class="hm-month-grid">${cells.join('')}</div>
     </div>`;
   }).join('');
@@ -4191,9 +4199,9 @@ function renderHeatmap(){
       <div class="hm-summary-chip"><div class="hm-summary-n">${avg}</div><div class="hm-summary-l">일 평균</div></div>
     </div>
     <div class="hm-legend" style="display:flex;align-items:center;gap:4px;margin-top:.4rem;justify-content:flex-end">
-      <span style="font-size:10px;color:var(--text3)">적음</span>
+      <span style="font-size:12.5px;color:var(--text3)">적음</span>
       ${[0,1,2,3].map(l=>`<div style="width:10px;height:10px;border-radius:2px;background:${['var(--border)','#BBF7D0','#4ADE80','#16A34A'][l]}"></div>`).join('')}
-      <span style="font-size:10px;color:var(--text3)">많음</span>
+      <span style="font-size:12.5px;color:var(--text3)">많음</span>
     </div>
   </div>`;
 
@@ -4222,9 +4230,9 @@ function renderSermonTask(){
   if(!el) return;
   const task=getSermonTask();
   if(!task){
-    el.innerHTML=`<div style="font-size:12px;color:var(--text3);line-height:1.6">
+    el.innerHTML=`<div style="font-size:14px;color:var(--text3);line-height:1.6">
       이번 주 설교 과제가 없습니다.<br>
-      <button onclick="openSermonTaskModal()" style="background:none;border:none;color:var(--purple);font-size:12px;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;margin-top:4px">+ 주간 과제 등록하기</button>
+      <button onclick="openSermonTaskModal()" style="background:none;border:none;color:var(--purple);font-size:14px;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;margin-top:4px">+ 주간 과제 등록하기</button>
     </div>`;
     return;
   }
@@ -4233,10 +4241,10 @@ function renderSermonTask(){
     <div class="sermon-task-title">📖 ${task.sermon||'이번 주 설교'}</div>
     <div class="sermon-task-body">${task.task||''}</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
-      <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;color:var(--purple-d)">
+      <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;color:var(--purple-d)">
         <input type="checkbox" ${done?'checked':''} onchange="toggleSermonTaskDone(this)"> 실천 완료
       </label>
-      <button onclick="openSermonTaskModal()" style="background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;font-family:inherit">수정</button>
+      <button onclick="openSermonTaskModal()" style="background:none;border:none;color:var(--text3);font-size:13px;cursor:pointer;font-family:inherit">수정</button>
     </div>
   </div>`;
 }
@@ -4268,7 +4276,7 @@ function saveSermonTask(){
   const sermon=document.getElementById('st-sermon')?.value.trim();
   const task=document.getElementById('st-task')?.value.trim();
   if(!task){ showMotivationToast('과제 내용을 입력하세요'); return; }
-  localStorage.setItem(SERMON_TASK_KEY,JSON.stringify({sermon,task,done:false,date:new Date().toISOString().split('T')[0]}));
+  localStorage.setItem(SERMON_TASK_KEY,JSON.stringify({sermon,task,done:false,date:localISO()}));
   document.getElementById('modal-sermon-task')?.remove();
   renderSermonTask();
   showMotivationToast('📖 주간 과제가 등록되었습니다!');
@@ -4319,8 +4327,8 @@ function renderRetroCard(){
   const now=new Date();
   const oneYearAgo=new Date(now); oneYearAgo.setFullYear(now.getFullYear()-1);
   const threeMonAgo=new Date(now); threeMonAgo.setMonth(now.getMonth()-3);
-  const oyStr=oneYearAgo.toISOString().split('T')[0];
-  const tmStr=threeMonAgo.toISOString().split('T')[0].slice(0,7);
+  const oyStr=localISO(oneYearAgo);
+  const tmStr=localISO(threeMonAgo).slice(0,7);
   let retro=allG.find(e=>e.date&&e.date===oyStr);
   if(!retro) retro=allG.find(e=>e.date&&e.date.startsWith(tmStr));
   if(!retro) retro=allG[Math.floor(Math.random()*Math.min(allG.length,30))];
@@ -4518,7 +4526,7 @@ function updateMotivation(){
   document.addEventListener('DOMContentLoaded',()=>{
     setTimeout(updateMotivation, 500);
     // 하루 한 번 랜덤 격려 메시지
-    const today=new Date().toISOString().split('T')[0];
+    const today=localISO();
     const lastMsg=localStorage.getItem('hj_last_motivation_date');
     if(lastMsg!==today){
       localStorage.setItem('hj_last_motivation_date',today);
@@ -4552,7 +4560,7 @@ function renderMotivationPage(){
           const lblCls = (isDone||isCurrent) ? 'active' : '';
           return `<div class="hls-item">
             <div class="hls-icon ${cls}" style="width:40px;height:40px;font-size:20px">${isDone?'✓':l.icon}</div>
-            <div class="hls-label ${lblCls}" style="font-size:11px">${l.name}</div>
+            <div class="hls-label ${lblCls}" style="font-size:13px">${l.name}</div>
           </div>`;
         }).join('');
   }
@@ -4590,16 +4598,16 @@ function renderMotivationPage(){
       const border = (isDone||isCurrent) ? '1.5px solid var(--teal)' : '1px solid var(--border)';
       const opacity = (!isDone&&!isCurrent) ? 'opacity:.5' : '';
       const tag = isCurrent
-        ? `<span style="background:var(--teal);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px">현재</span>`
+        ? `<span style="background:var(--teal);color:#fff;font-size:12.5px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px">현재</span>`
         : isDone
-        ? `<span style="background:var(--teal-d);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px">완료</span>`
-        : `<span style="background:var(--border);color:var(--text3);font-size:10px;padding:1px 7px;border-radius:10px;margin-left:6px">${l.min}건~</span>`;
+        ? `<span style="background:var(--teal-d);color:#fff;font-size:12.5px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px">완료</span>`
+        : `<span style="background:var(--border);color:var(--text3);font-size:12.5px;padding:1px 7px;border-radius:10px;margin-left:6px">${l.min}건~</span>`;
       return `<div style="display:flex;align-items:center;gap:.65rem;padding:.65rem .85rem;
         background:${bg};border:${border};border-radius:var(--rs);${opacity}">
         <div style="font-size:22px;width:28px;text-align:center">${isDone?'✓':l.icon}</div>
         <div style="flex:1">
-          <div style="font-size:13.5px;font-weight:700;color:var(--text)">${l.icon} ${l.name}${tag}</div>
-          <div style="font-size:11.5px;color:var(--text2);margin-top:1px">${l.verse}</div>
+          <div style="font-size:15.5px;font-weight:700;color:var(--text)">${l.icon} ${l.name}${tag}</div>
+          <div style="font-size:13.5px;color:var(--text2);margin-top:1px">${l.verse}</div>
         </div>
       </div>`;
     }).join('');
@@ -4618,18 +4626,18 @@ function renderMotivationPage(){
   const sdEl = document.getElementById('motivation-streak-detail');
   if(sdEl) sdEl.innerHTML = sn>0
     ? `<div class="streak-chip">🔥 ${sn}일 연속 감사 기록 중!</div>
-       <div style="font-size:12px;color:var(--text2);margin-top:.4rem">
+       <div style="font-size:14px;color:var(--text2);margin-top:.4rem">
          ${STREAK_MILESTONES.filter(m=>sn>=m).length > 0
            ? '달성한 마일스톤: ' + STREAK_MILESTONES.filter(m=>sn>=m).map(m=>m+'일').join(' · ')
            : '7일 연속 달성을 향해 나아가세요!'}
        </div>`
-    : '<div style="font-size:13px;color:var(--text2)">오늘 감사 일기를 기록하면 연속 기록이 시작됩니다!</div>';
+    : '<div style="font-size:15px;color:var(--text2)">오늘 감사 일기를 기록하면 연속 기록이 시작됩니다!</div>';
 
   // 마일스톤 배지
   const msEl = document.getElementById('motivation-milestones');
   if(msEl) msEl.innerHTML = STREAK_MILESTONES.map(m=>{
     const done = sn>=m;
-    return `<span style="padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;background:${done?'var(--amber)':'var(--border)'};color:${done?'#fff':'var(--text3)'}">
+    return `<span style="padding:3px 9px;border-radius:12px;font-size:13px;font-weight:700;background:${done?'var(--amber)':'var(--border)'};color:${done?'#fff':'var(--text3)'}">
       ${done?'🔥':''} ${m}일
     </span>`;
   }).join('');
@@ -4638,7 +4646,7 @@ function renderMotivationPage(){
   const goalEl = document.getElementById('motivation-goals');
   if(goalEl){
     const goals = getGoals();
-    const now = new Date(), ym = now.toISOString().slice(0,7);
+    const now = new Date(), ym = localISO(now).slice(0,7);
     const mg=(allG).filter(e=>e.date&&e.date.startsWith(ym)).length;
     const ms=(allS).filter(e=>e.date&&e.date.startsWith(ym)).length;
     const me=(allP).filter(p=>p.stage>=2).length;
@@ -4669,7 +4677,7 @@ function renderMotivationPage(){
     const cells=[], start=new Date(new Date().getFullYear(),0,1);
     for(let i=0;i<182;i++){
       const d=new Date(start); d.setDate(start.getDate()+i);
-      const ds=d.toISOString().split('T')[0];
+      const ds=localISO(d);
       const cnt=dateCnt[ds]||0;
       const lvl=cnt===0?0:cnt<=1?1:cnt<=3?2:3;
       cells.push(`<div class="hm-cell hm-${lvl}" title="${ds}"></div>`);
@@ -4682,12 +4690,12 @@ function renderMotivationPage(){
   const ansEl = document.getElementById('motivation-answered');
   if(ansEl){
     if(!ans.length){
-      ansEl.innerHTML='<div style="font-size:12px;color:var(--text3);padding:.5rem 0">아직 기록된 응답 기도가 없습니다. 하나님의 응답을 기록해보세요!</div>';
+      ansEl.innerHTML='<div style="font-size:14px;color:var(--text3);padding:.5rem 0">아직 기록된 응답 기도가 없습니다. 하나님의 응답을 기록해보세요!</div>';
     } else {
       ansEl.innerHTML = ans.slice().reverse().map(a=>`
         <div class="answered-card">
           <div class="answered-date">${a.date||''}</div>
-          <div style="font-size:13px;font-weight:500;margin-bottom:3px">${a.title||''}</div>
+          <div style="font-size:15px;font-weight:500;margin-bottom:3px">${a.title||''}</div>
           <div class="answered-content">${a.content||''}</div>
         </div>`).join('');
     }
@@ -4807,7 +4815,7 @@ function openPersonalPrayerModal(editId){
     if(titleEl) titleEl.textContent = '🤲 개인 기도 수정';
     if(btnEl)   btnEl.textContent   = '수정 완료';
   } else {
-    if(dateEl) dateEl.value = new Date().toISOString().split('T')[0];
+    if(dateEl) dateEl.value = localISO();
     if(nameEl) nameEl.value = '';
     if(bodyEl) bodyEl.value = '';
     if(titleEl) titleEl.textContent = '🤲 개인 기도 제목';
@@ -4819,7 +4827,7 @@ function openPersonalPrayerModal(editId){
 function savePersonalPrayer(){
   const name = (document.getElementById('pp-name')?.value||'').trim();
   const data = {
-    date: document.getElementById('pp-date')?.value || new Date().toISOString().split('T')[0],
+    date: document.getElementById('pp-date')?.value || localISO(),
     name,
     body: (document.getElementById('pp-body')?.value||'').trim(),
   };
@@ -4872,23 +4880,23 @@ function renderPersonalPrayer(){
         </div>
         <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end">
           <button onclick="togglePrayerAnswered(${item.id})"
-            style="background:${item.answered?'var(--teal)':'var(--surface2)'};color:${item.answered?'#fff':'var(--text2)'};border:1px solid ${item.answered?'var(--teal)':'var(--border)'};border-radius:var(--rs);padding:3px 10px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap">
+            style="background:${item.answered?'var(--teal)':'var(--surface2)'};color:${item.answered?'#fff':'var(--text2)'};border:1px solid ${item.answered?'var(--teal)':'var(--border)'};border-radius:var(--rs);padding:3px 10px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap">
             ${item.answered?'✅ 응답됨':'응답 확인'}
           </button>
         </div>
       </div>
       <div style="display:flex;gap:5px;margin-top:.5rem">
-        <button onclick="openPersonalPrayerModal(${item.id})" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text2)">수정</button>
-        <button onclick="deletePersonalPrayer(${item.id})" style="background:none;border:none;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text3)">삭제</button>
+        <button onclick="openPersonalPrayerModal(${item.id})" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:3px 10px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--text2)">수정</button>
+        <button onclick="deletePersonalPrayer(${item.id})" style="background:none;border:none;font-size:14px;cursor:pointer;font-family:inherit;color:var(--text3)">삭제</button>
       </div>
     </div>`;
 
   el.innerHTML = `
     ${unanswered.length>0 ? `
-      <div style="font-size:12px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">🙏 기도 중 (${unanswered.length})</div>
+      <div style="font-size:14px;font-weight:700;color:var(--teal-d);margin-bottom:.5rem">🙏 기도 중 (${unanswered.length})</div>
       ${unanswered.map(renderItem).join('')}` : ''}
     ${answered.length>0 ? `
-      <div style="font-size:12px;font-weight:700;color:var(--text3);margin:.8rem 0 .5rem">✅ 응답받은 기도 (${answered.length})</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text3);margin:.8rem 0 .5rem">✅ 응답받은 기도 (${answered.length})</div>
       ${answered.map(renderItem).join('')}` : ''}`;
 }
 
@@ -4912,7 +4920,7 @@ function openPrayerAnswerModal(editId){
     if(titleEl) titleEl.textContent = '✨ 기도 응답 수정';
     if(btnEl)   btnEl.textContent   = '수정 완료';
   } else {
-    if(dateEl) dateEl.value = new Date().toISOString().split('T')[0];
+    if(dateEl) dateEl.value = localISO();
     if(nameEl) nameEl.value = '';
     if(bodyEl) bodyEl.value = '';
     if(titleEl) titleEl.textContent = '✨ 기도 응답 기록';
@@ -4925,7 +4933,7 @@ function savePrayerAnswer(){
   const name = (document.getElementById('pa-name')?.value||'').trim();
   const body = (document.getElementById('pa-body')?.value||'').trim();
   const data = {
-    date: document.getElementById('pa-date')?.value || new Date().toISOString().split('T')[0],
+    date: document.getElementById('pa-date')?.value || localISO(),
     name, body,
   };
   const arr = getPrayerAnswers();
@@ -4967,14 +4975,14 @@ function renderPrayerAnswer(){
           <div class="prayer-date">${escH(item.date||'')}</div>
           <div class="prayer-title">🙏 ${escH(item.name)}</div>
           <div class="prayer-body" style="margin-top:.3rem;padding:.5rem .7rem;background:rgba(29,158,117,.08);border-radius:var(--rs);border-left:3px solid var(--teal)">
-            <div style="font-size:11px;color:var(--teal-d);font-weight:700;margin-bottom:3px">✨ 응답 내용</div>
+            <div style="font-size:13px;color:var(--teal-d);font-weight:700;margin-bottom:3px">✨ 응답 내용</div>
             ${escH(item.body)}
           </div>
         </div>
       </div>
       <div style="display:flex;gap:5px;margin-top:.5rem">
-        <button onclick="openPrayerAnswerModal(${item.id})" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text2)">수정</button>
-        <button onclick="deletePrayerAnswer(${item.id})" style="background:none;border:none;font-size:12px;cursor:pointer;font-family:inherit;color:var(--text3)">삭제</button>
+        <button onclick="openPrayerAnswerModal(${item.id})" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:3px 10px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--text2)">수정</button>
+        <button onclick="deletePrayerAnswer(${item.id})" style="background:none;border:none;font-size:14px;cursor:pointer;font-family:inherit;color:var(--text3)">삭제</button>
       </div>
     </div>`).join('');
 }
@@ -4983,12 +4991,12 @@ function renderPrayerAnswer(){
 function renderTeamStat(){
   const el=document.getElementById('home-team-stat');
   if(!el) return;
-  el.innerHTML=`<div style="margin:1.2rem 0 .5rem;padding:1rem 1.1rem;background:var(--teal-l);border-radius:var(--rs);border-left:4px solid var(--teal);line-height:1.85;color:var(--teal-d);font-size:15px;font-weight:500;text-align:center">
+  el.innerHTML=`<div style="margin:1.2rem 0 .5rem;padding:1rem 1.1rem;background:var(--teal-l);border-radius:var(--rs);border-left:4px solid var(--teal);line-height:1.85;color:var(--teal-d);font-size:16.5px;font-weight:500;text-align:center">
     하나님께 감사 드리고,<br>
     성도들과 나눔 가지고,<br>
     이웃에게 복음 전하여,<br>
     매일 행복한 축제의 삶이 되시기를<br>
-    <span style="font-size:16px;font-weight:700">축복합니다!! 🙏</span>
+    <span style="font-size:17px;font-weight:700">축복합니다!! 🙏</span>
   </div>`;
 }
 
@@ -5169,18 +5177,18 @@ init();
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:.65rem 0">
         <div style="text-align:center;padding:.7rem .5rem;background:var(--teal-light,#E1F5EE);border-radius:8px">
           <div style="font-size:18px;margin-bottom:4px">🙏</div>
-          <div style="font-size:12px;font-weight:500;color:var(--teal-dark,#085041)">감사</div>
-          <div style="font-size:11px;color:var(--teal-dark,#085041);margin-top:2px">나눔의 동기</div>
+          <div style="font-size:14px;font-weight:500;color:var(--teal-dark,#085041)">감사</div>
+          <div style="font-size:13px;color:var(--teal-dark,#085041);margin-top:2px">나눔의 동기</div>
         </div>
         <div style="text-align:center;padding:.7rem .5rem;background:var(--purple-light,#EEEDFE);border-radius:8px">
           <div style="font-size:18px;margin-bottom:4px">🤝</div>
-          <div style="font-size:12px;font-weight:500;color:var(--purple-dark,#3C3489)">나눔</div>
-          <div style="font-size:11px;color:var(--purple-dark,#3C3489);margin-top:2px">전도의 통로</div>
+          <div style="font-size:14px;font-weight:500;color:var(--purple-dark,#3C3489)">나눔</div>
+          <div style="font-size:13px;color:var(--purple-dark,#3C3489);margin-top:2px">전도의 통로</div>
         </div>
         <div style="text-align:center;padding:.7rem .5rem;background:var(--blue-light,#E6F1FB);border-radius:8px">
           <div style="font-size:18px;margin-bottom:4px">✉️</div>
-          <div style="font-size:12px;font-weight:500;color:var(--blue-dark,#0C447C)">전도</div>
-          <div style="font-size:11px;color:var(--blue-dark,#0C447C);margin-top:2px">사이클 확장</div>
+          <div style="font-size:14px;font-weight:500;color:var(--blue-dark,#0C447C)">전도</div>
+          <div style="font-size:13px;color:var(--blue-dark,#0C447C);margin-top:2px">사이클 확장</div>
         </div>
       </div>
       <ul class="checklist">
@@ -5327,7 +5335,7 @@ init();
       <div class="gs-body"><div class="gs-title">여름 관계 &amp; 3차 초청의 날 준비</div><div class="gs-desc">여름 특새 동행 초청. 8월 31일 3차 초청의 날을 향해 전 교인 기도 &amp; 초청 약속 확정.</div></div>
     </div>
     <div class="gstep">
-      <div class="gs-num"><div class="gs-dot" style="background:var(--amber-light,#FAEEDA);color:var(--amber,#BA7517);font-size:10px">8.31</div></div>
+      <div class="gs-num"><div class="gs-dot" style="background:var(--amber-light,#FAEEDA);color:var(--amber,#BA7517);font-size:12.5px">8.31</div></div>
       <div class="gs-body"><div class="gs-title">3차 초청의 날 — 여름 추수</div><div class="gs-desc">4~5단계 대상자 핵심 타깃. 예배 동행·식사·재방문 약속. 당일 저녁 6단계 업데이트 &amp; 응답의 감사 기록.</div></div>
     </div>
     <div class="gstep">
@@ -5339,7 +5347,7 @@ init();
       <div class="gs-body"><div class="gs-title">가을 문화 초청 &amp; 4차 초청의 날 약속 확정</div><div class="gs-desc">교회 가을 행사 초청. 11월 30일 4차 초청의 날 약속을 10월 안에 확정. 크리스마스 선물 준비.</div></div>
     </div>
     <div class="gstep">
-      <div class="gs-num"><div class="gs-dot" style="background:var(--coral-light,#FAECE7);color:var(--coral-dark,#712B13);font-size:10px">11.30</div></div>
+      <div class="gs-num"><div class="gs-dot" style="background:var(--coral-light,#FAECE7);color:var(--coral-dark,#712B13);font-size:12.5px">11.30</div></div>
       <div class="gs-body"><div class="gs-title">4차 초청의 날 — 가을 추수</div><div class="gs-desc">5~6단계 대상자 핵심 타깃. 크리스마스 예배 동행·선물·결신 대화. 당일 7단계 업데이트 &amp; 소그룹 연결.</div></div>
     </div>
     <div class="gstep">
@@ -5779,7 +5787,7 @@ init();
   <div class="guide-section">
     <h3>🔥 ① 연속기록 Streak 시스템</h3>
     <p>홈 화면 상단 또는 더보기 → 🌱 성장현황에서 확인합니다.</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--amber-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">위치</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">버튼/기능</th>
@@ -5796,7 +5804,7 @@ init();
   <div class="guide-section">
     <h3>🏆 ② 레벨 & 칭호 시스템</h3>
     <p>홈 화면 레벨 배지 + 더보기 → 🌱 성장현황 → 레벨 카드에서 확인합니다.</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--teal-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼/영역</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">기능</th>
@@ -5813,7 +5821,7 @@ init();
   <div class="guide-section">
     <h3>🎯 ③ 월간 목표 & 진척도</h3>
     <p>홈 화면 "이달 목표" 섹션에서 확인하고 설정합니다.</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--teal-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">동작</th>
@@ -5829,7 +5837,7 @@ init();
   <div class="guide-section">
     <h3>✅ ④ 응답 기도 갤러리</h3>
     <p>홈 화면 "응답 기도 갤러리" 섹션 + 더보기 → 동기부여·성장 → 응답 기도</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--teal-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">동작</th>
@@ -5857,7 +5865,7 @@ init();
   <div class="guide-section">
     <h3>📖 ⑦ 설교 연계 주간 과제</h3>
     <p>홈 화면 "이번 주 설교 과제" 섹션 + 더보기 → 동기부여·성장 → 설교 과제</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--purple-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--purple-d)">버튼</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--purple-d)">동작</th>
@@ -5874,7 +5882,7 @@ init();
   <div class="guide-section">
     <h3>💌 ⑩ 격려 알림 & 폭죽 🎆</h3>
     <p>자동 격려 메시지 + 성취 시 폭죽 애니메이션</p>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--amber-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">기능</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--amber-d)">발동 조건</th>
@@ -5889,7 +5897,7 @@ init();
 
   <div class="guide-section">
     <h3>📱 더보기 → 동기부여·성장 섹션 버튼</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:.5rem">
       <thead><tr style="background:var(--teal-l)">
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">버튼</th>
         <th style="padding:7px 10px;text-align:left;border:1px solid var(--border);color:var(--teal-d)">이동 / 동작</th>
@@ -6016,64 +6024,64 @@ init();
 
   <!-- iOS Safari -->
   <div id="install-guide-ios" style="display:none">
-    <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
+    <p style="margin:0 0 12px;color:var(--text2);font-size:15.5px;line-height:1.6">
       iPhone / iPad (Safari)에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
     </p>
-    <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
+    <ol style="margin:0 0 16px;padding-left:20px;font-size:15.5px;line-height:2.2;color:var(--text)">
       <li>Safari 하단의 <b>공유 버튼 (□↑)</b>을 누르세요</li>
       <li>스크롤해서 <b>"홈 화면에 추가"</b>를 누르세요</li>
       <li>이름 확인 후 <b>"추가"</b>를 누르면 완료!</li>
     </ol>
-    <p style="margin:0 0 14px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:13px;color:var(--teal-d)">
+    <p style="margin:0 0 14px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:15px;color:var(--teal-d)">
       💡 Chrome/다른 브라우저는 Safari로 열어야 홈화면 추가가 가능합니다.
     </p>
   </div>
 
   <!-- Chrome Android -->
   <div id="install-guide-chrome" style="display:none">
-    <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
+    <p style="margin:0 0 12px;color:var(--text2);font-size:15.5px;line-height:1.6">
       Chrome에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
     </p>
-    <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
+    <ol style="margin:0 0 16px;padding-left:20px;font-size:15.5px;line-height:2.2;color:var(--text)">
       <li>화면 <b>오른쪽 위 ⋮ (점 3개) 메뉴</b>를 누르세요</li>
       <li><b>"앱 설치"</b> 또는 <b>"홈 화면에 추가"</b>를 누르세요</li>
       <li>이름 확인 후 <b>"설치"</b>를 누르면 완료!</li>
     </ol>
-    <p style="margin:0 0 8px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:13px;color:var(--teal-d)">
+    <p style="margin:0 0 8px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:15px;color:var(--teal-d)">
       💡 설치 팝업이 자동으로 뜨면 "설치" 버튼을 눌러주세요.
     </p>
-    <p style="margin:0 0 14px;padding:10px 12px;background:var(--surface2);border-radius:10px;font-size:13px;color:var(--text2)">
+    <p style="margin:0 0 14px;padding:10px 12px;background:var(--surface2);border-radius:10px;font-size:15px;color:var(--text2)">
       ⚠️ 기존 아이콘이 있다면 홈 화면에서 먼저 삭제 후 다시 추가해주세요.
     </p>
   </div>
 
   <!-- 삼성 인터넷 -->
   <div id="install-guide-samsung" style="display:none">
-    <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
+    <p style="margin:0 0 12px;color:var(--text2);font-size:15.5px;line-height:1.6">
       삼성 인터넷에서 설치하는 방법입니다. <b>기록은 그대로 보존됩니다.</b>
     </p>
-    <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
+    <ol style="margin:0 0 16px;padding-left:20px;font-size:15.5px;line-height:2.2;color:var(--text)">
       <li>화면 하단의 <b>☰ 메뉴 버튼</b>을 누르세요</li>
       <li><b>"페이지 추가"</b>를 누르세요</li>
       <li><b>"홈 화면"</b>을 선택하세요</li>
       <li>이름 확인 후 <b>"추가"</b>를 누르면 완료!</li>
     </ol>
-    <p style="margin:0 0 14px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:13px;color:var(--teal-d)">
+    <p style="margin:0 0 14px;padding:10px 12px;background:var(--teal-l);border-radius:10px;font-size:15px;color:var(--teal-d)">
       💡 삼성 인터넷 15 이상에서는 설치 팝업이 자동으로 뜰 수 있습니다.
     </p>
   </div>
 
   <!-- 기타 Android -->
   <div id="install-guide-android">
-    <p style="margin:0 0 12px;color:var(--text2);font-size:14px;line-height:1.6">
+    <p style="margin:0 0 12px;color:var(--text2);font-size:15.5px;line-height:1.6">
       브라우저 메뉴에서 홈 화면에 추가할 수 있습니다. <b>기록은 그대로 보존됩니다.</b>
     </p>
-    <ol style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:2.2;color:var(--text)">
+    <ol style="margin:0 0 16px;padding-left:20px;font-size:15.5px;line-height:2.2;color:var(--text)">
       <li>브라우저 <b>메뉴 (⋮ 또는 ☰)</b>를 누르세요</li>
       <li><b>"홈 화면에 추가"</b> 또는 <b>"앱 설치"</b>를 누르세요</li>
       <li>이름 확인 후 <b>"추가"</b>를 누르면 완료!</li>
     </ol>
-    <p style="margin:0 0 14px;padding:10px 12px;background:var(--surface2);border-radius:10px;font-size:13px;color:var(--text2)">
+    <p style="margin:0 0 14px;padding:10px 12px;background:var(--surface2);border-radius:10px;font-size:15px;color:var(--text2)">
       ⚠️ 가장 잘 지원되는 브라우저는 Chrome 또는 삼성 인터넷입니다.
     </p>
   </div>
@@ -6105,7 +6113,7 @@ init();
     </div>
     <!-- 진척도 -->
     <div class="level-progress">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:4px">
+      <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--text2);margin-bottom:4px">
         <span id="motivation-level-progress-label">다음 레벨까지</span>
         <span id="motivation-level-progress-val"></span>
       </div>
@@ -6153,7 +6161,7 @@ init();
   <div class="motivation-section">
     <div id="motivation-streak-detail"></div>
     <div style="margin-top:.6rem">
-      <div style="font-size:12px;color:var(--text2);margin-bottom:4px">달성한 마일스톤</div>
+      <div style="font-size:14px;color:var(--text2);margin-bottom:4px">달성한 마일스톤</div>
       <div id="motivation-milestones" style="display:flex;flex-wrap:wrap;gap:5px"></div>
     </div>
   </div>
@@ -6161,7 +6169,7 @@ init();
   <!-- 이달 목표 진척도 -->
   <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
     <span>🎯 이달 목표</span>
-    <button onclick="openGoalModal()" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">⚙ 목표 수정</button>
+    <button onclick="openGoalModal()" style="background:none;border:none;color:var(--teal);font-size:14px;cursor:pointer;font-family:inherit;font-weight:500">⚙ 목표 수정</button>
   </div>
   <div id="motivation-goals"></div>
 
@@ -6174,14 +6182,14 @@ init();
   <!-- 응답 기도 전체 목록 -->
   <div class="slabel" style="display:flex;justify-content:space-between;align-items:center">
     <span>✅ 응답 기도 갤러리</span>
-    <button onclick="openAnsweredModalV2()" style="background:none;border:none;color:var(--teal);font-size:12px;cursor:pointer;font-family:inherit;font-weight:500">+ 응답 기록</button>
+    <button onclick="openAnsweredModalV2()" style="background:none;border:none;color:var(--teal);font-size:14px;cursor:pointer;font-family:inherit;font-weight:500">+ 응답 기록</button>
   </div>
   <div id="motivation-answered"></div>
 
   <!-- 격려 메시지 -->
   <div class="slabel">💌 오늘의 격려</div>
   <div class="motivation-section">
-    <div id="motivation-daily-msg" style="font-size:14px;line-height:1.7;color:var(--text)"></div>
+    <div id="motivation-daily-msg" style="font-size:15.5px;line-height:1.7;color:var(--text)"></div>
     <button onclick="showRandomMotivation()" class="btn btn-g btn-sm" style="margin-top:.7rem">🎲 다른 격려 메시지</button>
   </div>
 </div>
@@ -6292,7 +6300,7 @@ init();
   <label class="fl">보내는 사람 (내 이름)</label><div class="field-with-voice"><input type="text" id="enc-name"><button class="voice-btn" onclick="toggleVoiceInput('enc-name', this)">🎤</button></div>
   <label class="fl">받는 사람 이름</label><div class="field-with-voice"><input type="text" id="enc-to-name" placeholder="예: 김은혜 집사님"><button class="voice-btn" onclick="toggleVoiceInput('enc-to-name', this)">🎤</button></div>
   <label class="fl">받는 사람 전화번호</label><input type="tel" id="enc-to-phone" placeholder="010-0000-0000">
-  <div class="info-box teal" style="margin-top:10px;font-size:12px">
+  <div class="info-box teal" style="margin-top:10px;font-size:14px">
     <strong>메시지 작성 가이드</strong><br>
     아래 다섯 가지를 담아 써보세요 — <strong>①호칭</strong>(누구에게) · <strong>②감사</strong>(고마운 점) · <strong>③칭찬</strong>(잘하고 있는 점) · <strong>④격려</strong>(힘이 되는 말) · <strong>⑤축복</strong>(기도와 축복의 말)
   </div>
